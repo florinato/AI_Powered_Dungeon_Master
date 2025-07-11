@@ -1,8 +1,9 @@
 {
     "player": {
-        "location": "dark_forest",
+        "location": "mystic_lake",
         "location_history": [
-            "starting_location"
+            "starting_location",
+            "dark_forest"
         ],
         "hp": 120,
         "max_hp": 120,
@@ -214,7 +215,8 @@
                 "north": true
             },
             "hidden_items": {},
-            "traps": {}
+            "traps": {},
+            "generated_description": "The Whisperwind Lake lay still, a polished obsidian mirror reflecting a silver moon. Mist, thick as spun silk, clung to the water's edge, obscuring ancient, gnarled trees that seemed to weep with ancient secrets. A faint, ethereal glow emanated from the lake's depths, hinting at forgotten magic and slumbering guardians. The air hummed with an unseen energy, a symphony of whispers carried on the night wind, promising both wonder and peril. The silence was broken only by the occasional splash, hinting at unseen creatures below.\n\n***\n\nThe lake's surface danced with liquid moonlight, concealing mysteries within its depths. Legend spoke of a Siren, her voice as captivating as it was deadly, luring travelers to their doom. Dare you risk a dip, or will you instead seek the hidden path to the ancient temple whispered to be nearby?\n"
         },
         "cursed_castle": {
             "description": "A foreboding castle, home of the Shadow Lord. Beware of the curse!",
