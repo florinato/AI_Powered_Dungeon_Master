@@ -1,4 +1,4 @@
-# refact/models.py
+# game/models.py
 
 from typing import Any, Dict, List, Optional
 

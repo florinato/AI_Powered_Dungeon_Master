@@ -13,22 +13,28 @@ def create_new_character(world_id: str, player_name: str) -> Optional[PlayerStat
     """
     print(f"Creating new character '{player_name}' in world '{world_id}'...")
     
-    # 1. Cargar la definición del mundo para obtener la ubicación inicial
+    # 1. Load world definition to get the starting location
     world_def = load_world_definition(world_id)
     if not world_def:
         return None
 
-    # 2. Crear el objeto PlayerState inicial
-    # Nota: player_id es None porque la BD lo asignará automáticamente.
+    # 2. Create initial PlayerState object
+    # Note: player_id is None because the DB will assign it automatically.
+    
+    starting_location = world_def.get('starting_location_id')
+    if not starting_location:
+        print(f"Error: World '{world_id}' has no starting_location_id defined.")
+        return None
+    
     initial_state = PlayerState(
         player_name=player_name,
         world_id=world_id,
-        current_location_id=world_def['starting_location_id']
-        # El resto de los valores se toman de los defaults de Pydantic
+        current_location_id=starting_location
+        # Other values use Pydantic defaults
     )
 
-    # 3. Guardar este estado inicial en la BD para obtener un ID
-    # Modificamos save_player_state para que devuelva el ID
+    # 3. Save this initial state to DB to get an ID
+    # We modify save_player_state to return the ID
     new_player_id = save_new_player(initial_state)
     if new_player_id is None:
         print("Error: Could not save new character to database.")

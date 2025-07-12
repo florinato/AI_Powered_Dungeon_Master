@@ -1,27 +1,58 @@
 {
     "player": {
-        "location": "cursed_castle",
+        "location": "ancient_ruins",
         "location_history": [
             "starting_location",
             "mystic_lake",
-            "crystal_caves",
-            "mystic_lake",
-            "starting_location",
-            "abandoned_mine",
-            "desolate_plateau"
+            "sunken_temple",
+            "old_library"
         ],
-        "hp": 0,
-        "max_hp": 110,
+        "hp": 100,
+        "max_hp": 100,
         "attack": 8,
         "xp": 0,
         "level": 1,
         "xp_to_next_level": 75,
         "inventory": [
             {
+                "name": "healing_potion",
+                "type": "healing",
+                "healing_amount": 25,
+                "description": "A potion that restores 25 HP."
+            },
+            {
+                "name": "silver_key",
+                "type": "key",
+                "description": "A shiny silver key with intricate engravings."
+            },
+            {
                 "name": "rusty_dagger",
                 "type": "weapon",
                 "attack_boost": 8,
-                "description": "A rusty dagger, adds a little attack."
+                "description": "A small, rusty dagger."
+            },
+            {
+                "name": "silver_key",
+                "type": "key",
+                "description": "A shiny silver key with intricate engravings."
+            },
+            {
+                "name": "healing_potion",
+                "type": "healing",
+                "healing_amount": 25,
+                "description": "A potion that restores 25 HP."
+            },
+            {
+                "name": "dagger",
+                "type": "weapon",
+                "attack_boost": 10,
+                "description": "A small but sharp dagger."
+            },
+            {
+                "name": "healing_potion",
+                "type": "healing",
+                "healing_amount": 25,
+                "description": "A potion that restores 25 HP."
             },
             {
                 "name": "mystic_gem",
@@ -30,9 +61,9 @@
                 "required_for_quest": "find_mystic_gem"
             },
             {
-                "name": "fishing_rod",
+                "name": "water_breathing_potion",
                 "type": "tool",
-                "description": "A simple fishing rod, not much use here."
+                "description": "A potion that allows you to breathe underwater."
             },
             {
                 "name": "healing_potion",
@@ -41,22 +72,33 @@
                 "description": "A potion that restores 25 HP."
             },
             {
-                "name": "ancient_artifact",
-                "type": "quest_item",
-                "description": "An ancient artifact pulsing with dark energy."
-            },
-            {
                 "name": "healing_potion",
                 "type": "healing",
                 "healing_amount": 25,
                 "description": "A potion that restores 25 HP."
+            },
+            {
+                "name": "silver_key_2",
+                "type": "key",
+                "description": "A shiny silver key with intricate engravings."
+            },
+            {
+                "name": "rusty_sword",
+                "type": "weapon",
+                "attack_boost": 12,
+                "description": "A rusty sword, but still somewhat effective."
+            },
+            {
+                "name": "leather_armor",
+                "type": "tool",
+                "description": "Basic leather armor for protection."
             }
         ]
     },
     "quests": {
         "retrieve_ancient_artifact": {
             "description": "Retrieve the Ancient Artifact protected by the Shadow Lord in the Cursed Castle.",
-            "completed": true,
+            "completed": false,
             "required_items": [
                 "ancient_artifact"
             ],
@@ -64,11 +106,12 @@
         },
         "find_mystic_gem": {
             "description": "Locate the Mystic Gem concealed in the Crystal Caves.",
-            "completed": true,
+            "completed": false,
             "required_items": [
                 "mystic_gem"
             ],
-            "required_npcs": []
+            "required_npcs": [],
+            "status": "ready_to_turn_in"
         },
         "vanquish_final_boss": {
             "description": "Slay the Shadow Lord in the Cursed Castle.",
@@ -90,23 +133,7 @@
                     "status": "active"
                 }
             },
-            "items": {
-                "healing_potion": {
-                    "type": "healing",
-                    "healing_amount": 25,
-                    "description": "A potion that restores 25 HP."
-                },
-                "silver_key": {
-                    "type": "key",
-                    "description": "A shiny silver key with intricate engravings."
-                },
-                "dagger": {
-                    "name": "dagger",
-                    "type": "weapon",
-                    "attack_boost": 10,
-                    "description": "A small but sharp dagger."
-                }
-            },
+            "items": {},
             "connections": {
                 "north": "dark_forest",
                 "east": "mystic_lake",
@@ -118,18 +145,77 @@
                 "north": true
             },
             "hidden_items": {},
-            "traps": {},
-            "generated_description": "The village of Oakhaven nestled deep within the Whisperwood, a haven of thatched roofs and smiling faces. Sunlight dappled through the leaves, painting emerald patterns on the cobblestone streets. The scent of baking bread mingled with the earthy aroma of freshly turned soil, a testament to the bounty of the land. Though quiet, a sense of watchful peace hung in the air, a knowledge that the forest held both beauty and secrets. Beyond the village, the hills rose, promising adventure for those brave enough to seek it."
+            "traps": {
+                "avalanche": {
+                    "description": "A sudden avalanche triggered by a footstep, it's fast and deadly.",
+                    "damage": 30,
+                    "disarm_difficulty": "very_challenging",
+                    "triggered": false
+                }
+            },
+            "generated_description": "The sun dips low, painting the village of Oakhaven in hues of orange and gold. Smoke curls lazily from thatched roofs, carrying the scent of roasting meats and hearth fires. Lush forests, thick with ancient trees, cradle the village in their verdant embrace. Rolling hills, dotted with grazing sheep, provide a gentle barrier against the world's harshness. A palpable sense of tranquility hangs in the air, a promise of warmth and respite for weary travelers."
         },
         "dark_forest": {
-            "description": "A dense and shadowed forest, the air is thick with the scent of damp earth.",
+            "description": "A dense, shadowy forest where sunlight struggles to penetrate.",
+            "npcs": {
+                "forest_guardian": {
+                    "hp": 75,
+                    "max_hp": 75,
+                    "attack": 10,
+                    "status": "active"
+                }
+            },
+            "items": {
+                "healing_potion": {
+                    "type": "healing",
+                    "healing_amount": 25,
+                    "description": "A potion that restores 25 HP."
+                },
+                "iron_key": {
+                    "type": "key",
+                    "description": "A sturdy iron key."
+                },
+                "torch": {
+                    "name": "torch",
+                    "type": "tool",
+                    "description": "A torch to light the way."
+                }
+            },
+            "connections": {
+                "south": "starting_location",
+                "east": "mountain_pass",
+                "west": "haunted_graveyard"
+            },
+            "locked_paths": {
+                "east": false
+            },
+            "hidden_items": {},
+            "traps": {}
+        },
+        "mystic_lake": {
+            "description": "A serene lake, rumored to hold magical properties.",
+            "npcs": {},
+            "items": {},
+            "connections": {
+                "west": "starting_location",
+                "north": "crystal_caves",
+                "east": "sunken_temple"
+            },
+            "locked_paths": {
+                "north": false
+            },
+            "hidden_items": {},
+            "traps": {},
+            "generated_description": "The Whispering Lake shimmers, its surface a flawless mirror reflecting a sky perpetually kissed by twilight. Legend speaks of its waters granting visions, weaving dreams into reality for those who dare to drink. Ancient, gnarled trees guard the shore, their roots entangled with the very earth, their leaves whispering secrets to the restless breeze. A palpable stillness hangs in the air, broken only by the croak of unseen frogs and the rustle of something unseen just beyond the treeline. The air itself hums with a faint, otherworldly energy, a siren's call to the curious and the desperate alike."
+        },
+        "abandoned_mine": {
+            "description": "An old mine, long abandoned and filled with dangers.",
             "npcs": {},
             "items": {
-                "long_sword": {
-                    "name": "long_sword",
-                    "type": "weapon",
-                    "attack_boost": 12,
-                    "description": "A well-balanced long sword."
+                "pickaxe": {
+                    "name": "pickaxe",
+                    "type": "tool",
+                    "description": "A pickaxe for breaking rocks."
                 },
                 "healing_potion": {
                     "type": "healing",
@@ -138,7 +224,51 @@
                 }
             },
             "connections": {
-                "south": "starting_location",
+                "north": "starting_location",
+                "south": "cavern_entrance"
+            },
+            "locked_paths": {},
+            "hidden_items": {},
+            "traps": {
+                "rockfall": {
+                    "description": "Loose rocks fall from the ceiling.",
+                    "damage": 20,
+                    "disarm_difficulty": "challenging",
+                    "triggered": false
+                }
+            }
+        },
+        "ancient_ruins": {
+            "description": "The crumbling remains of an ancient civilization.",
+            "npcs": {},
+            "items": {},
+            "connections": {
+                "east": "starting_location",
+                "north": "old_library"
+            },
+            "locked_paths": {
+                "north": true
+            },
+            "hidden_items": {},
+            "traps": {},
+            "generated_description": "Dust devils danced across the cracked flagstones of what was once a grand plaza. Shattered statues, their features eroded by time, lay half-buried in the shifting sands. Twisted columns, etched with indecipherable glyphs, clawed at the unforgiving sky. A chilling wind whispered through the skeletal ruins, carrying the ghosts of forgotten glories. The air hung heavy with the scent of decay and the unspoken promise of forgotten dangers."
+        },
+        "mountain_pass": {
+            "description": "A treacherous mountain pass with steep cliffs and strong winds.",
+            "npcs": {},
+            "items": {
+                "healing_potion": {
+                    "type": "healing",
+                    "healing_amount": 25,
+                    "description": "A potion that restores 25 HP."
+                },
+                "gold_key": {
+                    "type": "key",
+                    "description": "A gleaming gold key."
+                }
+            },
+            "connections": {
+                "west": "dark_forest",
                 "north": "cursed_castle"
             },
             "locked_paths": {
@@ -146,57 +276,40 @@
             },
             "hidden_items": {},
             "traps": {
-                "bear_trap": {
-                    "description": "A hidden bear trap, ready to snap shut.",
-                    "damage": 20,
-                    "disarm_difficulty": "challenging",
+                "ice_slide": {
+                    "description": "A sudden ice slide.",
+                    "damage": 15,
+                    "disarm_difficulty": "simple",
                     "triggered": false
                 }
             }
         },
-        "mystic_lake": {
-            "description": "A serene lake shimmering under the sunlight, surrounded by ancient trees.",
+        "haunted_graveyard": {
+            "description": "A graveyard filled with the restless dead.",
             "npcs": {},
-            "items": {},
+            "items": {
+                "longsword": {
+                    "name": "longsword",
+                    "type": "weapon",
+                    "attack_boost": 14,
+                    "description": "A finely crafted longsword."
+                },
+                "healing_potion": {
+                    "type": "healing",
+                    "healing_amount": 25,
+                    "description": "A potion that restores 25 HP."
+                }
+            },
             "connections": {
-                "west": "starting_location",
-                "north": "crystal_caves"
+                "east": "dark_forest",
+                "south": "cavern_entrance"
             },
             "locked_paths": {},
             "hidden_items": {},
-            "traps": {},
-            "generated_description": "The Silverwood Lake whispers secrets under a sun-drenched sky.  Ancient oaks and weeping willows cradle its glassy surface, their gnarled limbs draped in emerald moss.  A gentle breeze rustles the leaves, carrying the scent of damp earth and hidden blooms.  Beneath the water, shadowy depths conceal unknown creatures and forgotten treasures.  A sense of profound peace hangs heavy in the air, a deceptive tranquility for any who dare disturb its slumber."
+            "traps": {}
         },
-        "abandoned_mine": {
-            "description": "A derelict mine, the air is stale and filled with the echoes of forgotten labor.",
-            "npcs": {},
-            "items": {
-                "pickaxe": {
-                    "name": "pickaxe",
-                    "type": "tool",
-                    "description": "A sturdy pickaxe."
-                }
-            },
-            "connections": {
-                "north": "starting_location",
-                "east": "desolate_plateau"
-            },
-            "locked_paths": {
-                "east": false
-            },
-            "hidden_items": {},
-            "traps": {
-                "cave_in": {
-                    "description": "A sudden cave-in blocks your path.",
-                    "damage": 30,
-                    "disarm_difficulty": "very_challenging",
-                    "triggered": true
-                }
-            },
-            "generated_description": "The gaping maw of the mine exhales a gritty chill, tasting of rust and decay.  Shadows cling to the damp walls, whispering of pickaxes and shattered dreams.  A lone, rusted cart lies overturned, its skeletal wheels frozen in a final, futile journey.  Faint tremors ripple through the earth, hinting at the deep slumber of unseen things.  A chilling silence descends, broken only by the drip, drip, drip of water and the unsettling certainty that something watches from the blackness."
-        },
-        "ancient_ruins": {
-            "description": "The ruins of an ancient civilization, overgrown with vines and crumbling stone.",
+        "cavern_entrance": {
+            "description": "The entrance to a dark cavern.",
             "npcs": {},
             "items": {
                 "healing_potion": {
@@ -204,111 +317,95 @@
                     "healing_amount": 25,
                     "description": "A potion that restores 25 HP."
                 },
-                "ancient_scroll": {
-                    "name": "ancient_scroll",
+                "torch": {
+                    "name": "torch",
                     "type": "tool",
-                    "description": "An ancient scroll with unknown contents."
+                    "description": "A torch to light the way."
                 }
             },
             "connections": {
-                "east": "starting_location",
+                "north": "abandoned_mine",
+                "east": "haunted_graveyard",
                 "south": "sunken_temple"
             },
             "locked_paths": {},
             "hidden_items": {},
             "traps": {}
         },
-        "crystal_caves": {
-            "description": "A network of glistening caves, filled with sparkling crystals.",
+        "sunken_temple": {
+            "description": "A temple submerged beneath the water.",
             "npcs": {},
             "items": {},
             "connections": {
-                "south": "mystic_lake",
-                "east": "desolate_plateau"
+                "west": "mystic_lake",
+                "north": "cavern_entrance",
+                "east": "old_library"
             },
             "locked_paths": {},
             "hidden_items": {},
             "traps": {},
-            "generated_description": "The air hangs heavy with the scent of wet stone and unseen magic within these caverns of wonder. Stalactites and stalagmites, sheathed in shimmering quartz, drip with an ethereal light, reflecting off unseen pools of crystalline water. Twisted passages beckon, promising untold treasures and forgotten dangers to those brave enough to venture within. Echoes of whispers seem to dance on the wind, hinting at the spirits of forgotten miners or the slumbering power of the earth itself. The very walls pulse with an almost musical thrum, beckoning adventurers to uncover the secrets held within."
+            "generated_description": "Sunlight fractured into shimmering beams, barely piercing the murky depths. A colossal temple, swallowed by the lake, loomed before you, its stone facade draped in emerald algae. Grotesque carvings of forgotten gods leered from the walls, hinting at forgotten rituals. A silent, spectral presence permeated the water, whispering tales of hubris and decay. Within those submerged halls, untold treasures and unimaginable horrors await those brave or foolish enough to enter."
         },
-        "desolate_plateau": {
-            "description": "A barren plateau, the wind whips across the desolate landscape.",
+        "crystal_caves": {
+            "description": "A network of sparkling crystal caves.",
             "npcs": {},
-            "items": {
-                "healing_potion": {
-                    "type": "healing",
-                    "healing_amount": 25,
-                    "description": "A potion that restores 25 HP."
-                },
-                "silver_key": {
-                    "type": "key",
-                    "description": "A shiny silver key with intricate engravings."
-                }
-            },
+            "items": {},
             "connections": {
-                "west": "crystal_caves",
+                "south": "mystic_lake"
+            },
+            "locked_paths": {},
+            "hidden_items": {},
+            "traps": {}
+        },
+        "old_library": {
+            "description": "A vast library filled with ancient texts.",
+            "npcs": {},
+            "items": {},
+            "connections": {
+                "south": "ancient_ruins",
+                "west": "sunken_temple",
                 "north": "cursed_castle"
             },
             "locked_paths": {
-                "north": false
+                "north": true
             },
             "hidden_items": {},
             "traps": {},
-            "generated_description": "The wind howls a mournful dirge across the ochre wastes of the Whispering Plateau. Jagged rock formations claw at the sky, offering no respite from the biting gale. A fine, gritty dust swirls, obscuring the already limited visibility. Scavenging vultures circle overhead, their keen eyes searching for any sign of weakness.  This desolate land offers naught but hardship and the chilling embrace of the wind."
-        },
-        "sunken_temple": {
-            "description": "The ruins of an ancient temple submerged in the sea, guarded by ancient magic.",
-            "npcs": {},
-            "items": {
-                "golden_key": {
-                    "type": "key",
-                    "description": "A golden key with intricate engravings."
-                },
-                "healing_potion": {
-                    "type": "healing",
-                    "healing_amount": 25,
-                    "description": "A potion that restores 25 HP."
-                }
-            },
-            "connections": {
-                "north": "ancient_ruins",
-                "east": "cursed_castle"
-            },
-            "locked_paths": {
-                "east": true
-            },
-            "hidden_items": {},
-            "traps": {
-                "pressure_plate": {
-                    "description": "A pressure plate, triggering poison gas.",
-                    "damage": 10,
-                    "disarm_difficulty": "challenging",
-                    "triggered": false
-                }
-            }
+            "generated_description": "The air hangs heavy with the scent of aged parchment and dust within these hallowed halls. Shadows dance in the flickering light of braziers, illuminating towering shelves that stretch into a seemingly endless expanse. Runes and archaic symbols adorn the spines of countless tomes, whispering secrets of forgotten ages. A hushed silence blankets the room, broken only by the occasional rustle of pages turning or the distant echo of a dripping leak. Danger and knowledge reside here, a potent combination awaiting those brave enough to explore."
         },
         "cursed_castle": {
-            "description": "A foreboding castle, shrouded in an aura of dread, the final resting place of the Shadow Lord.",
+            "description": "An ominous castle, home to the Shadow Lord.",
             "npcs": {
                 "final_boss": {
-                    "hp": 53,
-                    "max_hp": 150,
-                    "attack": 14,
+                    "hp": 200,
+                    "max_hp": 200,
+                    "attack": 18,
                     "status": "active"
                 }
             },
-            "items": {},
+            "items": {
+                "ancient_artifact": {
+                    "type": "quest_item",
+                    "description": "An ancient artifact pulsing with dark energy."
+                }
+            },
             "connections": {
-                "south": "dark_forest",
-                "west": "desolate_plateau"
+                "south": "mountain_pass",
+                "south_west": "old_library"
             },
             "locked_paths": {
                 "south": true,
-                "west": true
+                "south_west": true
             },
             "hidden_items": {},
-            "traps": {},
-            "generated_description": "The obsidian spires of Castle Avernus clawed at the perpetually overcast sky, their jagged edges mirroring the fear that gripped the land. Whispers of the Shadow Lord's lingering presence echoed on the wind, a chilling dirge that promised despair. Within its crumbling walls, shadows danced and writhed, obscuring forgotten horrors and the skeletal remains of past explorers. A palpable aura of necromantic energy clung to the very stones, a testament to the evil that festered within. Dare you trespass where death reigns supreme?"
+            "traps": {
+                "spike_trap": {
+                    "description": "A hidden trap with deadly spikes.",
+                    "damage": 40,
+                    "disarm_difficulty": "very_challenging",
+                    "triggered": false
+                }
+            }
         }
     }
 }
