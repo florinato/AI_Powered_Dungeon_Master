@@ -1,0 +1,66 @@
+world_id: "la_ciudad_onice"
+world_name: "La Ciudad Ónice"
+language: "Español"
+world_theme: "Cine negro detectivesco (Hardboiled) en una metrópolis art déco perpetuamente mojada por la lluvia, ahogada en corrupción y pesimismo existencial. Piensa en Los Ángeles de los años 40 con la atmósfera de Blade Runner, pero con tecnología clásica."
+world_description: |
+  La Ciudad Ónice nunca duerme, principalmente porque teme a sus propias pesadillas. Cañones de hormigón, resbaladizos por una lluvia infinita, reflejan el brillo lascivo de letreros de neón que prometen emociones baratas y licor aún más barato. Cada sombra esconde un secreto, cada político sonriente tiene un cadáver en el armario, y el aire está cargado con el olor a asfalto mojado, a humo de cigarrillo rancio y a promesas rotas. En esta ciudad, la justicia es una mercancía, la verdad es lo que dicte el mejor postor, y en lo único que puedes confiar es en el peso de tu revólver del 38 en el bolsillo de la gabardina.
+
+# --- Reglas de Contenido y Densidad ---
+density:
+  npcs: "high"
+  items: "medium"
+  quests: "medium"
+  
+# --- REGLA ESPECIAL DE COLOCACIÓN ---
+placement_rules:
+  min_npcs_per_location: 1
+
+# --- Definiciones Temáticas para la IA (ESTRUCTURA CORREGIDA) ---
+# Ahora el DirectorAgent leerá ESTOS arquetipos en lugar de generarlos.
+# Esto te da control total sobre el casting de personajes.
+structure:
+  # En lugar de una lista simple, damos más contexto.
+  # El DirectorAgent ahora asignará estos tipos a los nodos del mapa.
+  location_types:
+    - type: "club_de_jazz"
+      tags: ["entretenimiento", "social", "sórdido"]
+    - type: "oficina_detective"
+      tags: ["trabajo", "investigación", "seguro"]
+    - type: "atico_lujoso"
+      tags: ["residencial", "rico", "peligroso"]
+    - type: "callejon_oscuro"
+      tags: ["exterior", "peligroso", "transición"]
+    - type: "comisaria_policia"
+      tags: ["gobierno", "investigación", "corrupto"]
+    - type: "almacen_abandonado"
+      tags: ["industrial", "peligroso", "escondite"]
+    - type: "muelles"
+      tags: ["industrial", "exterior", "contrabando"]
+    - type: "gala_alta_sociedad"
+      tags: ["social", "rico", "evento"]
+
+  # Esta es la lista de arquetipos que el Director usará para crear NPCs
+  npc_archetypes:
+    - "detective privado hastiado del mundo"
+    - "mujer fatal con intenciones ocultas"
+    - "capitán de policía corrupto"
+    - "poderoso jefe del hampa"
+    - "informante nervioso"
+    - "periodista idealista"
+    - "matón bruto a sueldo"
+
+  # La sección de item_themes es conceptual para la IA, así que una lista está bien.
+  # Pero para ser consistentes, un diccionario es más claro.
+  item_themes:
+    pistas: 
+      - "caja de cerillas con un número de teléfono"
+      - "fotografía en blanco y negro"
+      - "libro de contabilidad cifrado"
+    armas: 
+      - "revólver del 38 de cañón corto"
+      - "puño americano"
+      - "ametralladora tommy"
+    esenciales: 
+      - "petaca de whisky barato"
+      - "paquete de cigarrillos"
+      - "juego de ganzúas"

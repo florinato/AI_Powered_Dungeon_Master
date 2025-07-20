@@ -1,0 +1,775 @@
+{
+  "world": {
+    "id": "la_ciudad_onice",
+    "name": "La Ciudad Ónice",
+    "style": "Cine negro detectivesco (Hardboiled) en una metrópolis art déco perpetuamente mojada por la lluvia, ahogada en corrupción y pesimismo existencial. Piensa en Los Ángeles de los años 40 con la atmósfera de Blade Runner, pero con tecnología clásica.",
+    "lore": "La Ciudad Ónice nunca duerme, principalmente porque teme a sus propias pesadillas. Cañones de hormigón, resbaladizos por una lluvia infinita, reflejan el brillo lascivo de letreros de neón que prometen emociones baratas y licor aún más barato. Cada sombra esconde un secreto, cada político sonriente tiene un cadáver en el armario, y el aire está cargado con el olor a asfalto mojado, a humo de cigarrillo rancio y a promesas rotas. En esta ciudad, la justicia es una mercancía, la verdad es lo que dicte el mejor postor, y en lo único que puedes confiar es en el peso de tu revólver del 38 en el bolsillo de la gabardina.\n",
+    "language": "Español",
+    "starting_location_id": "node_0_0",
+    "main_quests": {
+      "CASO_007_LÁGRIMAS_DE_NEÓN": {
+        "id": "CASO_007_LÁGRIMAS_DE_NEÓN",
+        "title": "Lágrimas de Neón",
+        "description": "En la Ciudad de Ámbar, perpetuamente bañada por la lluvia y corrompida hasta la médula, el detective privado Jack Rourke recibe un caso que lo arrastra a las profundidades de la decadencia: la desaparición de Veronica Lake, una estrella de cine enigmática y adicta a los secretos. El caso huele a pólvora, falsos amigos y la verdad oculta tras el brillo de los focos y el resplandor del neón. Rourke deberá sumergirse en un submundo donde la ley es un lujo y la supervivencia, una maldición.",
+        "steps": [
+          {
+            "id": "paso1",
+            "description": "Interroga a la última persona que vio a Veronica: el productor cinematográfico, un hombre con las manos manchadas de billetes y secretos. Encuentra indicios sobre sus vicios y los lugares oscuros que frecuentaba."
+          },
+          {
+            "id": "paso2",
+            "description": "Sigue el rastro de Veronica a través de los clubes nocturnos de Ámbar, lugares de jazz humeantes y tragos amargos. Habla con contactos peligrosos: proxenetas, informantes y mafiosos, y descubre la verdad sobre su doble vida."
+          },
+          {
+            "id": "paso3",
+            "description": "Investiga el 'Salón del Silencio', un casino clandestino donde se rumorea que Veronica apostaba y jugaba. Enfrentate a matones y a la seguridad corrupta para encontrar pistas sobre su desaparición."
+          },
+          {
+            "id": "paso4",
+            "description": "Descubre que Veronica investigaba a un poderoso magnate, el verdadero cerebro detrás de la corrupción de Ámbar. Confronta al magnate en su guarida, un ático con vistas a la ciudad lluviosa, y desentraña el misterio final que la llevó a la muerte (o algo peor)."
+          }
+        ],
+        "quest_giver_archetype": "La Viuda Desesperada (hermana de la víctima, con apariencia de fragilidad y un pasado turbio).",
+        "boss_archetype": "El Magnate Corrupto (un hombre con poder absoluto, con la fachada de filántropo y una frialdad implacable)."
+      }
+    }
+  },
+  "locations": [
+    {
+      "id": "node_0_0",
+      "world_id": "la_ciudad_onice",
+      "name": "La Sala de los Susurros de Azogue",
+      "description": "Una habitación en penumbra, empapelada con periódicos amarillentos, donde el goteo constante del tejado se mezcla con el eco fantasmal de lamentos y promesas rotas. El aire, impregnado de humo de cigarrillo y el fétido olor del alcohol barato, parece vibrar con los secretos de la ciudad.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "east": "node_1_0",
+        "south": "node_0_1"
+      },
+      "initial_npcs": [
+        "alberto_fuentes",
+        "elias_carrasco",
+        "el_maestro_torres",
+        "mariposa_gris",
+        "dr_silas_mercer"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_1_0",
+      "world_id": "la_ciudad_onice",
+      "name": "El Refugio de la Gota de Plata",
+      "description": "Un tugurio claustrofóbico, empapado por la humedad, donde el humo del cigarrillo se mezcla con el vaho de la lluvia que golpea sin cesar los cristales manchados. La luz tenue, proveniente de una lámpara desvencijada, baila sobre rostros sombríos y miradas que ocultan secretos enterrados bajo capas de cinismo y desesperación.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "east": "node_2_0",
+        "west": "node_0_0",
+        "south": "node_1_1"
+      },
+      "initial_npcs": [
+        "elias_carrasco"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_2_0",
+      "world_id": "la_ciudad_onice",
+      "name": "El Cubículo del Último Trago",
+      "description": "Una celda pequeña, con paredes de un verde turbio que rezuma humedad, y en cuyo único mueble, una mesa de formica, se acumulan ceniza y el eco de secretos susurrados. La lluvia, como un luto constante, golpea el cristal opaco de la ventana, ocultando el brillo efímero de la ciudad.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "east": "node_3_0",
+        "south": "node_2_1",
+        "west": "node_1_0"
+      },
+      "initial_npcs": [
+        "ricardo_carrasco"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_3_0",
+      "world_id": "la_ciudad_onice",
+      "name": "El Rincón del Hilo Roto",
+      "description": "Un tugurio de techos bajos, donde la luz del neón se filtra a través de vidrios empañados, revelando sombras danzantes y el tenue olor a tabaco rancio. El aire, denso con la promesa de secretos y traiciones, vibra con el zumbido melancólico de la lluvia contra la ventana.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "west": "node_2_0",
+        "east": "node_4_0",
+        "south": "node_3_1"
+      },
+      "initial_npcs": [
+        "ricardo_carrasco"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_4_0",
+      "world_id": "la_ciudad_onice",
+      "name": "El Despacho del Óxido Carmesí",
+      "description": "Un mausoleo de caoba y cristal empañado, donde la lluvia golpea los ventanales como dedos fantasmas. El aire, denso con el humo de cigarrillos y el aroma a desesperanza, parece teñirse del rojo apagado de las farolas que brillan en la noche perpetua.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "south": "node_4_1",
+        "west": "node_3_0"
+      },
+      "initial_npcs": [
+        "elias_carrasco"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_0_1",
+      "world_id": "la_ciudad_onice",
+      "name": "El Salón del Humo Empedernido",
+      "description": "En este tugurio, la lluvia parece filtrarse por las paredes, mezclándose con el humo de los cigarrillos en una neblina perpetua. Las sombras danzan, reflejando los neones desvaídos y las verdades amargas que se ocultan tras cada puerta.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "north": "node_0_0"
+      },
+      "initial_npcs": [
+        "ricardo_carrasco"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_1_1",
+      "world_id": "la_ciudad_onice",
+      "name": "La Caja de Luces Rotas",
+      "description": "En este cubículo exiguo, iluminado por farolas desvencijadas y un neón parpadeante que goteaba desde el techo, el tiempo se estancaba como el agua sucia en las alcantarillas. El olor a tabaco rancio y esperanza perdida se aferraba a las paredes, testigos mudos de confesiones y traiciones.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "north": "node_1_0"
+      },
+      "initial_npcs": [
+        "ricardo_carrasco"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_2_1",
+      "world_id": "la_ciudad_onice",
+      "name": "El Apartamento del Reloj Descompuesto",
+      "description": "Las persianas de plomo filtran la luz, revelando un interior anegado en sombras y el silencio solo es roto por el goteo constante de una fuga invisible.  En el centro, la silueta fantasmal de un reloj de pared detenido en el tiempo, reflejando los secretos de un alma extraviada.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "east": "node_3_1",
+        "north": "node_2_0",
+        "south": "node_2_2"
+      },
+      "initial_npcs": [
+        "ricardo_carrasco"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_3_1",
+      "world_id": "la_ciudad_onice",
+      "name": "El Cuarto de la Lluvia de Neón",
+      "description": "Un habitáculo minúsculo, iluminado por el parpadeo errático de un letrero de neón exterior que proyecta destellos verdes y rosas sobre el escritorio encharcado. El aire, denso con el olor a cigarrillo y melancolía, vibra con el constante goteo de la lluvia contra el cristal empañado.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "west": "node_2_1",
+        "east": "node_4_1",
+        "north": "node_3_0"
+      },
+      "initial_npcs": [
+        "ricardo_carrasco"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_4_1",
+      "world_id": "la_ciudad_onice",
+      "name": "La Cámara de los Espejos Empañados",
+      "description": "Un antro circular, repleto de espejos antiguos que reflejan una y otra vez la ciudad empapada, difuminando la realidad en un laberinto de sombras y mentiras. El olor a tabaco rancio y perfume barato flota, pesado, como la niebla que sube del pavimento mojado.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "north": "node_4_0",
+        "west": "node_3_1"
+      },
+      "initial_npcs": [
+        "ricardo_carrasco"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_0_2",
+      "world_id": "la_ciudad_onice",
+      "name": "El Estanque de las Sombras Plateadas",
+      "description": "Un despacho anegado por la penumbra y el reflejo perpetuo de la lluvia en los cristales, donde el olor a tabaco rancio se mezcla con la pesadez de los secretos y la corrupción, atascada en cada esquina. La luz de los neones, teñida de un tono plomizo, baila sobre un escritorio repleto de expedientes sin resolver, ahogando cualquier esperanza en un océano de cinismo.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "south": "node_0_3",
+        "east": "node_1_2"
+      },
+      "initial_npcs": [
+        "el_maestro_torres"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_1_2",
+      "world_id": "la_ciudad_onice",
+      "name": "El Palomar de las Cigarreras",
+      "description": "Un antro lúgubre donde el olor a tabaco rancio se mezcla con la humedad de las calles. Las sombras danzan en las paredes de estuco agrietado, contándole a cada cliente los secretos que la ciudad prefiere enterrar.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "south": "node_1_3",
+        "east": "node_2_2",
+        "west": "node_0_2"
+      },
+      "initial_npcs": [
+        "seraphina_noir"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_2_2",
+      "world_id": "la_ciudad_onice",
+      "name": "El Corazón de Níquel",
+      "description": "Un antro cavernoso, atiborrado de humo de cigarrillo y ecos de jazz fúnebre, donde las sombras danzan al ritmo de la lluvia constante contra los ventanales empañados.  Las luces de neón, parpadeantes y gastadas, reflejan una tristeza metálica sobre las mesas de caoba barnizadas.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "west": "node_1_2",
+        "north": "node_2_1",
+        "south": "node_2_3"
+      },
+      "initial_npcs": [
+        "seraphina_noir"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_3_2",
+      "world_id": "la_ciudad_onice",
+      "name": "La Celda del Telégrafo Fantasma",
+      "description": "Un espacio mínimo, ahogado en el olor a tinta y tabaco rancio, donde las paredes sudan el eco de mensajes olvidados y la lluvia golpea con furia el vidrio roto de una ventana alta. La única compañía son los fantasmas de los telegramas que murmuran en el silencio nocturno, ahogando el aullido del viento.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "south": "node_3_3"
+      },
+      "initial_npcs": [
+        "seraphina_noir"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_4_2",
+      "world_id": "la_ciudad_onice",
+      "name": "El Nido del Murciélago Oxidado",
+      "description": "Un antro asfixiante, empapado del hedor a ginebra barata y ambición desmedida, donde las sombras bailan al son de un gramófono en ruinas y el único sol es el reflejo apagado de una vidriera agrietada. Las paredes sudan secretos, cada ladrillo un testigo mudo de la podredumbre que corroe la ciudad.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "south": "node_4_3"
+      },
+      "initial_npcs": [
+        "seraphina_noir"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_0_3",
+      "world_id": "la_ciudad_onice",
+      "name": "El Jardín de las Cenizas Mojadas",
+      "description": "Un invernadero abandonado, donde el vidrio roto atrapa la luz mortecina de la ciudad, reflejando un caos de vegetación descompuesta y sombras que se retuercen con cada trueno lejano. El aroma a tierra húmeda y tabaco rancio impregna el aire, un recordatorio constante de la putrefacción que se extiende por todo.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "north": "node_0_2",
+        "east": "node_1_3",
+        "south": "node_0_4"
+      },
+      "initial_npcs": [
+        "seraphina_noir"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_1_3",
+      "world_id": "la_ciudad_onice",
+      "name": "La Guarida del Fantasma Tinta",
+      "description": "Un tugurio sumido en penumbra, con paredes cubiertas de posters descoloridos y el olor persistente de cigarrillos empapados y alcohol barato. El único sonido, el goteo constante del agua que se filtra a través de un techo agrietado, como las lágrimas de una ciudad muerta.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "north": "node_1_2",
+        "west": "node_0_3",
+        "south": "node_1_4"
+      },
+      "initial_npcs": [
+        "seraphina_noir"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_2_3",
+      "world_id": "la_ciudad_onice",
+      "name": "El Arcón del Sepia",
+      "description": "Un cuarto opresivo, empapelado con fotos desvaídas de rostros olvidados y bañados por la luz mortecina que se filtra a través de una persiana rajada. El olor a tabaco rancio y humedad se mezcla con el eco silencioso de secretos enterrados en las sombras perpetuas.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "east": "node_3_3",
+        "south": "node_2_4",
+        "north": "node_2_2"
+      },
+      "initial_npcs": [
+        "seraphina_noir"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_3_3",
+      "world_id": "la_ciudad_onice",
+      "name": "El Observatorio del Ámbar Caído",
+      "description": "Un cuarto circular, empapelado con mapas celestes descoloridos y salpicado por el goteo constante del techo. La única luz proviene de una lámpara de cristal ámbar, que proyecta sombras danzantes sobre un escritorio abarrotado de documentos y ceniceros rebosantes.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "west": "node_2_3",
+        "east": "node_4_3",
+        "north": "node_3_2"
+      },
+      "initial_npcs": [
+        "ricardo_carrasco"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_4_3",
+      "world_id": "la_ciudad_onice",
+      "name": "El Foso de las Máscaras Descosidas",
+      "description": "Un tugurio en la planta baja, con paredes de ladrillo mugriento y un olor a alcohol barato y desesperanza. La luz, filtrada a través de cortinas rasgadas, revela rostros sombríos y miradas furtivas, todos escondiendo algo en este agujero de la ciudad.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "west": "node_3_3",
+        "north": "node_4_2"
+      },
+      "initial_npcs": [
+        "dr_silas_mercer"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_0_4",
+      "world_id": "la_ciudad_onice",
+      "name": "El Altar de la Niebla Fría",
+      "description": "Un cuarto sin ventanas, donde la única luz proviene de faroles callejeros que se filtran por las rendijas de la puerta, pintando sombras danzantes sobre el mobiliario mohoso. El olor a lluvia y tabaco rancio se mezcla con la promesa, jamás cumplida, de una verdad que se esconde entre los cristales rotos de un espejo empañado.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "east": "node_1_4",
+        "north": "node_0_3"
+      },
+      "initial_npcs": [
+        "ricardo_carrasco"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_1_4",
+      "world_id": "la_ciudad_onice",
+      "name": "El Balcón de las Sombras Diluidas",
+      "description": "Un balcón voladizo sobre un laberinto de callejones empapados, donde la lluvia constante parece lavar la pintura de los sueños. El acero y el cristal se confunden con la penumbra, reflejando una ciudad que se disuelve en la melancolía de cada amanecer.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "west": "node_0_4",
+        "north": "node_1_3"
+      },
+      "initial_npcs": [
+        "seraphina_noir"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_2_4",
+      "world_id": "la_ciudad_onice",
+      "name": "El Gabinete del Espectro Aguado",
+      "description": "Un cuarto oscuro, empapelado con periódicos amarillentos y empapados por la lluvia que gotea incesante desde el techo. El aire, denso con el olor a tabaco y desesperanza, parece vibrar con los ecos de una tragedia no contada.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "north": "node_2_3",
+        "east": "node_3_4"
+      },
+      "initial_npcs": [
+        "dr_silas_mercer"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_3_4",
+      "world_id": "la_ciudad_onice",
+      "name": "El Pozo del Aliento Húmedo",
+      "description": "Un tugurio subterráneo, apenas iluminado por farolas anaranjadas que filtran la lluvia, donde el aire espeso huele a tabaco barato y desesperanza. Las paredes rezuman humedad, reflejando la soledad de los solitarios bebedores y los secretos de la noche.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "east": "node_4_4",
+        "west": "node_2_4"
+      },
+      "initial_npcs": [
+        "dr_silas_mercer"
+      ],
+      "initial_items": []
+    },
+    {
+      "id": "node_4_4",
+      "world_id": "la_ciudad_onice",
+      "name": "El Oratorio del Lamento Cromado",
+      "description": "Un espacio en penumbra, donde el reflejo de los rótulos de neón colorea las paredes con un espectro de tristeza. El eco de la lluvia repiquetea en el tejado de cristal, amplificando el lamento de una trompeta solitaria que emerge de la oscuridad.",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "connections": {
+        "west": "node_3_4"
+      },
+      "initial_npcs": [
+        "ricardo_carrasco"
+      ],
+      "initial_items": []
+    }
+  ],
+  "item_templates": [
+    {
+      "type": "weapon",
+      "damage_base": 5,
+      "properties": [
+        "melee",
+        "light",
+        "tier1"
+      ],
+      "name": "El Susurro de Medianoche",
+      "description": "WEAPON_MELEE_SMALL_T1. Un cuchillo de bolsillo fino y afilado, con una empuñadura de ébano pulido que oculta un resorte de apertura rápida. La hoja, forjada con acero templado, refleja la tenue luz de neón de la ciudad, susurrando promesas de silencio y oscuridad en cada corte. Un grabado casi invisible, 'Memento Mori', adorna la base, un recordatorio constante de la fugacidad de la vida y la inevitabilidad de la muerte en este laberinto de asfalto y lluvia.",
+      "id": "el_susurro_de_medianoche_826",
+      "template_id": "WEAPON_MELEE_SMALL_T1"
+    },
+    {
+      "type": "weapon",
+      "damage_base": 8,
+      "properties": [
+        "melee",
+        "tier1"
+      ],
+      "name": "El Susurro de la Lluvia de Plomo",
+      "description": "WEAPON_MELEE_MEDIUM_T1. Una pistola semiautomática Colt 1911 trucada, envuelta en cinta aislante negra y con el cañón ligeramente modificado para silenciar los disparos. Grabado en la corredera, con caligrafía borrosa, se lee: 'Sólo la lluvia sabe la verdad'. Su empuñadura se siente fría y pesada, un recordatorio constante de la desesperanza que empapa las calles. Cada bala disparada es un eco sordo en la noche, un susurro final en un mundo condenado.",
+      "id": "el_susurro_de_la_lluvia_de_plomo_111",
+      "template_id": "WEAPON_MELEE_MEDIUM_T1"
+    },
+    {
+      "type": "weapon",
+      "damage_base": 6,
+      "properties": [
+        "ranged",
+        "light",
+        "tier1"
+      ],
+      "name": "El Solitario 38 'Lluvia de Acero'",
+      "description": "Un revólver Smith & Wesson .38 Special, cromado hasta el brillo, que refleja el neón sucio de la ciudad. El Solitario, apodado así por su dueño original, un detective que desapareció sin dejar rastro, está grabado con una serie de líneas cortas, supuestamente un código para el 'hombre del paraguas'. Su cargador, un relicario lleno de balas de plomo pulidas, canta una melodía metálica con cada movimiento, un eco constante de la melancolía que empapa esta metrópolis eterna.",
+      "id": "el_solitario_38_'lluvia_de_acero'_250",
+      "template_id": "WEAPON_RANGED_SMALL_T1"
+    },
+    {
+      "type": "weapon",
+      "damage_base": 15,
+      "properties": [
+        "ranged",
+        "heavy",
+        "two_handed",
+        "tier2"
+      ],
+      "name": "La Llorona de la Lluvia",
+      "description": "Un revólver Smith & Wesson Modelo 10, pavonado en negro mate, que perteneció a un detective caído en desgracia. Su cañón, pulido hasta el brillo por el uso constante, ha cobrado un extraño eco en las noches empapadas de la ciudad. Se dice que, en manos del portador correcto, las balas susurradas por 'La Llorona' siempre encuentran su destino, guiadas por el lamento del viento en los callejones oscuros y la melancolía del asfalto mojado. Cada disparo resuena con la promesa de la justicia, y la certeza de la traición.",
+      "id": "la_llorona_de_la_lluvia_669",
+      "template_id": "WEAPON_RANGED_HEAVY_T2"
+    },
+    {
+      "type": "healing",
+      "healing_amount": 25,
+      "properties": [
+        "consumable",
+        "instant"
+      ],
+      "name": "El Suspiro de la Azalea",
+      "description": "Un pequeño frasco de vidrio esmerilado, que contiene un líquido de un rojo carmesí, casi negro a la luz tenue. Destilado de una rara flor que florece solo en los barrios más sórdidos, alimentada por la lluvia ácida y el dolor. Al beberlo, sientes un fugaz alivio del tormento, una calma precaria que te permite seguir respirando en esta ciudad podrida. Recupera una cantidad moderada de vitalidad, pero deja un regusto amargo que recuerda la inevitable corrupción que te rodea.",
+      "id": "el_suspiro_de_la_azalea_278",
+      "template_id": "HEALING_ITEM_SMALL"
+    },
+    {
+      "type": "healing",
+      "healing_amount": 60,
+      "properties": [
+        "consumable",
+        "instant"
+      ],
+      "name": "El Susurro del Farol",
+      "description": "Un farol de bolsillo, hecho de latón pulido y cristal ahumado. Contiene una pequeña llama perpetua, alimentada por una mezcla secreta de éter y 'lágrimas de ángel' destiladas de las calles. Al sostenerlo, sientes un alivio inmediato del dolor, como si el farol susurrara secretos olvidados a tu alma, calmando la angustia existencial y la rabia que corroe a todo detective en esta ciudad empapada de lluvia y desesperación.  Cura heridas leves y restaura la cordura erosionada por la podredumbre.",
+      "id": "el_susurro_del_farol_475",
+      "template_id": "HEALING_ITEM_MEDIUM"
+    },
+    {
+      "type": "armor",
+      "defense_boost": 3,
+      "properties": [
+        "wearable",
+        "torso",
+        "light_armor"
+      ],
+      "name": "Abrigo Impermeable 'Lágrimas de Neón' (ARMOR_LIGHT_T1)",
+      "description": "Un abrigo de gabardina impecable, cortado con la precisión de un cuchillo. Fabricado con una fibra sintética experimental, casi indestructible, que repele balas pequeñas y el agua con la misma eficacia. El forro, de un rojo sangriento, refleja las luces de neón de la ciudad, creando un resplandor espectral en la penumbra. Bolsillos profundos para guardar una pistola, un cigarrillo y la esperanza, en ese orden.",
+      "id": "abrigo_impermeable_'lgrimas_de_nen'_(armor_light_t1)_977",
+      "template_id": "ARMOR_LIGHT_T1"
+    },
+    {
+      "type": "armor",
+      "defense_boost": 8,
+      "properties": [
+        "wearable",
+        "torso",
+        "heavy_armor",
+        "requires_strength"
+      ],
+      "name": "Abrigo de Plomo y Acerico",
+      "description": "Armadura pesada T2. Un abrigo largo y pulido, confeccionado con una aleación de plomo, acero y la resistente fibra sintética 'Tela Niebla' para repeler la lluvia. Su interior está forrado con un acolchado de lana gruesa, ideal para amortiguar los golpes y el frío persistente de la ciudad. Bolsillos amplios, reforzados para esconder un revólver y lo que la ocasión requiera. El cuello alto y la solapa abrigadora ocultan parcialmente el rostro, un detalle imprescindible en este submundo. El 'Acerico', una placa de acero oculta en el forro, ofrece protección adicional contra disparos directos, haciendo de este abrigo una segunda piel para el detective solitario en la jungla de asfalto.",
+      "id": "abrigo_de_plomo_y_acerico_573",
+      "template_id": "ARMOR_HEAVY_T2"
+    },
+    {
+      "type": "key",
+      "properties": [
+        "unlocks_door"
+      ],
+      "name": "La Llave Oxidada del Faraday",
+      "description": "Una llave de bronce descolorido, pesada y fría como el plomo. Su enmarañado patrón de dientes encaja en la cerradura de la bóveda secreta del Faraday, el club nocturno más turbio y clandestino de la ciudad, propiedad del difunto magnate de la electricidad, Victor Faraday. Se dice que la bóveda contiene secretos que podrían hundir a los poderosos... o revelar la verdad sobre la desaparición del detective Marlowe.",
+      "id": "la_llave_oxidada_del_faraday_474",
+      "template_id": "KEY_ITEM_GENERIC"
+    },
+    {
+      "type": "key",
+      "properties": [
+        "unlocks_chest",
+        "plot_related"
+      ],
+      "name": "LLAVE_DEL_ÁNGEL_CAÍDO",
+      "description": "Una llave de bronce, fría como el acero bajo la lluvia, grabada con un querubín alado sin ojos, símbolo de un club nocturno infame y desaparecido: 'El Ángel Caído'. Abre cualquier cerradura, pero su poder real reside en la capacidad de desvelar secretos ocultos en documentos codificados y recuerdos olvidados. Se dice que la llave susurra el nombre del corrupto que la usó por última vez, un eco fantasmal en la noche lluviosa.",
+      "id": "llave_del_ngel_cado_224",
+      "template_id": "KEY_ITEM_SPECIAL"
+    },
+    {
+      "type": "quest",
+      "properties": [
+        "plot_critical",
+        "cannot_drop"
+      ],
+      "name": "EL SILBATO DE LA SIRENA MUDA",
+      "description": "Un silbato de plata oxidada, grabado con la imagen de una sirena llorando bajo un cielo perpetuamente gris. La sirena, al parecer, está fundida con las letras 'S.M.' en su cola. Dicen que al soplarlo, revela la verdad tras las mentiras, pero su melodía es tan triste que consume la esperanza de quien la escucha, arrastrando a la desesperación a los más fuertes. Es la llave para desentrañar la red de corrupción que asfixia la ciudad, pero su precio podría ser tu propia alma.",
+      "id": "el_silbato_de_la_sirena_muda_950",
+      "template_id": "QUEST_ITEM_MACGUFFIN"
+    },
+    {
+      "type": "junk",
+      "properties": [
+        "common",
+        "vendor_trash"
+      ],
+      "name": "BOQUILLA_HUMEDA_DE_CIGARRILLO",
+      "description": "Una boquilla de cigarrillo de ámbar agrietado, aún manchada de carmín desvaído y con el inconfundible aroma a tabaco barato y tristeza.  Empapada por la lluvia, pegajosa al tacto, y con una mota de ceniza persistente incrustada.  Perfecta para momentos de reflexión desesperada bajo la luz turbia de un farol, o para una última calada antes de la amarga verdad.",
+      "id": "boquilla_humeda_de_cigarrillo_771",
+      "template_id": "JUNK_ITEM_COMMON"
+    },
+    {
+      "type": "junk",
+      "properties": [
+        "lore_snippet",
+        "interesting"
+      ],
+      "name": "Cenicero Oxidado 'Angeleno'",
+      "description": "Un cenicero de bronce, ahora manchado por la lluvia ácida perpetua y el hollín de innumerables cigarrillos. Grabado en la base, con letras borrosas, se lee: 'Para el Detective Jack Rourke, con aprecio... y la promesa de un sol que nunca verá'. Un recordatorio amargo de un pasado idealizado en una ciudad que se pudre en la oscuridad.",
+      "id": "cenicero_oxidado_'angeleno'_649",
+      "template_id": "JUNK_ITEM_INTERESTING"
+    },
+    {
+      "type": "tool",
+      "properties": [
+        "utility",
+        "interactable"
+      ],
+      "name": "El Ojo de la Lluvia",
+      "description": "Una petaca de latón pulido, ligeramente abollada por el uso y forrada en cuero negro desgastado. Contiene una amalgama de elementos esenciales: una lente de aumento con montura de carey, un pequeño bloc de notas encuadernado en cuero con páginas amarillentas, un lápiz grafito desgastado, y un compartimento secreto con un vial de éter y una dosis de benzedrina. Es más que un simple kit; es la ventana del detective al alma podrida de la ciudad, donde la verdad se esconde entre sombras, el alcohol es el combustible y el tiempo, un constante aguacero que borra las pistas.",
+      "id": "el_ojo_de_la_lluvia_661",
+      "template_id": "TOOL_UTILITY"
+    }
+  ],
+  "npc_templates": [
+    {
+      "id": "alberto_fuentes",
+      "name": "Alberto Fuentes",
+      "description": "Un detective privado de mediana edad, con el rostro marcado por cicatrices y la mirada hundida en un mar de cinismo. Siempre viste un gabán raído y fuma cigarrillos sin filtro. Su oficina, un cuchitril en el centro de la ciudad, huele a bourbon y desolación.",
+      "status": "neutral",
+      "dialogue_prompt": "\"¿Sabes qué, muchacha? En esta ciudad, la lluvia es el único amigo fiel. Te lava la mierda, pero nunca la quita por completo. Y créeme, he visto suficiente mierda para llenar todo el puto océano. Ahora, ¿qué me cuentas? Y que sea algo que justifique mi tiempo y mi whiskey. Porque, ¿sabes? La vida es corta, y el bourbon… bueno, el bourbon es el consuelo de los cobardes.\"",
+      "hp": 45,
+      "attack": 8,
+      "xp": 25,
+      "role": "Detective privado escéptico y con traumas del pasado, adicto al bourbon y al cigarrillo."
+    },
+    {
+      "id": "seraphina_noir",
+      "name": "Seraphina Noir",
+      "description": "Dueña del club nocturno 'La Sirena de Acero'. Una mujer de belleza gélida, con labios pintados de un rojo sangre que contrastan con sus ojos color tormenta. Viste siempre con trajes de seda y terciopelo, ocultando una astucia mortal y una historia plagada de sombras.",
+      "status": "hostile",
+      "dialogue_prompt": "¿Qué buscas, detective? Este club es un remanso de placeres… y de secretos. Si piensas que puedes husmear en mis asuntos sin consecuencias, te equivocas. El precio de la información, como el amor, puede ser muy alto… y a veces, mortal. Y, por cierto, no me gusta que me miren fijamente. Es un hábito peligroso.",
+      "hp": 45,
+      "attack": 12,
+      "xp": 30,
+      "role": "Femme Fatale manipuladora, propietaria de un club nocturno, con secretos oscuros y una belleza letal."
+    },
+    {
+      "id": "ricardo_carrasco",
+      "name": "Ricardo Carrasco",
+      "description": "Alcalde de la ciudad, rostro pétreo y mirada fría. Siempre impecable, con trajes caros que contrastan con la mugre de las calles. Su cabello, cuidadosamente peinado, esconde una calvicie que teme mostrar. Sus manos, delgadas y nerviosas, delatan su estrés constante.",
+      "status": "hostile",
+      "dialogue_prompt": "¿Cree que un simple detective puede atreverse a cuestionar mi autoridad? Esta ciudad es mía, y el legado de mi familia será eterno. Olvídese de investigar, muchacho. No encontrará nada que pueda usar. A menos que… bueno, a menos que esté dispuesto a cooperar. El poder, muchacho, es un juego peligroso, pero con las cartas correctas, uno siempre gana.",
+      "hp": 35,
+      "attack": 5,
+      "xp": 15,
+      "role": "Alcalde corrupto, títere de la mafia, obsesionado con el poder y la perpetuación de su legado."
+    },
+    {
+      "id": "elias_carrasco",
+      "name": "Elias Carrasco",
+      "description": "Un tipo delgado y demacrado, con el gabardina siempre empapado y el cigarrillo colgando de la comisura de los labios. Su mirada es penetrante y cínica, con ojeras profundas que delatan noches sin dormir y una vida al borde del precipicio. Huele a alcohol barato y a humo de cigarrillos.",
+      "status": "neutral",
+      "dialogue_prompt": "¿Así que la señorita dice que no sabe nada? No se preocupe, mi querida, la verdad siempre sale a flote, por más que se intente hundirla. Y yo, Elias Carrasco, reportero de 'La Voz de la Calle', tengo una curiosidad insaciable... una sed de verdades que sólo la tinta en la página puede saciar. ¿Qué me cuenta de la víctima? ¿Era buen tipo? ¿Tenía enemigos? Y lo más importante... ¿Cuánto valía su silencio?",
+      "hp": 35,
+      "attack": 8,
+      "xp": 15,
+      "role": "Reportero de un periódico sensacionalista, cínico y hambriento de verdad, dispuesto a todo por una buena historia."
+    },
+    {
+      "id": "el_maestro_torres",
+      "name": "El Maestro Torres",
+      "description": "Un hombre corpulento, con las manos marcadas por grasa y metal, y una cicatriz que le atraviesa el ojo izquierdo. Siempre viste un overol manchado y un sombrero fedora desgastado. Detrás de su fachada ruda, esconde un intelecto prodigioso y una lealtad inquebrantable (si le ganas su confianza).",
+      "status": "neutral",
+      "dialogue_prompt": "¿Así que necesitas que algo se mueva, eh? Bueno, aquí en este antro he visto y arreglado cosas que ni te imaginas. Dime, ¿qué te trae por estos lares? ¿Un coche que no arranca? ¿O un problema más... *complicado*? Eso sí, el tiempo es oro, y mi tiempo, ya sabes, vale un poco más.",
+      "hp": 65,
+      "attack": 12,
+      "xp": 35,
+      "role": "Mecánico genial con conexiones en el bajo mundo, experto en vehículos y en la tecnología más avanzada de su época."
+    },
+    {
+      "id": "mariposa_gris",
+      "name": "Mariposa Gris",
+      "description": "Una cantante de jazz con un vestido de seda descolorida, siempre fumando un cigarrillo largo y mirando a través de la niebla de las noches lluviosas. Su voz, un susurro ahogado en alcohol y melancolía, resuena en el club 'El Espejo Roto'. Lleva un colgante con la foto de un hombre, su amor perdido.",
+      "status": "neutral",
+      "dialogue_prompt": "“¿Qué buscas, detective? ¿Sombras? Aquí hay muchas. Y todas, como el amor, se desvanecen con la primera lluvia fuerte. ¿Quieres oír la historia? Cuesta… una canción… y la esperanza que ya no tengo.”",
+      "hp": 45,
+      "attack": 5,
+      "xp": 20,
+      "role": "Cantante de jazz melancólica, con una voz que refleja la tristeza de la ciudad, atormentada por un amor perdido."
+    },
+    {
+      "id": "dr_silas_mercer",
+      "name": "Dr. Silas Mercer",
+      "description": "Un científico demacrado con ojos inyectados en sangre y un abrigo raído de tweed que parece absorber la humedad del ambiente. Sus manos, manchadas de tinta y productos químicos, tiemblan ligeramente mientras manipula sus inventos, ocultos en las sombras de un club de jazz decadente.",
+      "status": "neutral",
+      "dialogue_prompt": "Cree usted que la lluvia, detective, es solo agua... o una forma sutil de borrar la memoria? La memoria es un lastre, ¿sabe? Especialmente en esta ciudad podrida. Le ofrezco algo más que respuestas... le ofrezco la posibilidad de *olvido*. Pero el precio... ese es un secreto que solo el tiempo revelará. Pregúnteme sobre el 'Oráculo', detective. Quizás entonces, entienda el juego que estamos jugando.",
+      "hp": 35,
+      "attack": 5,
+      "xp": 20,
+      "role": "Científico loco, creador de tecnología prohibida, refugiado en las sombras y con planes ambiguos para el futuro."
+    }
+  ],
+  "quests": [
+    {
+      "id": "CASO_007_LÁGRIMAS_DE_NEÓN",
+      "title": "Lágrimas de Neón",
+      "description": "En la Ciudad de Ámbar, perpetuamente bañada por la lluvia y corrompida hasta la médula, el detective privado Jack Rourke recibe un caso que lo arrastra a las profundidades de la decadencia: la desaparición de Veronica Lake, una estrella de cine enigmática y adicta a los secretos. El caso huele a pólvora, falsos amigos y la verdad oculta tras el brillo de los focos y el resplandor del neón. Rourke deberá sumergirse en un submundo donde la ley es un lujo y la supervivencia, una maldición.",
+      "steps": [
+        {
+          "id": "paso1",
+          "description": "Interroga a la última persona que vio a Veronica: el productor cinematográfico, un hombre con las manos manchadas de billetes y secretos. Encuentra indicios sobre sus vicios y los lugares oscuros que frecuentaba."
+        },
+        {
+          "id": "paso2",
+          "description": "Sigue el rastro de Veronica a través de los clubes nocturnos de Ámbar, lugares de jazz humeantes y tragos amargos. Habla con contactos peligrosos: proxenetas, informantes y mafiosos, y descubre la verdad sobre su doble vida."
+        },
+        {
+          "id": "paso3",
+          "description": "Investiga el 'Salón del Silencio', un casino clandestino donde se rumorea que Veronica apostaba y jugaba. Enfrentate a matones y a la seguridad corrupta para encontrar pistas sobre su desaparición."
+        },
+        {
+          "id": "paso4",
+          "description": "Descubre que Veronica investigaba a un poderoso magnate, el verdadero cerebro detrás de la corrupción de Ámbar. Confronta al magnate en su guarida, un ático con vistas a la ciudad lluviosa, y desentraña el misterio final que la llevó a la muerte (o algo peor)."
+        }
+      ],
+      "quest_giver_archetype": "La Viuda Desesperada (hermana de la víctima, con apariencia de fragilidad y un pasado turbio).",
+      "boss_archetype": "El Magnate Corrupto (un hombre con poder absoluto, con la fachada de filántropo y una frialdad implacable)."
+    }
+  ]
+}

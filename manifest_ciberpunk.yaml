@@ -1,0 +1,19 @@
+# my_cool_manifest.yaml
+world_id: "cyberpunk_ruins"
+world_name: "The Neon Wastes of Aethelburg"
+world_theme: "A post-apocalyptic cyberpunk city, reclaimed by a strange, crystalline nature. Think Horizon Zero Dawn meets Blade Runner."
+world_description: "A century after the network collapse, the gleaming towers of Aethelburg are now silent tombs, overgrown with glowing flora. Drones with corrupted AI patrol the streets, and factions fight over old-world tech."
+
+density:
+  npcs: "medium"  # low, medium, high
+  items: "high"
+  quests: "low"
+
+structure:
+  # Podríamos añadir reglas aquí, como qué tipos de localizaciones son más comunes
+  location_types:
+    - "ruined_megatower"
+    - "flooded_subway"
+    - "data_haven"
+    - "rooftop_shanty_town"
+    - "abandoned_factory"

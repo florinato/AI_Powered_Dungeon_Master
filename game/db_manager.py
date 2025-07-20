@@ -118,6 +118,11 @@ def import_world_from_json(conn: sqlite3.Connection, world_json_path: str):
         return
 
     cursor = conn.cursor()
+    # Asegúrate de que tu JSON de importación tenga esta estructura
+    if 'world' not in data or 'id' not in data['world']:
+        print("Error: world_import_generated.json is missing 'world' or 'world.id' key.")
+        return
+        
     world_id = data['world']['id']
 
     cursor.execute("SELECT id FROM worlds WHERE id = ?", (world_id,))
@@ -126,6 +131,7 @@ def import_world_from_json(conn: sqlite3.Connection, world_json_path: str):
         return
 
     # 1. Import World Definition
+    # ... (esta sección está bien, la omito por brevedad) ...
     world_data = data['world']
     world_data['main_quests'] = json.dumps(world_data.get('main_quests', {}))
     cursor.execute("""
@@ -135,57 +141,88 @@ def import_world_from_json(conn: sqlite3.Connection, world_json_path: str):
     print(f"Imported world: {world_id}")
 
     # 2. Import Locations
+    # ... (esta sección está bien, la omito por brevedad) ...
     locations_to_insert = [
         {**loc, "world_id": world_id, 
          "connections": json.dumps(loc.get('connections', {})),
          "initial_npcs": json.dumps(loc.get('initial_npcs', [])),
          "initial_items": json.dumps(loc.get('initial_items', []))}
-        for loc in data['locations']
+        for loc in data.get('locations', []) # Usar .get() por seguridad
     ]
-    cursor.executemany("""
-        INSERT INTO locations (id, world_id, name, description, connections, initial_npcs, initial_items)
-        VALUES (:id, :world_id, :name, :description, :connections, :initial_npcs, :initial_items)
-    """, locations_to_insert)
-    print(f"Imported {len(locations_to_insert)} locations.")
+    if locations_to_insert:
+        cursor.executemany("""
+            INSERT INTO locations (id, world_id, name, description, connections, initial_npcs, initial_items)
+            VALUES (:id, :world_id, :name, :description, :connections, :initial_npcs, :initial_items)
+        """, locations_to_insert)
+        print(f"Imported {len(locations_to_insert)} locations.")
 
-    # 3. Import Item Templates
-    items_to_insert = [
-        {**item, "world_id": world_id,
-         "damage_base": item.get('damage_base'),
-         "healing_amount": item.get('healing_amount'),
-         "properties": json.dumps(item.get('properties', []))}
-        for item in data['item_templates']
-    ]
-    cursor.executemany("""
-        INSERT INTO item_templates (id, world_id, template_id, name, description, type, damage_base, healing_amount, properties)
-        VALUES (:id, :world_id, :template_id, :name, :description, :type, :damage_base, :healing_amount, :properties)
-    """, items_to_insert)
-    print(f"Imported {len(items_to_insert)} item templates.")
+
+    # --- INICIO DEL BLOQUE A REEMPLAZAR ---
+    # 3. Import Item Templates (Versión Robusta con Validación)
+    valid_items_to_insert = []
+    invalid_items_count = 0
+    for item in data.get('item_templates', []):
+        # Validación: Asegurarse de que las claves obligatorias existen y no están vacías.
+        if item.get('id') and item.get('name') and item.get('type'):
+            item_data = {
+                "id": item.get('id'),
+                "world_id": world_id,
+                "template_id": item.get('template_id'), # Puede ser None
+                "name": item.get('name'),
+                "description": item.get('description'), # Puede ser None
+                "type": item.get('type'),
+                "damage_base": item.get('damage_base'),
+                "healing_amount": item.get('healing_amount'),
+                "properties": json.dumps(item.get('properties', []))
+            }
+            valid_items_to_insert.append(item_data)
+        else:
+            invalid_items_count += 1
+            # Opcional: Imprimir el objeto inválido para facilitar la depuración
+            # print(f"  -> Skipping invalid item: {item}")
+
+    if invalid_items_count > 0:
+        print(f"WARNING: Skipped {invalid_items_count} invalid item templates due to missing 'id', 'name', or 'type'.")
+
+    if valid_items_to_insert:
+        cursor.executemany("""
+            INSERT INTO item_templates (id, world_id, template_id, name, description, type, damage_base, healing_amount, properties)
+            VALUES (:id, :world_id, :template_id, :name, :description, :type, :damage_base, :healing_amount, :properties)
+        """, valid_items_to_insert)
+        print(f"Imported {len(valid_items_to_insert)} valid item templates.")
+    else:
+        print("No valid item templates found to import.")
+    # --- FIN DEL BLOQUE A REEMPLAZAR ---
+
 
     # 4. Import NPC Templates
-    npcs_to_insert = [{**npc, "world_id": world_id} for npc in data['npc_templates']]
-    cursor.executemany("""
-        INSERT INTO npc_templates (id, world_id, name, description, hp, attack, status, xp, dialogue_prompt)
-        VALUES (:id, :world_id, :name, :description, :hp, :attack, :status, :xp, :dialogue_prompt)
-    """, npcs_to_insert)
-    print(f"Imported {len(npcs_to_insert)} NPC templates.")
+    # ... (esta sección está bien, la omito por brevedad) ...
+    npcs_to_insert = [{**npc, "world_id": world_id} for npc in data.get('npc_templates', [])]
+    if npcs_to_insert:
+        cursor.executemany("""
+            INSERT INTO npc_templates (id, world_id, name, description, hp, attack, status, xp, dialogue_prompt)
+            VALUES (:id, :world_id, :name, :description, :hp, :attack, :status, :xp, :dialogue_prompt)
+        """, npcs_to_insert)
+        print(f"Imported {len(npcs_to_insert)} NPC templates.")
 
     # 5. Import Quests
+    # ... (esta sección está bien, la omito por brevedad) ...
     quests_to_insert = [
         {**quest, "world_id": world_id,
          "starting_npc_id": quest.get('starting_npc'),
          "steps": json.dumps(quest.get('steps', []))}
         for quest in data.get('quests', [])
     ]
-    cursor.executemany("""
-        INSERT INTO quests (id, world_id, title, description, starting_npc_id, steps)
-        VALUES (:id, :world_id, :title, :description, :starting_npc_id, :steps)
-    """, quests_to_insert)
-    print(f"Imported {len(quests_to_insert)} quests.")
+    if quests_to_insert:
+        cursor.executemany("""
+            INSERT INTO quests (id, world_id, title, description, starting_npc_id, steps)
+            VALUES (:id, :world_id, :title, :description, :starting_npc_id, :steps)
+        """, quests_to_insert)
+        print(f"Imported {len(quests_to_insert)} quests.")
+
 
     conn.commit()
     print("--- World import completed successfully. ---")
-
 
 def save_player_state(player_state: PlayerState):
     """Guarda o actualiza el estado de un jugador en la BD."""
@@ -272,13 +309,33 @@ def get_available_saves(world_id: str) -> List[dict]:
 if __name__ == "__main__":
     print("--- Running DB Manager Initializer and Importer ---")
     
+    # Esta línea es útil en desarrollo para empezar siempre de cero.
+    # Si quieres que los mundos se acumulen, puedes comentarla o borrarla.
     if os.path.exists(DB_FILE):
         os.remove(DB_FILE)
         print(f"Removed old database file '{DB_FILE}'.")
 
     conn = get_db_connection()
     create_schema(conn)
-    import_world_from_json(conn, "refact/eldoria_world_import.json")
+    
+    # Importamos el mundo de fantasía original
+    # (Asegúrate de que el nombre del archivo es correcto y está en la raíz)
+    #import_world_from_json(conn, "eldoria_world_import.json") 
+    
+    # --- AÑADE ESTA LÍNEA ---
+    # ¡Ahora importamos nuestro nuevo mundo de ciencia ficción!
+    # (El nombre del archivo debe coincidir con el que se generó)
+    import_world_from_json(conn, "world_import_generated.json")
+    
     conn.close()
         
     print("\n--- DB Manager script finished ---")
+
+def get_available_worlds() -> List[dict]:
+    """Devuelve una lista de todos los mundos disponibles en la base de datos."""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, name, style FROM worlds")
+    worlds = [{"id": row["id"], "name": row["name"], "style": row["style"]} for row in cursor.fetchall()]
+    conn.close()
+    return worlds

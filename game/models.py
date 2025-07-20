@@ -12,6 +12,7 @@ class WorldDefinition(BaseModel):
     name: str = Field(..., description="Nombre completo y legible del mundo.")
     style: str = Field(..., description="Estilo o género, ej: 'High Fantasy, Post-Apocalypse'")
     lore: str = Field(..., description="Descripción narrativa y lore del mundo.")
+    language: str  
     starting_location_id: str = Field(..., description="ID de la ubicación donde empiezan los nuevos jugadores.")
     main_quests: Dict[str, Any] = Field({}, description="Diccionario con las misiones principales disponibles en este mundo.")
 
@@ -101,3 +102,46 @@ class PlayerState(BaseModel):
     active_quests: Dict[str, PlayerQuestState] = {}
 
     world_state_delta: Dict[str, Any] = {}
+
+class ConnectionProperties(BaseModel):
+    """Propiedades de una conexión entre nodos."""
+    is_locked: bool = False
+    is_hidden: bool = False
+    is_one_way: bool = False
+    # Podríamos añadir más, como 'coste_de_viaje', 'dificultad', etc.
+
+class WorldConnection(BaseModel):
+    """Representa una arista en el grafo del mundo."""
+    target_node_id: str
+    direction: str # ej: 'north', 'hyperlane_to', 'portal_a'
+    properties: ConnectionProperties = Field(default_factory=ConnectionProperties)
+
+class LocationNode(BaseModel):
+    """Representa un nodo en el grafo del mundo. Es un contenedor abstracto."""
+    id: str = Field(..., description="ID único del nodo, ej: 'node_001'")
+    type: str = Field(..., description="Tipo de localización, ej: 'city', 'dungeon', 'wilderness'")
+    tags: List[str] = Field([], description="Etiquetas para ayudar a la IA, ej: ['safe_zone', 'quest_hub']")
+    size: str = Field('medium', description="Tamaño relativo: 'small', 'medium', 'large'")
+    connections: List[WorldConnection] = []
+
+class WorldGraph(BaseModel):
+    """El modelo raíz para el esqueleto estructural del mundo."""
+    graph_id: str
+    nodes: Dict[str, LocationNode] = {} # Usar un dict con ID como clave para acceso rápido
+
+class LocationDefinition(BaseModel):
+    """Define la plantilla de una ubicación en un mundo."""
+    id: str # Este ID sería el mismo que el del LocationNode original
+    world_id: str
+    name: str # Generado por la IA
+    description: str # Generado por la IA
+    
+    # Metadatos heredados del nodo para consistencia (opcional, pero útil)
+    type: Optional[str] = None # ej: 'city', 'dungeon'
+    tags: List[str] = Field([], description="Etiquetas que describen la localización.")
+    
+    # La transformación clave: List[WorldConnection] -> Dict[str, str]
+    connections: Dict[str, str] = Field({}, description="Conexiones a otras ubicaciones, ej: {'north': 'forest_id'}")
+    
+    initial_npcs: List[str] = Field([], description="Lista de IDs de NPCs que aparecen aquí al inicio.")
+    initial_items: List[str] = Field([], description="Lista de IDs de objetos que se encuentran aquí al inicio.")

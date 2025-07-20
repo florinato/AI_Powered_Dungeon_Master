@@ -1,0 +1,19 @@
+# ===============================================
+# PANEL DE CONTROL DEL MUNDO
+# ===============================================
+
+# --- VISIÓN GENERAL ---
+world_id: "cygnus_x1" # Un ID único para el mundo
+world_theme: "Hard Sci-Fi Noir. A gritty, rain-slicked sector of space where powerful corporations are the law. Think Blade Runner meets The Expanse. The mood is cynical and tense."
+
+# --- ESTRUCTURA DEL MUNDO ---
+structure:
+  num_locations: 15
+  # El Director decidirá los tipos de nodos (planeta, estación, etc.) basándose en el tema.
+  
+# --- DENSIDAD DE CONTENIDO ---
+# Opciones: "low", "medium", "high"
+density:
+  npcs: "medium"
+  items: "medium"
+  quests: "medium"

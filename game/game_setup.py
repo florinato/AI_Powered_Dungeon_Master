@@ -1,4 +1,5 @@
 # refact/game_setup.py
+import copy
 import json
 from typing import Optional
 
@@ -69,3 +70,53 @@ def save_new_player(player_state: PlayerState) -> Optional[int]:
         return None
     finally:
         conn.close()
+
+def create_game_world_instance(world_definition: dict, player_state: PlayerState) -> dict:
+    """
+    Crea una instancia jugable del mundo.
+    Empieza con una copia profunda de la definición y luego aplica los deltas del jugador.
+    """
+    print("Creating game world instance for the current session...")
+    
+    # 1. Copia profunda de las partes mutables de la definición del mundo.
+    # ¡Esto es crucial para no modificar la definición original en memoria!
+    world_instance = {
+        'locations': copy.deepcopy(world_definition.get('locations', {})),
+        'item_templates': world_definition.get('item_templates', {}), # Suelen ser inmutables
+        'npc_templates': world_definition.get('npc_templates', {}),   # Suelen ser inmutables
+        'quests': copy.deepcopy(world_definition.get('quests', {})),
+    }
+
+    # 2. "Poblar" las localizaciones con instancias de NPCs e Items.
+    # La definición solo nos da los IDs, aquí creamos los objetos completos.
+    for loc_id, loc_data in world_instance['locations'].items():
+        # Poblar NPCs
+        npc_instances = {}
+        for npc_id in loc_data.get('initial_npcs', []):
+            if npc_id in world_instance['npc_templates']:
+                # Creamos una copia para que cada NPC sea único
+                npc_instances[npc_id] = copy.deepcopy(world_instance['npc_templates'][npc_id])
+        loc_data['npcs'] = npc_instances
+        
+        # Poblar Items
+        item_instances = {}
+        for item_id in loc_data.get('initial_items', []):
+            if item_id in world_instance['item_templates']:
+                item_instances[item_id] = copy.deepcopy(world_instance['item_templates'][item_id])
+        loc_data['items'] = item_instances
+
+    # 3. Aplicar los deltas guardados en el estado del jugador (esto es para cargar partida)
+    # Por ahora lo dejamos simple, pero aquí iría la lógica para aplicar `player_state.world_state_delta`
+    # Ejemplo de cómo podría ser:
+    # for path, value in player_state.world_state_delta.items():
+    #     keys = path.split('.')
+    #     current_level = world_instance
+    #     for key in keys[:-1]:
+    #         current_level = current_level[key]
+    #     if value is None:
+    #         del current_level[keys[-1]]
+    #     else:
+    #         current_level[keys[-1]] = value
+            
+    print("World instance created successfully.")
+    return world_instance

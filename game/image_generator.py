@@ -1,45 +1,67 @@
 # image_generator.py
+
 import io
 import os
+import random
 import re
+import shutil
 
-from gradio_client import Client, file
+from gradio_client import Client
 from PIL import Image
 
 
-def generate_image_with_gradio(description: str, location_name: str, folder="generated_images") -> dict | None:
+# --- FUNCIÓN MODIFICADA ---
+def generate_image_with_gradio(
+    description: str, 
+    location_name: str, 
+    world_theme: str, # <--- AÑADIMOS EL TEMA DEL MUNDO
+    folder="generated_images"
+) -> str | None: # <-- Cambiado para devolver solo la ruta del archivo o None
     """
-    Generates an image using a Gradio client connected to a Hugging Face Space.
+    Genera una imagen usando un cliente de Gradio, enriqueciendo el prompt
+    con el tema general del mundo.
 
     Args:
-        description: The text prompt for image generation.
-        location_name: The name of the game location, used for the filename.
-        folder: The directory to save the generated image.
+        description: La descripción específica de la localización.
+        location_name: El nombre de la localización, para el prompt y el nombre de archivo.
+        world_theme: El tema general del mundo (ej: 'Cine negro', 'Alta fantasía').
+        folder: El directorio donde se guardarán las imágenes.
 
     Returns:
-        A dictionary {'file_path': str} on success, None otherwise.
-        Nota: Gradio no devuelve una URL pública, solo el archivo local.
+        La ruta al archivo de imagen guardado en caso de éxito, o None si falla.
     """
     if not description:
         print("Warning: No description provided for image generation. Skipping.")
         return None
 
     try:
-        # Inicializa el cliente apuntando al espacio de Hugging Face
-        print("Connecting to Gradio client for FLUX.1-dev... (This may take a moment)")
-        client = Client("black-forest-labs/FLUX.1-dev")
+        # Conectar al cliente de Gradio
+        print("Connecting to Gradio client for taufiqdp/FLUX...")
+        client = Client("taufiqdp/FLUX")
         print("Client connected.")
 
-        # Construye un prompt más efectivo para el modelo
-        prompt = f"masterpiece, best quality, ultra-detailed, illustration, fantasy art. {description}"
+        # --- CONSTRUCCIÓN DEL PROMPT CONTEXTUALIZADO ---
+        # 1. Palabras clave de estilo base para alta calidad.
+        style_keywords = "masterpiece, best quality, ultra-detailed, cinematic lighting, atmospheric"
         
-        print(f"Generating image with prompt: '{prompt[:100]}...'")
+        # 2. El tema del mundo actúa como un "filtro" general.
+        #    Lo ponemos primero para que guíe todo el proceso.
+        #    Ej: "Hardboiled detective film noir art..."
+        theme_prompt = f"{world_theme} art"
 
-        # Llama a la función 'predict' del modelo en el espacio de Gradio
-        # Los parámetros (width, height, etc.) se pueden ajustar.
+        # 3. La descripción específica de la localización.
+        #    Ej: "...illustration of The Albatross Lounge, a haze of cigarette smoke..."
+        location_prompt = f"illustration of {location_name.replace('_', ' ')}, {description}"
+        
+        # 4. Combinamos todo en un prompt final y potente.
+        prompt = f"{style_keywords}, {theme_prompt}. {location_prompt}"
+        
+        print(f"Generating image with enhanced prompt: '{prompt[:120]}...'")
+
+        # Llamar a la API de Gradio
         result = client.predict(
             prompt=prompt,
-            seed=0,  # Poner 0 y randomize_seed=True es una práctica común para tener variedad
+            seed=0,
             randomize_seed=True,
             width=1024,
             height=1024,
@@ -48,72 +70,50 @@ def generate_image_with_gradio(description: str, location_name: str, folder="gen
             api_name="/infer"
         )
         
-        # El resultado suele ser la ruta a un archivo temporal.
-        # Necesitamos leer ese archivo y guardarlo permanentemente.
-        print(f"Gradio result received: {result}")
-        if not result or not os.path.exists(result):
-             raise ValueError(f"Gradio client did not return a valid file path. Result: {result}")
+        image_filepath = result[0]
+        print(f"Gradio result received: {image_filepath}")
+        if not image_filepath or not os.path.exists(image_filepath):
+             raise ValueError(f"Gradio client did not return a valid file path.")
 
-        # Crear el directorio de destino si no existe
+        # Crear directorio y guardar la imagen
         if not os.path.exists(folder):
             os.makedirs(folder)
-            print(f"Created directory: {folder}")
-
-        # Limpiar el nombre de la ubicación para usarlo como nombre de archivo
-        safe_location_name = re.sub(r'[^\w\-]+', '_', location_name)
-        image_path = os.path.join(folder, f"{safe_location_name}_image.png")
         
-        # Copiar el archivo de la ubicación temporal a nuestra ubicación permanente
-        # Usamos 'shutil' para una copia robusta de archivos
-        import shutil
-        shutil.copy(result, image_path)
+        safe_location_name = re.sub(r'[^\w\-]+', '_', location_name)
+        image_path = os.path.join(folder, f"{safe_location_name}_image_{random.randint(100,999)}.png")
+        
+        shutil.copy(image_filepath, image_path)
 
         print(f"\nSUCCESS! Image for '{location_name}' generated and saved to '{image_path}'")
         
-        # Como Gradio no nos da una URL pública, solo devolvemos la ruta local.
-        # El campo 'url' será None.
-        return {"file_path": image_path, "url": None}
+        return image_path # Devolvemos solo la ruta, es más simple y útil.
 
     except Exception as e:
         print(f"An unexpected error occurred during image generation with Gradio: {e}")
         return None
 
 
-# --- Bloque de Prueba ---
+# --- Bloque de Prueba (opcional, para ejecutar el script directamente) ---
 if __name__ == "__main__":
-    """
-    Este bloque se ejecuta solo cuando el script es llamado directamente.
-    Permite probar la función de generación de imágenes de forma aislada.
-    """
-    print("--- Running Gradio Image Generator Test ---")
+    print("--- Running Gradio Image Generator Test (taufiqdp/FLUX) ---")
 
-    # Definir datos de prueba
-    test_description = "A sun-drenched ancient library with floating books and swirling magical energy."
-    test_location_name = "The Dragon's Hoard"
+    test_description = "A forgotten, moss-covered stone altar in the middle of a dark, enchanted forest. Eerie magical light emanates from the cracks in the stone."
+    test_location_name = "The Whispering Altar"
     
     print(f"\nTesting with location: '{test_location_name}'")
     print(f"Description: '{test_description}'")
     
-    # Llamar a la función
     result_dict = generate_image_with_gradio(test_description, test_location_name)
     
-    # Mostrar el resultado
     if result_dict:
         print("\n--- Test Finished Successfully ---")
         print(f"File Path: {result_dict['file_path']}")
-        print(f"Image URL: {result_dict['url']} (None as expected with Gradio)")
-
-        # Opcional: intentar abrir la imagen para verificar que es válida
         try:
-            from PIL import Image
             img = Image.open(result_dict['file_path'])
-            img.show() # Esto abrirá la imagen con el visor de imágenes por defecto de tu SO
+            img.show()
             print("Image opened successfully for verification.")
         except Exception as e:
             print(f"Could not open the generated image for verification: {e}")
-
     else:
         print("\n--- Test Finished with Errors ---")
         print("Image generation failed. Check the logs above for details.")
-    
-    print("\n--- End of Test ---")

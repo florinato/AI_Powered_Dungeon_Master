@@ -1,0 +1,759 @@
+{
+  "graph_id": "grid_map_5x5_p30",
+  "nodes": {
+    "node_0_0": {
+      "id": "node_0_0",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_1_0",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_0_1",
+          "direction": "south",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_1_0": {
+      "id": "node_1_0",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_2_0",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_0_0",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_1_1",
+          "direction": "south",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_2_0": {
+      "id": "node_2_0",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_3_0",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_2_1",
+          "direction": "south",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_1_0",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_3_0": {
+      "id": "node_3_0",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_2_0",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_4_0",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_3_1",
+          "direction": "south",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_4_0": {
+      "id": "node_4_0",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_4_1",
+          "direction": "south",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_3_0",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_0_1": {
+      "id": "node_0_1",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_0_0",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_1_1": {
+      "id": "node_1_1",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_1_0",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_2_1": {
+      "id": "node_2_1",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_3_1",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_2_0",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_2_2",
+          "direction": "south",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_3_1": {
+      "id": "node_3_1",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_2_1",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_4_1",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_3_0",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_4_1": {
+      "id": "node_4_1",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_4_0",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_3_1",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_0_2": {
+      "id": "node_0_2",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_0_3",
+          "direction": "south",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_1_2",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_1_2": {
+      "id": "node_1_2",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_1_3",
+          "direction": "south",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_2_2",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_0_2",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_2_2": {
+      "id": "node_2_2",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_1_2",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_2_1",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_2_3",
+          "direction": "south",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_3_2": {
+      "id": "node_3_2",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_3_3",
+          "direction": "south",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_4_2": {
+      "id": "node_4_2",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_4_3",
+          "direction": "south",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_0_3": {
+      "id": "node_0_3",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_0_2",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_1_3",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_0_4",
+          "direction": "south",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_1_3": {
+      "id": "node_1_3",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_1_2",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_0_3",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_1_4",
+          "direction": "south",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_2_3": {
+      "id": "node_2_3",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_3_3",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_2_4",
+          "direction": "south",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_2_2",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_3_3": {
+      "id": "node_3_3",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_2_3",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_4_3",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_3_2",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_4_3": {
+      "id": "node_4_3",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_3_3",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_4_2",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_0_4": {
+      "id": "node_0_4",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_1_4",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_0_3",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_1_4": {
+      "id": "node_1_4",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_0_4",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_1_3",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_2_4": {
+      "id": "node_2_4",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_2_3",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_3_4",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_3_4": {
+      "id": "node_3_4",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_4_4",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_2_4",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    },
+    "node_4_4": {
+      "id": "node_4_4",
+      "type": "room",
+      "tags": [
+        "dungeon"
+      ],
+      "size": "medium",
+      "connections": [
+        {
+          "target_node_id": "node_3_4",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "WEAPON_MELEE_SMALL_T1": {
+    "type": "weapon",
+    "damage_base": 5,
+    "properties": ["melee", "light", "tier1"]
+  },
+  "WEAPON_MELEE_MEDIUM_T1": {
+    "type": "weapon",
+    "damage_base": 8,
+    "properties": ["melee", "tier1"]
+  },
+  "WEAPON_RANGED_SMALL_T1": {
+    "type": "weapon",
+    "damage_base": 6,
+    "properties": ["ranged", "light", "tier1"]
+  },
+  "WEAPON_RANGED_HEAVY_T2": {
+    "type": "weapon",
+    "damage_base": 15,
+    "properties": ["ranged", "heavy", "two_handed", "tier2"]
+  },
+  "HEALING_ITEM_SMALL": {
+    "type": "healing",
+    "healing_amount": 25,
+    "properties": ["consumable", "instant"]
+  },
+  "HEALING_ITEM_MEDIUM": {
+    "type": "healing",
+    "healing_amount": 60,
+    "properties": ["consumable", "instant"]
+  },
+  "ARMOR_LIGHT_T1": {
+    "type": "armor",
+    "defense_boost": 3,
+    "properties": ["wearable", "torso", "light_armor"]
+  },
+  "ARMOR_HEAVY_T2": {
+    "type": "armor",
+    "defense_boost": 8,
+    "properties": ["wearable", "torso", "heavy_armor", "requires_strength"]
+  },
+  "KEY_ITEM_GENERIC": {
+    "type": "key",
+    "properties": ["unlocks_door"]
+  },
+  "KEY_ITEM_SPECIAL": {
+    "type": "key",
+    "properties": ["unlocks_chest", "plot_related"]
+  },
+  "QUEST_ITEM_MACGUFFIN": {
+    "type": "quest",
+    "properties": ["plot_critical", "cannot_drop"]
+  },
+  "JUNK_ITEM_COMMON": {
+    "type": "junk",
+    "properties": ["common", "vendor_trash"]
+  },
+  "JUNK_ITEM_INTERESTING": {
+    "type": "junk",
+    "properties": ["lore_snippet", "interesting"]
+  },
+  "TOOL_UTILITY": {
+    "type": "tool",
+    "properties": ["utility", "interactable"]
+  }
+}

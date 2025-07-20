@@ -1,52 +1,79 @@
-# ai_interactions/game_narrator.py
+# game/game_narrator.py
 
 import re
 
 from ai_provider_interface import AIProviderInterface
-from models import \
-    PlayerState  # Solo para type hinting, aunque ahora pasamos un dict
 
 
-def generate_location_description(provider: AIProviderInterface, game_state: dict) -> str:
+def generate_location_description(
+    provider: AIProviderInterface, 
+    base_description: str, 
+    location_name: str,
+    world_theme: str,
+    language: str
+) -> str:
     """
-    Genera una descripción atmosférica para la ubicación actual del jugador.
+    Genera una descripción atmosférica para la ubicación actual del jugador,
+    respetando el idioma y el tema del mundo.
     """
-    location_id = game_state['player']['location']
-    location_data = game_state['locations'][location_id]
-    
-    # Esta función no necesita modificar el game_state, solo leerlo.
-    # El bucle principal se encargará de guardar la descripción generada.
-    prompt = f"{location_data.get('description', 'A mysterious place.')} Give a brief, atmospheric paragraph in D&D style, no more than 5 sentences."
-    description_text = provider.generate_text(prompt)
+    # --- PROMPT CORREGIDO ---
+    prompt = (
+        f"You are a master storyteller writing in {language}. "
+        f"The world's theme is: '{world_theme}'.\n"
+        f"Based on this core description in {language} for a location named '{location_name}': '{base_description}', "
+        f"write a new, more atmospheric and evocative paragraph (2-4 sentences) for a player arriving here. "
+        f"The response MUST be entirely in {language} and the response MUST be in {language}. Focus on sights, sounds, and smells."
+    )
+    description_text = provider.generate_text(prompt, temperature=0.7)
     return description_text
 
-def generate_npc_response_text(provider: AIProviderInterface, game_state: dict, npc_name: str, player_input: str) -> str:
+
+def generate_npc_response_text(
+    provider: AIProviderInterface, 
+    game_state: dict, 
+    npc_id: str, # Usamos el ID para buscar, es más robusto
+    player_input: str,
+    world_theme: str,
+    language: str
+) -> str:
     """
-    Genera la respuesta de un NPC basada en el estado del juego y la entrada del jugador.
+    Genera la respuesta de un NPC basada en el estado del juego, la entrada del jugador,
+    el tema del mundo y el idioma.
     """
-    location = game_state["player"]["location"]
-    npc_data = game_state["locations"][location]["npcs"].get(npc_name, {})
-    
+    # --- BÚSQUEDA CORRECTA DE DATOS ---
+    # Los datos del NPC y la localización ahora se obtienen de los templates del game_state
+    # que se cargan desde la Base de Datos.
+    npc_data = game_state["npc_templates"].get(npc_id, {})
+    location_id = game_state["player"]["location"]
+    location_data = game_state["locations"].get(location_id, {})
+    location_name = location_data.get('name', location_id.replace('_', ' '))
+    npc_name = npc_data.get('name', npc_id)
+
+    # --- PROMPT CORREGIDO ---
     context = (
-        f"You are roleplaying as the NPC named {npc_name.capitalize()} in a fantasy RPG.\n"
-        f"Your personality instructions: {npc_data.get('dialogue_prompt', 'Be a generic fantasy character.')}\n\n"
-        f"GAME CONTEXT:\n"
-        f"- Player's Location: {location.replace('_', ' ')}\n"
-        f"- Player's HP: {game_state['player']['hp']}/{game_state['player']['max_hp']}\n"
-        f"- Player's Inventory: {', '.join(item['name'] for item in game_state['player']['inventory']) or 'empty'}\n\n"
-        f"INSTRUCTIONS: Based on your personality and the game context, respond to the player's last line. Keep your response concise (1-3 sentences)."
+        f"You are roleplaying an NPC. Your response MUST be in {language}.\n"
+        f"WORLD CONTEXT:\n"
+        f"- World Theme: {world_theme}\n"
+        f"- Your Name: {npc_name}\n"
+        f"- Your Personality: {npc_data.get('dialogue_prompt', 'Be a generic character.')}\n"
+        f"GAME SITUATION:\n"
+        f"- Location: {location_name}\n"
+        f"- Player Name: {game_state['player'].get('player_name', 'The Adventurer')}\n"
+        f"INSTRUCTIONS: Based on your personality and the situation, give a concise, in-character response (1-3 sentences) to what the player said. Respond ONLY with your dialogue."
     )
     
-    full_prompt = f"{context}\n\nPlayer: \"{player_input}\"\n{npc_name.capitalize()}:"
+    full_prompt = f"{context}\n\nPlayer says: \"{player_input}\"\n{npc_name}:"
 
     response = provider.generate_text(full_prompt, max_tokens=150, temperature=0.8)
     
-    # Limpieza de la respuesta
-    if response.strip().lower().startswith(f"{npc_name.lower()}:"):
-        response = response.split(":", 1)[1].strip()
+    # La lógica de limpieza se mantiene y mejora ligeramente.
+    # Elimina el prefijo "NombreNPC:" si la IA lo añade.
+    response = response.strip()
+    if response.lower().startswith(f"{npc_name.lower()}:"):
+        response = response[len(npc_name):].lstrip(' :').strip()
         
-    sentences = re.split(r'(?<=[.!?]) +', response)
-    if len(sentences) > 2:
-        response = ' '.join(sentences[:2])
+    # Limpia las comillas que a veces la IA añade al principio y al final.
+    if response.startswith('"') and response.endswith('"'):
+        response = response[1:-1]
     
     return response.strip()
