@@ -1,11 +1,12 @@
 {
-  "graph_id": "grid_map_5x5_p30",
+  "graph_id": "grid_map_5x5_p50",
   "nodes": {
     "node_0_0": {
       "id": "node_0_0",
-      "type": "room",
+      "type": "landmark",
       "tags": [
-        "dungeon"
+        "rich",
+        "quest_end"
       ],
       "size": "medium",
       "connections": [
@@ -17,29 +18,20 @@
             "is_hidden": false,
             "is_one_way": false
           }
-        },
-        {
-          "target_node_id": "node_0_1",
-          "direction": "south",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
         }
       ]
     },
     "node_1_0": {
       "id": "node_1_0",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous"
       ],
       "size": "medium",
       "connections": [
         {
-          "target_node_id": "node_2_0",
-          "direction": "east",
+          "target_node_id": "node_1_1",
+          "direction": "south",
           "properties": {
             "is_locked": false,
             "is_hidden": false,
@@ -54,23 +46,15 @@
             "is_hidden": false,
             "is_one_way": false
           }
-        },
-        {
-          "target_node_id": "node_1_1",
-          "direction": "south",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
         }
       ]
     },
     "node_2_0": {
       "id": "node_2_0",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous",
+        "poor"
       ],
       "size": "medium",
       "connections": [
@@ -91,23 +75,14 @@
             "is_hidden": false,
             "is_one_way": false
           }
-        },
-        {
-          "target_node_id": "node_1_0",
-          "direction": "west",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
         }
       ]
     },
     "node_3_0": {
       "id": "node_3_0",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous"
       ],
       "size": "medium",
       "connections": [
@@ -128,23 +103,14 @@
             "is_hidden": false,
             "is_one_way": false
           }
-        },
-        {
-          "target_node_id": "node_3_1",
-          "direction": "south",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
         }
       ]
     },
     "node_4_0": {
       "id": "node_4_0",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous"
       ],
       "size": "medium",
       "connections": [
@@ -170,15 +136,13 @@
     },
     "node_0_1": {
       "id": "node_0_1",
-      "type": "room",
-      "tags": [
-        "dungeon"
-      ],
+      "type": "landmark",
+      "tags": [],
       "size": "medium",
       "connections": [
         {
-          "target_node_id": "node_0_0",
-          "direction": "north",
+          "target_node_id": "node_0_2",
+          "direction": "south",
           "properties": {
             "is_locked": false,
             "is_hidden": false,
@@ -189,9 +153,10 @@
     },
     "node_1_1": {
       "id": "node_1_1",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous",
+        "poor"
       ],
       "size": "medium",
       "connections": [
@@ -203,17 +168,36 @@
             "is_hidden": false,
             "is_one_way": false
           }
+        },
+        {
+          "target_node_id": "node_2_1",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
         }
       ]
     },
     "node_2_1": {
       "id": "node_2_1",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous",
+        "poor"
       ],
       "size": "medium",
       "connections": [
+        {
+          "target_node_id": "node_1_1",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
         {
           "target_node_id": "node_3_1",
           "direction": "east",
@@ -231,23 +215,15 @@
             "is_hidden": false,
             "is_one_way": false
           }
-        },
-        {
-          "target_node_id": "node_2_2",
-          "direction": "south",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
         }
       ]
     },
     "node_3_1": {
       "id": "node_3_1",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous",
+        "poor"
       ],
       "size": "medium",
       "connections": [
@@ -261,17 +237,8 @@
           }
         },
         {
-          "target_node_id": "node_4_1",
-          "direction": "east",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
-        },
-        {
-          "target_node_id": "node_3_0",
-          "direction": "north",
+          "target_node_id": "node_3_2",
+          "direction": "south",
           "properties": {
             "is_locked": false,
             "is_hidden": false,
@@ -282,9 +249,10 @@
     },
     "node_4_1": {
       "id": "node_4_1",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous",
+        "poor"
       ],
       "size": "medium",
       "connections": [
@@ -298,8 +266,8 @@
           }
         },
         {
-          "target_node_id": "node_3_1",
-          "direction": "west",
+          "target_node_id": "node_4_2",
+          "direction": "south",
           "properties": {
             "is_locked": false,
             "is_hidden": false,
@@ -310,9 +278,9 @@
     },
     "node_0_2": {
       "id": "node_0_2",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous"
       ],
       "size": "medium",
       "connections": [
@@ -333,26 +301,26 @@
             "is_hidden": false,
             "is_one_way": false
           }
-        }
-      ]
-    },
-    "node_1_2": {
-      "id": "node_1_2",
-      "type": "room",
-      "tags": [
-        "dungeon"
-      ],
-      "size": "medium",
-      "connections": [
+        },
         {
-          "target_node_id": "node_1_3",
-          "direction": "south",
+          "target_node_id": "node_0_1",
+          "direction": "north",
           "properties": {
             "is_locked": false,
             "is_hidden": false,
             "is_one_way": false
           }
-        },
+        }
+      ]
+    },
+    "node_1_2": {
+      "id": "node_1_2",
+      "type": "pasaje",
+      "tags": [
+        "dangerous"
+      ],
+      "size": "medium",
+      "connections": [
         {
           "target_node_id": "node_2_2",
           "direction": "east",
@@ -375,24 +343,16 @@
     },
     "node_2_2": {
       "id": "node_2_2",
-      "type": "room",
+      "type": "hub",
       "tags": [
-        "dungeon"
+        "safe",
+        "rich"
       ],
       "size": "medium",
       "connections": [
         {
           "target_node_id": "node_1_2",
           "direction": "west",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
-        },
-        {
-          "target_node_id": "node_2_1",
-          "direction": "north",
           "properties": {
             "is_locked": false,
             "is_hidden": false,
@@ -407,14 +367,24 @@
             "is_hidden": false,
             "is_one_way": false
           }
+        },
+        {
+          "target_node_id": "node_3_2",
+          "direction": "east",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
         }
       ]
     },
     "node_3_2": {
       "id": "node_3_2",
-      "type": "room",
+      "type": "hub",
       "tags": [
-        "dungeon"
+        "safe",
+        "quest_start"
       ],
       "size": "medium",
       "connections": [
@@ -426,17 +396,44 @@
             "is_hidden": false,
             "is_one_way": false
           }
+        },
+        {
+          "target_node_id": "node_3_1",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_2_2",
+          "direction": "west",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
         }
       ]
     },
     "node_4_2": {
       "id": "node_4_2",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous"
       ],
       "size": "medium",
       "connections": [
+        {
+          "target_node_id": "node_4_1",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
         {
           "target_node_id": "node_4_3",
           "direction": "south",
@@ -450,9 +447,10 @@
     },
     "node_0_3": {
       "id": "node_0_3",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous",
+        "poor"
       ],
       "size": "medium",
       "connections": [
@@ -464,47 +462,20 @@
             "is_hidden": false,
             "is_one_way": false
           }
-        },
-        {
-          "target_node_id": "node_1_3",
-          "direction": "east",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
-        },
-        {
-          "target_node_id": "node_0_4",
-          "direction": "south",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
         }
       ]
     },
     "node_1_3": {
       "id": "node_1_3",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "poor"
       ],
       "size": "medium",
       "connections": [
         {
-          "target_node_id": "node_1_2",
-          "direction": "north",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
-        },
-        {
-          "target_node_id": "node_0_3",
-          "direction": "west",
+          "target_node_id": "node_2_3",
+          "direction": "east",
           "properties": {
             "is_locked": false,
             "is_hidden": false,
@@ -524,15 +495,24 @@
     },
     "node_2_3": {
       "id": "node_2_3",
-      "type": "room",
+      "type": "hub",
       "tags": [
-        "dungeon"
+        "safe"
       ],
       "size": "medium",
       "connections": [
         {
-          "target_node_id": "node_3_3",
-          "direction": "east",
+          "target_node_id": "node_2_2",
+          "direction": "north",
+          "properties": {
+            "is_locked": false,
+            "is_hidden": false,
+            "is_one_way": false
+          }
+        },
+        {
+          "target_node_id": "node_1_3",
+          "direction": "west",
           "properties": {
             "is_locked": false,
             "is_hidden": false,
@@ -547,44 +527,17 @@
             "is_hidden": false,
             "is_one_way": false
           }
-        },
-        {
-          "target_node_id": "node_2_2",
-          "direction": "north",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
         }
       ]
     },
     "node_3_3": {
       "id": "node_3_3",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous"
       ],
       "size": "medium",
       "connections": [
-        {
-          "target_node_id": "node_2_3",
-          "direction": "west",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
-        },
-        {
-          "target_node_id": "node_4_3",
-          "direction": "east",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
-        },
         {
           "target_node_id": "node_3_2",
           "direction": "north",
@@ -598,15 +551,16 @@
     },
     "node_4_3": {
       "id": "node_4_3",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous",
+        "poor"
       ],
       "size": "medium",
       "connections": [
         {
-          "target_node_id": "node_3_3",
-          "direction": "west",
+          "target_node_id": "node_4_4",
+          "direction": "south",
           "properties": {
             "is_locked": false,
             "is_hidden": false,
@@ -626,9 +580,10 @@
     },
     "node_0_4": {
       "id": "node_0_4",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous",
+        "poor"
       ],
       "size": "medium",
       "connections": [
@@ -640,23 +595,14 @@
             "is_hidden": false,
             "is_one_way": false
           }
-        },
-        {
-          "target_node_id": "node_0_3",
-          "direction": "north",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
         }
       ]
     },
     "node_1_4": {
       "id": "node_1_4",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "poor"
       ],
       "size": "medium",
       "connections": [
@@ -682,9 +628,10 @@
     },
     "node_2_4": {
       "id": "node_2_4",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous",
+        "poor"
       ],
       "size": "medium",
       "connections": [
@@ -710,21 +657,13 @@
     },
     "node_3_4": {
       "id": "node_3_4",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous",
+        "poor"
       ],
       "size": "medium",
       "connections": [
-        {
-          "target_node_id": "node_4_4",
-          "direction": "east",
-          "properties": {
-            "is_locked": false,
-            "is_hidden": false,
-            "is_one_way": false
-          }
-        },
         {
           "target_node_id": "node_2_4",
           "direction": "west",
@@ -738,15 +677,15 @@
     },
     "node_4_4": {
       "id": "node_4_4",
-      "type": "room",
+      "type": "pasaje",
       "tags": [
-        "dungeon"
+        "dangerous"
       ],
       "size": "medium",
       "connections": [
         {
-          "target_node_id": "node_3_4",
-          "direction": "west",
+          "target_node_id": "node_4_3",
+          "direction": "north",
           "properties": {
             "is_locked": false,
             "is_hidden": false,

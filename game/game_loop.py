@@ -11,10 +11,10 @@ import image_generator
 import pyttsx3
 from command_parser import parse_command
 # Importar los módulos refactorizados
-from game_engine import (check_all_quests, drop_item, move_back, move_player,
-                         perform_skill_check, pick_up_item,
-                         process_combat_turn, trigger_trap, unlock_path,
-                         use_item)
+from game_engine import (accept_quest, check_quest_progress, drop_item,
+                         move_back, move_player, perform_skill_check,
+                         pick_up_item, process_combat_turn, trigger_trap,
+                         unlock_path, use_item)
 from game_setup import create_game_world_instance
 from models import PlayerState
 from state_manager import load_game_state, save_game_state
@@ -108,17 +108,47 @@ class Presenter:
         p = game_state['player']
         self.speak(f"\n--- Stats ---\nLevel: {p['level']}, HP: {p['hp']}/{p['max_hp']}, Attack: {p['attack']}, XP: {p['xp']}/{p['xp_to_next_level']}")
 
-    def display_quests(self, game_state: dict):
-        self.speak("\n--- Quests ---")
-        quests = game_state.get('quests', {})
-        if not quests:
-            self.speak("No active quests.")
-            return
-        for name, data in quests.items():
-            self.speak(f"[{'DONE' if data.get('completed') else 'Active'}] {name.replace('_',' ').title()}: {data['description']}")
+    def display_quests(self, game_state: dict, world_definition: dict):
+        """
+        Muestra las misiones activas del jugador, incluyendo el objetivo del paso actual.
+        """
+        self.speak("\n--- Diario de Misiones ---")
+        
+        player_quests = game_state['player'].get('active_quests', {})
+        all_quests_def = world_definition.get('quests', {})
 
+        if not player_quests:
+            self.speak("No tienes ninguna misión activa.")
+            return
+
+        for quest_id, quest_status in player_quests.items():
+            quest_def = all_quests_def.get(quest_id)
+            if not quest_def:
+                self.speak(f"Error: No se encontraron los datos para la misión '{quest_id}'.")
+                continue
+
+            # Determinar el estado general de la misión para mostrarlo
+            status_text = "[Completada]" if quest_status.get('completed') else "[Activa]"
+            
+            # Mostrar el título de la misión
+            self.speak(f"\n{status_text} {quest_def.get('title', quest_id)}")
+            
+            # Encontrar y mostrar el objetivo del paso actual
+            current_step_id = quest_status.get('current_step_id')
+            if current_step_id:
+                step_def = next((step for step in quest_def.get('steps', []) if step.get('id') == current_step_id), None)
+                if step_def:
+                    self.speak(f"  └─ Objetivo: {step_def.get('description', 'No hay un objetivo claro...')}")
+                else:
+                    self.speak(f"  └─ Objetivo: No se pudo encontrar el paso actual '{current_step_id}'.")
+            
+            # Si la misión está lista para entregar, añadir una nota
+            if quest_status.get('status') == 'ready_to_turn_in':
+                self.speak(f"  └─ Tienes que informar de tus progresos para completar la misión.")
+                
     def show_help(self):
         self.speak("\n--- Commands ---\nlook, move <dir>, back, get <item>, use <item>, drop <item>, inv, stats, quests, fight, talk, unlock <dir>, image, help, quit")
+        
 # --- Gestores de Sub-Bucles y Eventos ---
 def handle_trap(game_state, trap_info, presenter):
     trap_name, trap_data = trap_info
@@ -186,12 +216,12 @@ def handle_combat(game_state, presenter):
 
 def handle_dialogue(game_state: dict, world_definition: dict, presenter, ai_provider):
     """
-    Gestiona la interacción del diálogo con los NPCs, incluyendo la selección
-    del interlocutor, la lógica de entrega de misiones y la conversación general.
+    Gestiona una interacción de diálogo fluida, donde las misiones se revelan
+    y se aceptan de forma orgánica durante la conversación.
     """
     loc_id = game_state['player']['location']
     
-    # Obtenemos un diccionario completo de los NPCs disponibles para hablar
+    # --- Lógica de Selección de NPC ---
     npcs_in_location = game_state['locations'][loc_id].get('npcs', {})
     talkable_npcs = {
         npc_id: npc_data 
@@ -203,18 +233,12 @@ def handle_dialogue(game_state: dict, world_definition: dict, presenter, ai_prov
         presenter.speak("There is no one to talk to.")
         return game_state
 
-    # --- Lógica de Selección de NPC ---
     target_id = None
-    
     if len(talkable_npcs) == 1:
-        # Si solo hay un NPC, hablamos con él directamente
         target_id = list(talkable_npcs.keys())[0]
     else:
-        # Si hay varios, mostramos una lista para que el jugador elija
         presenter.speak("Who do you want to talk to?")
-        
-        npc_options = list(talkable_npcs.items()) # ej: [('kai_vance', {'name':...}), ...]
-        
+        npc_options = list(talkable_npcs.items())
         for i, (npc_id, npc_data) in enumerate(npc_options, 1):
             display_name = npc_data.get('name', npc_id).replace('_', ' ').title()
             presenter.speak(f"  {i}. {display_name}")
@@ -224,7 +248,6 @@ def handle_dialogue(game_state: dict, world_definition: dict, presenter, ai_prov
             if not choice_str:
                 presenter.speak("Dialogue canceled.")
                 return game_state
-            
             choice_num = int(choice_str)
             if 1 <= choice_num <= len(npc_options):
                 target_id = npc_options[choice_num - 1][0]
@@ -236,67 +259,89 @@ def handle_dialogue(game_state: dict, world_definition: dict, presenter, ai_prov
             return game_state
     
     if not target_id:
-        # Salvaguarda por si algo falla en la selección
         presenter.speak("Could not determine who to talk to. Dialogue canceled.")
         return game_state
         
-    # Obtenemos los datos del NPC elegido para fácil acceso
     target_npc_data = talkable_npcs[target_id]
     target_display_name = target_npc_data.get('name', target_id).replace('_', ' ').title()
 
-    # --- OBTENEMOS EL CONTEXTO DEL MUNDO UNA SOLA VEZ ---
+    # --- INICIO DE LA CONVERSACIÓN ---
+    presenter.speak(f"You approach {target_display_name}. (Type 'bye' to end the conversation)")
+
+    # Obtenemos el contexto una sola vez
     world_theme = world_definition.get('style', 'A generic world theme.')
     language = world_definition.get('language', 'English')
+    player_quests = game_state['player'].get('active_quests', {})
+    
+    conversation_history = []
+    first_turn = True
 
-    # --- Lógica de Entrega de Misiones ---
-    # (Esta lógica ahora usa el `target_id` para ser más precisa)
-    quests = game_state.get('quests', {})
-    quest_to_turn_in = None
-    for quest_id, quest_data in quests.items():
-        # Comprobamos si hay una quest lista para entregar A ESTE NPC
-        if quest_data.get("status") == "ready_to_turn_in" and quest_data.get("turn_in_npc") == target_id:
-            quest_to_turn_in = quest_id
-            break
-
-    if quest_to_turn_in:
-        presenter.speak(f"You approach {target_display_name}, who seems to be expecting you.")
-        
-        quest_data = quests[quest_to_turn_in]
-        quest_data["status"] = "completed"
-        
-        # Eliminar objetos de quest del inventario (si aplica)
-        required_items = quest_data.get("required_items", [])
-        if required_items:
-            game_state['player']['inventory'] = [item for item in game_state['player']['inventory'] if item.get('id') not in required_items]
-        
-        # Dar recompensas
-        reward_xp = quest_data.get("reward_xp", 50)
-        game_state['player']['xp'] += reward_xp
-        
-        presenter.speak(f"QUEST COMPLETED: {quest_data.get('title', quest_to_turn_in)}!")
-        presenter.speak(f"You received {reward_xp} XP as a reward.")
-        
-        # Aquí la IA podría generar un diálogo de agradecimiento, usando el contexto del mundo
-        gratitude_prompt = (
-            f"You are the NPC '{target_display_name}'. The player has just completed the quest '{quest_data.get('title')}' for you. "
-            f"Your response MUST be in {language}. The world theme is '{world_theme}'. "
-            f"Express your gratitude or relief in 1-2 sentences, based on your personality: {target_npc_data.get('dialogue_prompt')}."
-        )
-        gratitude_response = ai_provider.generate_text(gratitude_prompt)
-        presenter.speak(f"{target_display_name}: \"{gratitude_response}\"")
-
-        return game_state # Terminamos la interacción después de entregar la quest
-
-    # --- Bucle de Diálogo Normal ---
-    # Si no había misiones que entregar, procedemos con la conversación
-    presenter.speak(f"You start a conversation with {target_display_name}. (Type 'bye' to end)")
     while True:
+        # --- LÓGICA DE EVENTOS ESPECIALES DENTRO DEL DIÁLOGO ---
+
+        # En el primer turno de la conversación, comprobamos si el PNJ tiene una misión que ofrecer.
+        if first_turn:
+            first_turn = False
+            quest_to_offer = None
+            
+            # Comprobamos si hay misiones que este PNJ pueda ofrecer
+            for quest_id, quest_data in world_definition.get('quests', {}).items():
+                if quest_data.get('starting_npc_id') == target_id and quest_id not in player_quests:
+                    quest_to_offer = quest_id
+                    break
+            
+            if quest_to_offer:
+                quest_def = world_definition['quests'][quest_to_offer]
+                
+                # 1. El PNJ se presenta y empieza la conversación
+                initial_prompt = (
+                    f"You are the NPC '{target_display_name}'. Your personality is: {target_npc_data.get('dialogue_prompt')}. "
+                    f"Start a conversation with the player. Greet them and ask what brings them to you. "
+                    f"Your response must be in {language}."
+                )
+                opening_line = ai_provider.generate_text(initial_prompt)
+                presenter.speak(f"{target_display_name}: \"{opening_line}\"")
+                conversation_history.append(f"NPC: {opening_line}")
+
+                # El jugador responde al saludo
+                player_input = input("You: ").strip()
+                if player_input.lower() in ['bye', 'stop', 'quit', 'adios']:
+                    presenter.speak("You end the conversation.")
+                    break
+                conversation_history.append(f"Player: {player_input}")
+
+                # 2. El PNJ ahora revela su problema (la misión)
+                offer_prompt = (
+                    f"You are the NPC '{target_display_name}'. After the player's last line ('{player_input}'), transition into explaining your problem. "
+                    f"Reveal the situation described in the quest '{quest_def.get('title')}': '{quest_def.get('description')}'. "
+                    f"Explain what you need the player to do. End by expressing hope that they will help. "
+                    f"Your response must be in {language}."
+                )
+                mission_pitch = ai_provider.generate_text(offer_prompt)
+                presenter.speak(f"{target_display_name}: \"{mission_pitch}\"")
+                conversation_history.append(f"NPC: {mission_pitch}")
+
+                # 3. La misión se activa automáticamente
+                game_state, result = accept_quest(game_state, world_definition, quest_to_offer)
+                presenter.speak(f"\n* {result['message']} *") # Usamos asteriscos para indicar que es una notificación del juego
+                
+                # Guardamos el estado actualizado
+                player_state = PlayerState(**game_state['player'])
+                db_manager.save_player_state(player_state)
+                
+                # La conversación continúa desde aquí, ya con la misión activa...
+                # El bucle seguirá a la siguiente iteración, pidiendo input al jugador.
+                continue
+
+        # --- BUCLE DE DIÁLOGO NORMAL ---
         player_input = input("You: ").strip()
         if player_input.lower() in ['bye', 'stop', 'quit', 'adios']:
             presenter.speak("You end the conversation.")
             break
-            
-        # Pasamos el ID del PNJ y el contexto al narrador para obtener una respuesta contextual
+        
+        conversation_history.append(f"Player: {player_input}")
+
+        # Pasamos el ID del PNJ y el contexto al narrador para obtener una respuesta
         response = game_narrator.generate_npc_response_text(
             provider=ai_provider,
             game_state=game_state,
@@ -304,26 +349,24 @@ def handle_dialogue(game_state: dict, world_definition: dict, presenter, ai_prov
             player_input=player_input,
             world_theme=world_theme,
             language=language
+            # A futuro, aquí pasaremos el conversation_history
         )
         presenter.speak(f"{target_display_name}: {response}")
+        conversation_history.append(f"NPC: {response}")
         
     return game_state
-
 
 # --- Bucle Principal ---
 def run_game():
     presenter = Presenter()
     ai_provider = gemini_provider.GeminiProvider()
 
-    # --- NUEVA LÓGICA DE SELECCIÓN DE MUNDO Y PERSONAJE ---
-    
-    # 1. OBTENER Y MOSTRAR MUNDOS DISPONIBLES
+    # --- LÓGICA DE SELECCIÓN DE MUNDO Y PERSONAJE (SIN CAMBIOS) ---
     available_worlds = db_manager.get_available_worlds()
     if not available_worlds:
         presenter.speak("No worlds found in the database. Please run 'python game/db_manager.py' to import worlds.")
         return
 
-    #presenter.speak("Welcome! Please choose a world to play in:")
     for i, world in enumerate(available_worlds):
         print(f"  {i + 1}. {world['name']} ({world['style']})")
 
@@ -340,14 +383,12 @@ def run_game():
     
     WORLD_ID = chosen_world_id
     
-    # 2. CARGAR LA DEFINICIÓN ESTÁTICA DEL MUNDO ELEGIDO
     print(f"\nLoading world definition for '{WORLD_ID}'...")
     world_definition = db_manager.load_world_definition(WORLD_ID)
     if not world_definition:
         presenter.speak(f"Fatal Error: Could not load world '{WORLD_ID}'.")
         return
 
-    # 3. BUSCAR PARTIDAS GUARDADAS O CREAR UN NUEVO PERSONAJE
     available_saves = db_manager.get_available_saves(WORLD_ID)
     player_state: PlayerState | None = None
 
@@ -358,7 +399,6 @@ def run_game():
         for i, save in enumerate(available_saves):
             print(f"  {i + 1}. {save['player_name']} (Level {save['level']})")
     
-    # Ofrecer siempre la opción de crear uno nuevo
     new_char_option = len(available_saves) + 1
     print(f"  {new_char_option}. Create a new character")
 
@@ -381,9 +421,9 @@ def run_game():
         except (ValueError, IndexError):
             presenter.speak("Please enter a valid number.")
 
-    if not player_state: return # Salir si algo falló
+    if not player_state: return
 
-    # 4. CONSTRUIR EL ESTADO DE JUEGO PARA LA SESIÓN ACTUAL
+    # --- CONSTRUCCIÓN DEL ESTADO DE JUEGO INICIAL (SIN CAMBIOS) ---
     world_instance = create_game_world_instance(world_definition, player_state)
     
     game_state = {
@@ -405,80 +445,131 @@ def run_game():
         action = parse_command(command_input)
         action_type = action.get('action')
         
-        result = None
-        if action_type == 'quit': running = False; continue
-        elif action_type == 'help': presenter.show_help()
-        elif action_type == 'inventory': presenter.display_inventory(game_state)
-        elif action_type == 'stats': presenter.display_stats(game_state)
-        elif action_type == 'quests': presenter.display_quests(game_state)
-        elif action_type == 'look': presenter.display_location(game_state,world_definition, ai_provider)
-        elif action_type == 'error': presenter.speak(action['message'])
+        result = None # Para almacenar el resultado de las acciones
+        
+        # --- BLOQUE DE PROCESAMIENTO DE ACCIONES ---
+        
+        if action_type == 'quit':
+            running = False
+            continue # Salta el resto del bucle para salir limpiamente
+            
+        elif action_type == 'help':
+            presenter.show_help()
+            
+        elif action_type == 'inventory':
+            presenter.display_inventory(game_state)
+            
+        elif action_type == 'stats':
+            presenter.display_stats(game_state)
+            
+        elif action_type == 'quests':
+            presenter.display_quests(game_state, world_definition)
+            
+        elif action_type == 'look':
+            presenter.display_location(game_state, world_definition, ai_provider)
+            
+        elif action_type == 'error':
+            presenter.speak(action['message'])
+            
         elif action_type == 'image':
-            # Obtenemos los datos de la localización actual
             current_loc_id = game_state['player']['location']
             loc_data = game_state['locations'][current_loc_id]
             
-            # El prompt para la imagen es la descripción atmosférica que ya tenemos
-            image_prompt = loc_data.get('generated_description') or loc_data.get('description')
+            description = loc_data.get('generated_description') or loc_data.get('description')
             location_name = loc_data.get('name', current_loc_id)
             
-            # --- OBTENEMOS EL CONTEXTO ADICIONAL ---
-            world_theme = world_definition.get('style', '') # Extraemos el tema del mundo
+            world_id = world_definition.get('id', 'unknown_world')
+            world_theme = world_definition.get('style', '')
+            historical_context = world_definition.get('historical_context')
+            inhabitant_description = world_definition.get('inhabitant_description')
 
             presenter.speak("Generating location image... (this may take a moment)")
             
-            # --- LLAMADA ACTUALIZADA A LA FUNCIÓN ---
-            # Ahora le pasamos el world_theme
             saved_image_path = image_generator.generate_image_with_gradio(
-                description=image_prompt, 
+                description=description,
                 location_name=location_name,
-                world_theme=world_theme
-                # La carpeta se crea por defecto, no hace falta pasarla
+                world_id=world_id,
+                world_theme=world_theme,
+                historical_context=historical_context,
+                inhabitant_description=inhabitant_description
             )
 
             if saved_image_path:
                 presenter.speak(f"Image for {location_name} is ready at: {saved_image_path}")
-                # Guardamos la ruta en el estado del juego para no volver a generarla
                 loc_data['generated_image_path'] = saved_image_path
-                
-                # Opcional: intentar abrir la imagen
-                
+                try:
+                    from PIL import Image
+                    Image.open(saved_image_path).show()
+                except Exception as e:
+                    print(f"Could not open image automatically: {e}")
             else:
                 presenter.speak("Sorry, image generation failed.")
+                
         elif action_type == 'move':
             game_state, result = move_player(game_state, world_definition, action['direction'])
+            
         elif action_type == 'back':
             game_state, result = move_back(game_state, world_definition)
+            
         elif action_type == 'pick':
             game_state, result = pick_up_item(game_state, world_definition, action['item_name'])
+            
         elif action_type == 'drop':
             game_state, result = drop_item(game_state, world_definition, action['item_name'])
+            
         elif action_type == 'use':
             game_state, result = use_item(game_state, world_definition, action['item_name'])
+            
         elif action_type == 'unlock':
             game_state, result = unlock_path(game_state, world_definition, action['direction'])
+            
         elif action_type == 'fight_intent':
             game_state = handle_combat(game_state, presenter)
+            
         elif action_type == 'talk_intent':
             game_state = handle_dialogue(game_state, world_definition, presenter, ai_provider)
+            
         else:
             presenter.speak(f"Command '{action_type}' not fully implemented.")
 
+        # --- COMPROBACIÓN DEL PROGRESO DE LA MISIÓN ---
+        # Después de CUALQUIER acción, comprobamos si ha habido algún avance.
+        game_state_after_action, quest_progress_result = check_quest_progress(game_state, world_definition)
+        game_state = game_state_after_action # Actualizamos el estado por si la función lo ha modificado
+
+        # --- PROCESAMIENTO DE RESULTADOS Y ACTUALIZACIONES ---
+        # Primero, mostramos el resultado de la acción directa (si lo hubo)
         if result:
-            if result.get('message'): presenter.speak(result['message'])
-            if result.get('quest_update'):
-                for q in result['quest_update']: presenter.speak(f"Quest Completed: {q['name']}!")
+            if result.get('message'):
+                presenter.speak(result['message'])
             
             if result.get('type') == 'move':
+                # Si nos hemos movido, la descripción del lugar es lo más importante
                 presenter.display_location(game_state, world_definition, ai_provider)
                 if result.get('event') == 'trap_encountered':
                     game_state = handle_trap(game_state, result['trap_info'], presenter)
+        
+        # Después, mostramos cualquier actualización de misiones que haya ocurrido
+        if quest_progress_result:
+            for update in quest_progress_result.get('updates', []):
+                presenter.speak(update['message'])
 
+        # --- COMPROBACIÓN DE FIN DE JUEGO ---
         if game_state['player']['hp'] <= 0:
             presenter.speak("Game Over.")
             running = False
+            # Guardamos el estado final antes de salir del bucle
+            player_state = PlayerState(**game_state['player'])
+            db_manager.save_player_state(player_state)
+            continue # Salta el guardado normal y termina
 
-    presenter.speak("\nSaving game...")
+        # --- GUARDADO DEL ESTADO AL FINAL DEL TURNO ---
+        player_state = PlayerState(**game_state['player'])
+        db_manager.save_player_state(player_state)
+
+
+    presenter.speak("\nSaving final game state...")
+    # `save_game_state` podría ser obsoleto si solo usamos db_manager. Lo dejamos por ahora.
     save_game_state(game_state)
 
 if __name__ == "__main__":

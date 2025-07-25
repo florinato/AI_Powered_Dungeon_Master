@@ -2,6 +2,8 @@
 
 import random
 
+import rag_manager
+
 # --- Lógica de Habilidades y Eventos ---
 
 def perform_skill_check(difficulty: str) -> tuple[bool, int]:
@@ -91,27 +93,35 @@ def _find_item_by_name(item_collection: dict | list, name_input: str) -> dict | 
     return None
 
 def pick_up_item(game_state: dict, world_definition: dict, item_name_input: str) -> tuple[dict, dict]:
-    ### AJUSTE ###
     loc_id = game_state['player']['location']
     items_in_loc = game_state['locations'][loc_id].get('items', {})
     
-    # Usamos nuestra función de ayuda para encontrar el ítem por nombre
-    target_item = _find_item_by_name(items_in_loc, item_name_input)
+    target_item_with_loc_id = _find_item_by_name(items_in_loc, item_name_input)
 
-    if not target_item:
+    if not target_item_with_loc_id:
         return game_state, {"message": f"There is no '{item_name_input.replace('_', ' ')}' here.", "type": "error"}
-        
-    # Eliminamos el ítem de la localización usando su ID real
-    item_id_to_remove = target_item.pop('id')
+    
+    # El ID real del objeto que estaba en la localización
+    item_id_to_remove = target_item_with_loc_id['id'] 
+    
+    # Quitamos el objeto de la localización
     items_in_loc.pop(item_id_to_remove)
     
-    # Añadimos el ítem (sin su ID de localización) al inventario del jugador
-    game_state['player']['inventory'].append(target_item)
+    # El objeto que va al inventario es el mismo, pero sin la clave 'id' de la localización
+    # (ya que el `id` dentro del objeto es el de la plantilla)
+    item_for_inventory = world_definition['item_templates'][item_id_to_remove]
     
-    result = {"message": f"You picked up {target_item.get('name', 'an item')}.", "type": "inventory_add"}
+    # Nos aseguramos de que el ID de la plantilla esté en el objeto del inventario
+    item_for_inventory['id'] = item_id_to_remove
     
-    game_state, quest_update = check_all_quests(game_state, world_definition)
-    if quest_update: result['quest_update'] = quest_update
+    game_state['player']['inventory'].append(item_for_inventory)
+    
+    result = {"message": f"You picked up {item_for_inventory.get('name', 'an item')}.", "type": "inventory_add"}
+    
+    # Esta parte se puede eliminar o mantener. Por ahora la dejamos.
+    # game_state, quest_update = check_quest_progress(game_state, world_definition)
+    # if quest_update: result['quest_update'] = quest_update
+    
     return game_state, result
 
 def drop_item(game_state: dict, world_definition: dict, item_name_input: str) -> tuple[dict, dict]:
@@ -198,7 +208,7 @@ def process_combat_turn(game_state: dict, npc_name: str) -> tuple[dict, list[dic
             player['max_hp'] += 10; player['hp'] = player['max_hp']; player['attack'] += 2
             turn_results.append({"actor": "System", "action": "level_up", "new_level": player['level']})
 
-        game_state, quest_update = check_all_quests(game_state, {})
+        game_state, quest_update = check_quest_progress(game_state, {})
         if quest_update: turn_results.append({"actor": "System", "action": "quest_complete", "quests": quest_update})
         return game_state, turn_results
 
@@ -212,7 +222,7 @@ def process_combat_turn(game_state: dict, npc_name: str) -> tuple[dict, list[dic
 
 
 # --- Lógica de Quests ---
-
+"""
 def check_all_quests(game_state: dict, world_definition: dict) -> tuple[dict, list[dict] | None]:
     # ... (sin cambios, esta función parece correcta por ahora)
     updated_quests_info = []
@@ -231,4 +241,128 @@ def check_all_quests(game_state: dict, world_definition: dict) -> tuple[dict, li
                     "name": quest_name.replace('_', ' ').title(),
                     "message": "You have met the requirements for this quest. Find the right person to report your success."
                 })
-    return game_state, updated_quests_info if updated_quests_info else None
+    return game_state, updated_quests_info if updated_quests_info else None"""
+
+def accept_quest(game_state: dict, world_definition: dict, quest_id: str) -> tuple[dict, dict]:
+    """
+    Añade una misión a la lista de misiones activas del jugador y registra el evento.
+    ESTA ES SU UBICACIÓN CORRECTA.
+    """
+    player = game_state['player']
+    
+    # 1. Comprobar si el jugador ya tiene la misión
+    if quest_id in player.get('active_quests', {}):
+        return game_state, {"message": "You are already on that quest."}
+
+    # 2. Obtener la definición de la misión
+    quest_def = world_definition['quests'].get(quest_id)
+    if not quest_def:
+        return game_state, {"message": f"Error: Quest '{quest_id}' not found in world definition."}
+
+    # 3. Añadir la misión al estado del jugador
+    if 'active_quests' not in player:
+        player['active_quests'] = {}
+    
+    # Suponemos que el PlayerState en la BD puede manejar un dict aquí
+    # que luego se serializa a JSON.
+    player['active_quests'][quest_id] = {
+        "quest_id": quest_id,
+        "title": quest_def.get('title', 'Untitled Quest'),
+        "current_step_id": quest_def.get('steps', [{}])[0].get('id', 'step1'),
+        "completed": False
+    }
+    
+    # 4. Registrar el evento en el RAG
+    player_id = player.get('player_id')
+    world_id = player.get('world_id')
+    event_description = f"The player accepted the quest '{quest_def.get('title')}'."
+    
+    if player_id and world_id:
+        rag_manager.add_log_entry(
+            player_id=player_id,
+            world_id=world_id,
+            event_type='quest_accepted',
+            event_description=event_description
+        )
+
+    result_message = f"New Quest Started: {quest_def.get('title')}\nObjective: {quest_def.get('steps', [{}])[0].get('description')}"
+    
+    return game_state, {"message": result_message}
+
+def check_quest_progress(game_state: dict, world_definition: dict) -> tuple[dict, dict | None]:
+    """
+    Comprueba todas las misiones activas del jugador para ver si se ha cumplido el objetivo del paso actual.
+    Las llamadas al RAG están temporalmente desactivadas.
+    """
+    player = game_state['player']
+    active_quests = player.get('active_quests', {})
+    if not active_quests:
+        return game_state, None
+
+    updated_quests_messages = []
+
+    # Obtenemos el estado actual del mundo para las comprobaciones
+    defeated_npcs = {npc_id for loc in game_state.get('locations', {}).values() for npc_id, npc_data in loc.get('npcs', {}).items() if npc_data.get('status') == 'defeated'}
+    inventory_item_ids = {item['id'] for item in player.get('inventory', [])}
+    current_location_id = player['location']
+
+    for quest_id, quest_status in active_quests.items():
+        if quest_status.get('completed') or quest_status.get('status') == 'ready_to_turn_in':
+            continue
+
+        quest_def = world_definition['quests'].get(quest_id)
+        if not quest_def: continue
+
+        current_step_id = quest_status.get('current_step_id')
+        step_def = next((step for step in quest_def.get('steps', []) if step.get('id') == current_step_id), None)
+        if not step_def or 'objective' not in step_def: continue
+
+        # --- LÓGICA DE COMPROBACIÓN DE OBJETIVOS ---
+        objective = step_def['objective']
+        obj_type = objective.get('type')
+        obj_id = objective.get('id')
+        objective_complete = False
+
+        if obj_type == 'item' and obj_id in inventory_item_ids:
+            objective_complete = True
+        elif obj_type == 'npc' and obj_id in defeated_npcs:
+            objective_complete = True
+        elif obj_type == 'location' and obj_id == current_location_id:
+            objective_complete = True
+
+        if objective_complete:
+            current_step_index = next((i for i, step in enumerate(quest_def['steps']) if step['id'] == current_step_id), -1)
+            is_last_step = (current_step_index != -1) and (current_step_index == len(quest_def['steps']) - 1)
+
+            message = ""
+            if is_last_step:
+                quest_status['status'] = 'ready_to_turn_in'
+                # No marcamos 'completed' hasta que no se entregue.
+                message = f"Quest Objective Met: {quest_def.get('title')}\nYou should report back to the quest giver."
+                
+                # --- LLAMADA AL RAG EN PAUSA ---
+                # rag_manager.add_log_entry(
+                #     player_id=player['player_id'],
+                #     world_id=player['world_id'],
+                #     event_type='quest_completed',
+                #     event_description=f"Player completed all objectives for quest '{quest_def.get('title')}'."
+                # )
+            else:
+                next_step = quest_def['steps'][current_step_index + 1]
+                quest_status['current_step_id'] = next_step['id']
+                message = f"Quest Updated: {quest_def.get('title')}\nNew Objective: {next_step.get('description')}"
+
+                # --- LLAMADA AL RAG EN PAUSA ---
+                # rag_manager.add_log_entry(
+                #     player_id=player['player_id'],
+                #     world_id=player['world_id'],
+                #     event_type='quest_step_completed',
+                #     event_description=f"Player completed step '{step_def.get('description')}' for quest '{quest_def.get('title')}'."
+                # )
+
+            updated_quests_messages.append({"message": message})
+            
+    if updated_quests_messages:
+        return game_state, {"updates": updated_quests_messages}
+    
+    return game_state, None

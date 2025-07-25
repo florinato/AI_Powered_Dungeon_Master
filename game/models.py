@@ -79,8 +79,7 @@ class PlayerQuestState(BaseModel):
     quest_id: str
     current_step_id: str
     completed: bool = False
-    # Se podrían añadir más detalles, como un log de objetivos cumplidos
-    # objectives_completed: List[str] = []
+    status: str = "active" 
 
 class PlayerState(BaseModel):
     """Representa el estado completo de un jugador en una partida."""
@@ -96,12 +95,17 @@ class PlayerState(BaseModel):
     xp_to_next_level: int = 100
     
     current_location_id: str
-    location_history: List[str] = []
+    location_history: List[str] = Field(default_factory=list)
     
-    inventory: List[PlayerInventoryItem] = []
-    active_quests: Dict[str, PlayerQuestState] = {}
+    # --- ¡EL CAMBIO CLAVE! ---
+    # En lugar de `List[PlayerInventoryItem]`, ahora es una lista de diccionarios.
+    # Esto acepta directamente los objetos que vienen del `game_engine`.
+    inventory: List[Dict[str, Any]] = Field(default_factory=list)
+    
+    # Hemos ajustado el modelo `PlayerQuestState` para que sea más completo
+    active_quests: Dict[str, PlayerQuestState] = Field(default_factory=dict)
 
-    world_state_delta: Dict[str, Any] = {}
+    world_state_delta: Dict[str, Any] = Field(default_factory=dict)
 
 class ConnectionProperties(BaseModel):
     """Propiedades de una conexión entre nodos."""

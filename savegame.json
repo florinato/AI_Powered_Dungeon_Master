@@ -2,7 +2,7 @@
     "player": {
         "player_id": 1,
         "player_name": "granflorinato",
-        "world_id": "la_ciudad_onice",
+        "world_id": "roma_republicana",
         "level": 1,
         "hp": 100,
         "max_hp": 100,
@@ -10,7 +10,10 @@
         "xp": 0,
         "xp_to_next_level": 100,
         "current_location_id": "node_0_0",
-        "location_history": [],
+        "location_history": [
+            "node_0_0",
+            "node_1_0"
+        ],
         "inventory": [],
         "active_quests": {},
         "world_state_delta": {},
@@ -19,767 +22,465 @@
     "locations": {
         "node_0_0": {
             "id": "node_0_0",
-            "world_id": "la_ciudad_onice",
-            "name": "La Sala de los Susurros de Azogue",
-            "description": "Una habitaci\u00f3n en penumbra, empapelada con peri\u00f3dicos amarillentos, donde el goteo constante del tejado se mezcla con el eco fantasmal de lamentos y promesas rotas. El aire, impregnado de humo de cigarrillo y el f\u00e9tido olor del alcohol barato, parece vibrar con los secretos de la ciudad.",
+            "world_id": "roma_republicana",
+            "name": "El Cub\u00edculo del Censor",
+            "description": "Un aposento fr\u00edo y austero, perfumado con el incienso rancio del deber y la constante vigilancia. La luz tenue, filtrada por vidrios empa\u00f1ados, revela montones de papiros y tablillas de cera, testimonio silencioso de las intrigas del Senado y los secretos del pueblo romano.",
             "connections": {
                 "east": "node_1_0",
                 "south": "node_0_1"
             },
-            "initial_npcs": [
-                "alberto_fuentes",
-                "elias_carrasco",
-                "el_maestro_torres",
-                "mariposa_gris",
-                "dr_silas_mercer"
+            "initial_npcs": [],
+            "initial_items": [
+                "junk_item_scripta_obscura_190"
             ],
-            "initial_items": [],
-            "npcs": {
-                "alberto_fuentes": {
-                    "id": "alberto_fuentes",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Alberto Fuentes",
-                    "description": "Un detective privado de mediana edad, con el rostro marcado por cicatrices y la mirada hundida en un mar de cinismo. Siempre viste un gab\u00e1n ra\u00eddo y fuma cigarrillos sin filtro. Su oficina, un cuchitril en el centro de la ciudad, huele a bourbon y desolaci\u00f3n.",
-                    "hp": 45,
-                    "attack": 8,
-                    "status": "neutral",
-                    "xp": 25,
-                    "dialogue_prompt": "\"\u00bfSabes qu\u00e9, muchacha? En esta ciudad, la lluvia es el \u00fanico amigo fiel. Te lava la mierda, pero nunca la quita por completo. Y cr\u00e9eme, he visto suficiente mierda para llenar todo el puto oc\u00e9ano. Ahora, \u00bfqu\u00e9 me cuentas? Y que sea algo que justifique mi tiempo y mi whiskey. Porque, \u00bfsabes? La vida es corta, y el bourbon\u2026 bueno, el bourbon es el consuelo de los cobardes.\""
-                },
-                "elias_carrasco": {
-                    "id": "elias_carrasco",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Elias Carrasco",
-                    "description": "Un tipo delgado y demacrado, con el gabardina siempre empapado y el cigarrillo colgando de la comisura de los labios. Su mirada es penetrante y c\u00ednica, con ojeras profundas que delatan noches sin dormir y una vida al borde del precipicio. Huele a alcohol barato y a humo de cigarrillos.",
-                    "hp": 35,
-                    "attack": 8,
-                    "status": "neutral",
-                    "xp": 15,
-                    "dialogue_prompt": "\u00bfAs\u00ed que la se\u00f1orita dice que no sabe nada? No se preocupe, mi querida, la verdad siempre sale a flote, por m\u00e1s que se intente hundirla. Y yo, Elias Carrasco, reportero de 'La Voz de la Calle', tengo una curiosidad insaciable... una sed de verdades que s\u00f3lo la tinta en la p\u00e1gina puede saciar. \u00bfQu\u00e9 me cuenta de la v\u00edctima? \u00bfEra buen tipo? \u00bfTen\u00eda enemigos? Y lo m\u00e1s importante... \u00bfCu\u00e1nto val\u00eda su silencio?"
-                },
-                "el_maestro_torres": {
-                    "id": "el_maestro_torres",
-                    "world_id": "la_ciudad_onice",
-                    "name": "El Maestro Torres",
-                    "description": "Un hombre corpulento, con las manos marcadas por grasa y metal, y una cicatriz que le atraviesa el ojo izquierdo. Siempre viste un overol manchado y un sombrero fedora desgastado. Detr\u00e1s de su fachada ruda, esconde un intelecto prodigioso y una lealtad inquebrantable (si le ganas su confianza).",
-                    "hp": 65,
-                    "attack": 12,
-                    "status": "neutral",
-                    "xp": 35,
-                    "dialogue_prompt": "\u00bfAs\u00ed que necesitas que algo se mueva, eh? Bueno, aqu\u00ed en este antro he visto y arreglado cosas que ni te imaginas. Dime, \u00bfqu\u00e9 te trae por estos lares? \u00bfUn coche que no arranca? \u00bfO un problema m\u00e1s... *complicado*? Eso s\u00ed, el tiempo es oro, y mi tiempo, ya sabes, vale un poco m\u00e1s."
-                },
-                "mariposa_gris": {
-                    "id": "mariposa_gris",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Mariposa Gris",
-                    "description": "Una cantante de jazz con un vestido de seda descolorida, siempre fumando un cigarrillo largo y mirando a trav\u00e9s de la niebla de las noches lluviosas. Su voz, un susurro ahogado en alcohol y melancol\u00eda, resuena en el club 'El Espejo Roto'. Lleva un colgante con la foto de un hombre, su amor perdido.",
-                    "hp": 45,
-                    "attack": 5,
-                    "status": "neutral",
-                    "xp": 20,
-                    "dialogue_prompt": "\u201c\u00bfQu\u00e9 buscas, detective? \u00bfSombras? Aqu\u00ed hay muchas. Y todas, como el amor, se desvanecen con la primera lluvia fuerte. \u00bfQuieres o\u00edr la historia? Cuesta\u2026 una canci\u00f3n\u2026 y la esperanza que ya no tengo.\u201d"
-                },
-                "dr_silas_mercer": {
-                    "id": "dr_silas_mercer",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Dr. Silas Mercer",
-                    "description": "Un cient\u00edfico demacrado con ojos inyectados en sangre y un abrigo ra\u00eddo de tweed que parece absorber la humedad del ambiente. Sus manos, manchadas de tinta y productos qu\u00edmicos, tiemblan ligeramente mientras manipula sus inventos, ocultos en las sombras de un club de jazz decadente.",
-                    "hp": 35,
-                    "attack": 5,
-                    "status": "neutral",
-                    "xp": 20,
-                    "dialogue_prompt": "Cree usted que la lluvia, detective, es solo agua... o una forma sutil de borrar la memoria? La memoria es un lastre, \u00bfsabe? Especialmente en esta ciudad podrida. Le ofrezco algo m\u00e1s que respuestas... le ofrezco la posibilidad de *olvido*. Pero el precio... ese es un secreto que solo el tiempo revelar\u00e1. Preg\u00fanteme sobre el 'Or\u00e1culo', detective. Quiz\u00e1s entonces, entienda el juego que estamos jugando."
+            "npcs": {},
+            "items": {
+                "junk_item_scripta_obscura_190": {
+                    "id": "junk_item_scripta_obscura_190",
+                    "world_id": "roma_republicana",
+                    "template_id": "JUNK_ITEM_COMMON",
+                    "name": "JUNK_ITEM_SCRIPTA_OBSCURA",
+                    "description": "Un fragmento arrugado de papiro, manchado de vino y con caligraf\u00eda torcida. Contiene garabatos apenas legibles, aparentemente un borrador de un discurso pol\u00edtico o una lista de precios de pan, intercalados con s\u00edmbolos cr\u00edpticos y una posible direcci\u00f3n en el barrio de Subura, escrita con tinta de sepia que parece haberse filtrado del interior de un huevo podrido.",
+                    "type": "junk",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "common",
+                        "vendor_trash"
+                    ]
                 }
             },
-            "items": {},
-            "generated_description": "```None\nLa puerta chirri\u00f3 cerrado a sus espaldas, trag\u00e1ndolo en la penumbra. El goteo, una lenta agon\u00eda acuosa del tejado, se convirti\u00f3 en un martilleo en la sien, mezclado con el susurro espectral de voces ahogadas en un laberinto de promesas incumplidas. Humo rancio de cigarrillo y la mordaz picadura de alcohol de garraf\u00f3n danzaban en el aire, un hedor pegajoso que acariciaba la garganta y promet\u00eda verdades amargas, secretos podridos como la ciudad misma.\n```"
+            "generated_description": "None\nEl aire helado del Cub\u00edculo, impregnado con el olor rancio del incienso y el polvo de siglos, te abraza. La luz mortecina, danzando sobre los vidrios empa\u00f1ados, revela monta\u00f1as de documentos: papiros amontonados, tablillas apiladas, secretos susurrados en tinta y cera. Un silencio sepulcral reina, roto solo por el raspar fantasmal de un insecto entre los pergaminos, y la promesa sombr\u00eda de un poder implacable."
         },
         "node_1_0": {
             "id": "node_1_0",
-            "world_id": "la_ciudad_onice",
-            "name": "El Refugio de la Gota de Plata",
-            "description": "Un tugurio claustrof\u00f3bico, empapado por la humedad, donde el humo del cigarrillo se mezcla con el vaho de la lluvia que golpea sin cesar los cristales manchados. La luz tenue, proveniente de una l\u00e1mpara desvencijada, baila sobre rostros sombr\u00edos y miradas que ocultan secretos enterrados bajo capas de cinismo y desesperaci\u00f3n.",
+            "world_id": "roma_republicana",
+            "name": "La Guarida de las Sombras",
+            "description": "Un aposento sin ventanas, perpetuamente sumido en la penumbra, donde los murmullos de la ciudad se filtran a trav\u00e9s de las gruesas paredes, resonando como secretos a punto de ser descubiertos. El aire denso huele a incienso quemado y pergaminos h\u00famedos, testigos silenciosos de conspiraciones urdidas a la luz de las brasas.",
             "connections": {
-                "east": "node_2_0",
+                "south": "node_1_1",
                 "west": "node_0_0",
-                "south": "node_1_1"
+                "east": "node_2_0"
             },
-            "initial_npcs": [
-                "elias_carrasco"
+            "initial_npcs": [],
+            "initial_items": [
+                "ungento_del_decimus_bruto_698",
+                "clavis_de_cicern_159"
             ],
-            "initial_items": [],
-            "npcs": {
-                "elias_carrasco": {
-                    "id": "elias_carrasco",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Elias Carrasco",
-                    "description": "Un tipo delgado y demacrado, con el gabardina siempre empapado y el cigarrillo colgando de la comisura de los labios. Su mirada es penetrante y c\u00ednica, con ojeras profundas que delatan noches sin dormir y una vida al borde del precipicio. Huele a alcohol barato y a humo de cigarrillos.",
-                    "hp": 35,
-                    "attack": 8,
-                    "status": "neutral",
-                    "xp": 15,
-                    "dialogue_prompt": "\u00bfAs\u00ed que la se\u00f1orita dice que no sabe nada? No se preocupe, mi querida, la verdad siempre sale a flote, por m\u00e1s que se intente hundirla. Y yo, Elias Carrasco, reportero de 'La Voz de la Calle', tengo una curiosidad insaciable... una sed de verdades que s\u00f3lo la tinta en la p\u00e1gina puede saciar. \u00bfQu\u00e9 me cuenta de la v\u00edctima? \u00bfEra buen tipo? \u00bfTen\u00eda enemigos? Y lo m\u00e1s importante... \u00bfCu\u00e1nto val\u00eda su silencio?"
+            "npcs": {},
+            "items": {
+                "ungento_del_decimus_bruto_698": {
+                    "id": "ungento_del_decimus_bruto_698",
+                    "world_id": "roma_republicana",
+                    "template_id": "HEALING_ITEM_MEDIUM",
+                    "name": "Ung\u00fcento del Decimus Bruto",
+                    "description": "Una peque\u00f1a vasija de alabastro que contiene un ung\u00fcento verdoso, manufacturado por el propio m\u00e9dico personal del senador Bruto. Creado con hierbas tra\u00eddas de la Galia y miel de la mejor calidad, el ung\u00fcento est\u00e1 imbuido de las propiedades curativas del sol y la tierra. Aplicado sobre heridas y contusiones, acelera la cicatrizaci\u00f3n y alivia el dolor, aunque su aroma a laurel y secretos de Estado es un poco perturbador.",
+                    "type": "healing",
+                    "damage_base": null,
+                    "healing_amount": 60,
+                    "properties": [
+                        "consumable",
+                        "instant"
+                    ]
+                },
+                "clavis_de_cicern_159": {
+                    "id": "clavis_de_cicern_159",
+                    "world_id": "roma_republicana",
+                    "template_id": "KEY_ITEM_SPECIAL",
+                    "name": "CLAVIS_DE_CICER\u00d3N",
+                    "description": "Una llave forjada en bronce, con la efigie de Cicer\u00f3n grabada. Originalmente pertenec\u00eda a su biblioteca personal, pero ahora abre una puerta secreta en el Foro Romano que conduce a una red de comunicaciones encriptadas utilizada por la facci\u00f3n senatorial opositora a C\u00e9sar. Su peso es enga\u00f1osamente ligero, pero su significado, y la informaci\u00f3n que resguarda, son colosales.",
+                    "type": "key",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "unlocks_chest",
+                        "plot_related"
+                    ]
                 }
             },
-            "items": {}
+            "generated_description": "None\nEl umbral de La Guarida de las Sombras succion\u00f3 la luz, devolvi\u00e9ndola en un abrazo de negrura. Un aroma sofocante de incienso y pergamino a\u00f1ejo golpe\u00f3 las fosas nasales, un preludio olfativo a los secretos ahogados en la penumbra. Cada ladrillo parec\u00eda susurrar, los ecos de la ciudad filtr\u00e1ndose como espectros, prometiendo revelaciones y el peligro inminente de ser descubierto."
         },
         "node_2_0": {
             "id": "node_2_0",
-            "world_id": "la_ciudad_onice",
-            "name": "El Cub\u00edculo del \u00daltimo Trago",
-            "description": "Una celda peque\u00f1a, con paredes de un verde turbio que rezuma humedad, y en cuyo \u00fanico mueble, una mesa de formica, se acumulan ceniza y el eco de secretos susurrados. La lluvia, como un luto constante, golpea el cristal opaco de la ventana, ocultando el brillo ef\u00edmero de la ciudad.",
+            "world_id": "roma_republicana",
+            "name": "La Sala de los Susurros Augustales",
+            "description": "Un sal\u00f3n sombr\u00edo, a menudo envuelto en penumbra, donde los ecos de las intrigas imperiales resuenan en cada columna de m\u00e1rmol, manchada por el tiempo y el secreto.  El aire est\u00e1 cargado de rumores y la promesa de traici\u00f3n, perceptible en la brisa que se cuela por las altas ventanas.",
             "connections": {
-                "east": "node_3_0",
-                "south": "node_2_1",
-                "west": "node_1_0"
+                "west": "node_1_0",
+                "south": "node_2_1"
             },
             "initial_npcs": [
-                "ricardo_carrasco"
+                "dioscorides_el_sutil",
+                "habib_al_sham"
             ],
             "initial_items": [],
             "npcs": {
-                "ricardo_carrasco": {
-                    "id": "ricardo_carrasco",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Ricardo Carrasco",
-                    "description": "Alcalde de la ciudad, rostro p\u00e9treo y mirada fr\u00eda. Siempre impecable, con trajes caros que contrastan con la mugre de las calles. Su cabello, cuidadosamente peinado, esconde una calvicie que teme mostrar. Sus manos, delgadas y nerviosas, delatan su estr\u00e9s constante.",
+                "dioscorides_el_sutil": {
+                    "id": "dioscorides_el_sutil",
+                    "world_id": "roma_republicana",
+                    "name": "Diosc\u00f3rides el Sutil",
+                    "description": "Un esclavo griego, de mediana edad, con una cicatriz en la ceja izquierda que le da una mirada permanentemente suspicaz. Anteriormente escriba, ahora sirve en la cocina de una importante familia senatorial. Parece inofensivo, pero sus ojos observan con una astucia inusual.",
                     "hp": 35,
                     "attack": 5,
-                    "status": "hostile",
-                    "xp": 15,
-                    "dialogue_prompt": "\u00bfCree que un simple detective puede atreverse a cuestionar mi autoridad? Esta ciudad es m\u00eda, y el legado de mi familia ser\u00e1 eterno. Olv\u00eddese de investigar, muchacho. No encontrar\u00e1 nada que pueda usar. A menos que\u2026 bueno, a menos que est\u00e9 dispuesto a cooperar. El poder, muchacho, es un juego peligroso, pero con las cartas correctas, uno siempre gana."
-                }
-            },
-            "items": {}
-        },
-        "node_3_0": {
-            "id": "node_3_0",
-            "world_id": "la_ciudad_onice",
-            "name": "El Rinc\u00f3n del Hilo Roto",
-            "description": "Un tugurio de techos bajos, donde la luz del ne\u00f3n se filtra a trav\u00e9s de vidrios empa\u00f1ados, revelando sombras danzantes y el tenue olor a tabaco rancio. El aire, denso con la promesa de secretos y traiciones, vibra con el zumbido melanc\u00f3lico de la lluvia contra la ventana.",
-            "connections": {
-                "west": "node_2_0",
-                "east": "node_4_0",
-                "south": "node_3_1"
-            },
-            "initial_npcs": [
-                "ricardo_carrasco"
-            ],
-            "initial_items": [],
-            "npcs": {
-                "ricardo_carrasco": {
-                    "id": "ricardo_carrasco",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Ricardo Carrasco",
-                    "description": "Alcalde de la ciudad, rostro p\u00e9treo y mirada fr\u00eda. Siempre impecable, con trajes caros que contrastan con la mugre de las calles. Su cabello, cuidadosamente peinado, esconde una calvicie que teme mostrar. Sus manos, delgadas y nerviosas, delatan su estr\u00e9s constante.",
-                    "hp": 35,
-                    "attack": 5,
-                    "status": "hostile",
-                    "xp": 15,
-                    "dialogue_prompt": "\u00bfCree que un simple detective puede atreverse a cuestionar mi autoridad? Esta ciudad es m\u00eda, y el legado de mi familia ser\u00e1 eterno. Olv\u00eddese de investigar, muchacho. No encontrar\u00e1 nada que pueda usar. A menos que\u2026 bueno, a menos que est\u00e9 dispuesto a cooperar. El poder, muchacho, es un juego peligroso, pero con las cartas correctas, uno siempre gana."
-                }
-            },
-            "items": {}
-        },
-        "node_4_0": {
-            "id": "node_4_0",
-            "world_id": "la_ciudad_onice",
-            "name": "El Despacho del \u00d3xido Carmes\u00ed",
-            "description": "Un mausoleo de caoba y cristal empa\u00f1ado, donde la lluvia golpea los ventanales como dedos fantasmas. El aire, denso con el humo de cigarrillos y el aroma a desesperanza, parece te\u00f1irse del rojo apagado de las farolas que brillan en la noche perpetua.",
-            "connections": {
-                "south": "node_4_1",
-                "west": "node_3_0"
-            },
-            "initial_npcs": [
-                "elias_carrasco"
-            ],
-            "initial_items": [],
-            "npcs": {
-                "elias_carrasco": {
-                    "id": "elias_carrasco",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Elias Carrasco",
-                    "description": "Un tipo delgado y demacrado, con el gabardina siempre empapado y el cigarrillo colgando de la comisura de los labios. Su mirada es penetrante y c\u00ednica, con ojeras profundas que delatan noches sin dormir y una vida al borde del precipicio. Huele a alcohol barato y a humo de cigarrillos.",
-                    "hp": 35,
-                    "attack": 8,
                     "status": "neutral",
                     "xp": 15,
-                    "dialogue_prompt": "\u00bfAs\u00ed que la se\u00f1orita dice que no sabe nada? No se preocupe, mi querida, la verdad siempre sale a flote, por m\u00e1s que se intente hundirla. Y yo, Elias Carrasco, reportero de 'La Voz de la Calle', tengo una curiosidad insaciable... una sed de verdades que s\u00f3lo la tinta en la p\u00e1gina puede saciar. \u00bfQu\u00e9 me cuenta de la v\u00edctima? \u00bfEra buen tipo? \u00bfTen\u00eda enemigos? Y lo m\u00e1s importante... \u00bfCu\u00e1nto val\u00eda su silencio?"
+                    "dialogue_prompt": "Si le preguntas sobre el senador Lucio Valerio, podr\u00eda responder: \"El noble Lucio\u2026 es como un buen vino, joven y con un sabor que te seduce\u2026 hasta que te deja con un terrible dolor de cabeza por la ma\u00f1ana. \u00bfQu\u00e9 informaci\u00f3n buscas, exactamente? El precio de la verdad es alto, incluso para un esclavo\u2026\""
+                },
+                "habib_al_sham": {
+                    "id": "habib_al_sham",
+                    "world_id": "roma_republicana",
+                    "name": "Habib al-Sham",
+                    "description": "Un mercader sirio de seda y especias, con un ojo astuto y una sonrisa que rara vez llega a los ojos. Su puesto en el Foro es pr\u00f3spero, pero rumores susurran de env\u00edos m\u00e1s turbios, y de contactos con hombres peligrosos de las cloacas romanas.",
+                    "hp": 35,
+                    "attack": 5,
+                    "status": "neutral",
+                    "xp": 15,
+                    "dialogue_prompt": "Si buscas algo ex\u00f3tico, amigo, Habib puede proveerte. Pero el verdadero negocio se cierra en la oscuridad, donde los emperadores y los bandidos comparten la misma sed de poder. \u00bfQu\u00e9 deseas, y a qu\u00e9 precio est\u00e1s dispuesto a pagar?"
                 }
             },
             "items": {}
         },
         "node_0_1": {
             "id": "node_0_1",
-            "world_id": "la_ciudad_onice",
-            "name": "El Sal\u00f3n del Humo Empedernido",
-            "description": "En este tugurio, la lluvia parece filtrarse por las paredes, mezcl\u00e1ndose con el humo de los cigarrillos en una neblina perpetua. Las sombras danzan, reflejando los neones desva\u00eddos y las verdades amargas que se ocultan tras cada puerta.",
+            "world_id": "roma_republicana",
+            "name": "El Atrio de las M\u00e1scaras",
+            "description": "Un espacio sombr\u00edo, decorado con retratos de ancestros y un mosaico que representa un ojo que lo observa todo. La luz de las velas baila sobre las m\u00e1scaras teatrales, proyectando sombras que esconden secretos imperiales y complots traicioneros.",
             "connections": {
-                "north": "node_0_0"
+                "north": "node_0_0",
+                "south": "node_0_2"
             },
             "initial_npcs": [
-                "ricardo_carrasco"
+                "lucius_valerius_flaccus"
             ],
-            "initial_items": [],
+            "initial_items": [
+                "el_blsamo_de_la_va_apia_402",
+                "lorica_segmentata_del_centurin_sombro_949",
+                "clavis_sub_rosa_376",
+                "togha_sucia_de_cicern_675",
+                "stylus_de_la_sombra_969"
+            ],
             "npcs": {
-                "ricardo_carrasco": {
-                    "id": "ricardo_carrasco",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Ricardo Carrasco",
-                    "description": "Alcalde de la ciudad, rostro p\u00e9treo y mirada fr\u00eda. Siempre impecable, con trajes caros que contrastan con la mugre de las calles. Su cabello, cuidadosamente peinado, esconde una calvicie que teme mostrar. Sus manos, delgadas y nerviosas, delatan su estr\u00e9s constante.",
-                    "hp": 35,
-                    "attack": 5,
+                "lucius_valerius_flaccus": {
+                    "id": "lucius_valerius_flaccus",
+                    "world_id": "roma_republicana",
+                    "name": "Lucio Valerio Flaco",
+                    "description": "Un senador patrizio, conocido por su astucia y ambici\u00f3n desmedida. Maestro en el arte de la manipulaci\u00f3n, siempre buscando oportunidades para ascender en el escalaf\u00f3n pol\u00edtico, incluso a costa de sus aliados.",
+                    "hp": 55,
+                    "attack": 8,
                     "status": "hostile",
-                    "xp": 15,
-                    "dialogue_prompt": "\u00bfCree que un simple detective puede atreverse a cuestionar mi autoridad? Esta ciudad es m\u00eda, y el legado de mi familia ser\u00e1 eterno. Olv\u00eddese de investigar, muchacho. No encontrar\u00e1 nada que pueda usar. A menos que\u2026 bueno, a menos que est\u00e9 dispuesto a cooperar. El poder, muchacho, es un juego peligroso, pero con las cartas correctas, uno siempre gana."
+                    "xp": 35,
+                    "dialogue_prompt": "Flaco te mira con una sonrisa falsa, mientras te ofrece una copa de vino importado. 'Querido amigo, la pol\u00edtica es un juego peligroso. A veces, es necesario tomar decisiones dif\u00edciles, \u00bfno crees? Digamos... decisiones que beneficien a todos, por supuesto... especialmente a aquellos que saben apreciar las verdaderas oportunidades.'"
                 }
             },
-            "items": {}
+            "items": {
+                "el_blsamo_de_la_va_apia_402": {
+                    "id": "el_blsamo_de_la_va_apia_402",
+                    "world_id": "roma_republicana",
+                    "template_id": "HEALING_ITEM_SMALL",
+                    "name": "El B\u00e1lsamo de la V\u00eda Apia",
+                    "description": "Un peque\u00f1o frasco de cer\u00e1mica, sellado con cera de abeja de la mejor calidad. Contiene una pomada verdosa y ligeramente arom\u00e1tica, elaborada con hierbas secretas recolectadas en la V\u00eda Apia y maceradas en vino Falerno a\u00f1ejo. Al aplicarlo sobre heridas y contusiones, el b\u00e1lsamo acelera la curaci\u00f3n, pero su verdadero poder radica en su capacidad para disimular el dolor, calmando los nervios y permitiendo al usuario mantener la compostura bajo interrogatorio o en medio de una conspiraci\u00f3n pol\u00edtica.",
+                    "type": "healing",
+                    "damage_base": null,
+                    "healing_amount": 25,
+                    "properties": [
+                        "consumable",
+                        "instant"
+                    ]
+                },
+                "lorica_segmentata_del_centurin_sombro_949": {
+                    "id": "lorica_segmentata_del_centurin_sombro_949",
+                    "world_id": "roma_republicana",
+                    "template_id": "ARMOR_HEAVY_T2",
+                    "name": "Lorica Segmentata del Centuri\u00f3n Sombr\u00edo",
+                    "description": "Una versi\u00f3n modificada de la lorica segmentata est\u00e1ndar, reforzada con acero endurecido y placas internas de mithril falsificado para mayor protecci\u00f3n y silencio. Sus placas han sido oscurecidas y envejecidas con una soluci\u00f3n secreta, un detalle que solo los esp\u00edas de \u00e9lite reconocen. Incluye un sistema de hebillas y correas silenciadas, y un forro de lana te\u00f1ida de negro para absorber la sudoraci\u00f3n. Parece una armadura m\u00e1s, pero esconde secretos: peque\u00f1as ranuras para guardar microfilmes y un peque\u00f1o bolsillo secreto en el peto, perfecto para un mensaje urgente a la sombra del Senado.",
+                    "type": "armor",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "wearable",
+                        "torso",
+                        "heavy_armor",
+                        "requires_strength"
+                    ]
+                },
+                "clavis_sub_rosa_376": {
+                    "id": "clavis_sub_rosa_376",
+                    "world_id": "roma_republicana",
+                    "template_id": "KEY_ITEM_GENERIC",
+                    "name": "CLAVIS_SUB_ROSA",
+                    "description": "Una llave forjada en plata, con el emblema de un escorpi\u00f3n grabado discretamente en el guardamanos. A primera vista, parece una llave ordinaria para una casa adinerada. Sin embargo, abre la puerta del 'Templo de la Sombra', una red clandestina de informantes y esp\u00edas dentro de Roma, y sirve como cifrado para comunicaciones encriptadas, requiriendo una lectura espec\u00edfica bajo la luz de la luna llena para descifrar los mensajes ocultos.",
+                    "type": "key",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "unlocks_door"
+                    ]
+                },
+                "togha_sucia_de_cicern_675": {
+                    "id": "togha_sucia_de_cicern_675",
+                    "world_id": "roma_republicana",
+                    "template_id": "JUNK_ITEM_INTERESTING",
+                    "name": "Togha Sucia de Cicer\u00f3n",
+                    "description": "Un trozo descolorido de toga, manchado con lo que parecen ser restos de vino y... algo m\u00e1s. La etiqueta cosida a mano, ahora casi ilegible, sugiere que perteneci\u00f3 a un joven Cicer\u00f3n. Un bolsillo secreto, cosido con hilos de seda, a\u00fan contiene migajas de pan y un peque\u00f1o trozo de pergamino con una cifra incompleta: '13...'. Probablemente fue abandonada apresuradamente durante una cena con esp\u00edas, o quiz\u00e1s, algo peor.",
+                    "type": "junk",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "lore_snippet",
+                        "interesting"
+                    ]
+                },
+                "stylus_de_la_sombra_969": {
+                    "id": "stylus_de_la_sombra_969",
+                    "world_id": "roma_republicana",
+                    "template_id": "TOOL_UTILITY",
+                    "name": "Stylus de la Sombra",
+                    "description": "Un stylus aparentemente ordinario, fabricado con hueso pulido y una punta de obsidiana fin\u00edsima, que oculta un compartimento secreto para microfilmes y tintas invisibles. Permite cifrar mensajes con el 'Scriptum Obscurum', una t\u00e9cnica sutil de caligraf\u00eda en tinta invisible revelable solo bajo luz ultravioleta, y transportar informaci\u00f3n clave sin levantar sospechas. Un arma discreta en manos de un agente en la sombra, ideal para comunicaciones clandestinas en el bullicio de Roma.",
+                    "type": "tool",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "utility",
+                        "interactable"
+                    ]
+                }
+            }
         },
         "node_1_1": {
             "id": "node_1_1",
-            "world_id": "la_ciudad_onice",
-            "name": "La Caja de Luces Rotas",
-            "description": "En este cub\u00edculo exiguo, iluminado por farolas desvencijadas y un ne\u00f3n parpadeante que goteaba desde el techo, el tiempo se estancaba como el agua sucia en las alcantarillas. El olor a tabaco rancio y esperanza perdida se aferraba a las paredes, testigos mudos de confesiones y traiciones.",
+            "world_id": "roma_republicana",
+            "name": "El Lar Secreto de las Vestales",
+            "description": "Un aposento en penumbra, perfumado con incienso y mirra, donde d\u00e9biles rayos de sol filtrados por cortinas de lino revelan delicados mosaicos y secretos susurrados. El eco de rezos y conspiraciones resuena en cada esquina, latente como un peligroso secreto por descubrir.",
             "connections": {
-                "north": "node_1_0"
+                "north": "node_1_0",
+                "south": "node_1_2"
             },
-            "initial_npcs": [
-                "ricardo_carrasco"
-            ],
+            "initial_npcs": [],
             "initial_items": [],
-            "npcs": {
-                "ricardo_carrasco": {
-                    "id": "ricardo_carrasco",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Ricardo Carrasco",
-                    "description": "Alcalde de la ciudad, rostro p\u00e9treo y mirada fr\u00eda. Siempre impecable, con trajes caros que contrastan con la mugre de las calles. Su cabello, cuidadosamente peinado, esconde una calvicie que teme mostrar. Sus manos, delgadas y nerviosas, delatan su estr\u00e9s constante.",
-                    "hp": 35,
-                    "attack": 5,
-                    "status": "hostile",
-                    "xp": 15,
-                    "dialogue_prompt": "\u00bfCree que un simple detective puede atreverse a cuestionar mi autoridad? Esta ciudad es m\u00eda, y el legado de mi familia ser\u00e1 eterno. Olv\u00eddese de investigar, muchacho. No encontrar\u00e1 nada que pueda usar. A menos que\u2026 bueno, a menos que est\u00e9 dispuesto a cooperar. El poder, muchacho, es un juego peligroso, pero con las cartas correctas, uno siempre gana."
-                }
-            },
+            "npcs": {},
             "items": {}
         },
         "node_2_1": {
             "id": "node_2_1",
-            "world_id": "la_ciudad_onice",
-            "name": "El Apartamento del Reloj Descompuesto",
-            "description": "Las persianas de plomo filtran la luz, revelando un interior anegado en sombras y el silencio solo es roto por el goteo constante de una fuga invisible.  En el centro, la silueta fantasmal de un reloj de pared detenido en el tiempo, reflejando los secretos de un alma extraviada.",
+            "world_id": "roma_republicana",
+            "name": "La C\u00e1mara del Eco de las Arenas",
+            "description": "Un aposento austero, iluminado por la luz filtrada de la arena que lo rodea; cada suspiro, cada confidencia, resonando eternamente en sus muros de piedra. El aroma a incienso y cuero curtido impregna el aire, anticipando la llegada de secretos sepultados bajo el sol romano.",
             "connections": {
-                "east": "node_3_1",
-                "north": "node_2_0",
-                "south": "node_2_2"
+                "north": "node_2_0"
             },
-            "initial_npcs": [
-                "ricardo_carrasco"
+            "initial_npcs": [],
+            "initial_items": [
+                "dardos_de_la_calumnia_566"
             ],
-            "initial_items": [],
-            "npcs": {
-                "ricardo_carrasco": {
-                    "id": "ricardo_carrasco",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Ricardo Carrasco",
-                    "description": "Alcalde de la ciudad, rostro p\u00e9treo y mirada fr\u00eda. Siempre impecable, con trajes caros que contrastan con la mugre de las calles. Su cabello, cuidadosamente peinado, esconde una calvicie que teme mostrar. Sus manos, delgadas y nerviosas, delatan su estr\u00e9s constante.",
-                    "hp": 35,
-                    "attack": 5,
-                    "status": "hostile",
-                    "xp": 15,
-                    "dialogue_prompt": "\u00bfCree que un simple detective puede atreverse a cuestionar mi autoridad? Esta ciudad es m\u00eda, y el legado de mi familia ser\u00e1 eterno. Olv\u00eddese de investigar, muchacho. No encontrar\u00e1 nada que pueda usar. A menos que\u2026 bueno, a menos que est\u00e9 dispuesto a cooperar. El poder, muchacho, es un juego peligroso, pero con las cartas correctas, uno siempre gana."
+            "npcs": {},
+            "items": {
+                "dardos_de_la_calumnia_566": {
+                    "id": "dardos_de_la_calumnia_566",
+                    "world_id": "roma_republicana",
+                    "template_id": "WEAPON_RANGED_SMALL_T1",
+                    "name": "Dardos de la Calumnia",
+                    "description": "Un juego de seis peque\u00f1os dardos recubiertos de una sustancia paralizante y disimulados en un elegante estuche de hueso de marfil. Cada dardo, finamente tallado con la efigie de un senador en desgracia, es lanzado con la precisi\u00f3n de un gladiador experimentado. Se rumorea que fueron creados por un gremio secreto de informadores, los 'Viperes', para silenciar a los enemigos de sus clientes con una dosis letal de veneno y descr\u00e9dito.",
+                    "type": "weapon",
+                    "damage_base": 6,
+                    "healing_amount": null,
+                    "properties": [
+                        "ranged",
+                        "light",
+                        "tier1"
+                    ]
                 }
-            },
-            "items": {}
-        },
-        "node_3_1": {
-            "id": "node_3_1",
-            "world_id": "la_ciudad_onice",
-            "name": "El Cuarto de la Lluvia de Ne\u00f3n",
-            "description": "Un habit\u00e1culo min\u00fasculo, iluminado por el parpadeo err\u00e1tico de un letrero de ne\u00f3n exterior que proyecta destellos verdes y rosas sobre el escritorio encharcado. El aire, denso con el olor a cigarrillo y melancol\u00eda, vibra con el constante goteo de la lluvia contra el cristal empa\u00f1ado.",
-            "connections": {
-                "west": "node_2_1",
-                "east": "node_4_1",
-                "north": "node_3_0"
-            },
-            "initial_npcs": [
-                "ricardo_carrasco"
-            ],
-            "initial_items": [],
-            "npcs": {
-                "ricardo_carrasco": {
-                    "id": "ricardo_carrasco",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Ricardo Carrasco",
-                    "description": "Alcalde de la ciudad, rostro p\u00e9treo y mirada fr\u00eda. Siempre impecable, con trajes caros que contrastan con la mugre de las calles. Su cabello, cuidadosamente peinado, esconde una calvicie que teme mostrar. Sus manos, delgadas y nerviosas, delatan su estr\u00e9s constante.",
-                    "hp": 35,
-                    "attack": 5,
-                    "status": "hostile",
-                    "xp": 15,
-                    "dialogue_prompt": "\u00bfCree que un simple detective puede atreverse a cuestionar mi autoridad? Esta ciudad es m\u00eda, y el legado de mi familia ser\u00e1 eterno. Olv\u00eddese de investigar, muchacho. No encontrar\u00e1 nada que pueda usar. A menos que\u2026 bueno, a menos que est\u00e9 dispuesto a cooperar. El poder, muchacho, es un juego peligroso, pero con las cartas correctas, uno siempre gana."
-                }
-            },
-            "items": {}
-        },
-        "node_4_1": {
-            "id": "node_4_1",
-            "world_id": "la_ciudad_onice",
-            "name": "La C\u00e1mara de los Espejos Empa\u00f1ados",
-            "description": "Un antro circular, repleto de espejos antiguos que reflejan una y otra vez la ciudad empapada, difuminando la realidad en un laberinto de sombras y mentiras. El olor a tabaco rancio y perfume barato flota, pesado, como la niebla que sube del pavimento mojado.",
-            "connections": {
-                "north": "node_4_0",
-                "west": "node_3_1"
-            },
-            "initial_npcs": [
-                "ricardo_carrasco"
-            ],
-            "initial_items": [],
-            "npcs": {
-                "ricardo_carrasco": {
-                    "id": "ricardo_carrasco",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Ricardo Carrasco",
-                    "description": "Alcalde de la ciudad, rostro p\u00e9treo y mirada fr\u00eda. Siempre impecable, con trajes caros que contrastan con la mugre de las calles. Su cabello, cuidadosamente peinado, esconde una calvicie que teme mostrar. Sus manos, delgadas y nerviosas, delatan su estr\u00e9s constante.",
-                    "hp": 35,
-                    "attack": 5,
-                    "status": "hostile",
-                    "xp": 15,
-                    "dialogue_prompt": "\u00bfCree que un simple detective puede atreverse a cuestionar mi autoridad? Esta ciudad es m\u00eda, y el legado de mi familia ser\u00e1 eterno. Olv\u00eddese de investigar, muchacho. No encontrar\u00e1 nada que pueda usar. A menos que\u2026 bueno, a menos que est\u00e9 dispuesto a cooperar. El poder, muchacho, es un juego peligroso, pero con las cartas correctas, uno siempre gana."
-                }
-            },
-            "items": {}
+            }
         },
         "node_0_2": {
             "id": "node_0_2",
-            "world_id": "la_ciudad_onice",
-            "name": "El Estanque de las Sombras Plateadas",
-            "description": "Un despacho anegado por la penumbra y el reflejo perpetuo de la lluvia en los cristales, donde el olor a tabaco rancio se mezcla con la pesadez de los secretos y la corrupci\u00f3n, atascada en cada esquina. La luz de los neones, te\u00f1ida de un tono plomizo, baila sobre un escritorio repleto de expedientes sin resolver, ahogando cualquier esperanza en un oc\u00e9ano de cinismo.",
+            "world_id": "roma_republicana",
+            "name": "La Oquedad de los Escribas",
+            "description": "Un estrecho aposento, ahogado en el olor a papiro y tinta fresca, donde la luz de las l\u00e1mparas danzaba sobre rostros marcados por el secreto. Aqu\u00ed, las palabras eran armas y cada pergamino, un posible pu\u00f1al en la intrincada red de la Roma imperial.",
             "connections": {
                 "south": "node_0_3",
-                "east": "node_1_2"
+                "north": "node_0_1"
             },
-            "initial_npcs": [
-                "el_maestro_torres"
+            "initial_npcs": [],
+            "initial_items": [
+                "sica_de_la_calumnia_871"
             ],
-            "initial_items": [],
-            "npcs": {
-                "el_maestro_torres": {
-                    "id": "el_maestro_torres",
-                    "world_id": "la_ciudad_onice",
-                    "name": "El Maestro Torres",
-                    "description": "Un hombre corpulento, con las manos marcadas por grasa y metal, y una cicatriz que le atraviesa el ojo izquierdo. Siempre viste un overol manchado y un sombrero fedora desgastado. Detr\u00e1s de su fachada ruda, esconde un intelecto prodigioso y una lealtad inquebrantable (si le ganas su confianza).",
-                    "hp": 65,
-                    "attack": 12,
-                    "status": "neutral",
-                    "xp": 35,
-                    "dialogue_prompt": "\u00bfAs\u00ed que necesitas que algo se mueva, eh? Bueno, aqu\u00ed en este antro he visto y arreglado cosas que ni te imaginas. Dime, \u00bfqu\u00e9 te trae por estos lares? \u00bfUn coche que no arranca? \u00bfO un problema m\u00e1s... *complicado*? Eso s\u00ed, el tiempo es oro, y mi tiempo, ya sabes, vale un poco m\u00e1s."
+            "npcs": {},
+            "items": {
+                "sica_de_la_calumnia_871": {
+                    "id": "sica_de_la_calumnia_871",
+                    "world_id": "roma_republicana",
+                    "template_id": "WEAPON_MELEE_SMALL_T1",
+                    "name": "Sica de la Calumnia",
+                    "description": "Una sica pulida con esmero, tan afilada como los rumores que corren por las tabernas. El pomo, de obsidiana negra, oculta un peque\u00f1o compartimento roscado, lo suficientemente grande como para contener un micro-documento con las pruebas m\u00e1s jugosas. Usada por agentes dobles y chivatos, su filo silencioso corta gargantas y verdades con igual eficiencia, dejando tras de s\u00ed solo el eco de la intriga senatorial.",
+                    "type": "weapon",
+                    "damage_base": 5,
+                    "healing_amount": null,
+                    "properties": [
+                        "melee",
+                        "light",
+                        "tier1"
+                    ]
                 }
-            },
-            "items": {}
+            }
         },
         "node_1_2": {
             "id": "node_1_2",
-            "world_id": "la_ciudad_onice",
-            "name": "El Palomar de las Cigarreras",
-            "description": "Un antro l\u00fagubre donde el olor a tabaco rancio se mezcla con la humedad de las calles. Las sombras danzan en las paredes de estuco agrietado, cont\u00e1ndole a cada cliente los secretos que la ciudad prefiere enterrar.",
+            "world_id": "roma_republicana",
+            "name": "El Nido de la V\u00edbora Pintada",
+            "description": "Una alcoba austera, iluminada por la parca luz de una antorcha humeante, donde los secretos del Imperio se retuercen como serpientes, grabados en pergaminos y en las miradas desconfiadas de sus ocupantes. El aroma a incienso y a miedo espeso se mezcla con el recuerdo lejano del mar.",
             "connections": {
-                "south": "node_1_3",
-                "east": "node_2_2",
-                "west": "node_0_2"
+                "north": "node_1_1",
+                "east": "node_2_2"
             },
-            "initial_npcs": [
-                "seraphina_noir"
-            ],
+            "initial_npcs": [],
             "initial_items": [],
-            "npcs": {
-                "seraphina_noir": {
-                    "id": "seraphina_noir",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Seraphina Noir",
-                    "description": "Due\u00f1a del club nocturno 'La Sirena de Acero'. Una mujer de belleza g\u00e9lida, con labios pintados de un rojo sangre que contrastan con sus ojos color tormenta. Viste siempre con trajes de seda y terciopelo, ocultando una astucia mortal y una historia plagada de sombras.",
-                    "hp": 45,
-                    "attack": 12,
-                    "status": "hostile",
-                    "xp": 30,
-                    "dialogue_prompt": "\u00bfQu\u00e9 buscas, detective? Este club es un remanso de placeres\u2026 y de secretos. Si piensas que puedes husmear en mis asuntos sin consecuencias, te equivocas. El precio de la informaci\u00f3n, como el amor, puede ser muy alto\u2026 y a veces, mortal. Y, por cierto, no me gusta que me miren fijamente. Es un h\u00e1bito peligroso."
-                }
-            },
+            "npcs": {},
             "items": {}
         },
         "node_2_2": {
             "id": "node_2_2",
-            "world_id": "la_ciudad_onice",
-            "name": "El Coraz\u00f3n de N\u00edquel",
-            "description": "Un antro cavernoso, atiborrado de humo de cigarrillo y ecos de jazz f\u00fanebre, donde las sombras danzan al ritmo de la lluvia constante contra los ventanales empa\u00f1ados.  Las luces de ne\u00f3n, parpadeantes y gastadas, reflejan una tristeza met\u00e1lica sobre las mesas de caoba barnizadas.",
+            "world_id": "roma_republicana",
+            "name": "El Triclinio de los Secretos",
+            "description": "En el silencio opresivo de las paredes doradas, los comensales se deleitan con manjares y palabras envenenadas. Las sombras de los patricios, reflejadas en el bronce pulido, ocultan conspiraciones m\u00e1s oscuras que el vino a\u00f1ejo que fluye.",
             "connections": {
                 "west": "node_1_2",
-                "north": "node_2_1",
                 "south": "node_2_3"
             },
-            "initial_npcs": [
-                "seraphina_noir"
-            ],
+            "initial_npcs": [],
             "initial_items": [],
-            "npcs": {
-                "seraphina_noir": {
-                    "id": "seraphina_noir",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Seraphina Noir",
-                    "description": "Due\u00f1a del club nocturno 'La Sirena de Acero'. Una mujer de belleza g\u00e9lida, con labios pintados de un rojo sangre que contrastan con sus ojos color tormenta. Viste siempre con trajes de seda y terciopelo, ocultando una astucia mortal y una historia plagada de sombras.",
-                    "hp": 45,
-                    "attack": 12,
-                    "status": "hostile",
-                    "xp": 30,
-                    "dialogue_prompt": "\u00bfQu\u00e9 buscas, detective? Este club es un remanso de placeres\u2026 y de secretos. Si piensas que puedes husmear en mis asuntos sin consecuencias, te equivocas. El precio de la informaci\u00f3n, como el amor, puede ser muy alto\u2026 y a veces, mortal. Y, por cierto, no me gusta que me miren fijamente. Es un h\u00e1bito peligroso."
-                }
-            },
-            "items": {}
-        },
-        "node_3_2": {
-            "id": "node_3_2",
-            "world_id": "la_ciudad_onice",
-            "name": "La Celda del Tel\u00e9grafo Fantasma",
-            "description": "Un espacio m\u00ednimo, ahogado en el olor a tinta y tabaco rancio, donde las paredes sudan el eco de mensajes olvidados y la lluvia golpea con furia el vidrio roto de una ventana alta. La \u00fanica compa\u00f1\u00eda son los fantasmas de los telegramas que murmuran en el silencio nocturno, ahogando el aullido del viento.",
-            "connections": {
-                "south": "node_3_3"
-            },
-            "initial_npcs": [
-                "seraphina_noir"
-            ],
-            "initial_items": [],
-            "npcs": {
-                "seraphina_noir": {
-                    "id": "seraphina_noir",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Seraphina Noir",
-                    "description": "Due\u00f1a del club nocturno 'La Sirena de Acero'. Una mujer de belleza g\u00e9lida, con labios pintados de un rojo sangre que contrastan con sus ojos color tormenta. Viste siempre con trajes de seda y terciopelo, ocultando una astucia mortal y una historia plagada de sombras.",
-                    "hp": 45,
-                    "attack": 12,
-                    "status": "hostile",
-                    "xp": 30,
-                    "dialogue_prompt": "\u00bfQu\u00e9 buscas, detective? Este club es un remanso de placeres\u2026 y de secretos. Si piensas que puedes husmear en mis asuntos sin consecuencias, te equivocas. El precio de la informaci\u00f3n, como el amor, puede ser muy alto\u2026 y a veces, mortal. Y, por cierto, no me gusta que me miren fijamente. Es un h\u00e1bito peligroso."
-                }
-            },
-            "items": {}
-        },
-        "node_4_2": {
-            "id": "node_4_2",
-            "world_id": "la_ciudad_onice",
-            "name": "El Nido del Murci\u00e9lago Oxidado",
-            "description": "Un antro asfixiante, empapado del hedor a ginebra barata y ambici\u00f3n desmedida, donde las sombras bailan al son de un gram\u00f3fono en ruinas y el \u00fanico sol es el reflejo apagado de una vidriera agrietada. Las paredes sudan secretos, cada ladrillo un testigo mudo de la podredumbre que corroe la ciudad.",
-            "connections": {
-                "south": "node_4_3"
-            },
-            "initial_npcs": [
-                "seraphina_noir"
-            ],
-            "initial_items": [],
-            "npcs": {
-                "seraphina_noir": {
-                    "id": "seraphina_noir",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Seraphina Noir",
-                    "description": "Due\u00f1a del club nocturno 'La Sirena de Acero'. Una mujer de belleza g\u00e9lida, con labios pintados de un rojo sangre que contrastan con sus ojos color tormenta. Viste siempre con trajes de seda y terciopelo, ocultando una astucia mortal y una historia plagada de sombras.",
-                    "hp": 45,
-                    "attack": 12,
-                    "status": "hostile",
-                    "xp": 30,
-                    "dialogue_prompt": "\u00bfQu\u00e9 buscas, detective? Este club es un remanso de placeres\u2026 y de secretos. Si piensas que puedes husmear en mis asuntos sin consecuencias, te equivocas. El precio de la informaci\u00f3n, como el amor, puede ser muy alto\u2026 y a veces, mortal. Y, por cierto, no me gusta que me miren fijamente. Es un h\u00e1bito peligroso."
-                }
-            },
+            "npcs": {},
             "items": {}
         },
         "node_0_3": {
             "id": "node_0_3",
-            "world_id": "la_ciudad_onice",
-            "name": "El Jard\u00edn de las Cenizas Mojadas",
-            "description": "Un invernadero abandonado, donde el vidrio roto atrapa la luz mortecina de la ciudad, reflejando un caos de vegetaci\u00f3n descompuesta y sombras que se retuercen con cada trueno lejano. El aroma a tierra h\u00fameda y tabaco rancio impregna el aire, un recordatorio constante de la putrefacci\u00f3n que se extiende por todo.",
+            "world_id": "roma_republicana",
+            "name": "La Celda del Silencio Pintado",
+            "description": "Un diminuto habit\u00e1culo con frescos descoloridos que representan dioses ciegos y rostros borrados, un lugar donde la luz del sol se filtra como una acusaci\u00f3n. Aqu\u00ed, el silencio es una red que atrapa tanto al esp\u00eda como a su presa.",
             "connections": {
                 "north": "node_0_2",
-                "east": "node_1_3",
-                "south": "node_0_4"
+                "east": "node_1_3"
             },
             "initial_npcs": [
-                "seraphina_noir"
+                "flavia_secretum"
             ],
-            "initial_items": [],
+            "initial_items": [
+                "dolabrio_del_silencio_490"
+            ],
             "npcs": {
-                "seraphina_noir": {
-                    "id": "seraphina_noir",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Seraphina Noir",
-                    "description": "Due\u00f1a del club nocturno 'La Sirena de Acero'. Una mujer de belleza g\u00e9lida, con labios pintados de un rojo sangre que contrastan con sus ojos color tormenta. Viste siempre con trajes de seda y terciopelo, ocultando una astucia mortal y una historia plagada de sombras.",
+                "flavia_secretum": {
+                    "id": "flavia_secretum",
+                    "world_id": "roma_republicana",
+                    "name": "Flavia Aurelia",
+                    "description": "Una vestal de mediana edad, con el rostro marcado por a\u00f1os de servicio y una mirada que parece ver a trav\u00e9s de las mentiras. Su h\u00e1bito es impecable, pero a veces se le escapan gestos nerviosos, como si la presi\u00f3n del secreto fuera insoportable. Siempre lleva consigo un peque\u00f1o amuleto de obsidiana negra.",
                     "hp": 45,
-                    "attack": 12,
-                    "status": "hostile",
-                    "xp": 30,
-                    "dialogue_prompt": "\u00bfQu\u00e9 buscas, detective? Este club es un remanso de placeres\u2026 y de secretos. Si piensas que puedes husmear en mis asuntos sin consecuencias, te equivocas. El precio de la informaci\u00f3n, como el amor, puede ser muy alto\u2026 y a veces, mortal. Y, por cierto, no me gusta que me miren fijamente. Es un h\u00e1bito peligroso."
+                    "attack": 5,
+                    "status": "neutral",
+                    "xp": 25,
+                    "dialogue_prompt": "\u201c(Suspirando, mientras se ajusta el velo) Los dioses son silenciosos\u2026 pero la verdad, esa es otra historia. \u00bfQu\u00e9 buscas, muchacho? No te f\u00edes de lo que ves en la superficie. El Senado, las legiones\u2026 todo es un teatro. El verdadero poder reside en lo invisible. Y yo\u2026 yo conozco el teatro secreto.\u201d"
                 }
             },
-            "items": {}
+            "items": {
+                "dolabrio_del_silencio_490": {
+                    "id": "dolabrio_del_silencio_490",
+                    "world_id": "roma_republicana",
+                    "template_id": "WEAPON_MELEE_MEDIUM_T1",
+                    "name": "Dolabrio del Silencio",
+                    "description": "Un afilado dolabra, aparentemente com\u00fan, pero meticulosamente modificado. Su filo ha sido templado con un proceso secreto que le otorga una capacidad inusual para cortar tejidos blandos con m\u00ednima resistencia, silenciando a las v\u00edctimas casi por completo.  Utilizado por agentes de la *Custodia* para eliminar enemigos pol\u00edticos, su hoja est\u00e1 finamente grabada con s\u00edmbolos que solo los iniciados reconocen, indicadores del rango y el objetivo del asesinato.",
+                    "type": "weapon",
+                    "damage_base": 8,
+                    "healing_amount": null,
+                    "properties": [
+                        "melee",
+                        "tier1"
+                    ]
+                }
+            }
         },
         "node_1_3": {
             "id": "node_1_3",
-            "world_id": "la_ciudad_onice",
-            "name": "La Guarida del Fantasma Tinta",
-            "description": "Un tugurio sumido en penumbra, con paredes cubiertas de posters descoloridos y el olor persistente de cigarrillos empapados y alcohol barato. El \u00fanico sonido, el goteo constante del agua que se filtra a trav\u00e9s de un techo agrietado, como las l\u00e1grimas de una ciudad muerta.",
+            "world_id": "roma_republicana",
+            "name": "El Ojo de J\u00fapiter Velado",
+            "description": "Un despacho discreto en la sombra del Capitolio, donde la luz del d\u00eda se filtra a trav\u00e9s de vidrios emplomados, distorsionando la realidad en un mosaico de colores fr\u00edos. El aire, cargado de incienso y presagios, susurra promesas de poder y amenazas de traici\u00f3n a cada respiraci\u00f3n.",
             "connections": {
-                "north": "node_1_2",
-                "west": "node_0_3",
-                "south": "node_1_4"
+                "east": "node_2_3",
+                "west": "node_0_3"
             },
             "initial_npcs": [
-                "seraphina_noir"
+                "marcus_valerius_primus"
             ],
-            "initial_items": [],
+            "initial_items": [
+                "sibilina_de_las_calles_(weapon_ranged_heavy_t2)_778",
+                "lorica_argentea_del_tribuno_327"
+            ],
             "npcs": {
-                "seraphina_noir": {
-                    "id": "seraphina_noir",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Seraphina Noir",
-                    "description": "Due\u00f1a del club nocturno 'La Sirena de Acero'. Una mujer de belleza g\u00e9lida, con labios pintados de un rojo sangre que contrastan con sus ojos color tormenta. Viste siempre con trajes de seda y terciopelo, ocultando una astucia mortal y una historia plagada de sombras.",
-                    "hp": 45,
-                    "attack": 12,
-                    "status": "hostile",
-                    "xp": 30,
-                    "dialogue_prompt": "\u00bfQu\u00e9 buscas, detective? Este club es un remanso de placeres\u2026 y de secretos. Si piensas que puedes husmear en mis asuntos sin consecuencias, te equivocas. El precio de la informaci\u00f3n, como el amor, puede ser muy alto\u2026 y a veces, mortal. Y, por cierto, no me gusta que me miren fijamente. Es un h\u00e1bito peligroso."
+                "marcus_valerius_primus": {
+                    "id": "marcus_valerius_primus",
+                    "world_id": "roma_republicana",
+                    "name": "Marco Valerio Primo",
+                    "description": "Un ex-centuri\u00f3n de la Legio X Gemina, condecorado en m\u00faltiples campa\u00f1as. Su rostro est\u00e1 marcado por cicatrices de batallas y el sol. A\u00fan viste ropas sencillas, pero siempre impecables, adornadas con insignias de su pasado. Se mueve con la autoridad de un hombre acostumbrado a mandar y la mirada de quien ha visto demasiado.",
+                    "hp": 65,
+                    "attack": 15,
+                    "status": "friendly",
+                    "xp": 35,
+                    "dialogue_prompt": "Si necesitas algo, habla. He visto morir a hombres por mucho menos que lo que te preocupa a ti. Pero no te f\u00edes de nadie, ni siquiera de m\u00ed. La lealtad es una espada de doble filo, muchacho. A veces, el mejor filo es el que se rompe antes de traicionar a la causa."
                 }
             },
-            "items": {}
+            "items": {
+                "sibilina_de_las_calles_(weapon_ranged_heavy_t2)_778": {
+                    "id": "sibilina_de_las_calles_(weapon_ranged_heavy_t2)_778",
+                    "world_id": "roma_republicana",
+                    "template_id": "WEAPON_RANGED_HEAVY_T2",
+                    "name": "Sibilina de las Calles (WEAPON_RANGED_HEAVY_T2)",
+                    "description": "Un diminuto dardo, fabricado con plomo contaminado y recubierto con un veneno de lenta acci\u00f3n, extra\u00eddo de la mandr\u00e1gora. La Sibilina, dise\u00f1ada para la clandestinidad, se dispara desde un sofisticado anillo de oro romano, que imita la forma de un simple sello. Imperceptible a simple vista, el veneno provoca par\u00e1lisis gradual y, finalmente, la muerte, dejando atr\u00e1s una sonrisa congelada en el rostro de la v\u00edctima, un siniestro gui\u00f1o a la profec\u00eda.",
+                    "type": "weapon",
+                    "damage_base": 15,
+                    "healing_amount": null,
+                    "properties": [
+                        "ranged",
+                        "heavy",
+                        "two_handed",
+                        "tier2"
+                    ]
+                },
+                "lorica_argentea_del_tribuno_327": {
+                    "id": "lorica_argentea_del_tribuno_327",
+                    "world_id": "roma_republicana",
+                    "template_id": "ARMOR_LIGHT_T1",
+                    "name": "Lorica Argentea del Tribuno",
+                    "description": "Una lorica segmentata de dise\u00f1o sofisticado, forjada con placas de plata pulida. Los bordes est\u00e1n intrincadamente grabados con s\u00edmbolos de poder y discretos glifos que, se rumorea, contienen mensajes cifrados para la red de esp\u00edas del Senatus. Imperceptiblemente pesada, permite una agilidad asombrosa para un cuerpo cubierto. El Tribuno que la porta se convierte en una sombra plateada en el bullicio de Roma, un vigilante silencioso y letal en la lucha por el poder.",
+                    "type": "armor",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "wearable",
+                        "torso",
+                        "light_armor"
+                    ]
+                }
+            }
         },
         "node_2_3": {
             "id": "node_2_3",
-            "world_id": "la_ciudad_onice",
-            "name": "El Arc\u00f3n del Sepia",
-            "description": "Un cuarto opresivo, empapelado con fotos desva\u00eddas de rostros olvidados y ba\u00f1ados por la luz mortecina que se filtra a trav\u00e9s de una persiana rajada. El olor a tabaco rancio y humedad se mezcla con el eco silencioso de secretos enterrados en las sombras perpetuas.",
+            "world_id": "roma_republicana",
+            "name": "El Refugio de las Togas Manchadas",
+            "description": "Una estancia humilde, oculta tras una panader\u00eda, donde el aroma del pan reci\u00e9n hecho se mezcla con el rancio olor a tinta y a traici\u00f3n. La luz mortecina de una l\u00e1mpara de aceite ilumina rostros sombr\u00edos y acuerdos secretos firmados con sangre, o vino barato, que resulta indistinguible.",
             "connections": {
-                "east": "node_3_3",
-                "south": "node_2_4",
+                "west": "node_1_3",
                 "north": "node_2_2"
             },
-            "initial_npcs": [
-                "seraphina_noir"
-            ],
+            "initial_npcs": [],
             "initial_items": [],
-            "npcs": {
-                "seraphina_noir": {
-                    "id": "seraphina_noir",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Seraphina Noir",
-                    "description": "Due\u00f1a del club nocturno 'La Sirena de Acero'. Una mujer de belleza g\u00e9lida, con labios pintados de un rojo sangre que contrastan con sus ojos color tormenta. Viste siempre con trajes de seda y terciopelo, ocultando una astucia mortal y una historia plagada de sombras.",
-                    "hp": 45,
-                    "attack": 12,
-                    "status": "hostile",
-                    "xp": 30,
-                    "dialogue_prompt": "\u00bfQu\u00e9 buscas, detective? Este club es un remanso de placeres\u2026 y de secretos. Si piensas que puedes husmear en mis asuntos sin consecuencias, te equivocas. El precio de la informaci\u00f3n, como el amor, puede ser muy alto\u2026 y a veces, mortal. Y, por cierto, no me gusta que me miren fijamente. Es un h\u00e1bito peligroso."
-                }
-            },
-            "items": {}
-        },
-        "node_3_3": {
-            "id": "node_3_3",
-            "world_id": "la_ciudad_onice",
-            "name": "El Observatorio del \u00c1mbar Ca\u00eddo",
-            "description": "Un cuarto circular, empapelado con mapas celestes descoloridos y salpicado por el goteo constante del techo. La \u00fanica luz proviene de una l\u00e1mpara de cristal \u00e1mbar, que proyecta sombras danzantes sobre un escritorio abarrotado de documentos y ceniceros rebosantes.",
-            "connections": {
-                "west": "node_2_3",
-                "east": "node_4_3",
-                "north": "node_3_2"
-            },
-            "initial_npcs": [
-                "ricardo_carrasco"
-            ],
-            "initial_items": [],
-            "npcs": {
-                "ricardo_carrasco": {
-                    "id": "ricardo_carrasco",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Ricardo Carrasco",
-                    "description": "Alcalde de la ciudad, rostro p\u00e9treo y mirada fr\u00eda. Siempre impecable, con trajes caros que contrastan con la mugre de las calles. Su cabello, cuidadosamente peinado, esconde una calvicie que teme mostrar. Sus manos, delgadas y nerviosas, delatan su estr\u00e9s constante.",
-                    "hp": 35,
-                    "attack": 5,
-                    "status": "hostile",
-                    "xp": 15,
-                    "dialogue_prompt": "\u00bfCree que un simple detective puede atreverse a cuestionar mi autoridad? Esta ciudad es m\u00eda, y el legado de mi familia ser\u00e1 eterno. Olv\u00eddese de investigar, muchacho. No encontrar\u00e1 nada que pueda usar. A menos que\u2026 bueno, a menos que est\u00e9 dispuesto a cooperar. El poder, muchacho, es un juego peligroso, pero con las cartas correctas, uno siempre gana."
-                }
-            },
-            "items": {}
-        },
-        "node_4_3": {
-            "id": "node_4_3",
-            "world_id": "la_ciudad_onice",
-            "name": "El Foso de las M\u00e1scaras Descosidas",
-            "description": "Un tugurio en la planta baja, con paredes de ladrillo mugriento y un olor a alcohol barato y desesperanza. La luz, filtrada a trav\u00e9s de cortinas rasgadas, revela rostros sombr\u00edos y miradas furtivas, todos escondiendo algo en este agujero de la ciudad.",
-            "connections": {
-                "west": "node_3_3",
-                "north": "node_4_2"
-            },
-            "initial_npcs": [
-                "dr_silas_mercer"
-            ],
-            "initial_items": [],
-            "npcs": {
-                "dr_silas_mercer": {
-                    "id": "dr_silas_mercer",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Dr. Silas Mercer",
-                    "description": "Un cient\u00edfico demacrado con ojos inyectados en sangre y un abrigo ra\u00eddo de tweed que parece absorber la humedad del ambiente. Sus manos, manchadas de tinta y productos qu\u00edmicos, tiemblan ligeramente mientras manipula sus inventos, ocultos en las sombras de un club de jazz decadente.",
-                    "hp": 35,
-                    "attack": 5,
-                    "status": "neutral",
-                    "xp": 20,
-                    "dialogue_prompt": "Cree usted que la lluvia, detective, es solo agua... o una forma sutil de borrar la memoria? La memoria es un lastre, \u00bfsabe? Especialmente en esta ciudad podrida. Le ofrezco algo m\u00e1s que respuestas... le ofrezco la posibilidad de *olvido*. Pero el precio... ese es un secreto que solo el tiempo revelar\u00e1. Preg\u00fanteme sobre el 'Or\u00e1culo', detective. Quiz\u00e1s entonces, entienda el juego que estamos jugando."
-                }
-            },
-            "items": {}
-        },
-        "node_0_4": {
-            "id": "node_0_4",
-            "world_id": "la_ciudad_onice",
-            "name": "El Altar de la Niebla Fr\u00eda",
-            "description": "Un cuarto sin ventanas, donde la \u00fanica luz proviene de faroles callejeros que se filtran por las rendijas de la puerta, pintando sombras danzantes sobre el mobiliario mohoso. El olor a lluvia y tabaco rancio se mezcla con la promesa, jam\u00e1s cumplida, de una verdad que se esconde entre los cristales rotos de un espejo empa\u00f1ado.",
-            "connections": {
-                "east": "node_1_4",
-                "north": "node_0_3"
-            },
-            "initial_npcs": [
-                "ricardo_carrasco"
-            ],
-            "initial_items": [],
-            "npcs": {
-                "ricardo_carrasco": {
-                    "id": "ricardo_carrasco",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Ricardo Carrasco",
-                    "description": "Alcalde de la ciudad, rostro p\u00e9treo y mirada fr\u00eda. Siempre impecable, con trajes caros que contrastan con la mugre de las calles. Su cabello, cuidadosamente peinado, esconde una calvicie que teme mostrar. Sus manos, delgadas y nerviosas, delatan su estr\u00e9s constante.",
-                    "hp": 35,
-                    "attack": 5,
-                    "status": "hostile",
-                    "xp": 15,
-                    "dialogue_prompt": "\u00bfCree que un simple detective puede atreverse a cuestionar mi autoridad? Esta ciudad es m\u00eda, y el legado de mi familia ser\u00e1 eterno. Olv\u00eddese de investigar, muchacho. No encontrar\u00e1 nada que pueda usar. A menos que\u2026 bueno, a menos que est\u00e9 dispuesto a cooperar. El poder, muchacho, es un juego peligroso, pero con las cartas correctas, uno siempre gana."
-                }
-            },
-            "items": {}
-        },
-        "node_1_4": {
-            "id": "node_1_4",
-            "world_id": "la_ciudad_onice",
-            "name": "El Balc\u00f3n de las Sombras Diluidas",
-            "description": "Un balc\u00f3n voladizo sobre un laberinto de callejones empapados, donde la lluvia constante parece lavar la pintura de los sue\u00f1os. El acero y el cristal se confunden con la penumbra, reflejando una ciudad que se disuelve en la melancol\u00eda de cada amanecer.",
-            "connections": {
-                "west": "node_0_4",
-                "north": "node_1_3"
-            },
-            "initial_npcs": [
-                "seraphina_noir"
-            ],
-            "initial_items": [],
-            "npcs": {
-                "seraphina_noir": {
-                    "id": "seraphina_noir",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Seraphina Noir",
-                    "description": "Due\u00f1a del club nocturno 'La Sirena de Acero'. Una mujer de belleza g\u00e9lida, con labios pintados de un rojo sangre que contrastan con sus ojos color tormenta. Viste siempre con trajes de seda y terciopelo, ocultando una astucia mortal y una historia plagada de sombras.",
-                    "hp": 45,
-                    "attack": 12,
-                    "status": "hostile",
-                    "xp": 30,
-                    "dialogue_prompt": "\u00bfQu\u00e9 buscas, detective? Este club es un remanso de placeres\u2026 y de secretos. Si piensas que puedes husmear en mis asuntos sin consecuencias, te equivocas. El precio de la informaci\u00f3n, como el amor, puede ser muy alto\u2026 y a veces, mortal. Y, por cierto, no me gusta que me miren fijamente. Es un h\u00e1bito peligroso."
-                }
-            },
-            "items": {}
-        },
-        "node_2_4": {
-            "id": "node_2_4",
-            "world_id": "la_ciudad_onice",
-            "name": "El Gabinete del Espectro Aguado",
-            "description": "Un cuarto oscuro, empapelado con peri\u00f3dicos amarillentos y empapados por la lluvia que gotea incesante desde el techo. El aire, denso con el olor a tabaco y desesperanza, parece vibrar con los ecos de una tragedia no contada.",
-            "connections": {
-                "north": "node_2_3",
-                "east": "node_3_4"
-            },
-            "initial_npcs": [
-                "dr_silas_mercer"
-            ],
-            "initial_items": [],
-            "npcs": {
-                "dr_silas_mercer": {
-                    "id": "dr_silas_mercer",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Dr. Silas Mercer",
-                    "description": "Un cient\u00edfico demacrado con ojos inyectados en sangre y un abrigo ra\u00eddo de tweed que parece absorber la humedad del ambiente. Sus manos, manchadas de tinta y productos qu\u00edmicos, tiemblan ligeramente mientras manipula sus inventos, ocultos en las sombras de un club de jazz decadente.",
-                    "hp": 35,
-                    "attack": 5,
-                    "status": "neutral",
-                    "xp": 20,
-                    "dialogue_prompt": "Cree usted que la lluvia, detective, es solo agua... o una forma sutil de borrar la memoria? La memoria es un lastre, \u00bfsabe? Especialmente en esta ciudad podrida. Le ofrezco algo m\u00e1s que respuestas... le ofrezco la posibilidad de *olvido*. Pero el precio... ese es un secreto que solo el tiempo revelar\u00e1. Preg\u00fanteme sobre el 'Or\u00e1culo', detective. Quiz\u00e1s entonces, entienda el juego que estamos jugando."
-                }
-            },
-            "items": {}
-        },
-        "node_3_4": {
-            "id": "node_3_4",
-            "world_id": "la_ciudad_onice",
-            "name": "El Pozo del Aliento H\u00famedo",
-            "description": "Un tugurio subterr\u00e1neo, apenas iluminado por farolas anaranjadas que filtran la lluvia, donde el aire espeso huele a tabaco barato y desesperanza. Las paredes rezuman humedad, reflejando la soledad de los solitarios bebedores y los secretos de la noche.",
-            "connections": {
-                "east": "node_4_4",
-                "west": "node_2_4"
-            },
-            "initial_npcs": [
-                "dr_silas_mercer"
-            ],
-            "initial_items": [],
-            "npcs": {
-                "dr_silas_mercer": {
-                    "id": "dr_silas_mercer",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Dr. Silas Mercer",
-                    "description": "Un cient\u00edfico demacrado con ojos inyectados en sangre y un abrigo ra\u00eddo de tweed que parece absorber la humedad del ambiente. Sus manos, manchadas de tinta y productos qu\u00edmicos, tiemblan ligeramente mientras manipula sus inventos, ocultos en las sombras de un club de jazz decadente.",
-                    "hp": 35,
-                    "attack": 5,
-                    "status": "neutral",
-                    "xp": 20,
-                    "dialogue_prompt": "Cree usted que la lluvia, detective, es solo agua... o una forma sutil de borrar la memoria? La memoria es un lastre, \u00bfsabe? Especialmente en esta ciudad podrida. Le ofrezco algo m\u00e1s que respuestas... le ofrezco la posibilidad de *olvido*. Pero el precio... ese es un secreto que solo el tiempo revelar\u00e1. Preg\u00fanteme sobre el 'Or\u00e1culo', detective. Quiz\u00e1s entonces, entienda el juego que estamos jugando."
-                }
-            },
-            "items": {}
-        },
-        "node_4_4": {
-            "id": "node_4_4",
-            "world_id": "la_ciudad_onice",
-            "name": "El Oratorio del Lamento Cromado",
-            "description": "Un espacio en penumbra, donde el reflejo de los r\u00f3tulos de ne\u00f3n colorea las paredes con un espectro de tristeza. El eco de la lluvia repiquetea en el tejado de cristal, amplificando el lamento de una trompeta solitaria que emerge de la oscuridad.",
-            "connections": {
-                "west": "node_3_4"
-            },
-            "initial_npcs": [
-                "ricardo_carrasco"
-            ],
-            "initial_items": [],
-            "npcs": {
-                "ricardo_carrasco": {
-                    "id": "ricardo_carrasco",
-                    "world_id": "la_ciudad_onice",
-                    "name": "Ricardo Carrasco",
-                    "description": "Alcalde de la ciudad, rostro p\u00e9treo y mirada fr\u00eda. Siempre impecable, con trajes caros que contrastan con la mugre de las calles. Su cabello, cuidadosamente peinado, esconde una calvicie que teme mostrar. Sus manos, delgadas y nerviosas, delatan su estr\u00e9s constante.",
-                    "hp": 35,
-                    "attack": 5,
-                    "status": "hostile",
-                    "xp": 15,
-                    "dialogue_prompt": "\u00bfCree que un simple detective puede atreverse a cuestionar mi autoridad? Esta ciudad es m\u00eda, y el legado de mi familia ser\u00e1 eterno. Olv\u00eddese de investigar, muchacho. No encontrar\u00e1 nada que pueda usar. A menos que\u2026 bueno, a menos que est\u00e9 dispuesto a cooperar. El poder, muchacho, es un juego peligroso, pero con las cartas correctas, uno siempre gana."
-                }
-            },
+            "npcs": {},
             "items": {}
         }
     },
     "item_templates": {
-        "el_susurro_de_medianoche_826": {
-            "id": "el_susurro_de_medianoche_826",
-            "world_id": "la_ciudad_onice",
+        "sica_de_la_calumnia_871": {
+            "id": "sica_de_la_calumnia_871",
+            "world_id": "roma_republicana",
             "template_id": "WEAPON_MELEE_SMALL_T1",
-            "name": "El Susurro de Medianoche",
-            "description": "WEAPON_MELEE_SMALL_T1. Un cuchillo de bolsillo fino y afilado, con una empu\u00f1adura de \u00e9bano pulido que oculta un resorte de apertura r\u00e1pida. La hoja, forjada con acero templado, refleja la tenue luz de ne\u00f3n de la ciudad, susurrando promesas de silencio y oscuridad en cada corte. Un grabado casi invisible, 'Memento Mori', adorna la base, un recordatorio constante de la fugacidad de la vida y la inevitabilidad de la muerte en este laberinto de asfalto y lluvia.",
+            "name": "Sica de la Calumnia",
+            "description": "Una sica pulida con esmero, tan afilada como los rumores que corren por las tabernas. El pomo, de obsidiana negra, oculta un peque\u00f1o compartimento roscado, lo suficientemente grande como para contener un micro-documento con las pruebas m\u00e1s jugosas. Usada por agentes dobles y chivatos, su filo silencioso corta gargantas y verdades con igual eficiencia, dejando tras de s\u00ed solo el eco de la intriga senatorial.",
             "type": "weapon",
             "damage_base": 5,
             "healing_amount": null,
@@ -789,12 +490,12 @@
                 "tier1"
             ]
         },
-        "el_susurro_de_la_lluvia_de_plomo_111": {
-            "id": "el_susurro_de_la_lluvia_de_plomo_111",
-            "world_id": "la_ciudad_onice",
+        "dolabrio_del_silencio_490": {
+            "id": "dolabrio_del_silencio_490",
+            "world_id": "roma_republicana",
             "template_id": "WEAPON_MELEE_MEDIUM_T1",
-            "name": "El Susurro de la Lluvia de Plomo",
-            "description": "WEAPON_MELEE_MEDIUM_T1. Una pistola semiautom\u00e1tica Colt 1911 trucada, envuelta en cinta aislante negra y con el ca\u00f1\u00f3n ligeramente modificado para silenciar los disparos. Grabado en la corredera, con caligraf\u00eda borrosa, se lee: 'S\u00f3lo la lluvia sabe la verdad'. Su empu\u00f1adura se siente fr\u00eda y pesada, un recordatorio constante de la desesperanza que empapa las calles. Cada bala disparada es un eco sordo en la noche, un susurro final en un mundo condenado.",
+            "name": "Dolabrio del Silencio",
+            "description": "Un afilado dolabra, aparentemente com\u00fan, pero meticulosamente modificado. Su filo ha sido templado con un proceso secreto que le otorga una capacidad inusual para cortar tejidos blandos con m\u00ednima resistencia, silenciando a las v\u00edctimas casi por completo.  Utilizado por agentes de la *Custodia* para eliminar enemigos pol\u00edticos, su hoja est\u00e1 finamente grabada con s\u00edmbolos que solo los iniciados reconocen, indicadores del rango y el objetivo del asesinato.",
             "type": "weapon",
             "damage_base": 8,
             "healing_amount": null,
@@ -803,12 +504,12 @@
                 "tier1"
             ]
         },
-        "el_solitario_38_'lluvia_de_acero'_250": {
-            "id": "el_solitario_38_'lluvia_de_acero'_250",
-            "world_id": "la_ciudad_onice",
+        "dardos_de_la_calumnia_566": {
+            "id": "dardos_de_la_calumnia_566",
+            "world_id": "roma_republicana",
             "template_id": "WEAPON_RANGED_SMALL_T1",
-            "name": "El Solitario 38 'Lluvia de Acero'",
-            "description": "Un rev\u00f3lver Smith & Wesson .38 Special, cromado hasta el brillo, que refleja el ne\u00f3n sucio de la ciudad. El Solitario, apodado as\u00ed por su due\u00f1o original, un detective que desapareci\u00f3 sin dejar rastro, est\u00e1 grabado con una serie de l\u00edneas cortas, supuestamente un c\u00f3digo para el 'hombre del paraguas'. Su cargador, un relicario lleno de balas de plomo pulidas, canta una melod\u00eda met\u00e1lica con cada movimiento, un eco constante de la melancol\u00eda que empapa esta metr\u00f3polis eterna.",
+            "name": "Dardos de la Calumnia",
+            "description": "Un juego de seis peque\u00f1os dardos recubiertos de una sustancia paralizante y disimulados en un elegante estuche de hueso de marfil. Cada dardo, finamente tallado con la efigie de un senador en desgracia, es lanzado con la precisi\u00f3n de un gladiador experimentado. Se rumorea que fueron creados por un gremio secreto de informadores, los 'Viperes', para silenciar a los enemigos de sus clientes con una dosis letal de veneno y descr\u00e9dito.",
             "type": "weapon",
             "damage_base": 6,
             "healing_amount": null,
@@ -818,12 +519,12 @@
                 "tier1"
             ]
         },
-        "la_llorona_de_la_lluvia_669": {
-            "id": "la_llorona_de_la_lluvia_669",
-            "world_id": "la_ciudad_onice",
+        "sibilina_de_las_calles_(weapon_ranged_heavy_t2)_778": {
+            "id": "sibilina_de_las_calles_(weapon_ranged_heavy_t2)_778",
+            "world_id": "roma_republicana",
             "template_id": "WEAPON_RANGED_HEAVY_T2",
-            "name": "La Llorona de la Lluvia",
-            "description": "Un rev\u00f3lver Smith & Wesson Modelo 10, pavonado en negro mate, que perteneci\u00f3 a un detective ca\u00eddo en desgracia. Su ca\u00f1\u00f3n, pulido hasta el brillo por el uso constante, ha cobrado un extra\u00f1o eco en las noches empapadas de la ciudad. Se dice que, en manos del portador correcto, las balas susurradas por 'La Llorona' siempre encuentran su destino, guiadas por el lamento del viento en los callejones oscuros y la melancol\u00eda del asfalto mojado. Cada disparo resuena con la promesa de la justicia, y la certeza de la traici\u00f3n.",
+            "name": "Sibilina de las Calles (WEAPON_RANGED_HEAVY_T2)",
+            "description": "Un diminuto dardo, fabricado con plomo contaminado y recubierto con un veneno de lenta acci\u00f3n, extra\u00eddo de la mandr\u00e1gora. La Sibilina, dise\u00f1ada para la clandestinidad, se dispara desde un sofisticado anillo de oro romano, que imita la forma de un simple sello. Imperceptible a simple vista, el veneno provoca par\u00e1lisis gradual y, finalmente, la muerte, dejando atr\u00e1s una sonrisa congelada en el rostro de la v\u00edctima, un siniestro gui\u00f1o a la profec\u00eda.",
             "type": "weapon",
             "damage_base": 15,
             "healing_amount": null,
@@ -834,12 +535,12 @@
                 "tier2"
             ]
         },
-        "el_suspiro_de_la_azalea_278": {
-            "id": "el_suspiro_de_la_azalea_278",
-            "world_id": "la_ciudad_onice",
+        "el_blsamo_de_la_va_apia_402": {
+            "id": "el_blsamo_de_la_va_apia_402",
+            "world_id": "roma_republicana",
             "template_id": "HEALING_ITEM_SMALL",
-            "name": "El Suspiro de la Azalea",
-            "description": "Un peque\u00f1o frasco de vidrio esmerilado, que contiene un l\u00edquido de un rojo carmes\u00ed, casi negro a la luz tenue. Destilado de una rara flor que florece solo en los barrios m\u00e1s s\u00f3rdidos, alimentada por la lluvia \u00e1cida y el dolor. Al beberlo, sientes un fugaz alivio del tormento, una calma precaria que te permite seguir respirando en esta ciudad podrida. Recupera una cantidad moderada de vitalidad, pero deja un regusto amargo que recuerda la inevitable corrupci\u00f3n que te rodea.",
+            "name": "El B\u00e1lsamo de la V\u00eda Apia",
+            "description": "Un peque\u00f1o frasco de cer\u00e1mica, sellado con cera de abeja de la mejor calidad. Contiene una pomada verdosa y ligeramente arom\u00e1tica, elaborada con hierbas secretas recolectadas en la V\u00eda Apia y maceradas en vino Falerno a\u00f1ejo. Al aplicarlo sobre heridas y contusiones, el b\u00e1lsamo acelera la curaci\u00f3n, pero su verdadero poder radica en su capacidad para disimular el dolor, calmando los nervios y permitiendo al usuario mantener la compostura bajo interrogatorio o en medio de una conspiraci\u00f3n pol\u00edtica.",
             "type": "healing",
             "damage_base": null,
             "healing_amount": 25,
@@ -848,12 +549,12 @@
                 "instant"
             ]
         },
-        "el_susurro_del_farol_475": {
-            "id": "el_susurro_del_farol_475",
-            "world_id": "la_ciudad_onice",
+        "ungento_del_decimus_bruto_698": {
+            "id": "ungento_del_decimus_bruto_698",
+            "world_id": "roma_republicana",
             "template_id": "HEALING_ITEM_MEDIUM",
-            "name": "El Susurro del Farol",
-            "description": "Un farol de bolsillo, hecho de lat\u00f3n pulido y cristal ahumado. Contiene una peque\u00f1a llama perpetua, alimentada por una mezcla secreta de \u00e9ter y 'l\u00e1grimas de \u00e1ngel' destiladas de las calles. Al sostenerlo, sientes un alivio inmediato del dolor, como si el farol susurrara secretos olvidados a tu alma, calmando la angustia existencial y la rabia que corroe a todo detective en esta ciudad empapada de lluvia y desesperaci\u00f3n.  Cura heridas leves y restaura la cordura erosionada por la podredumbre.",
+            "name": "Ung\u00fcento del Decimus Bruto",
+            "description": "Una peque\u00f1a vasija de alabastro que contiene un ung\u00fcento verdoso, manufacturado por el propio m\u00e9dico personal del senador Bruto. Creado con hierbas tra\u00eddas de la Galia y miel de la mejor calidad, el ung\u00fcento est\u00e1 imbuido de las propiedades curativas del sol y la tierra. Aplicado sobre heridas y contusiones, acelera la cicatrizaci\u00f3n y alivia el dolor, aunque su aroma a laurel y secretos de Estado es un poco perturbador.",
             "type": "healing",
             "damage_base": null,
             "healing_amount": 60,
@@ -862,12 +563,12 @@
                 "instant"
             ]
         },
-        "abrigo_impermeable_'lgrimas_de_nen'_(armor_light_t1)_977": {
-            "id": "abrigo_impermeable_'lgrimas_de_nen'_(armor_light_t1)_977",
-            "world_id": "la_ciudad_onice",
+        "lorica_argentea_del_tribuno_327": {
+            "id": "lorica_argentea_del_tribuno_327",
+            "world_id": "roma_republicana",
             "template_id": "ARMOR_LIGHT_T1",
-            "name": "Abrigo Impermeable 'L\u00e1grimas de Ne\u00f3n' (ARMOR_LIGHT_T1)",
-            "description": "Un abrigo de gabardina impecable, cortado con la precisi\u00f3n de un cuchillo. Fabricado con una fibra sint\u00e9tica experimental, casi indestructible, que repele balas peque\u00f1as y el agua con la misma eficacia. El forro, de un rojo sangriento, refleja las luces de ne\u00f3n de la ciudad, creando un resplandor espectral en la penumbra. Bolsillos profundos para guardar una pistola, un cigarrillo y la esperanza, en ese orden.",
+            "name": "Lorica Argentea del Tribuno",
+            "description": "Una lorica segmentata de dise\u00f1o sofisticado, forjada con placas de plata pulida. Los bordes est\u00e1n intrincadamente grabados con s\u00edmbolos de poder y discretos glifos que, se rumorea, contienen mensajes cifrados para la red de esp\u00edas del Senatus. Imperceptiblemente pesada, permite una agilidad asombrosa para un cuerpo cubierto. El Tribuno que la porta se convierte en una sombra plateada en el bullicio de Roma, un vigilante silencioso y letal en la lucha por el poder.",
             "type": "armor",
             "damage_base": null,
             "healing_amount": null,
@@ -877,12 +578,12 @@
                 "light_armor"
             ]
         },
-        "abrigo_de_plomo_y_acerico_573": {
-            "id": "abrigo_de_plomo_y_acerico_573",
-            "world_id": "la_ciudad_onice",
+        "lorica_segmentata_del_centurin_sombro_949": {
+            "id": "lorica_segmentata_del_centurin_sombro_949",
+            "world_id": "roma_republicana",
             "template_id": "ARMOR_HEAVY_T2",
-            "name": "Abrigo de Plomo y Acerico",
-            "description": "Armadura pesada T2. Un abrigo largo y pulido, confeccionado con una aleaci\u00f3n de plomo, acero y la resistente fibra sint\u00e9tica 'Tela Niebla' para repeler la lluvia. Su interior est\u00e1 forrado con un acolchado de lana gruesa, ideal para amortiguar los golpes y el fr\u00edo persistente de la ciudad. Bolsillos amplios, reforzados para esconder un rev\u00f3lver y lo que la ocasi\u00f3n requiera. El cuello alto y la solapa abrigadora ocultan parcialmente el rostro, un detalle imprescindible en este submundo. El 'Acerico', una placa de acero oculta en el forro, ofrece protecci\u00f3n adicional contra disparos directos, haciendo de este abrigo una segunda piel para el detective solitario en la jungla de asfalto.",
+            "name": "Lorica Segmentata del Centuri\u00f3n Sombr\u00edo",
+            "description": "Una versi\u00f3n modificada de la lorica segmentata est\u00e1ndar, reforzada con acero endurecido y placas internas de mithril falsificado para mayor protecci\u00f3n y silencio. Sus placas han sido oscurecidas y envejecidas con una soluci\u00f3n secreta, un detalle que solo los esp\u00edas de \u00e9lite reconocen. Incluye un sistema de hebillas y correas silenciadas, y un forro de lana te\u00f1ida de negro para absorber la sudoraci\u00f3n. Parece una armadura m\u00e1s, pero esconde secretos: peque\u00f1as ranuras para guardar microfilmes y un peque\u00f1o bolsillo secreto en el peto, perfecto para un mensaje urgente a la sombra del Senado.",
             "type": "armor",
             "damage_base": null,
             "healing_amount": null,
@@ -893,12 +594,12 @@
                 "requires_strength"
             ]
         },
-        "la_llave_oxidada_del_faraday_474": {
-            "id": "la_llave_oxidada_del_faraday_474",
-            "world_id": "la_ciudad_onice",
+        "clavis_sub_rosa_376": {
+            "id": "clavis_sub_rosa_376",
+            "world_id": "roma_republicana",
             "template_id": "KEY_ITEM_GENERIC",
-            "name": "La Llave Oxidada del Faraday",
-            "description": "Una llave de bronce descolorido, pesada y fr\u00eda como el plomo. Su enmara\u00f1ado patr\u00f3n de dientes encaja en la cerradura de la b\u00f3veda secreta del Faraday, el club nocturno m\u00e1s turbio y clandestino de la ciudad, propiedad del difunto magnate de la electricidad, Victor Faraday. Se dice que la b\u00f3veda contiene secretos que podr\u00edan hundir a los poderosos... o revelar la verdad sobre la desaparici\u00f3n del detective Marlowe.",
+            "name": "CLAVIS_SUB_ROSA",
+            "description": "Una llave forjada en plata, con el emblema de un escorpi\u00f3n grabado discretamente en el guardamanos. A primera vista, parece una llave ordinaria para una casa adinerada. Sin embargo, abre la puerta del 'Templo de la Sombra', una red clandestina de informantes y esp\u00edas dentro de Roma, y sirve como cifrado para comunicaciones encriptadas, requiriendo una lectura espec\u00edfica bajo la luz de la luna llena para descifrar los mensajes ocultos.",
             "type": "key",
             "damage_base": null,
             "healing_amount": null,
@@ -906,12 +607,12 @@
                 "unlocks_door"
             ]
         },
-        "llave_del_ngel_cado_224": {
-            "id": "llave_del_ngel_cado_224",
-            "world_id": "la_ciudad_onice",
+        "clavis_de_cicern_159": {
+            "id": "clavis_de_cicern_159",
+            "world_id": "roma_republicana",
             "template_id": "KEY_ITEM_SPECIAL",
-            "name": "LLAVE_DEL_\u00c1NGEL_CA\u00cdDO",
-            "description": "Una llave de bronce, fr\u00eda como el acero bajo la lluvia, grabada con un querub\u00edn alado sin ojos, s\u00edmbolo de un club nocturno infame y desaparecido: 'El \u00c1ngel Ca\u00eddo'. Abre cualquier cerradura, pero su poder real reside en la capacidad de desvelar secretos ocultos en documentos codificados y recuerdos olvidados. Se dice que la llave susurra el nombre del corrupto que la us\u00f3 por \u00faltima vez, un eco fantasmal en la noche lluviosa.",
+            "name": "CLAVIS_DE_CICER\u00d3N",
+            "description": "Una llave forjada en bronce, con la efigie de Cicer\u00f3n grabada. Originalmente pertenec\u00eda a su biblioteca personal, pero ahora abre una puerta secreta en el Foro Romano que conduce a una red de comunicaciones encriptadas utilizada por la facci\u00f3n senatorial opositora a C\u00e9sar. Su peso es enga\u00f1osamente ligero, pero su significado, y la informaci\u00f3n que resguarda, son colosales.",
             "type": "key",
             "damage_base": null,
             "healing_amount": null,
@@ -920,12 +621,12 @@
                 "plot_related"
             ]
         },
-        "el_silbato_de_la_sirena_muda_950": {
-            "id": "el_silbato_de_la_sirena_muda_950",
-            "world_id": "la_ciudad_onice",
+        "codex_caesaris_cripto_102": {
+            "id": "codex_caesaris_cripto_102",
+            "world_id": "roma_republicana",
             "template_id": "QUEST_ITEM_MACGUFFIN",
-            "name": "EL SILBATO DE LA SIRENA MUDA",
-            "description": "Un silbato de plata oxidada, grabado con la imagen de una sirena llorando bajo un cielo perpetuamente gris. La sirena, al parecer, est\u00e1 fundida con las letras 'S.M.' en su cola. Dicen que al soplarlo, revela la verdad tras las mentiras, pero su melod\u00eda es tan triste que consume la esperanza de quien la escucha, arrastrando a la desesperaci\u00f3n a los m\u00e1s fuertes. Es la llave para desentra\u00f1ar la red de corrupci\u00f3n que asfixia la ciudad, pero su precio podr\u00eda ser tu propia alma.",
+            "name": "CODEX_CAESARIS_CRIPTO",
+            "description": "Un peque\u00f1o volumen encuadernado en cuero gastado, aparentemente un compendio de trivialidades sobre la vida romana cotidiana. Sin embargo, bajo la tinta superficial, revelada al ser expuesta a una luz espec\u00edfica (y con el uso de un secreto qu\u00edmico legado por una antigua cofrad\u00eda de escribas), se encuentra cifrado el mapa de una red de informantes y agentes dobles que operan en el coraz\u00f3n mismo de Roma. Contiene los secretos para desestabilizar al Senado y trazar una conspiraci\u00f3n para el poder que podr\u00eda derribar la Rep\u00fablica.",
             "type": "quest",
             "damage_base": null,
             "healing_amount": null,
@@ -934,12 +635,12 @@
                 "cannot_drop"
             ]
         },
-        "boquilla_humeda_de_cigarrillo_771": {
-            "id": "boquilla_humeda_de_cigarrillo_771",
-            "world_id": "la_ciudad_onice",
+        "junk_item_scripta_obscura_190": {
+            "id": "junk_item_scripta_obscura_190",
+            "world_id": "roma_republicana",
             "template_id": "JUNK_ITEM_COMMON",
-            "name": "BOQUILLA_HUMEDA_DE_CIGARRILLO",
-            "description": "Una boquilla de cigarrillo de \u00e1mbar agrietado, a\u00fan manchada de carm\u00edn desva\u00eddo y con el inconfundible aroma a tabaco barato y tristeza.  Empapada por la lluvia, pegajosa al tacto, y con una mota de ceniza persistente incrustada.  Perfecta para momentos de reflexi\u00f3n desesperada bajo la luz turbia de un farol, o para una \u00faltima calada antes de la amarga verdad.",
+            "name": "JUNK_ITEM_SCRIPTA_OBSCURA",
+            "description": "Un fragmento arrugado de papiro, manchado de vino y con caligraf\u00eda torcida. Contiene garabatos apenas legibles, aparentemente un borrador de un discurso pol\u00edtico o una lista de precios de pan, intercalados con s\u00edmbolos cr\u00edpticos y una posible direcci\u00f3n en el barrio de Subura, escrita con tinta de sepia que parece haberse filtrado del interior de un huevo podrido.",
             "type": "junk",
             "damage_base": null,
             "healing_amount": null,
@@ -948,12 +649,12 @@
                 "vendor_trash"
             ]
         },
-        "cenicero_oxidado_'angeleno'_649": {
-            "id": "cenicero_oxidado_'angeleno'_649",
-            "world_id": "la_ciudad_onice",
+        "togha_sucia_de_cicern_675": {
+            "id": "togha_sucia_de_cicern_675",
+            "world_id": "roma_republicana",
             "template_id": "JUNK_ITEM_INTERESTING",
-            "name": "Cenicero Oxidado 'Angeleno'",
-            "description": "Un cenicero de bronce, ahora manchado por la lluvia \u00e1cida perpetua y el holl\u00edn de innumerables cigarrillos. Grabado en la base, con letras borrosas, se lee: 'Para el Detective Jack Rourke, con aprecio... y la promesa de un sol que nunca ver\u00e1'. Un recordatorio amargo de un pasado idealizado en una ciudad que se pudre en la oscuridad.",
+            "name": "Togha Sucia de Cicer\u00f3n",
+            "description": "Un trozo descolorido de toga, manchado con lo que parecen ser restos de vino y... algo m\u00e1s. La etiqueta cosida a mano, ahora casi ilegible, sugiere que perteneci\u00f3 a un joven Cicer\u00f3n. Un bolsillo secreto, cosido con hilos de seda, a\u00fan contiene migajas de pan y un peque\u00f1o trozo de pergamino con una cifra incompleta: '13...'. Probablemente fue abandonada apresuradamente durante una cena con esp\u00edas, o quiz\u00e1s, algo peor.",
             "type": "junk",
             "damage_base": null,
             "healing_amount": null,
@@ -962,12 +663,12 @@
                 "interesting"
             ]
         },
-        "el_ojo_de_la_lluvia_661": {
-            "id": "el_ojo_de_la_lluvia_661",
-            "world_id": "la_ciudad_onice",
+        "stylus_de_la_sombra_969": {
+            "id": "stylus_de_la_sombra_969",
+            "world_id": "roma_republicana",
             "template_id": "TOOL_UTILITY",
-            "name": "El Ojo de la Lluvia",
-            "description": "Una petaca de lat\u00f3n pulido, ligeramente abollada por el uso y forrada en cuero negro desgastado. Contiene una amalgama de elementos esenciales: una lente de aumento con montura de carey, un peque\u00f1o bloc de notas encuadernado en cuero con p\u00e1ginas amarillentas, un l\u00e1piz grafito desgastado, y un compartimento secreto con un vial de \u00e9ter y una dosis de benzedrina. Es m\u00e1s que un simple kit; es la ventana del detective al alma podrida de la ciudad, donde la verdad se esconde entre sombras, el alcohol es el combustible y el tiempo, un constante aguacero que borra las pistas.",
+            "name": "Stylus de la Sombra",
+            "description": "Un stylus aparentemente ordinario, fabricado con hueso pulido y una punta de obsidiana fin\u00edsima, que oculta un compartimento secreto para microfilmes y tintas invisibles. Permite cifrar mensajes con el 'Scriptum Obscurum', una t\u00e9cnica sutil de caligraf\u00eda en tinta invisible revelable solo bajo luz ultravioleta, y transportar informaci\u00f3n clave sin levantar sospechas. Un arma discreta en manos de un agente en la sombra, ideal para comunicaciones clandestinas en el bullicio de Roma.",
             "type": "tool",
             "damage_base": null,
             "healing_amount": null,
@@ -978,109 +679,61 @@
         }
     },
     "npc_templates": {
-        "alberto_fuentes": {
-            "id": "alberto_fuentes",
-            "world_id": "la_ciudad_onice",
-            "name": "Alberto Fuentes",
-            "description": "Un detective privado de mediana edad, con el rostro marcado por cicatrices y la mirada hundida en un mar de cinismo. Siempre viste un gab\u00e1n ra\u00eddo y fuma cigarrillos sin filtro. Su oficina, un cuchitril en el centro de la ciudad, huele a bourbon y desolaci\u00f3n.",
-            "hp": 45,
+        "marcus_valerius_primus": {
+            "id": "marcus_valerius_primus",
+            "world_id": "roma_republicana",
+            "name": "Marco Valerio Primo",
+            "description": "Un ex-centuri\u00f3n de la Legio X Gemina, condecorado en m\u00faltiples campa\u00f1as. Su rostro est\u00e1 marcado por cicatrices de batallas y el sol. A\u00fan viste ropas sencillas, pero siempre impecables, adornadas con insignias de su pasado. Se mueve con la autoridad de un hombre acostumbrado a mandar y la mirada de quien ha visto demasiado.",
+            "hp": 65,
+            "attack": 15,
+            "status": "friendly",
+            "xp": 35,
+            "dialogue_prompt": "Si necesitas algo, habla. He visto morir a hombres por mucho menos que lo que te preocupa a ti. Pero no te f\u00edes de nadie, ni siquiera de m\u00ed. La lealtad es una espada de doble filo, muchacho. A veces, el mejor filo es el que se rompe antes de traicionar a la causa."
+        },
+        "lucius_valerius_flaccus": {
+            "id": "lucius_valerius_flaccus",
+            "world_id": "roma_republicana",
+            "name": "Lucio Valerio Flaco",
+            "description": "Un senador patrizio, conocido por su astucia y ambici\u00f3n desmedida. Maestro en el arte de la manipulaci\u00f3n, siempre buscando oportunidades para ascender en el escalaf\u00f3n pol\u00edtico, incluso a costa de sus aliados.",
+            "hp": 55,
             "attack": 8,
+            "status": "hostile",
+            "xp": 35,
+            "dialogue_prompt": "Flaco te mira con una sonrisa falsa, mientras te ofrece una copa de vino importado. 'Querido amigo, la pol\u00edtica es un juego peligroso. A veces, es necesario tomar decisiones dif\u00edciles, \u00bfno crees? Digamos... decisiones que beneficien a todos, por supuesto... especialmente a aquellos que saben apreciar las verdaderas oportunidades.'"
+        },
+        "dioscorides_el_sutil": {
+            "id": "dioscorides_el_sutil",
+            "world_id": "roma_republicana",
+            "name": "Diosc\u00f3rides el Sutil",
+            "description": "Un esclavo griego, de mediana edad, con una cicatriz en la ceja izquierda que le da una mirada permanentemente suspicaz. Anteriormente escriba, ahora sirve en la cocina de una importante familia senatorial. Parece inofensivo, pero sus ojos observan con una astucia inusual.",
+            "hp": 35,
+            "attack": 5,
+            "status": "neutral",
+            "xp": 15,
+            "dialogue_prompt": "Si le preguntas sobre el senador Lucio Valerio, podr\u00eda responder: \"El noble Lucio\u2026 es como un buen vino, joven y con un sabor que te seduce\u2026 hasta que te deja con un terrible dolor de cabeza por la ma\u00f1ana. \u00bfQu\u00e9 informaci\u00f3n buscas, exactamente? El precio de la verdad es alto, incluso para un esclavo\u2026\""
+        },
+        "flavia_secretum": {
+            "id": "flavia_secretum",
+            "world_id": "roma_republicana",
+            "name": "Flavia Aurelia",
+            "description": "Una vestal de mediana edad, con el rostro marcado por a\u00f1os de servicio y una mirada que parece ver a trav\u00e9s de las mentiras. Su h\u00e1bito es impecable, pero a veces se le escapan gestos nerviosos, como si la presi\u00f3n del secreto fuera insoportable. Siempre lleva consigo un peque\u00f1o amuleto de obsidiana negra.",
+            "hp": 45,
+            "attack": 5,
             "status": "neutral",
             "xp": 25,
-            "dialogue_prompt": "\"\u00bfSabes qu\u00e9, muchacha? En esta ciudad, la lluvia es el \u00fanico amigo fiel. Te lava la mierda, pero nunca la quita por completo. Y cr\u00e9eme, he visto suficiente mierda para llenar todo el puto oc\u00e9ano. Ahora, \u00bfqu\u00e9 me cuentas? Y que sea algo que justifique mi tiempo y mi whiskey. Porque, \u00bfsabes? La vida es corta, y el bourbon\u2026 bueno, el bourbon es el consuelo de los cobardes.\""
+            "dialogue_prompt": "\u201c(Suspirando, mientras se ajusta el velo) Los dioses son silenciosos\u2026 pero la verdad, esa es otra historia. \u00bfQu\u00e9 buscas, muchacho? No te f\u00edes de lo que ves en la superficie. El Senado, las legiones\u2026 todo es un teatro. El verdadero poder reside en lo invisible. Y yo\u2026 yo conozco el teatro secreto.\u201d"
         },
-        "seraphina_noir": {
-            "id": "seraphina_noir",
-            "world_id": "la_ciudad_onice",
-            "name": "Seraphina Noir",
-            "description": "Due\u00f1a del club nocturno 'La Sirena de Acero'. Una mujer de belleza g\u00e9lida, con labios pintados de un rojo sangre que contrastan con sus ojos color tormenta. Viste siempre con trajes de seda y terciopelo, ocultando una astucia mortal y una historia plagada de sombras.",
-            "hp": 45,
-            "attack": 12,
-            "status": "hostile",
-            "xp": 30,
-            "dialogue_prompt": "\u00bfQu\u00e9 buscas, detective? Este club es un remanso de placeres\u2026 y de secretos. Si piensas que puedes husmear en mis asuntos sin consecuencias, te equivocas. El precio de la informaci\u00f3n, como el amor, puede ser muy alto\u2026 y a veces, mortal. Y, por cierto, no me gusta que me miren fijamente. Es un h\u00e1bito peligroso."
-        },
-        "ricardo_carrasco": {
-            "id": "ricardo_carrasco",
-            "world_id": "la_ciudad_onice",
-            "name": "Ricardo Carrasco",
-            "description": "Alcalde de la ciudad, rostro p\u00e9treo y mirada fr\u00eda. Siempre impecable, con trajes caros que contrastan con la mugre de las calles. Su cabello, cuidadosamente peinado, esconde una calvicie que teme mostrar. Sus manos, delgadas y nerviosas, delatan su estr\u00e9s constante.",
+        "habib_al_sham": {
+            "id": "habib_al_sham",
+            "world_id": "roma_republicana",
+            "name": "Habib al-Sham",
+            "description": "Un mercader sirio de seda y especias, con un ojo astuto y una sonrisa que rara vez llega a los ojos. Su puesto en el Foro es pr\u00f3spero, pero rumores susurran de env\u00edos m\u00e1s turbios, y de contactos con hombres peligrosos de las cloacas romanas.",
             "hp": 35,
             "attack": 5,
-            "status": "hostile",
-            "xp": 15,
-            "dialogue_prompt": "\u00bfCree que un simple detective puede atreverse a cuestionar mi autoridad? Esta ciudad es m\u00eda, y el legado de mi familia ser\u00e1 eterno. Olv\u00eddese de investigar, muchacho. No encontrar\u00e1 nada que pueda usar. A menos que\u2026 bueno, a menos que est\u00e9 dispuesto a cooperar. El poder, muchacho, es un juego peligroso, pero con las cartas correctas, uno siempre gana."
-        },
-        "elias_carrasco": {
-            "id": "elias_carrasco",
-            "world_id": "la_ciudad_onice",
-            "name": "Elias Carrasco",
-            "description": "Un tipo delgado y demacrado, con el gabardina siempre empapado y el cigarrillo colgando de la comisura de los labios. Su mirada es penetrante y c\u00ednica, con ojeras profundas que delatan noches sin dormir y una vida al borde del precipicio. Huele a alcohol barato y a humo de cigarrillos.",
-            "hp": 35,
-            "attack": 8,
             "status": "neutral",
             "xp": 15,
-            "dialogue_prompt": "\u00bfAs\u00ed que la se\u00f1orita dice que no sabe nada? No se preocupe, mi querida, la verdad siempre sale a flote, por m\u00e1s que se intente hundirla. Y yo, Elias Carrasco, reportero de 'La Voz de la Calle', tengo una curiosidad insaciable... una sed de verdades que s\u00f3lo la tinta en la p\u00e1gina puede saciar. \u00bfQu\u00e9 me cuenta de la v\u00edctima? \u00bfEra buen tipo? \u00bfTen\u00eda enemigos? Y lo m\u00e1s importante... \u00bfCu\u00e1nto val\u00eda su silencio?"
-        },
-        "el_maestro_torres": {
-            "id": "el_maestro_torres",
-            "world_id": "la_ciudad_onice",
-            "name": "El Maestro Torres",
-            "description": "Un hombre corpulento, con las manos marcadas por grasa y metal, y una cicatriz que le atraviesa el ojo izquierdo. Siempre viste un overol manchado y un sombrero fedora desgastado. Detr\u00e1s de su fachada ruda, esconde un intelecto prodigioso y una lealtad inquebrantable (si le ganas su confianza).",
-            "hp": 65,
-            "attack": 12,
-            "status": "neutral",
-            "xp": 35,
-            "dialogue_prompt": "\u00bfAs\u00ed que necesitas que algo se mueva, eh? Bueno, aqu\u00ed en este antro he visto y arreglado cosas que ni te imaginas. Dime, \u00bfqu\u00e9 te trae por estos lares? \u00bfUn coche que no arranca? \u00bfO un problema m\u00e1s... *complicado*? Eso s\u00ed, el tiempo es oro, y mi tiempo, ya sabes, vale un poco m\u00e1s."
-        },
-        "mariposa_gris": {
-            "id": "mariposa_gris",
-            "world_id": "la_ciudad_onice",
-            "name": "Mariposa Gris",
-            "description": "Una cantante de jazz con un vestido de seda descolorida, siempre fumando un cigarrillo largo y mirando a trav\u00e9s de la niebla de las noches lluviosas. Su voz, un susurro ahogado en alcohol y melancol\u00eda, resuena en el club 'El Espejo Roto'. Lleva un colgante con la foto de un hombre, su amor perdido.",
-            "hp": 45,
-            "attack": 5,
-            "status": "neutral",
-            "xp": 20,
-            "dialogue_prompt": "\u201c\u00bfQu\u00e9 buscas, detective? \u00bfSombras? Aqu\u00ed hay muchas. Y todas, como el amor, se desvanecen con la primera lluvia fuerte. \u00bfQuieres o\u00edr la historia? Cuesta\u2026 una canci\u00f3n\u2026 y la esperanza que ya no tengo.\u201d"
-        },
-        "dr_silas_mercer": {
-            "id": "dr_silas_mercer",
-            "world_id": "la_ciudad_onice",
-            "name": "Dr. Silas Mercer",
-            "description": "Un cient\u00edfico demacrado con ojos inyectados en sangre y un abrigo ra\u00eddo de tweed que parece absorber la humedad del ambiente. Sus manos, manchadas de tinta y productos qu\u00edmicos, tiemblan ligeramente mientras manipula sus inventos, ocultos en las sombras de un club de jazz decadente.",
-            "hp": 35,
-            "attack": 5,
-            "status": "neutral",
-            "xp": 20,
-            "dialogue_prompt": "Cree usted que la lluvia, detective, es solo agua... o una forma sutil de borrar la memoria? La memoria es un lastre, \u00bfsabe? Especialmente en esta ciudad podrida. Le ofrezco algo m\u00e1s que respuestas... le ofrezco la posibilidad de *olvido*. Pero el precio... ese es un secreto que solo el tiempo revelar\u00e1. Preg\u00fanteme sobre el 'Or\u00e1culo', detective. Quiz\u00e1s entonces, entienda el juego que estamos jugando."
+            "dialogue_prompt": "Si buscas algo ex\u00f3tico, amigo, Habib puede proveerte. Pero el verdadero negocio se cierra en la oscuridad, donde los emperadores y los bandidos comparten la misma sed de poder. \u00bfQu\u00e9 deseas, y a qu\u00e9 precio est\u00e1s dispuesto a pagar?"
         }
     },
-    "quests": {
-        "CASO_007_L\u00c1GRIMAS_DE_NE\u00d3N": {
-            "id": "CASO_007_L\u00c1GRIMAS_DE_NE\u00d3N",
-            "world_id": "la_ciudad_onice",
-            "title": "L\u00e1grimas de Ne\u00f3n",
-            "description": "En la Ciudad de \u00c1mbar, perpetuamente ba\u00f1ada por la lluvia y corrompida hasta la m\u00e9dula, el detective privado Jack Rourke recibe un caso que lo arrastra a las profundidades de la decadencia: la desaparici\u00f3n de Veronica Lake, una estrella de cine enigm\u00e1tica y adicta a los secretos. El caso huele a p\u00f3lvora, falsos amigos y la verdad oculta tras el brillo de los focos y el resplandor del ne\u00f3n. Rourke deber\u00e1 sumergirse en un submundo donde la ley es un lujo y la supervivencia, una maldici\u00f3n.",
-            "starting_npc_id": null,
-            "steps": [
-                {
-                    "id": "paso1",
-                    "description": "Interroga a la \u00faltima persona que vio a Veronica: el productor cinematogr\u00e1fico, un hombre con las manos manchadas de billetes y secretos. Encuentra indicios sobre sus vicios y los lugares oscuros que frecuentaba."
-                },
-                {
-                    "id": "paso2",
-                    "description": "Sigue el rastro de Veronica a trav\u00e9s de los clubes nocturnos de \u00c1mbar, lugares de jazz humeantes y tragos amargos. Habla con contactos peligrosos: proxenetas, informantes y mafiosos, y descubre la verdad sobre su doble vida."
-                },
-                {
-                    "id": "paso3",
-                    "description": "Investiga el 'Sal\u00f3n del Silencio', un casino clandestino donde se rumorea que Veronica apostaba y jugaba. Enfrentate a matones y a la seguridad corrupta para encontrar pistas sobre su desaparici\u00f3n."
-                },
-                {
-                    "id": "paso4",
-                    "description": "Descubre que Veronica investigaba a un poderoso magnate, el verdadero cerebro detr\u00e1s de la corrupci\u00f3n de \u00c1mbar. Confronta al magnate en su guarida, un \u00e1tico con vistas a la ciudad lluviosa, y desentra\u00f1a el misterio final que la llev\u00f3 a la muerte (o algo peor)."
-                }
-            ]
-        }
-    }
+    "quests": {}
 }

@@ -1,0 +1,46 @@
+world_id: "roma_republicana"
+world_name: "Las Sombras de Roma"
+language: "Español"
+historical_context: "República Romana Tardía, alrededor del 60 a.C. durante el Primer Triunvirato de César, Pompeyo y Craso. Una época de inmensa riqueza, ambición política y conspiraciones."
+
+world_theme: "Thriller político y de espionaje con elementos de la vida cotidiana romana. Piensa en la serie 'Roma' de HBO mezclada con una novela de John le Carré."
+world_description: |
+  Roma no es solo mármol y gloria; es una bestia que se alimenta de secretos. Mientras los senadores debaten en el Foro, en las oscuras tabernas de la Subura se tejen traiciones que derribarán a hombres poderosos. Las legiones conquistan el mundo, pero la verdadera batalla por el alma de la República se libra en susurros, con dagas ocultas bajo las togas y veneno en las copas de vino.
+
+structure:
+  location_types:
+    - type: "domus_patricia"
+      tags: ["residencial", "rico", "intriga"]
+    - type: "insula_popular"
+      tags: ["residencial", "pobre", "peligroso"]
+    - type: "termas"
+      tags: ["social", "público", "negocios"]
+    - type: "foro"
+      tags: ["gobierno", "público", "central"]
+    - type: "campamento_militar"
+      tags: ["militar", "disciplina"]
+  
+  npc_archetypes:
+    - "legionario veterano leal"
+    - "senador ambicioso y sin escrúpulos"
+    - "esclavo griego con información valiosa"
+    - "vestal que conoce un secreto divino"
+    - "mercader sirio con conexiones en el hampa"
+quest_seeds:
+- title: "La Daga del Senador"
+  description: "Un senador influyente ha sido asesinado. El principal sospechoso es un legionario leal, pero las pruebas no encajan. Hay una conspiración detrás."
+  quest_giver_archetype: "legionario veterano leal"
+  boss_archetype: "senador ambicioso y sin escrúpulos"
+  key_item_idea: "Una daga ceremonial con un emblema secreto que no pertenece a la víctima."
+
+- title: "El Veneno de las Vestales"
+  description: "Una de las sacerdotisas del Templo de Vesta ha caído gravemente enferma por un veneno exótico. Se sospecha de una intriga interna para silenciarla."
+  quest_giver_archetype: "vestal que conoce un secreto divino"
+  boss_archetype: "mercader sirio con conexiones en el hampa" # Quizás él vendió el veneno
+  key_item_idea: "Un frasco de antídoto raro que debe ser encontrado o fabricado."
+
+- title: "El Papiro Perdido"
+  description: "Un esclavo erudito ha robado un papiro con información comprometedora sobre la malversación de fondos en la construcción de un acueducto. Ahora está desaparecido."
+  quest_giver_archetype: "esclavo griego con información valiosa" # Un amigo del desaparecido
+  boss_archetype: "senador ambicioso y sin escrúpulos"
+  key_item_idea: "El papiro robado, que está dividido en varios fragmentos."

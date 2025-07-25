@@ -103,6 +103,18 @@ def create_schema(conn: sqlite3.Connection):
         FOREIGN KEY (world_id) REFERENCES worlds (id)
     )""")
     
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS player_logs (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        player_id INTEGER NOT NULL,
+        world_id TEXT NOT NULL,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+        event_type TEXT, -- ej: 'clue_revealed', 'npc_defeated', 'quest_step_completed'
+        event_description TEXT NOT NULL, -- El texto que se usará para el embedding
+        FOREIGN KEY (player_id) REFERENCES players (id),
+        FOREIGN KEY (world_id) REFERENCES worlds (id)
+    )""")
+    
     conn.commit()
     print("Database schema checked and created/updated if necessary.")
 
@@ -131,7 +143,7 @@ def import_world_from_json(conn: sqlite3.Connection, world_json_path: str):
         return
 
     # 1. Import World Definition
-    # ... (esta sección está bien, la omito por brevedad) ...
+   
     world_data = data['world']
     world_data['main_quests'] = json.dumps(world_data.get('main_quests', {}))
     cursor.execute("""
@@ -141,7 +153,7 @@ def import_world_from_json(conn: sqlite3.Connection, world_json_path: str):
     print(f"Imported world: {world_id}")
 
     # 2. Import Locations
-    # ... (esta sección está bien, la omito por brevedad) ...
+   
     locations_to_insert = [
         {**loc, "world_id": world_id, 
          "connections": json.dumps(loc.get('connections', {})),
@@ -196,7 +208,7 @@ def import_world_from_json(conn: sqlite3.Connection, world_json_path: str):
 
 
     # 4. Import NPC Templates
-    # ... (esta sección está bien, la omito por brevedad) ...
+   
     npcs_to_insert = [{**npc, "world_id": world_id} for npc in data.get('npc_templates', [])]
     if npcs_to_insert:
         cursor.executemany("""
@@ -206,7 +218,7 @@ def import_world_from_json(conn: sqlite3.Connection, world_json_path: str):
         print(f"Imported {len(npcs_to_insert)} NPC templates.")
 
     # 5. Import Quests
-    # ... (esta sección está bien, la omito por brevedad) ...
+   
     quests_to_insert = [
         {**quest, "world_id": world_id,
          "starting_npc_id": quest.get('starting_npc'),
