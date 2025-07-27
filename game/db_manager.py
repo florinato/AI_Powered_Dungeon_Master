@@ -16,101 +16,63 @@ def get_db_connection():
     return conn
 
 def create_schema(conn: sqlite3.Connection):
-    """Crea el esquema completo y normalizado de la base de datos."""
+    """Crea el esquema completo, asegurando que todas las columnas coincidan con los modelos."""
     cursor = conn.cursor()
     
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS worlds (
-        id TEXT PRIMARY KEY,
-        name TEXT NOT NULL,
-        style TEXT,
-        lore TEXT,
-        starting_location_id TEXT NOT NULL,
-        main_quests TEXT -- Almacenado como JSON
+        id TEXT PRIMARY KEY, name TEXT NOT NULL, style TEXT, lore TEXT,
+        language TEXT, inhabitant_description TEXT,
+        starting_location_id TEXT NOT NULL, main_quests TEXT
     )""")
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS locations (
-        id TEXT NOT NULL,
-        world_id TEXT NOT NULL,
-        name TEXT NOT NULL,
-        description TEXT,
-        connections TEXT,
-        initial_npcs TEXT,
-        initial_items TEXT,
+        id TEXT NOT NULL, world_id TEXT NOT NULL,
+        name TEXT NOT NULL, description TEXT,
+        type TEXT, tags TEXT,
+        connections TEXT, initial_npcs TEXT, initial_items TEXT, traps TEXT,
         PRIMARY KEY (id, world_id),
         FOREIGN KEY (world_id) REFERENCES worlds (id)
     )""")
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS item_templates (
-        id TEXT NOT NULL,
-        world_id TEXT NOT NULL,
-        template_id TEXT,
-        name TEXT NOT NULL,
-        description TEXT,
-        type TEXT,
-        damage_base INTEGER,
-        healing_amount INTEGER,
-        properties TEXT,
-        PRIMARY KEY (id, world_id),
-        FOREIGN KEY (world_id) REFERENCES worlds (id)
+        id TEXT PRIMARY KEY, world_id TEXT NOT NULL, template_id TEXT,
+        name TEXT NOT NULL, description TEXT, type TEXT,
+        damage_base INTEGER, healing_amount INTEGER, properties TEXT
     )""")
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS npc_templates (
-        id TEXT NOT NULL,
-        world_id TEXT NOT NULL,
-        name TEXT NOT NULL,
-        description TEXT,
-        hp INTEGER,
-        attack INTEGER,
-        status TEXT,
-        xp INTEGER,
-        dialogue_prompt TEXT,
-        PRIMARY KEY (id, world_id),
-        FOREIGN KEY (world_id) REFERENCES worlds (id)
+        id TEXT PRIMARY KEY, world_id TEXT NOT NULL,
+        name TEXT NOT NULL, description TEXT,
+        hp INTEGER, attack INTEGER, status TEXT, xp INTEGER,
+        dialogue_prompt TEXT
     )""")
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS quests (
-        id TEXT NOT NULL,
-        world_id TEXT NOT NULL,
-        title TEXT NOT NULL,
-        description TEXT,
-        starting_npc_id TEXT,
-        steps TEXT,
-        PRIMARY KEY (id, world_id),
-        FOREIGN KEY (world_id) REFERENCES worlds (id)
+        id TEXT PRIMARY KEY, world_id TEXT NOT NULL,
+        title TEXT NOT NULL, description TEXT,
+        starting_npc_id TEXT, steps TEXT
     )""")
     
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS players (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        player_name TEXT NOT NULL,
-        world_id TEXT NOT NULL,
-        level INTEGER DEFAULT 1,
-        hp INTEGER,
-        max_hp INTEGER,
-        attack INTEGER,
-        xp INTEGER,
-        xp_to_next_level INTEGER,
-        current_location_id TEXT NOT NULL,
-        location_history TEXT,
-        inventory TEXT,
-        active_quests TEXT,
-        world_state_delta TEXT,
+        id INTEGER PRIMARY KEY AUTOINCREMENT, player_name TEXT NOT NULL,
+        world_id TEXT NOT NULL, level INTEGER DEFAULT 1, hp INTEGER, max_hp INTEGER,
+        attack INTEGER, xp INTEGER, xp_to_next_level INTEGER,
+        current_location_id TEXT NOT NULL, location_history TEXT, inventory TEXT,
+        active_quests TEXT, world_state_delta TEXT,
         FOREIGN KEY (world_id) REFERENCES worlds (id)
     )""")
     
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS player_logs (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        player_id INTEGER NOT NULL,
-        world_id TEXT NOT NULL,
-        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-        event_type TEXT, -- ej: 'clue_revealed', 'npc_defeated', 'quest_step_completed'
-        event_description TEXT NOT NULL, -- El texto que se usará para el embedding
+        id INTEGER PRIMARY KEY AUTOINCREMENT, player_id INTEGER NOT NULL,
+        world_id TEXT NOT NULL, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+        event_type TEXT, event_description TEXT NOT NULL,
         FOREIGN KEY (player_id) REFERENCES players (id),
         FOREIGN KEY (world_id) REFERENCES worlds (id)
     )""")
@@ -119,97 +81,67 @@ def create_schema(conn: sqlite3.Connection):
     print("Database schema checked and created/updated if necessary.")
 
 def import_world_from_json(conn: sqlite3.Connection, world_json_path: str):
-    """Importa la definición de un mundo desde un archivo JSON normalizado."""
+    """Importa un mundo, validando y normalizando cada objeto para compatibilidad."""
     print(f"--- Attempting to import world from '{world_json_path}' ---")
 
-    try:
-        with open(world_json_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        print(f"Error reading or parsing world JSON file: {e}")
-        return
-
+    with open(world_json_path, 'r', encoding='utf-8') as f: data = json.load(f)
     cursor = conn.cursor()
-    # Asegúrate de que tu JSON de importación tenga esta estructura
-    if 'world' not in data or 'id' not in data['world']:
-        print("Error: world_import_generated.json is missing 'world' or 'world.id' key.")
-        return
-        
     world_id = data['world']['id']
-
+    
     cursor.execute("SELECT id FROM worlds WHERE id = ?", (world_id,))
     if cursor.fetchone():
-        print(f"World '{world_id}' already exists. Skipping import.")
-        return
+        print(f"World '{world_id}' already exists. Skipping import."); return
 
-    # 1. Import World Definition
-   
+    # 1. Import World
     world_data = data['world']
     world_data['main_quests'] = json.dumps(world_data.get('main_quests', {}))
     cursor.execute("""
-        INSERT INTO worlds (id, name, style, lore, starting_location_id, main_quests)
-        VALUES (:id, :name, :style, :lore, :starting_location_id, :main_quests)
+        INSERT INTO worlds (id, name, style, lore, language, inhabitant_description, starting_location_id, main_quests)
+        VALUES (:id, :name, :style, :lore, :language, :inhabitant_description, :starting_location_id, :main_quests)
     """, world_data)
     print(f"Imported world: {world_id}")
 
     # 2. Import Locations
-   
-    locations_to_insert = [
-        {**loc, "world_id": world_id, 
-         "connections": json.dumps(loc.get('connections', {})),
-         "initial_npcs": json.dumps(loc.get('initial_npcs', [])),
-         "initial_items": json.dumps(loc.get('initial_items', []))}
-        for loc in data.get('locations', []) # Usar .get() por seguridad
-    ]
+    locations_to_insert = []
+    for loc_raw in data.get('locations', []):
+        loc = loc_raw.copy()
+        loc['world_id'] = world_id
+        loc['tags'] = json.dumps(loc.get('tags', []))
+        loc['connections'] = json.dumps(loc.get('connections', {}))
+        loc['initial_npcs'] = json.dumps(loc.get('initial_npcs', []))
+        loc['initial_items'] = json.dumps(loc.get('initial_items', []))
+        loc['traps'] = json.dumps(loc.get('traps', {}))
+        locations_to_insert.append(loc)
     if locations_to_insert:
         cursor.executemany("""
-            INSERT INTO locations (id, world_id, name, description, connections, initial_npcs, initial_items)
-            VALUES (:id, :world_id, :name, :description, :connections, :initial_npcs, :initial_items)
+            INSERT INTO locations (id, world_id, name, description, type, tags, connections, initial_npcs, initial_items, traps)
+            VALUES (:id, :world_id, :name, :description, :type, :tags, :connections, :initial_npcs, :initial_items, :traps)
         """, locations_to_insert)
         print(f"Imported {len(locations_to_insert)} locations.")
 
-
-    # --- INICIO DEL BLOQUE A REEMPLAZAR ---
-    # 3. Import Item Templates (Versión Robusta con Validación)
-    valid_items_to_insert = []
-    invalid_items_count = 0
-    for item in data.get('item_templates', []):
-        # Validación: Asegurarse de que las claves obligatorias existen y no están vacías.
-        if item.get('id') and item.get('name') and item.get('type'):
-            item_data = {
-                "id": item.get('id'),
-                "world_id": world_id,
-                "template_id": item.get('template_id'), # Puede ser None
-                "name": item.get('name'),
-                "description": item.get('description'), # Puede ser None
-                "type": item.get('type'),
-                "damage_base": item.get('damage_base'),
-                "healing_amount": item.get('healing_amount'),
-                "properties": json.dumps(item.get('properties', []))
-            }
-            valid_items_to_insert.append(item_data)
-        else:
-            invalid_items_count += 1
-            # Opcional: Imprimir el objeto inválido para facilitar la depuración
-            # print(f"  -> Skipping invalid item: {item}")
-
-    if invalid_items_count > 0:
-        print(f"WARNING: Skipped {invalid_items_count} invalid item templates due to missing 'id', 'name', or 'type'.")
-
-    if valid_items_to_insert:
+    # 3. Import Item Templates (con molde)
+    items_to_insert = []
+    ITEM_MOLD = {"id": None, "world_id": world_id, "template_id": "GENERIC", "name": "No Name", "description": "", "type": "junk", "damage_base": None, "healing_amount": None, "properties": "[]"}
+    for item_raw in data.get('item_templates', []):
+        final_item = ITEM_MOLD.copy()
+        final_item.update(item_raw)
+        final_item['properties'] = json.dumps(final_item.get('properties', []))
+        items_to_insert.append(final_item)
+    if items_to_insert:
         cursor.executemany("""
             INSERT INTO item_templates (id, world_id, template_id, name, description, type, damage_base, healing_amount, properties)
             VALUES (:id, :world_id, :template_id, :name, :description, :type, :damage_base, :healing_amount, :properties)
-        """, valid_items_to_insert)
-        print(f"Imported {len(valid_items_to_insert)} valid item templates.")
-    else:
-        print("No valid item templates found to import.")
-    # --- FIN DEL BLOQUE A REEMPLAZAR ---
+        """, items_to_insert)
+        print(f"Imported {len(items_to_insert)} item templates.")
 
-
-    # 4. Import NPC Templates
-   
-    npcs_to_insert = [{**npc, "world_id": world_id} for npc in data.get('npc_templates', [])]
+    # 4. Import NPC Templates (con molde)
+    npcs_to_insert = []
+    NPC_MOLD = {"id": None, "world_id": world_id, "name": "No Name", "description": "", "hp": 50, "attack": 5, "status": "neutral", "xp": 10, "dialogue_prompt": ""}
+    for npc_raw in data.get('npc_templates', []):
+        final_npc = NPC_MOLD.copy()
+        if 'stats' in npc_raw: npc_raw.update(npc_raw.pop('stats'))
+        final_npc.update(npc_raw)
+        npcs_to_insert.append(final_npc)
     if npcs_to_insert:
         cursor.executemany("""
             INSERT INTO npc_templates (id, world_id, name, description, hp, attack, status, xp, dialogue_prompt)
@@ -217,14 +149,14 @@ def import_world_from_json(conn: sqlite3.Connection, world_json_path: str):
         """, npcs_to_insert)
         print(f"Imported {len(npcs_to_insert)} NPC templates.")
 
-    # 5. Import Quests
-   
-    quests_to_insert = [
-        {**quest, "world_id": world_id,
-         "starting_npc_id": quest.get('starting_npc'),
-         "steps": json.dumps(quest.get('steps', []))}
-        for quest in data.get('quests', [])
-    ]
+    # 5. Import Quests (con molde)
+    quests_to_insert = []
+    QUEST_MOLD = {"id": None, "world_id": world_id, "title": "No Title", "description": "", "starting_npc_id": None, "steps": "[]"}
+    for quest_raw in data.get('quests', []):
+        final_quest = QUEST_MOLD.copy()
+        final_quest.update(quest_raw)
+        final_quest['steps'] = json.dumps(final_quest.get('steps', []))
+        quests_to_insert.append(final_quest)
     if quests_to_insert:
         cursor.executemany("""
             INSERT INTO quests (id, world_id, title, description, starting_npc_id, steps)
@@ -232,10 +164,53 @@ def import_world_from_json(conn: sqlite3.Connection, world_json_path: str):
         """, quests_to_insert)
         print(f"Imported {len(quests_to_insert)} quests.")
 
-
     conn.commit()
     print("--- World import completed successfully. ---")
 
+def load_world_definition(world_id: str) -> Optional[dict]:
+    """
+    Carga todas las definiciones de un mundo y DESERIALIZA los campos JSON.
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM worlds WHERE id = ?", (world_id,))
+    world_row = cursor.fetchone()
+    if not world_row:
+        print(f"World '{world_id}' not found."); conn.close(); return None
+    
+    world_def = dict(world_row)
+    # Deserializar campos JSON del objeto world
+    for key, value in world_def.items():
+        if isinstance(value, str) and (value.startswith('{') or value.startswith('[')):
+            try: world_def[key] = json.loads(value)
+            except json.JSONDecodeError: pass
+
+    tables_to_load = ['locations', 'item_templates', 'npc_templates', 'quests']
+    for table_name in tables_to_load:
+        cursor.execute(f"SELECT * FROM {table_name} WHERE world_id = ?", (world_id,))
+        rows = cursor.fetchall()
+        
+        world_def[table_name] = {}
+        for row in rows:
+            entity_data = dict(row)
+            # --- ¡LA DESERIALIZACIÓN CLAVE! ---
+            # Recorremos cada campo de la fila
+            for key, value in entity_data.items():
+                # Si parece un JSON, lo convertimos de vuelta a un objeto Python
+                if isinstance(value, str) and (value.startswith('{') or value.startswith('[')):
+                    try: entity_data[key] = json.loads(value)
+                    except json.JSONDecodeError: pass # No era JSON, lo dejamos como texto
+            
+            # Usamos el ID de la entidad como clave para acceso rápido
+            entity_id = entity_data.get('id')
+            if entity_id:
+                world_def[table_name][entity_id] = entity_data
+
+    conn.close()
+    print(f"Successfully loaded and deserialized definition for world '{world_id}'.")
+    return world_def
+    
 def save_player_state(player_state: PlayerState):
     """Guarda o actualiza el estado de un jugador en la BD."""
     conn = get_db_connection()
@@ -318,6 +293,15 @@ def get_available_saves(world_id: str) -> List[dict]:
     conn.close()
     return saves
 
+def get_available_worlds() -> List[dict]:
+    """Devuelve una lista de todos los mundos disponibles en la base de datos."""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, name, style FROM worlds")
+    worlds = [{"id": row["id"], "name": row["name"], "style": row["style"]} for row in cursor.fetchall()]
+    conn.close()
+    return worlds
+
 if __name__ == "__main__":
     print("--- Running DB Manager Initializer and Importer ---")
     
@@ -343,11 +327,3 @@ if __name__ == "__main__":
         
     print("\n--- DB Manager script finished ---")
 
-def get_available_worlds() -> List[dict]:
-    """Devuelve una lista de todos los mundos disponibles en la base de datos."""
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT id, name, style FROM worlds")
-    worlds = [{"id": row["id"], "name": row["name"], "style": row["style"]} for row in cursor.fetchall()]
-    conn.close()
-    return worlds

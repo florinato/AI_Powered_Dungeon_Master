@@ -9,3 +9,6 @@ venv
 generated_images/
 trash
 rag_memory_db
+backup_save_granflorinato.json
+savegame.json
+game_database.db

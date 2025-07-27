@@ -1,6 +1,5 @@
 # game/grid_map_generator.py
 import json
-import math
 import random
 
 import matplotlib.pyplot as plt
@@ -8,244 +7,213 @@ import networkx as nx
 
 
 class GridMapGenerator:
-    def __init__(self, width: int, height: int, target_pruning_ratio: float = 0.5):
-        if width < 2 or height < 2:
-            raise ValueError("Width and height must be at least 2.")
-        if not (0.0 <= target_pruning_ratio <= 1.0):
-            raise ValueError("Pruning ratio must be between 0.0 and 1.0.")
-            
+    """
+    Actúa como un Arquitecto de Mundos, generando un plano estructural
+    completo y parametrizado para el DirectorAgent.
+    """
+    def __init__(self, width: int, height: int, pruning_ratio: float, 
+                 generic_npc_range: tuple, item_range: tuple, 
+                 quest_node_count: int, trap_chance: float):
+        # --- Parámetros de Control ---
         self.width = width
         self.height = height
-        self.target_pruning_ratio = target_pruning_ratio
+        self.pruning_ratio = pruning_ratio
+        self.generic_npc_range = generic_npc_range # Rango para PNJs "extra"
+        self.item_range = item_range
+        self.quest_node_count = quest_node_count # Número EXACTO de nodos con misión
+        self.trap_chance = trap_chance
         
-        self.nodes_dict = {} # Usaremos un diccionario para acceder fácilmente
-        self.edges_list = []
-        self.node_positions = {}
+        # --- Estructuras de Datos Internas ---
         self.graph = nx.Graph()
+        self.nodes_dict = {}
+        self.node_positions = {}
 
-    def _prune_edges_safely(self, initial_edges: set):
-        self.graph.add_nodes_from(self.nodes_dict.keys())
-        self.graph.add_edges_from(list(initial_edges))
-        
-        edges_to_check = list(self.graph.edges())
-        random.shuffle(edges_to_check)
-        
-        num_edges_to_remove_target = int(len(edges_to_check) * self.target_pruning_ratio)
-        edges_removed_count = 0
+    def generate_map(self):
+        """Orquesta todo el proceso: rejilla, podado y población de cada nodo."""
+        print("--- World Architect Initialized (Full Control Mode) ---")
+        self._generate_base_grid()
+        self._prune_edges()
+        self._designate_special_nodes()
+        self._populate_all_nodes_with_content()
+        print("--- World Architecture Blueprint Complete ---")
 
-        for edge in edges_to_check:
-            if edges_removed_count >= num_edges_to_remove_target: break
-            self.graph.remove_edge(*edge)
-            if nx.is_connected(self.graph):
-                edges_removed_count += 1
-            else:
-                self.graph.add_edge(*edge)
-        
-        print(f"Pruning complete. Target: {num_edges_to_remove_target}, Actual removed: {edges_removed_count}")
-        return set(self.graph.edges())
-
-    def generate_map_structure(self):
-        """Genera la estructura base de nodos y aristas."""
+    def _generate_base_grid(self):
+        print(f"[Step 1/4] Generating {self.width}x{self.height} base grid...")
         for y in range(self.height):
             for x in range(self.width):
                 node_id = f"node_{x}_{y}"
-                self.nodes_dict[node_id] = {"id": node_id} # Llenamos el dict
+                # Inicializamos el diccionario del nodo con valores por defecto
+                self.nodes_dict[node_id] = {
+                    "id": node_id,
+                    "has_quest_start": False, # Por defecto, ningún nodo tiene misión
+                    "has_trap": False
+                }
                 self.node_positions[node_id] = (x, -y)
-
-        initial_edges = set()
+                self.graph.add_node(node_id)
+        
         for y in range(self.height):
             for x in range(self.width):
-                current_node = f"node_{x}_{y}"
-                if x < self.width - 1:
-                    initial_edges.add(tuple(sorted((current_node, f"node_{x+1}_{y}"))))
-                if y < self.height - 1:
-                    initial_edges.add(tuple(sorted((current_node, f"node_{x}_{y+1}"))))
-        
-        final_edges_set = self._prune_edges_safely(initial_edges)
+                if x < self.width - 1: self.graph.add_edge(f"node_{x}_{y}", f"node_{x+1}_{y}")
+                if y < self.height - 1: self.graph.add_edge(f"node_{x}_{y}", f"node_{x}_{y+1}")
 
-        for node1, node2 in final_edges_set:
-            x1, y1 = map(int, node1.split('_')[1:])
-            x2, y2 = map(int, node2.split('_')[1:])
-            dir1, dir2 = ("south", "north") if x1 == x2 else ("east", "west")
-            self.edges_list.append({"source": node1, "target": node2, "direction": dir1})
-            self.edges_list.append({"source": node2, "target": node1, "direction": dir2})
+    def _prune_edges(self):
+        print(f"[Step 2/4] Pruning {self.pruning_ratio*100:.0f}% of connections...")
+        edges_to_check = list(self.graph.edges())
+        random.shuffle(edges_to_check)
+        target_removal = int(len(edges_to_check) * self.pruning_ratio)
+        removed_count = 0
+        for edge in edges_to_check:
+            if removed_count >= target_removal: break
+            self.graph.remove_edge(*edge)
+            if not nx.is_connected(self.graph):
+                self.graph.add_edge(*edge)
+            else:
+                removed_count += 1
+        print(f"  -> Pruning complete. Removed {removed_count} edges.")
 
-    def _zone_map(self, zoning_config: dict):
-        """
-        Asigna types y tags a los nodos del mapa basándose en una configuración y lógica procedural.
-        """
-        print("\n--- Zoning Map ---")
+    def _designate_special_nodes(self):
+        """Elige aleatoriamente qué nodos tendrán el inicio de una misión."""
+        print(f"[Step 3/4] Designating {self.quest_node_count} nodes as quest start points...")
         all_node_ids = list(self.nodes_dict.keys())
+        num_to_designate = min(self.quest_node_count, len(all_node_ids))
         
-        # 1. Identificar Nodos Clave
-        center_x, center_y = self.width / 2, self.height / 2
+        quest_start_nodes = random.sample(all_node_ids, num_to_designate)
         
-        # Ordenar nodos por distancia al centro
-        nodes_by_distance = sorted(all_node_ids, key=lambda nid: math.dist((int(nid.split('_')[1]), int(nid.split('_')[2])), (center_x, center_y)))
-        
-        # Nodos sin salida (dead ends)
-        dead_ends = [nid for nid, degree in self.graph.degree() if degree == 1]
-        print(f"Identified {len(dead_ends)} dead-end nodes.")
+        for node_id in quest_start_nodes:
+            self.nodes_dict[node_id]['has_quest_start'] = True
 
-        # 2. Asignar Tipos (`type`)
-        num_nodes = len(all_node_ids)
-        num_hubs = int(num_nodes * zoning_config.get("hub_ratio", 0.15))
-        num_landmarks = int(num_nodes * zoning_config.get("landmark_ratio", 0.10))
-        
-        assigned_nodes = set()
-        
-        # Asignar Hubs (priorizando el centro)
-        hubs = []
-        for nid in nodes_by_distance:
-            if len(hubs) < num_hubs:
-                self.nodes_dict[nid]['type'] = "hub"
-                hubs.append(nid)
-                assigned_nodes.add(nid)
-        print(f"Assigned {len(hubs)} nodes as 'hub'.")
+    def _populate_all_nodes_with_content(self):
+        """Itera sobre cada nodo y le asigna contadores de PNJs genéricos, items y trampas."""
+        print(f"[Step 4/4] Populating ALL nodes with content blueprints...")
+        totals = {"generic_npcs": 0, "items": 0, "quests": 0, "traps": 0}
 
-        # Asignar Landmarks (priorizando dead ends y periferia)
-        landmarks = []
-        # Primero, llenamos con dead ends si es posible
-        for nid in dead_ends:
-            if len(landmarks) < num_landmarks and nid not in assigned_nodes:
-                self.nodes_dict[nid]['type'] = "landmark"
-                landmarks.append(nid)
-                assigned_nodes.add(nid)
-        # Luego, rellenamos con nodos periféricos si faltan
-        for nid in reversed(nodes_by_distance):
-             if len(landmarks) < num_landmarks and nid not in assigned_nodes:
-                self.nodes_dict[nid]['type'] = "landmark"
-                landmarks.append(nid)
-                assigned_nodes.add(nid)
-        print(f"Assigned {len(landmarks)} nodes as 'landmark'.")
-        
-        # Asignar Fillers
-        filler_type = zoning_config.get("filler_type", "pasaje")
-        fillers = []
-        for nid in all_node_ids:
-            if nid not in assigned_nodes:
-                self.nodes_dict[nid]['type'] = filler_type
-                fillers.append(nid)
-        print(f"Assigned {len(fillers)} nodes as '{filler_type}'.")
-
-        # 3. Asignar Etiquetas (`tags`)
-        for nid in all_node_ids:
-            self.nodes_dict[nid]['tags'] = [] # Inicializar lista de tags
-            node_type = self.nodes_dict[nid]['type']
+        for node_id in self.nodes_dict:
+            # Asignar PNJs "extra" e Items
+            num_generic_npcs = random.randint(*self.generic_npc_range)
+            num_items = random.randint(*self.item_range)
             
-            for tag, rules in zoning_config.get("tags", {}).items():
-                # Reglas de probabilidad
-                if "chance" in rules and node_type in rules.get("on_type", []):
-                    if random.random() < rules["chance"]:
-                        self.nodes_dict[nid]['tags'].append(tag)
-        
-        # Reglas de conteo (garantizan que existan ciertos tags)
-        for tag, rules in zoning_config.get("tags", {}).items():
-            if "count" in rules:
-                potential_nodes = [nid for nid in all_node_ids if self.nodes_dict[nid]['type'] in rules.get("on_type", []) and tag not in self.nodes_dict[nid]['tags']]
-                if not potential_nodes: # Fallback si no hay nodos adecuados
-                    potential_nodes = all_node_ids
-                
-                chosen_nodes = random.sample(potential_nodes, min(rules["count"], len(potential_nodes)))
-                for nid in chosen_nodes:
-                    self.nodes_dict[nid]['tags'].append(tag)
-                print(f"Assigned tag '{tag}' to {len(chosen_nodes)} specific node(s).")
-        
-        print("--- Zoning Complete ---")
+            # Asignar trampa basado en probabilidad
+            has_trap = random.random() < self.trap_chance
+            self.nodes_dict[node_id]['has_trap'] = has_trap
 
-    def assemble_output(self):
-        """Prepara el diccionario final compatible con el modelo WorldGraph."""
+            # Guardamos los contadores. Los PNJs de misión no se cuentan aquí.
+            self.nodes_dict[node_id]['generic_npc_count'] = num_generic_npcs
+            self.nodes_dict[node_id]['item_count'] = num_items
+
+            # Actualizar totales para el informe final
+            totals["generic_npcs"] += num_generic_npcs
+            totals["items"] += num_items
+            if self.nodes_dict[node_id]['has_quest_start']: totals["quests"] += 1
+            if has_trap: totals["traps"] += 1
+            
+        print(f"  -> Generated a total of {totals['generic_npcs']} generic NPC placeholders.")
+        print(f"  -> Generated a total of {totals['items']} Item placeholders.")
+        print(f"  -> Designated {totals['quests']} nodes as quest start points.")
+        print(f"  -> Placed {totals['traps']} trap placeholders.")
+
+    def assemble_output(self) -> dict:
+        """Prepara el diccionario final para el DirectorAgent, combinando toda la información."""
         nodes_output_dict = {}
         for node_id, node_data in self.nodes_dict.items():
+            # El blueprint ahora solo contiene los contadores y flags
             nodes_output_dict[node_id] = {
                 "id": node_id,
-                "type": node_data.get('type', 'room'),
-                "tags": node_data.get('tags', []),
-                "size": "medium", # Por ahora, todos medium
-                "connections": []
+                "type": "sala",
+                "tags": [],
+                "connections": [],
+                "generic_npc_count": node_data.get('generic_npc_count', 0),
+                "item_count": node_data.get('item_count', 0),
+                "has_quest_start": node_data.get('has_quest_start', False),
+                "has_trap": node_data.get('has_trap', False)
             }
         
-        for edge in self.edges_list:
-            source_id = edge['source']
-            nodes_output_dict[source_id]['connections'].append({
-                "target_node_id": edge['target'],
-                "direction": edge['direction'],
-                "properties": { "is_locked": False, "is_hidden": False, "is_one_way": False }
-            })
+        for u, v in self.graph.edges():
+            x1, y1 = map(int, u.split('_')[1:])
+            x2, y2 = map(int, v.split('_')[1:])
+            dir_uv, dir_vu = ("sur", "norte") if x1 == x2 else ("este", "oeste")
+            
+            nodes_output_dict[u]['connections'].append({"target_node_id": v, "direction": dir_uv})
+            nodes_output_dict[v]['connections'].append({"target_node_id": u, "direction": dir_vu})
 
-        graph_id = f"grid_map_{self.width}x{self.height}_p{int(self.target_pruning_ratio*100)}"
-        return {
-            "graph_id": graph_id,
-            "nodes": nodes_output_dict
-        }
+        graph_id = f"grid_map_{self.width}x{self.height}_p{int(self.pruning_ratio*100)}"
+        return {"graph_id": graph_id, "nodes": nodes_output_dict}
 
     def visualize_map(self):
-        """Visualiza el mapa zonificado con colores."""
-        color_map = {'hub': 'gold', 'landmark': 'firebrick', 'pasaje': 'skyblue'}
-        node_colors = [color_map.get(self.nodes_dict[nid].get('type'), 'gray') for nid in self.graph.nodes()]
+        """Visualiza el mapa con información de la densidad de contenido."""
+        plt.figure(figsize=(self.width * 2.5, self.height * 2.5))
+        
+        node_colors = []
+        for nid in self.graph.nodes():
+            if self.nodes_dict[nid].get('has_quest_start'):
+                node_colors.append('gold')
+            elif self.nodes_dict[nid].get('has_trap'):
+                node_colors.append('firebrick')
+            else:
+                node_colors.append('skyblue')
 
-        plt.figure(figsize=(self.width * 1.5, self.height * 1.5))
-        nx.draw(self.graph, self.node_positions, with_labels=False, node_size=300, node_color=node_colors)
+        nx.draw(self.graph, self.node_positions, with_labels=False, node_size=1000, node_color=node_colors)
         
-        # Etiquetas: ID, Tipo y Tags
-        labels = {nid: f"{nid.split('_')[1]},{nid.split('_')[2]}\n{data['type']}\n{','.join(data['tags'])}" for nid, data in self.nodes_dict.items()}
-        nx.draw_networkx_labels(self.graph, self.node_positions, labels=labels, font_size=6, font_color='black')
+        labels = {
+            nid: (f"ID: {nid.split('_')[1]},{nid.split('_')[2]}\n"
+                  f"Extras: {data.get('generic_npc_count', 0)}\n"
+                  f"Items: {data.get('item_count', 0)}\n"
+                  f"{'QUEST' if data.get('has_quest_start') else ''}\n"
+                  f"{'TRAP' if data.get('has_trap') else ''}")
+            for nid, data in self.nodes_dict.items()
+        }
+        nx.draw_networkx_labels(self.graph, self.node_positions, labels=labels, font_color='black', font_size=7)
         
-        plt.title(f"Zoned Map ({self.width}x{self.height})")
-        print("Displaying zoned map visualization. Close the plot window to continue.")
+        plt.title(f"Content Blueprint ({self.width}x{self.height})")
         plt.show()
 
-# --- Bloque principal ---
+# --- BLOQUE PRINCIPAL: TU PANEL DE CONTROL FINAL ---
+
 if __name__ == "__main__":
     
-    # --- ¡NUESTRA RECETA DE MAPA AJUSTABLE! ---
-    ZONING_CONFIG = {
-        "hub_ratio": 0.15,
-        "landmark_ratio": 0.10,
-        "filler_type": "pasaje",
-        "tags": {
-            "safe": {"chance": 0.9, "on_type": ["hub"]},
-            "dangerous": {"chance": 0.7, "on_type": ["landmark", "pasaje"]},
-            "rich": {"chance": 0.4, "on_type": ["hub", "landmark"]},
-            "poor": {"chance": 0.5, "on_type": ["pasaje"]},
-            "quest_start": {"count": 1, "on_type": ["hub"]},
-            "quest_end": {"count": 1, "on_type": ["landmark"]}
-        }
-    }
+    # ------------------------------------------------------------------
+    # --- PARÁMETROS DEL MUNDO: ¡MÁXIMO CONTROL AQUÍ! ---
+    # ------------------------------------------------------------------
+    
+    # 1. TAMAÑO DEL MAPA
+    MAP_WIDTH = 3
+    MAP_HEIGHT = 4
+    
+    # 2. CONECTIVIDAD (0.0 = laberinto, 1.0 = rejilla completa)
+    PRUNING_RATIO = 0.4
+    
+    # 3. NÚMERO TOTAL DE MISIONES EN EL MUNDO
+    TOTAL_QUESTS = 3
+    
+    # 4. PNJS "EXTRA" POR SALA (min, max) - Estos se suman a los de las misiones
+    GENERIC_NPCS_PER_NODE = (0, 1)
+    
+    # 5. OBJETOS TOTALES POR SALA (min, max)
+    ITEMS_PER_NODE = (0, 2)
+    
+    # 6. PROBABILIDAD DE TRAMPA POR NODO
+    TRAP_CHANCE = 0.20 # 20% de las salas
+    
+    # ------------------------------------------------------------------
+    
+    try:
+        print(f"Generating a {MAP_WIDTH}x{MAP_HEIGHT} map blueprint with specified parameters...")
 
-    while True:
-        try:
-            width = int(input(f"Enter map width (default: 8): ") or 8)
-            height = int(input(f"Enter map height (default: 6): ") or 6)
-            pruning_ratio = float(input(f"Enter pruning ratio (default: 0.5): ") or 0.5)
-            
-            generator = GridMapGenerator(width, height, pruning_ratio)
-            
-            # 1. Generar la estructura
-            generator.generate_map_structure()
-            
-            # 2. ¡Aplicar la zonificación!
-            generator._zone_map(ZONING_CONFIG)
+        generator = GridMapGenerator(
+            width=MAP_WIDTH, height=MAP_HEIGHT,
+            pruning_ratio=PRUNING_RATIO,
+            generic_npc_range=GENERIC_NPCS_PER_NODE, item_range=ITEMS_PER_NODE,
+            quest_node_count=TOTAL_QUESTS, trap_chance=TRAP_CHANCE
+        )
+        
+        generator.generate_map()
+        generator.visualize_map()
 
-            # 3. Visualizar el resultado
-            generator.visualize_map()
+        final_structure = generator.assemble_output()
+        output_filename = f"{final_structure['graph_id']}_blueprint.json"
+        with open(output_filename, "w") as f:
+            json.dump(final_structure, f, indent=2)
+        
+        print(f"\nWorld blueprint saved to '{output_filename}'!")
 
-            save_map = input("Do you like this map? (yes/no): ").lower().strip()
-            
-            if save_map in ['y', 'yes']:
-                # 4. Ensamblar y guardar
-                final_structure = generator.assemble_output()
-                
-                output_filename = f"{final_structure['graph_id']}_zoned_structure.json"
-                with open(output_filename, "w") as f:
-                    json.dump(final_structure, f, indent=2)
-                
-                print(f"Zoned map structure saved to '{output_filename}'!")
-                print("This file contains rich structural information for the DirectorAgent.")
-                break
-            else:
-                print("Generating a new map...\n")
-
-        except (ValueError, TypeError) as e:
-            print(f"\nError: Invalid input. Please enter valid numbers. Details: {e}")
-            break
+    except Exception as e:
+        print(f"\nAn error occurred: {e}")

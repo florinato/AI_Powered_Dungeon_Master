@@ -1,4 +1,4 @@
-# refact/state_manager.py
+# game/state_manager.py
 
 import json
 import os

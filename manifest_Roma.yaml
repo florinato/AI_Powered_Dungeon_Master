@@ -1,46 +1,56 @@
 world_id: "roma_republicana"
 world_name: "Las Sombras de Roma"
 language: "Español"
-historical_context: "República Romana Tardía, alrededor del 60 a.C. durante el Primer Triunvirato de César, Pompeyo y Craso. Una época de inmensa riqueza, ambición política y conspiraciones."
 
-world_theme: "Thriller político y de espionaje con elementos de la vida cotidiana romana. Piensa en la serie 'Roma' de HBO mezclada con una novela de John le Carré."
+# --- INSPIRACIÓN DE ALTO NIVEL ---
+# Directrices principales que definen el universo del juego.
+
+historical_context: >
+  República Romana Tardía, alrededor del 60 a.C. durante el Primer Triunvirato
+  de César, Pompeyo y Craso. Una época de inmensa riqueza, ambición política
+  y conspiraciones.
+
+inhabitant_description: >
+  Ciudadanos de la antigua Roma vistiendo togas, túnicas y sandalias.
+  La vestimenta y los accesorios deben ser históricamente precisos para la
+  República Romana.
+
+world_theme: >
+  Thriller político y de espionaje con elementos de la vida cotidiana romana.
+  Piensa en la serie 'Roma' de HBO mezclada con una novela de John le Carré.
+
 world_description: |
-  Roma no es solo mármol y gloria; es una bestia que se alimenta de secretos. Mientras los senadores debaten en el Foro, en las oscuras tabernas de la Subura se tejen traiciones que derribarán a hombres poderosos. Las legiones conquistan el mundo, pero la verdadera batalla por el alma de la República se libra en susurros, con dagas ocultas bajo las togas y veneno en las copas de vino.
+  Roma no es solo mármol y gloria; es una bestia que se alimenta de secretos.
+  Mientras los senadores, ataviados con togas inmaculadas, debaten el destino
+  del mundo bajo los artesonados dorados de la Curia, en las oscuras y fétidas
+  tabernas de la Subura se tejen traiciones que derribarán a hombres poderosos
+  con una simple copa de vino envenenado.
 
-structure:
+  Las legiones conquistan tierras lejanas en nombre de la República, pero la
+  verdadera batalla, la que importa, se libra aquí, en sus calles laberínticas.
+  Es una guerra silenciosa combatida con susurros en los baños públicos, con
+  papiros cifrados pasados de mano en mercados bulliciosos, y con dagas ocultas
+  que encuentran su blanco en callejones sin luna.
+
+  Aquí, la lealtad es una moneda que se devalúa con cada amanecer, la verdad
+  es una mercancía vendida al mejor postor, y la justicia es un lujo que solo
+  los poderosos pueden permitirse. En las sombras de Roma, no puedes confiar en
+  los dioses ni en la ley. Solo puedes confiar en tu ingenio, en la información
+  que atesoras, y en el frío acero que llevas oculto, esperando el momento
+  en que un secreto valga más que una vida.
+
+# --- EJEMPLOS PARA GUIAR LA CREATIVIDAD DE LA IA ---
+# Estos no son reglas, son guías de inspiración para el DirectorAgent.
+
+creative_examples:
   location_types:
-    - type: "domus_patricia"
-      tags: ["residencial", "rico", "intriga"]
-    - type: "insula_popular"
-      tags: ["residencial", "pobre", "peligroso"]
-    - type: "termas"
-      tags: ["social", "público", "negocios"]
-    - type: "foro"
-      tags: ["gobierno", "público", "central"]
-    - type: "campamento_militar"
-      tags: ["militar", "disciplina"]
+    - "una opulenta domus patricia llena de intrigas"
+    - "una insula popular pobre y peligrosa en la Subura"
+    - "unas termas públicas donde se cierran negocios y se intercambian secretos"
+    - "un campamento militar en las afueras, lleno de veteranos descontentos"
   
-  npc_archetypes:
-    - "legionario veterano leal"
-    - "senador ambicioso y sin escrúpulos"
-    - "esclavo griego con información valiosa"
-    - "vestal que conoce un secreto divino"
-    - "mercader sirio con conexiones en el hampa"
-quest_seeds:
-- title: "La Daga del Senador"
-  description: "Un senador influyente ha sido asesinado. El principal sospechoso es un legionario leal, pero las pruebas no encajan. Hay una conspiración detrás."
-  quest_giver_archetype: "legionario veterano leal"
-  boss_archetype: "senador ambicioso y sin escrúpulos"
-  key_item_idea: "Una daga ceremonial con un emblema secreto que no pertenece a la víctima."
-
-- title: "El Veneno de las Vestales"
-  description: "Una de las sacerdotisas del Templo de Vesta ha caído gravemente enferma por un veneno exótico. Se sospecha de una intriga interna para silenciarla."
-  quest_giver_archetype: "vestal que conoce un secreto divino"
-  boss_archetype: "mercader sirio con conexiones en el hampa" # Quizás él vendió el veneno
-  key_item_idea: "Un frasco de antídoto raro que debe ser encontrado o fabricado."
-
-- title: "El Papiro Perdido"
-  description: "Un esclavo erudito ha robado un papiro con información comprometedora sobre la malversación de fondos en la construcción de un acueducto. Ahora está desaparecido."
-  quest_giver_archetype: "esclavo griego con información valiosa" # Un amigo del desaparecido
-  boss_archetype: "senador ambicioso y sin escrúpulos"
-  key_item_idea: "El papiro robado, que está dividido en varios fragmentos."
+  npc_archetypes_examples:
+    - "un legionario veterano y leal, pero hastiado de la corrupción"
+    - "un senador ambicioso capaz de cualquier cosa por el poder"
+    - "una vestal que guarda un secreto que podría derribar la República"
+    - "un mercader sirio que comercia con información tan valiosa como sus especias"

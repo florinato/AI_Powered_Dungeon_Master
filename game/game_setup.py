@@ -71,52 +71,55 @@ def save_new_player(player_state: PlayerState) -> Optional[int]:
     finally:
         conn.close()
 
-def create_game_world_instance(world_definition: dict, player_state: PlayerState) -> dict:
+def create_game_world_instance(world_definition: dict, player_state) -> dict:
     """
-    Crea una instancia jugable del mundo.
-    Empieza con una copia profunda de la definición y luego aplica los deltas del jugador.
+    Crea una instancia jugable del mundo para la sesión actual.
+    Esta versión es más robusta y explícita.
     """
     print("Creating game world instance for the current session...")
     
-    # 1. Copia profunda de las partes mutables de la definición del mundo.
-    # ¡Esto es crucial para no modificar la definición original en memoria!
-    world_instance = {
-        'locations': copy.deepcopy(world_definition.get('locations', {})),
-        'item_templates': world_definition.get('item_templates', {}), # Suelen ser inmutables
-        'npc_templates': world_definition.get('npc_templates', {}),   # Suelen ser inmutables
-        'quests': copy.deepcopy(world_definition.get('quests', {})),
-    }
+    # 1. Obtenemos las plantillas que necesitaremos
+    location_templates = world_definition.get('locations', {})
+    npc_templates = world_definition.get('npc_templates', {})
+    item_templates = world_definition.get('item_templates', {})
 
-    # 2. "Poblar" las localizaciones con instancias de NPCs e Items.
-    # La definición solo nos da los IDs, aquí creamos los objetos completos.
-    for loc_id, loc_data in world_instance['locations'].items():
-        # Poblar NPCs
-        npc_instances = {}
-        for npc_id in loc_data.get('initial_npcs', []):
-            if npc_id in world_instance['npc_templates']:
-                # Creamos una copia para que cada NPC sea único
-                npc_instances[npc_id] = copy.deepcopy(world_instance['npc_templates'][npc_id])
-        loc_data['npcs'] = npc_instances
+    if not location_templates:
+        print("  -> [DEBUG] CRITICAL ERROR in create_game_world_instance: No location templates found in world_definition!")
+        return {"locations": {}}
+
+    # 2. Creamos el diccionario vacío donde construiremos las localizaciones "vivas"
+    instanced_locations = {}
+
+    # 3. Iteramos sobre las PLANTILLAS de localización
+    for loc_id, loc_template in location_templates.items():
+        # Creamos una copia profunda de la plantilla para no modificar la original
+        new_loc_instance = copy.deepcopy(loc_template)
+
+        # --- Instanciamos los PNJs para esta localización ---
+        npc_ids_in_loc = new_loc_instance.get('initial_npcs', [])
+        instanced_npcs = {}
+        for npc_id in npc_ids_in_loc:
+            if npc_id in npc_templates:
+                # Creamos una copia del PNJ de su plantilla
+                instanced_npcs[npc_id] = copy.deepcopy(npc_templates[npc_id])
+        # Reemplazamos la lista de IDs por un diccionario de objetos PNJ completos
+        new_loc_instance['npcs'] = instanced_npcs
         
-        # Poblar Items
-        item_instances = {}
-        for item_id in loc_data.get('initial_items', []):
-            if item_id in world_instance['item_templates']:
-                item_instances[item_id] = copy.deepcopy(world_instance['item_templates'][item_id])
-        loc_data['items'] = item_instances
+        # --- Instanciamos los Items para esta localización ---
+        item_ids_in_loc = new_loc_instance.get('initial_items', [])
+        instanced_items = {}
+        for item_id in item_ids_in_loc:
+            if item_id in item_templates:
+                # Creamos una copia del ítem de su plantilla
+                instanced_items[item_id] = copy.deepcopy(item_templates[item_id])
+        # Reemplazamos la lista de IDs por un diccionario de objetos Item completos
+        new_loc_instance['items'] = instanced_items
+        
+        # Guardamos la localización "viva" y completamente poblada en nuestro diccionario final
+        instanced_locations[loc_id] = new_loc_instance
 
-    # 3. Aplicar los deltas guardados en el estado del jugador (esto es para cargar partida)
-    # Por ahora lo dejamos simple, pero aquí iría la lógica para aplicar `player_state.world_state_delta`
-    # Ejemplo de cómo podría ser:
-    # for path, value in player_state.world_state_delta.items():
-    #     keys = path.split('.')
-    #     current_level = world_instance
-    #     for key in keys[:-1]:
-    #         current_level = current_level[key]
-    #     if value is None:
-    #         del current_level[keys[-1]]
-    #     else:
-    #         current_level[keys[-1]] = value
-            
+    print(f"  -> [DEBUG] Instanced {len(instanced_locations)} locations.")
     print("World instance created successfully.")
-    return world_instance
+    
+    # El resultado final es un diccionario que contiene la clave "locations"
+    return {"locations": instanced_locations}

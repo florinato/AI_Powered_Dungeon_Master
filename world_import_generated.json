@@ -1,0 +1,1478 @@
+{
+  "world": {
+    "id": "roma_republicana",
+    "name": "Las Sombras de Roma",
+    "style": "Thriller político y de espionaje con elementos de la vida cotidiana romana. Piensa en la serie 'Roma' de HBO mezclada con una novela de John le Carré.\n",
+    "lore": "Roma no es solo mármol y gloria; es una bestia que se alimenta de secretos.\nMientras los senadores, ataviados con togas inmaculadas, debaten el destino\ndel mundo bajo los artesonados dorados de la Curia, en las oscuras y fétidas\ntabernas de la Subura se tejen traiciones que derribarán a hombres poderosos\ncon una simple copa de vino envenenado.\n\nLas legiones conquistan tierras lejanas en nombre de la República, pero la\nverdadera batalla, la que importa, se libra aquí, en sus calles laberínticas.\nEs una guerra silenciosa combatida con susurros en los baños públicos, con\npapiros cifrados pasados de mano en mercados bulliciosos, y con dagas ocultas\nque encuentran su blanco en callejones sin luna.\n\nAquí, la lealtad es una moneda que se devalúa con cada amanecer, la verdad\nes una mercancía vendida al mejor postor, y la justicia es un lujo que solo\nlos poderosos pueden permitirse. En las sombras de Roma, no puedes confiar en\nlos dioses ni en la ley. Solo puedes confiar en tu ingenio, en la información\nque atesoras, y en el frío acero que llevas oculto, esperando el momento\nen que un secreto valga más que una vida.\n",
+    "language": "Español",
+    "inhabitant_description": "Ciudadanos de la antigua Roma vistiendo togas, túnicas y sandalias. La vestimenta y los accesorios deben ser históricamente precisos para la República Romana.\n",
+    "starting_location_id": "node_0_0",
+    "main_quests": {
+      "QUEST_EL_MURMULLO_DE_LA_SUBURA_319": {
+        "title": "El Murmullo de la Subura",
+        "description": "Un influyente senador, Publio Cornelio Escipión, ha desaparecido. Rumores susurran en los barrios bajos de la Subura sobre un ajuste de cuentas político. Los jugadores son contratados para investigar, adentrándose en las sombras de la ciudad para descubrir la verdad tras la desaparición y desentrañar una conspiración que amenaza con desestabilizar el delicado equilibrio del Triunvirato.",
+        "steps": [
+          {
+            "description": "Investigar la última ubicación conocida de Escipión: una taberna sórdida en la Subura llamada 'La Serpiente Rústica'. Reúne información de los parroquianos, buscando pistas sobre la presencia de Escipión y cualquier persona que lo haya visto por última vez. Observa cualquier señal de lucha o conflicto.",
+            "objective": {
+              "type": "location_clue",
+              "id": "taberna_serpiente",
+              "description": "Descubrir la última ubicación conocida de Escipión en 'La Serpiente Rústica' y recopilar pistas sobre su desaparición."
+            }
+          },
+          {
+            "description": "Seguir el rastro de un peculiar símbolo encontrado en la taberna: un escorpión tallado en una moneda. Este símbolo pertenece a una organización secreta conocida como 'Los Escorpiones', supuestamente involucrada en la extorsión y el asesinato político. La investigación debe llevar a los jugadores a contactar con el mercado negro, buscando la fuente de la moneda, e infiltrándose en las redes de información de la Subura para descubrir la verdadera naturaleza de 'Los Escorpiones' y sus vínculos con la desaparición.",
+            "objective": {
+              "type": "social_interaction",
+              "id": "escorpiones_network",
+              "description": "Identificar y contactar con un miembro clave de 'Los Escorpiones' para obtener información sobre la desaparición de Escipión."
+            }
+          },
+          {
+            "description": "La investigación lleva a los jugadores a una antigua villa a las afueras de Roma, propiedad de un rival político de Escipión. Aquí, deben enfrentarse a un grupo de mercenarios contratados y al propio instigador del complot, revelando la red de traiciones y el motivo detrás del secuestro y posterior asesinato de Escipión, que podría desatar una crisis dentro del Triunvirato.",
+            "objective": {
+              "type": "combat_and_reveal",
+              "id": "villa_escipion",
+              "description": "Luchar contra los mercenarios y confrontar al cerebro detrás de la conspiración, revelando el destino de Escipión y los secretos que lo llevaron a la muerte."
+            }
+          }
+        ],
+        "quest_giver_role": "Un liberto astuto con conexiones en la Subura, sirviente de un senador preocupado por el destino de su colega desaparecido.",
+        "boss_role": "Un rico propietario de tierras y senador rival de Escipión, impulsado por la ambición y la sed de poder, que está dispuesto a usar cualquier medio, incluida la violencia, para avanzar en su carrera política.",
+        "id": "QUEST_EL_MURMULLO_DE_LA_SUBURA_319",
+        "starting_npc_id": "L-001",
+        "final_boss_id": "CS-003"
+      },
+      "QUEST_LA_CIFRA_DE_LAS_TERMAS_OSCURAS_740": {
+        "title": "La Cifra de las Termas Oscuras",
+        "description": "Un importante senador, Marco Valerio Mesala, ha sido encontrado muerto en circunstancias sospechosas en las Termas de Agripa. Sospechas de asesinato político se ciernen sobre la República, y el personaje del jugador es reclutado para investigar discretamente. La clave de la verdad reside en un mensaje cifrado oculto, supuestamente en posesión del senador, y el jugador debe desenmascarar la red de espionaje que se esconde tras su muerte, antes de que la inestabilidad política desate una guerra civil.",
+        "steps": [
+          {
+            "description": "Primero, el jugador debe infiltrarse en la domus de Mesala y encontrar cualquier pista que revele su actividad secreta y el posible contenido de su mensaje cifrado. Investigar la biblioteca del senador y hablar con sus sirvientes podría revelar secretos.",
+            "objective": {
+              "type": "location",
+              "id": "domus_mesala",
+              "description": "Encontrar pistas en la domus de Mesala."
+            }
+          },
+          {
+            "description": "Siguiendo las pistas, el jugador debe rastrear a un grupo de conspiradores que frecuentaban las Termas de Agripa, el lugar donde Mesala murió. Hablar con los baños, observando a los bañistas, y buscando objetos ocultos en los vestuarios y salones de masaje, podría revelar la identidad de los espías y la ubicación del mensaje cifrado.",
+            "objective": {
+              "type": "interaction",
+              "id": "conspiradores",
+              "description": "Identificar y rastrear a los conspiradores en las Termas de Agripa."
+            }
+          },
+          {
+            "description": "Finalmente, el jugador debe descifrar el mensaje, revelando la trama de traición que llevó a la muerte de Mesala. El mensaje cifrado, una vez descifrado, revela los nombres de los implicados y el alcance de la conspiración. El jugador debe decidir a quién revelar la información, con consecuencias potencialmente fatales para sí mismo y para la República.",
+            "objective": {
+              "type": "item",
+              "id": "cifrado_final",
+              "description": "Descifrar el mensaje y descubrir la verdad."
+            }
+          }
+        ],
+        "quest_giver_role": "Un pretor joven e idealista, pero presionado por sus superiores, que necesita un investigador independiente y discreto.",
+        "boss_role": "Un antiguo oficial del ejército de Pompeyo, ahora retirado y resentido, que dirige una red de espionaje con el objetivo de desestabilizar la República para beneficio personal.",
+        "id": "QUEST_LA_CIFRA_DE_LAS_TERMAS_OSCURAS_740",
+        "starting_npc_id": "Pretor_Valerio_60BC",
+        "final_boss_id": "CifraTermasOscuras_Boss_001"
+      },
+      "QUEST_EL_MURMULLO_DEL_FORO_582": {
+        "title": "El Murmullo del Foro",
+        "description": "El jugador es reclutado para investigar una serie de rumores que corren por el Foro Romano. Se susurra que un grupo de senadores, liderados por el enigmático Senator Cassio, están planeando una conspiración contra el Triunvirato. Se sospecha que tienen un mensajero que utiliza un código secreto para comunicar con sus cómplices. El jugador debe descubrir la verdad, averiguar quiénes están involucrados y desbaratar el complot, todo mientras navega por el traicionero mundo de la política romana.",
+        "steps": [
+          {
+            "description": "El jugador debe infiltrarse en una reunión secreta celebrada en las Termas de Agripa, donde se rumorea que se reúnen los conspiradores. Para ello, necesita obtener una invitación. Esto implica sobornar a un guardia, robar una invitación de un senador o conseguir una por medio de favores. Dentro, el jugador debe observar discretamente para identificar a los sospechosos y escuchar sus conversaciones.",
+            "objective": {
+              "type": "location",
+              "id": "termas_agripa",
+              "description": "Infiltrarse en las Termas de Agripa y obtener información sobre los conspiradores."
+            }
+          },
+          {
+            "description": "Tras identificar al mensajero, el jugador debe seguirle a su guarida en la Subura, un barrio peligroso y lleno de trampas. Allí, debe registrar su habitación en busca de pruebas, desifrar el código secreto que usa, o obtener la información necesaria para identificar a los conspiradores y sus planes. El jugador se enfrentará a matones y espías mientras busca la verdad.",
+            "objective": {
+              "type": "information",
+              "id": "codigo_secreto",
+              "description": "Descifrar el código secreto del mensajero o obtener información sobre la conspiración."
+            }
+          },
+          {
+            "description": "El jugador debe confrontar a Senator Cassio, el presunto líder de la conspiración. La confrontación puede tener lugar en una lujosa domus patricia, un campamento militar en las afueras de la ciudad o incluso en el propio Foro. El jugador debe decidir si revelar sus hallazgos al Triunvirato, intentar detener la conspiración por su cuenta, o usarlos para su propio beneficio, todo mientras se enfrenta a la Guardia Pretoriana y a los sicarios de Cassio.",
+            "objective": {
+              "type": "confrontation",
+              "id": "cassio",
+              "description": "Confrontar a Senator Cassio y decidir el destino de la conspiración."
+            }
+          }
+        ],
+        "quest_giver_role": "Un ex-legionario, ahora informante para César, que busca desmantelar la conspiración antes de que desestabilice el Triunvirato.",
+        "boss_role": "Un senador astuto y manipulador que está dispuesto a derrocar el orden establecido por cualquier medio necesario, con ambiciones para gobernar Roma.",
+        "id": "QUEST_EL_MURMULLO_DEL_FORO_582",
+        "starting_npc_id": "Caius_Valerius_Flaccus_001",
+        "final_boss_id": "SEN_001"
+      },
+      "QUEST_EL_MENSAJE_CIFRADO_DEL_FNIX_481": {
+        "title": "El Mensaje Cifrado del Fénix",
+        "description": "El jugador es contactado por una fuente anónima dentro de la Legión, revelando una conspiración que involucra a altos mandos y un mensaje encriptado que podría revelar un complot para desestabilizar el Triunvirato. El jugador debe descifrar el mensaje, descubrir a los conspiradores y exponerlos antes de que puedan actuar.",
+        "steps": [
+          {
+            "description": "El jugador debe encontrar y entrevistar a un desertor de la Legión, un tal Marco, que tiene fragmentos del mensaje cifrado, escondido en una taberna de la Subura. Marco es paranoico y desconfiado, y solo hablará a cambio de protección y algo de vino Falerno.",
+            "objective": {
+              "type": "character_interaction",
+              "id": "marco_el_desertor",
+              "description": "Encontrar a Marco y obtener la primera parte del mensaje cifrado."
+            }
+          },
+          {
+            "description": "Con los fragmentos del mensaje en su poder, el jugador debe infiltrarse en una domus patricia donde se rumorea que se reúnen los conspiradores. El jugador deberá usar sus habilidades de persuasión, subterfugio o combate para acceder a la sala del consejo y encontrar la segunda parte del mensaje cifrado y pistas sobre la clave.",
+            "objective": {
+              "type": "location_discovery",
+              "id": "domus_de_la_conspiracion",
+              "description": "Infiltrarse en la domus y obtener la segunda parte del mensaje cifrado."
+            }
+          },
+          {
+            "description": "El jugador, con las dos partes del mensaje y pistas sobre la clave, debe descifrar el mensaje completo. Este mensaje revela el plan para asesinar a un miembro clave del Triunvirato, Pompeyo o Craso, y el jugador debe decidir qué hacer con la información: denunciar a los conspiradores, alertar a la víctima, o usarlas para su propio beneficio.",
+            "objective": {
+              "type": "moral_choice",
+              "id": "descifrado_del_mensaje",
+              "description": "Descifrar el mensaje y decidir el destino de la conspiración y el miembro del Triunvirato afectado."
+            }
+          }
+        ],
+        "quest_giver_role": "Un informante de la Legión, un escriba con acceso a documentos secretos, que busca una persona discreta para desentrañar una peligrosa conspiración.",
+        "boss_role": "Un general romano ambicioso, secretamente un agente de una facción enemiga, que busca el caos y el poder personal para el bien de la nueva facción que se alzará.",
+        "id": "QUEST_EL_MENSAJE_CIFRADO_DEL_FNIX_481",
+        "starting_npc_id": "LCMF_QuestGiver_1",
+        "final_boss_id": "CF-001"
+      },
+      "QUEST_LA_SOMBRA_DE_LA_CALUMNIA_135": {
+        "title": "La Sombra de la Calumnia",
+        "description": "Un senador poderoso, Marco Valerio Messala, ha sido acusado de corrupción y traición. El rumor corre por Roma como un reguero de pólvora, y sus enemigos están ansiosos por su caída. Los jugadores son contratados por el propio Messala, actuando a través de un intermediario, para investigar el origen de la calumnia y desenmascarar a los verdaderos conspiradores antes de que la reputación del senador, y tal vez su vida, sean arruinadas.",
+        "steps": [
+          {
+            "description": "Investigar el origen del rumor. Los jugadores deben moverse por la ciudad, interrogando a informantes en la Subura, participando en conversaciones en las termas, y posiblemente infiltrándose en reuniones secretas en una domus rival para recabar información sobre quiénes están detrás de la campaña de desprestigio.",
+            "objective": {
+              "type": "location",
+              "id": "domus_rival",
+              "name": "Domus de Gneo Pompeyo",
+              "description": "Descubrir si Pompeyo está directamente involucrado en la difamación."
+            }
+          },
+          {
+            "description": "Encontrar la fuente de la calumnia: un documento falso que compromete a Messala con una traición. Este documento, supuestamente escrito por el mismo Messala, es la base de la acusación. Los jugadores deberán rastrear la creación y distribución del documento, buscando a los calígrafos, los intermediarios y los posibles involucrados en su falsificación. Se rumorea que fue sellado con cera de una abeja específica, envenenada, que solo un apicultor de la zona produce.",
+            "objective": {
+              "type": "item",
+              "id": "sello_falso",
+              "name": "Sello de Cera Falsificado",
+              "description": "Un sello de cera sospechoso que parece haber sido usado para validar el documento falso contra Messala."
+            }
+          },
+          {
+            "description": "Exponer a los conspiradores. Con la evidencia reunida, los jugadores deben decidir cómo exponer a los verdaderos culpables. Pueden presentarlos ante el Senado, enfrentarlos directamente en una confrontación peligrosa, o incluso negociar un acuerdo encubierto para proteger a Messala. La elección tendrá graves consecuencias políticas y personales.",
+            "objective": {
+              "type": "character",
+              "id": "conspirador_principal",
+              "name": "Decimus Brutus",
+              "description": "Revelar a Decimus Brutus como el cerebro detrás de la conspiración para dañar a Messala."
+            }
+          }
+        ],
+        "quest_giver_role": "Un senador joven, amigo de Messala, pero temeroso y algo inexperto, que actúa como intermediario y enlace con los jugadores.",
+        "boss_role": "Un tribuno de la plebe corrupto, aliado secreto de Pompeyo, que manipula la información y orquesta la campaña de desprestigio contra Messala, utilizando la calumnia como arma política.",
+        "id": "QUEST_LA_SOMBRA_DE_LA_CALUMNIA_135",
+        "starting_npc_id": "senator_aurelius",
+        "final_boss_id": "CP-007"
+      },
+      "QUEST_EL_MENSAJERO_DESAPARECIDO_DE_LA_SUBURA_991": {
+        "title": "El Mensajero Desaparecido de la Subura",
+        "description": "Un mensajero de confianza del Senador Marco Valerio ha desaparecido en el laberíntico barrio de la Subura, llevando consigo un mensaje vital con información sobre una inminente traición dentro del Triunvirato. Valerio, con temor por su vida y su influencia política, contrata a los personajes para encontrar al mensajero y recuperar el mensaje, antes de que caiga en manos equivocadas.",
+        "steps": [
+          {
+            "description": "Investigar la última ruta conocida del mensajero a través de la Subura. Recopilar información de tabernas, burdeles y mercados para rastrear sus últimos movimientos y cualquier sospechoso involucrado.",
+            "objective": {
+              "type": "location",
+              "id": "taberna_del_lobo_negro",
+              "name": "La Taberna del Lobo Negro",
+              "description": "Una taberna sórdida y concurrida en la Subura, conocida por sus peleas y la venta de información barata. Un lugar ideal para encontrar pistas, pero también para caer en una emboscada."
+            }
+          },
+          {
+            "description": "Seguir las pistas obtenidas en la Subura, que llevan a un encuentro clandestino en las ruinas abandonadas de un antiguo templo. Allí, los personajes deberán enfrentarse a los matones que retienen al mensajero y que trabajan para el Senador corrupto Cayo Servilio, el cual planea usar el mensaje para desacreditar a César.",
+            "objective": {
+              "type": "combat",
+              "id": "combate_matones",
+              "enemy_type": "Matones de Servilio",
+              "quantity": 4,
+              "description": "Cuatro matones armados con espadas y puñales, dispuestos a proteger a su patrón y silenciar al mensajero."
+            }
+          },
+          {
+            "description": "Recuperar el mensaje cifrado y descifrarlo. El mensaje revela los planes de Servilio para socavar la alianza del Triunvirato, pero también menciona una cita secreta entre Servilio y una persona de gran influencia, que podría ser el verdadero cerebro detrás de la conspiración. Deben decidir si revelan el mensaje al Senador Valerio, o si lo utilizan para sus propios fines.",
+            "objective": {
+              "type": "item",
+              "id": "mensaje_cifrado",
+              "name": "Mensaje Cifrado",
+              "description": "Un rollo de papiro con un mensaje escrito en un código complejo. Su descifrado revelará la verdad tras la conspiración."
+            }
+          }
+        ],
+        "quest_giver_role": "Un ambicioso senador preocupado por su reputación y la estabilidad de la República, que prefiere mantener la discreción antes que recurrir a la justicia.",
+        "boss_role": "Un senador rival, astuto y despiadado, que busca aumentar su poder manipulando las tensiones políticas y derribando a sus oponentes. Está dispuesto a cualquier cosa para conseguirlo, incluso a provocar una guerra civil.",
+        "id": "QUEST_EL_MENSAJERO_DESAPARECIDO_DE_LA_SUBURA_991",
+        "starting_npc_id": "senator_fabius",
+        "final_boss_id": "senator_corvus_72bc"
+      },
+      "QUEST_EL_MENSAJE_CIFRADO_DE_LA_SUBURA_741": {
+        "title": "El Mensaje Cifrado de la Subura",
+        "description": "Los jugadores son reclutados por un liberto sospechoso de actividades ilegales que ha recibido un mensaje cifrado de la Subura, con información vital para un complot político en ciernes. El liberto, aterrado, pide ayuda a los jugadores para descifrar el mensaje y descubrir la verdad antes de que sea demasiado tarde. El mensaje revela la ubicación de una reunión secreta y una conspiración que involucra a un poderoso senador.",
+        "steps": [
+          {
+            "description": "El liberto, llamado Milo, revela a los jugadores el mensaje, una serie de jeroglíficos y símbolos extraños. Deben descifrarlo buscando pistas en la Subura, preguntando a informantes y buscando textos antiguos.",
+            "objective": {
+              "type": "skill_check",
+              "skill": "Inteligencia (Historia o Investigación)",
+              "difficulty": 15
+            }
+          },
+          {
+            "description": "Tras descifrar el mensaje, los jugadores descubren que la reunión secreta se celebrará en las Termas de Agripa. Deben infiltrarse, vigilar a los asistentes y recopilar pruebas incriminatorias sin ser descubiertos.",
+            "objective": {
+              "type": "location",
+              "id": "Termas de Agripa",
+              "action": "recopilar pruebas",
+              "requirement": "sigilo"
+            }
+          },
+          {
+            "description": "Los jugadores descubren que el Senador Corvus, un hombre conocido por su ambición y crueldad, está detrás de la conspiración. Deben decidir cómo actuar: alertar a las autoridades, confrontar a Corvus directamente, o usar la información para su propio beneficio. El final dependerá de sus acciones.",
+            "objective": {
+              "type": "moral_choice",
+              "id": "Senador Corvus",
+              "options": [
+                "Denunciar a Corvus (al Senado o a Pompeyo)",
+                "Confrontar a Corvus",
+                "Usar la información para chantajear o obtener poder propio"
+              ]
+            }
+          }
+        ],
+        "quest_giver_role": "Un liberto ex-escriba que ha caído en desgracia, ahora involucrado en el submundo de la información y el contrabando, aterrorizado por las consecuencias de su descubrimiento.",
+        "boss_role": "Un senador corrupto y manipulador, astuto y ambicioso, con conexiones en todos los estratos de la sociedad romana, dispuesto a cualquier cosa para aumentar su poder y prestigio.",
+        "id": "QUEST_EL_MENSAJE_CIFRADO_DE_LA_SUBURA_741",
+        "starting_npc_id": "liberto_cifras",
+        "final_boss_id": "senator_corvus"
+      },
+      "QUEST_EL_SUSURRO_DE_LA_SIBILA_622": {
+        "title": "El Susurro de la Sibila",
+        "description": "Un rumor inquietante recorre Roma: una sibila, recluida en el templo de Apolo, ha profetizado la inminente caída de la República. El Senado, dividido y temeroso, busca acallar la profecía y la sibila. Sin embargo, la información sobre la profecía es fragmentada y protegida por diversas facciones. Los jugadores, contratados por una figura oscura del Senado, deben desentrañar la verdad, navegar por la telaraña política y decidir si la profecía se cumple o no. Sus acciones pueden sellar el destino de Roma.",
+        "steps": [
+          {
+            "description": "Investigar la fuente inicial del rumor. Visitar la Subura para hablar con informantes y encontrar el origen del rumor. Escuchar los rumores en las Termas y el Foro. Desenterrar pistas sobre el contacto de la sibila.",
+            "objective": {
+              "type": "location",
+              "id": "Subura",
+              "description": "Encontrar un informante fiable en la Subura que pueda darles la primera pista sobre la profecía de la Sibila."
+            }
+          },
+          {
+            "description": "Recuperar una tablilla oculta que contiene una parte de la profecía. La tablilla está en posesión de un mercader sirio corrupto que opera en secreto, vendiendo información valiosa a diferentes facciones políticas. Deben negociar, robar o coaccionar al mercader para obtener la tablilla.",
+            "objective": {
+              "type": "item",
+              "id": "tablilla_profecia",
+              "description": "La tablilla de cera contiene la primera parte de la profecía de la Sibila, la clave para la siguiente fase de la misión."
+            }
+          },
+          {
+            "description": "Infiltrarse en el templo de Apolo, donde la Sibila está cautiva. Deben encontrar y hablar con la Sibila, quien puede ser reticente a revelar sus secretos. Deben decidir cómo lidiar con la profecía final, que podría llevar a la República a la guerra civil.",
+            "objective": {
+              "type": "character",
+              "id": "Sibila",
+              "description": "Conseguir una audiencia con la Sibila y descubrir la conclusión de la profecía, y decidir cómo usar esta información."
+            }
+          }
+        ],
+        "quest_giver_role": "Un senador influyente y paranoico, que teme una revuelta popular y necesita una red de espías encubiertos para silenciar cualquier amenaza a su posición.",
+        "boss_role": "Un tribuno de la plebe ambicioso y astuto, secretamente aliado con los rebeldes, quien intenta usar la profecía para desestabilizar la República y abrir el camino a su propia ambición.",
+        "id": "QUEST_EL_SUSURRO_DE_LA_SIBILA_622",
+        "starting_npc_id": "SPQR_007",
+        "final_boss_id": "TS001"
+      },
+      "QUEST_EL_MENSAJE_CIFRADO_DEL_FORO_651": {
+        "title": "El Mensaje Cifrado del Foro",
+        "description": "Un senador influyente, Marcus Aurelius Severus, ha sido envenenado lentamente. La única pista es un mensaje cifrado encontrado en su estudio, aparentemente relacionado con una traición a gran escala. Los jugadores deben descifrar el mensaje, descubrir la identidad del envenenador y desenmascarar la conspiración antes de que la República se vea comprometida.",
+        "steps": [
+          {
+            "description": "Los jugadores deben examinar el estudio de Severus, buscando pistas entre sus posesiones. Esto incluye interrogar a su familia y sirvientes, así como buscar objetos ocultos o inusuales.",
+            "objective": {
+              "type": "location",
+              "id": "estudio_senador",
+              "description": "Hallar pistas cruciales en el estudio de Marcus Aurelius Severus."
+            }
+          },
+          {
+            "description": "El mensaje cifrado, escrito en un pergamino delicado, debe ser descifrado. Esto implica investigar la existencia de un código secreto y, posiblemente, buscar ayuda en fuentes inesperadas, como un erudito griego residente en Roma o un mercader conocedor de la cultura oriental.",
+            "objective": {
+              "type": "clue",
+              "id": "mensaje_cifrado_decodificado",
+              "description": "Descifrar el código del mensaje para revelar su contenido."
+            }
+          },
+          {
+            "description": "Una vez descifrado, el mensaje revela el nombre del envenenador y los planes de una conspiración mayor. Los jugadores deben rastrear a los involucrados, que podrían estar en diferentes facciones de la sociedad romana, desde la élite senatorial hasta los bajos fondos de la Subura, para detener el complot. El enfrentamiento final, probablemente, requerirá infiltración y subterfugio.",
+            "objective": {
+              "type": "enemy",
+              "id": "conspiradores",
+              "description": "Exponer y neutralizar a los conspiradores, revelando su conexión con el envenenamiento de Severus y la amenaza a la República."
+            }
+          }
+        ],
+        "quest_giver_role": "Un médico griego con conexiones en el Senado, alertado sobre el envenenamiento y desesperado por mantener el orden.",
+        "boss_role": "Un miembro del Senado, manipulador y astuto, que está construyendo un ejército privado y conspirando para derrocar al Triunvirato y tomar el poder.",
+        "id": "QUEST_EL_MENSAJE_CIFRADO_DEL_FORO_651",
+        "starting_npc_id": "medico_alejandro",
+        "final_boss_id": "SEN_003"
+      }
+    }
+  },
+  "locations": [
+    {
+      "id": "node_0_0",
+      "world_id": "roma_republicana",
+      "name": "La Curia Hostilia Resplandeciente",
+      "description": "El corazón palpitante de la República, donde el mármol pulido refleja las sombras de la ambición y las palabras influyen en el destino de Roma. Aquí, entre el ruido de los debates y el susurro de los complots, se decide el futuro, a menudo con sangre en las manos.",
+      "type": "sala",
+      "tags": [],
+      "connections": {
+        "sur": "node_0_1"
+      },
+      "initial_npcs": [
+        "L-001"
+      ],
+      "initial_items": [
+        "anillo_escorpion",
+        "tableta_cifrada"
+      ],
+      "traps": {}
+    },
+    {
+      "id": "node_1_0",
+      "world_id": "roma_republicana",
+      "name": "La Curia Hostilia en llamas",
+      "description": "La sala del Senado Romano, ahora un crisol de intrigas y traiciones tras el reciente incendio. El humo aún flota, impregnando los muros con el olor de la cera quemada y las ambiciones frustradas.",
+      "type": "sala",
+      "tags": [],
+      "connections": {
+        "sur": "node_1_1"
+      },
+      "initial_npcs": [
+        "Pretor_Valerio_60BC"
+      ],
+      "initial_items": [
+        "tinta_simpatica",
+        "mensaje_cifrado"
+      ],
+      "traps": {
+        "trap_la_sombra_de_catilina_(the_shadow_of_catiline)_187": {
+          "name": "La Sombra de Catilina (The Shadow of Catiline)",
+          "description": "En el corazón de una domus patricia, tras una estatua de mármol de un ancestro consular, se esconde una trampa letal. Un mecanismo complejo, ideado con la precisión de un relojero y la crueldad de un conspirador, activa un dardo envenenado. El veneno, una mezcla letal de cicuta y veneno de escorpión, causa una parálisis inmediata y mortal. La trampa está diseñada para atacar a cualquier intruso que intente manipular la estatua o buscar algo tras ella. Pequeños hilos invisibles de seda, casi imposibles de detectar a simple vista, conectan la estatua al mecanismo, ocultos dentro de las grietas del mármol y disimulados con polvo de piedra. La trampa está bellamente integrada en el entorno, haciéndola casi invisible.",
+          "damage": 45,
+          "disarm_difficulty": "very_challenging",
+          "id": "trap_la_sombra_de_catilina_(the_shadow_of_catiline)_187",
+          "triggered": false
+        }
+      }
+    },
+    {
+      "id": "node_2_0",
+      "world_id": "roma_republicana",
+      "name": "El Tribunal Secreto de los Optimates",
+      "description": "Una sala oculta tras una librería en la Domus de Cayo Licinio Murena, donde los senadores más influyentes y poderosos conspiran a la luz de antorchas, susurrando planes de dominación y ejecutando sentencias políticas mortales. El aire denso huele a incienso barato y miedo palpable.",
+      "type": "sala",
+      "tags": [],
+      "connections": {
+        "sur": "node_2_1"
+      },
+      "initial_npcs": [
+        "Caius_Valerius_Flaccus_001"
+      ],
+      "initial_items": [
+        "carta_incriminatoria"
+      ],
+      "traps": {
+        "trap_la_soga_del_testigo_943": {
+          "name": "La Soga del Testigo",
+          "description": "En el corazón de una opulenta villa, oculta tras una estatua de mármol de un Cicerón sonriente, yace una trampa mortífera. Al tirar de una falsamente atractiva placa de bronce grabada con las palabras 'Veritas Odium Parit' ('La Verdad Engendra Odio'), se activa un mecanismo. Una soga, finamente elaborada con crin de caballo y aceitada para la rapidez, desciende del techo, lista para estrangular al incauto. La soga se cierra con un nudo corredizo de complejidad sutil, diseñado para ajustarse rápidamente alrededor del cuello, mientras una serie de poleas y contrapesos aseguran una fuerza letal. Además, la activación dispara un pequeño dardo envenenado que impacta en el brazo del incauto, inyectando un paralizante veneno a base de belladona que dificulta la reacción y la resistencia.  La trampa está destinada a silenciar a testigos incómodos, simbolizando el precio de la verdad en la corrupta República.",
+          "damage": 45,
+          "disarm_difficulty": "very_challenging",
+          "id": "trap_la_soga_del_testigo_943",
+          "triggered": false
+        }
+      }
+    },
+    {
+      "id": "node_0_1",
+      "world_id": "roma_republicana",
+      "name": "El Tribunal de los Susurros",
+      "description": "Una sala en el Senado, casi siempre a oscuras, donde senadores corruptos y espías de todas las facciones intercambian pactos secretos a la sombra de estatuas de dioses olvidados. El aire está impregnado de pólvora, incienso y el tenue olor a miedo.",
+      "type": "sala",
+      "tags": [],
+      "connections": {
+        "norte": "node_0_0",
+        "sur": "node_0_2",
+        "este": "node_1_1"
+      },
+      "initial_npcs": [
+        "LCMF_QuestGiver_1"
+      ],
+      "initial_items": [
+        "anillo_valerio"
+      ],
+      "traps": {}
+    },
+    {
+      "id": "node_1_1",
+      "world_id": "roma_republicana",
+      "name": "La Curia Hostilia, tras las Cortinas",
+      "description": "La sala de reuniones del Senado, donde la oratoria se mezcla con el cuchillo por la espalda. El eco de las palabras de Cicerón resuena en las sombras, donde los complots toman forma y los destinos se sellan, lejos de la mirada del populacho.",
+      "type": "sala",
+      "tags": [],
+      "connections": {
+        "norte": "node_1_0",
+        "oeste": "node_0_1",
+        "este": "node_2_1"
+      },
+      "initial_npcs": [
+        "senator_aurelius"
+      ],
+      "initial_items": [
+        "papiro_cifrado",
+        "amuleto_sibila"
+      ],
+      "traps": {
+        "trap_la_trampa_del_mercurio_envenenado_(venenum_argenti)_791": {
+          "name": "La Trampa del Mercurio Envenenado (Venenum Argenti)",
+          "description": "En el opulento triclinio de una domus patricia, bajo una mesa baja de mármol, un recipiente oculto libera lentamente vapores de mercurio. El veneno, imperceptible al principio, se acumula en el aire. Inicialmente, causa mareos y confusión. Si no se detecta y se abandona la estancia, puede llevar a una parálisis progresiva y, finalmente, a la muerte. La trampa está ingeniosamente camuflada: una pequeña estatuilla de Mercurio, el dios del comercio y los ladrones, sirve de activación. Al moverla (o por vibraciones fuertes, como el golpe de una mesa), se libera un mecanismo que perfora una delgada ampolla llena de mercurio líquido, evaporándolo. La trampa está diseñada para matar lentamente, haciendo creer que la víctima sucumbe a una enfermedad, evitando sospechas inmediatas de asesinato.",
+          "damage": 35,
+          "disarm_difficulty": "very_challenging",
+          "id": "trap_la_trampa_del_mercurio_envenenado_(venenum_argenti)_791",
+          "triggered": false
+        }
+      }
+    },
+    {
+      "id": "node_2_1",
+      "world_id": "roma_republicana",
+      "name": "El Atrio de los Susurros",
+      "description": "Una sala elegantemente amueblada dentro de la domus de un senador influyente, donde la luz filtrada a través de las cortinas de seda crea una atmósfera de penumbra y secreto. Aquí, entre estatuas de mármol y frescos que narran glorias pasadas, se fraguan alianzas y se revelan traiciones.",
+      "type": "sala",
+      "tags": [],
+      "connections": {
+        "norte": "node_2_0",
+        "oeste": "node_1_1",
+        "sur": "node_2_2"
+      },
+      "initial_npcs": [
+        "senator_fabius"
+      ],
+      "initial_items": [
+        "pergamino_cifrado",
+        "tabula_cerata_manuscrita_a_medias_(con_borrn_y_cuenta_nueva)_473"
+      ],
+      "traps": {}
+    },
+    {
+      "id": "node_0_2",
+      "world_id": "roma_republicana",
+      "name": "El Tabularium de los Secretos",
+      "description": "Una sala sin ventanas, ubicada en el corazón de una de las domus patricias más influyentes, donde el humo de las lámparas de aceite se mezcla con el susurro de los secretos. Sus paredes, cubiertas de tablillas de cera y pergaminos encriptados, son mudas testigos de conspiraciones y traiciones.",
+      "type": "sala",
+      "tags": [],
+      "connections": {
+        "norte": "node_0_1"
+      },
+      "initial_npcs": [
+        "liberto_cifras"
+      ],
+      "initial_items": [
+        "dolabra_de_la_sombra_413"
+      ],
+      "traps": {
+        "trap_la_trampa_del_orichalcum_falso_158": {
+          "name": "La Trampa del Orichalcum Falso",
+          "description": "En el lujoso triclinio de la domus de Aemilia, un cofre de orichalcum, aparentemente repleto de joyas y monedas de oro, atrae la atención. Sin embargo, al abrirlo, una fina lámina de orichalcum se desprende, revelando un complejo mecanismo oculto. Unas diminutas agujas envenenadas, cuidadosamente diseñadas para simular la picadura de un mosquito, se proyectan hacia el rostro del intruso. El cofre está elegantemente decorado con grabados sutiles que alertan sobre la traición: un lobo hambriento acechando una oveja y un escorpión oculto bajo una flor. El veneno es de lenta acción, paralizante, pero el verdadero propósito de la trampa es el secuestro y no el asesinato, buscando capturar viva a la víctima y poder así obtener información sobre lo que sabe.",
+          "damage": 25,
+          "disarm_difficulty": "challenging",
+          "id": "trap_la_trampa_del_orichalcum_falso_158",
+          "triggered": false
+        }
+      }
+    },
+    {
+      "id": "node_1_2",
+      "world_id": "roma_republicana",
+      "name": "La Cámara de las Sombras",
+      "description": "Una sala discretamente ubicada en el corazón del Foro Romano, conocida sólo por los más iniciados. El aire es denso con el olor a incienso y secretos, y sombras danzan sobre las paredes donde se cierran los tratos más turbios.",
+      "type": "sala",
+      "tags": [],
+      "connections": {
+        "este": "node_2_2"
+      },
+      "initial_npcs": [
+        "SPQR_007"
+      ],
+      "initial_items": [
+        "el_anillo_de_las_cinco_caras_(anulus_quinque_facies)_946"
+      ],
+      "traps": {}
+    },
+    {
+      "id": "node_2_2",
+      "world_id": "roma_republicana",
+      "name": "La Cripta de las Sombras",
+      "description": "Una sala subterránea, casi olvidada, bajo la Curia. El aire huele a humedad y a incienso rancio, las paredes susurran secretos de traición y acuerdos oscuros sellados en la penumbra.",
+      "type": "sala",
+      "tags": [],
+      "connections": {
+        "norte": "node_2_1",
+        "oeste": "node_1_2"
+      },
+      "initial_npcs": [
+        "medico_alejandro"
+      ],
+      "initial_items": [
+        "tablilla_de_cera_manchada_378",
+        "el_susurro_de_la_sibila_898"
+      ],
+      "traps": {
+        "trap_la_serpiente_de_bronce_en_la_fuente_envenenada_893": {
+          "name": "La Serpiente de Bronce en la Fuente Envenenada",
+          "description": "En el corazón de una elegante domus, en un patio interior, se encuentra una fuente ornamentada con una estatua de bronce de una serpiente entrelazada. El agua, aparentemente cristalina, emana de la boca de la serpiente. La trampa está ingeniosamente integrada: al beber agua de la fuente, o al alterar la posición de la serpiente, se activa. Un mecanismo oculto libera un veneno de acción lenta, mezclado imperceptiblemente en el agua. La trampa está diseñada para ser discreta; las marcas del veneno tardan varias horas en manifestarse, permitiendo al perpetrador escapar y sembrar la sospecha.",
+          "damage": 35,
+          "disarm_difficulty": "very_challenging",
+          "id": "trap_la_serpiente_de_bronce_en_la_fuente_envenenada_893",
+          "triggered": false
+        }
+      }
+    }
+  ],
+  "item_templates": [
+    {
+      "type": "junk",
+      "properties": [
+        "lore_snippet",
+        "interesting"
+      ],
+      "name": "Tabula Cerata Manuscrita a Medias (Con Borrón y Cuenta Nueva)",
+      "description": "Una tablilla de cera usada, a medio escribir. Fragmentos de una correspondencia urgente se distinguen bajo una capa borrosa de cera raspada. Se pueden discernir palabras como 'César', 'Traición' y una lista de nombres, pero la mayor parte está ilegible. Un intento fallido de ocultar evidencia crucial o un mensaje deliberadamente incompleto, tal vez para despertar la curiosidad... o sembrar el caos.",
+      "id": "tabula_cerata_manuscrita_a_medias_(con_borrn_y_cuenta_nueva)_473"
+    },
+    {
+      "type": "weapon",
+      "damage_base": 6,
+      "properties": [
+        "ranged",
+        "light",
+        "tier1"
+      ],
+      "name": "Dolabra de la Sombra",
+      "description": "Una dolabra (hacha de guerra romana) meticulosamente forjada con acero oscuro, casi negro, y empuñada con un mango de ébano pulido. Se dice que fue usada una vez por un sicario al servicio de Lucio Sergio Catilina y que absorbe la 'sombra' de su portador: el cansancio, el miedo y la culpa, haciéndolo momentáneamente más audaz y despiadado en el fragor de la batalla. Sin embargo, usarla prolongadamente corrompe el alma, oscureciendo la mente y nublando el juicio con visiones de traición y paranoia. Una inscripción casi imperceptible, grabada en latín antiguo en la hoja, reza: 'Mors super nos, in umbra tenebrarum' (La muerte está sobre nosotros, en la sombra de la oscuridad).",
+      "id": "dolabra_de_la_sombra_413"
+    },
+    {
+      "type": "key",
+      "properties": [
+        "unlocks_chest",
+        "plot_related"
+      ],
+      "name": "El Anillo de las Cinco Caras (Anulus Quinque Facies)",
+      "description": "Un anillo de oro con un engaste giratorio que presenta cinco caras distintas, cada una tallada con un símbolo diferente. Cada símbolo, cuando se alinea con un punto cardinal específico (Norte, Sur, Este, Oeste, y una cara oculta representando el centro y el caos), activa una magia sutil. Un experto puede usarlo para descifrar códigos secretos, abrir pasajes ocultos, identificar venenos, o incluso influir en las emociones de aquellos a su alrededor. Se rumorea que el anillo perteneció a un antiguo augur y que su poder está vinculado a las profecías sobre el destino de Roma. Actualmente, el anillo se encuentra en posesión de un mercader sirio llamado Malik, quien lo usa para manipular el mercado de información y ocultar sus propios tratos turbios.",
+      "id": "el_anillo_de_las_cinco_caras_(anulus_quinque_facies)_946"
+    },
+    {
+      "type": "junk",
+      "properties": [
+        "common",
+        "vendor_trash"
+      ],
+      "name": "Tablilla de Cera Manchada",
+      "description": "Una pequeña tablilla de cera, usualmente usada para tomar notas. Esta en particular está manchada con aceite y tinta borrosa, probablemente por un descuido en una taberna. Aún se pueden discernir fragmentos de escritura: un nombre tachado (quizás un enemigo?), un precio desorbitado para un vino Falerno, y un símbolo críptico que podría ser la clave de un código secreto... o simplemente el garabato de un borracho.",
+      "id": "tablilla_de_cera_manchada_378"
+    },
+    {
+      "type": "tool",
+      "properties": [
+        "utility",
+        "interactable"
+      ],
+      "name": "El Susurro de la Sibila",
+      "description": "Un pequeño rollo de papiro amarillento, encuadernado con cuero desgastado y adornado con símbolos desconocidos. A primera vista, parece un simple texto profético, pero al sumergirlo en vino tinto y escucharlo en voz baja a medianoche, revela fragmentos de información cruciales sobre el futuro, o al menos, sobre los rumores más jugosos y los complots ocultos en las altas esferas. Sin embargo, el precio es alto: el vino debe ser de una cosecha específica (que cambia cada luna llena) y el susurro solo funciona una vez por semana, consumiendo una pequeña parte de la cordura de quien lo escucha, dejándolos con pesadillas y una creciente paranoia.",
+      "id": "el_susurro_de_la_sibila_898"
+    },
+    {
+      "type": "junk",
+      "properties": [
+        "common",
+        "vendor_trash"
+      ],
+      "name": "Tablilla de Cera Borrada (Tabula Rasa)",
+      "description": "Una tablilla de cera sucia, aparentemente olvidada. La superficie de la cera está desgastada y borrosa, pero al examinarla con cuidado, se distinguen tenues rastros de escritura casi invisibles a simple vista. Podría ser que, con el equipamiento adecuado y un poco de paciencia, se pudieran recuperar fragmentos de información crucial. Probablemente fue usada para un mensaje cifrado, y borrada apresuradamente. El aroma a incienso barato persiste en la madera, indicando un posible origen en algún santuario o burdel.",
+      "id": "tablilla_de_cera_borrada_(tabula_rasa)_530"
+    },
+    {
+      "type": "tool",
+      "properties": [
+        "utility",
+        "interactable"
+      ],
+      "name": "La Lengua de Cicerón (La Lingua Ciceronis)",
+      "description": "Un pequeño medallón de bronce, intrincadamente grabado con una representación estilizada del rostro de Cicerón. En un lado, el medallón está ligeramente ahuecado, revelando una cavidad que puede contener un mensaje enrollado. Se dice que aquellos que poseen 'La Lengua de Cicerón' pueden imbuir sus propios mensajes con la autoridad del orador romano, logrando persuadir a otros con un éxito inusual, o incluso engañar con una elocuencia que es casi imposible de detectar. La calidad del discurso (o la mentira) depende de la habilidad del usuario, pero el medallón le da un sutil 'empujón' a la persuasión. Se rumorea que también puede ser utilizado para descifrar mensajes encriptados, revelando verdades ocultas a simple vista, siempre y cuando la inscripción en el medallón esté expuesta a la luz de una vela durante un período de tiempo, ya que la cera se derrite y revela lo que está grabado en la parte interior.",
+      "id": "la_lengua_de_cicern_(la_lingua_ciceronis)_493"
+    },
+    {
+      "type": "healing",
+      "healing_amount": 25,
+      "properties": [
+        "consumable",
+        "instant"
+      ],
+      "name": "Ungüento de la Tribu",
+      "description": "Una pequeña vasija de arcilla sellada con cera, que contiene una pomada aromática de un verde jade pálido. Elaborada por una tribu galorromana de la Galia Cisalpina, este ungüento combina hierbas raras, conocidas por sus propiedades curativas, con aceite de oliva y mirra. Sus ingredientes son especialmente valorados por los secretos que se susurran sobre su origen, vinculado a rituales druídicos y a la capacidad de calmar heridas tanto físicas como las provocadas por las tensiones del alma. Al aplicarse, la piel se enfría, el dolor disminuye rápidamente y la cicatrización se acelera. Sin embargo, su verdadero poder reside en la sutil sensación de paz que imbuye, atenuando la paranoia y el temor en un ambiente de constante conspiración.",
+      "id": "ungento_de_la_tribu_895"
+    },
+    {
+      "type": "healing",
+      "healing_amount": 25,
+      "properties": [
+        "consumable",
+        "instant"
+      ],
+      "name": "Ungüento de la Fortuna",
+      "description": "Un bálsamo aromático, de un verde jade pálido, elaborado con hierbas secretas cultivadas en los jardines privados de Cleopatra (o al menos, eso es lo que dicen los rumores). Se dice que el ungüento, al ser aplicado, acelera asombrosamente la curación de heridas superficiales y alivia el dolor, aunque no cura enfermedades graves. Lo que lo hace verdaderamente codiciado, sin embargo, es la creencia popular de que frotarse este ungüento antes de una apuesta o un encuentro político aumenta las posibilidades de éxito… o al menos, disimula mejor las marcas de una puñalada traicionera.",
+      "id": "ungento_de_la_fortuna_142"
+    },
+    {
+      "type": "key",
+      "properties": [
+        "unlocks_chest",
+        "plot_related"
+      ],
+      "name": "La Silla Curul de la Serpiente",
+      "description": "Una silla curul exquisitamente tallada de marfil, perteneciente al difunto senador Lucio Cornelio Cinna. La madera está veteada con incrustaciones de obsidiana formando el patrón de una serpiente enroscada, y el asiento mismo está ligeramente inclinado, diseñado para incomodar al que se sienta en ella durante largos periodos. Se dice que la silla revela la verdad oculta sobre el sentenciado, mostrándole en visiones fugaces y perturbadoras los secretos de aquellos que se sentaron en ella antes que él, aunque al precio de la cordura. Actualmente, se rumorea que la silla está en posesión de un cambista en el Foro, utilizado como trofeo de poder y fuente de información. Se dice que cada senador que ha sido asesinado tenía que sentarse en ella para ser condenado.",
+      "id": "la_silla_curul_de_la_serpiente_410"
+    },
+    {
+      "type": "weapon",
+      "damage_base": 6,
+      "properties": [
+        "ranged",
+        "light",
+        "tier1"
+      ],
+      "name": "La Daga de la Discordia (Pugio Discordiae)",
+      "description": "Una daga ceremonial, aparentemente hecha de bronce pulido, pero que en realidad está enchapada en un metal desconocido que produce un frío antinatural al tacto. Se dice que perteneció a un tribuno asesinado durante las revueltas sociales de Sila. Su hoja, ligeramente torcida y con una inscripción en latín antiguo que predice 'Caos y división', se dice que susurra a su portador, incitándolo a la traición y la sospecha, haciendo que aquellos a quienes apuñala se vuelvan contra sus aliados y amigos, sembrando el pánico y la desconfianza.",
+      "id": "la_daga_de_la_discordia_(pugio_discordiae)_516"
+    },
+    {
+      "type": "junk",
+      "properties": [
+        "common",
+        "vendor_trash"
+      ],
+      "name": "Tablilla Rasurada de la Subura",
+      "description": "Una pequeña tablilla de cera, originalmente usada para escribir. La cera ha sido cuidadosamente raspada, pero al trasluz se distinguen algunas palabras borrosas: '...César...oro...mañana...Subura...'. Huele débilmente a un ungüento barato, y en su reverso se adhiere una minúscula pluma rota. Es un posible residuo de un mensaje cifrado, una deuda impagada, o simplemente una nota olvidada en el bullicio de la Subura.",
+      "id": "tablilla_rasurada_de_la_subura_354"
+    },
+    {
+      "type": "junk",
+      "properties": [
+        "lore_snippet",
+        "interesting"
+      ],
+      "name": "Tablilla de Cera Borrada (Tabula Cerata Evasa)",
+      "description": "Una pequeña tablilla de cera, originalmente utilizada para tomar notas. La cera está casi completamente borrada, pero con una cuidadosa inspección y buena iluminación (o la ayuda de un experto en descifrado), se pueden discernir leves marcas y fragmentos de escritura. Parece haber sido utilizada para transcribir información importante, posiblemente un código o una lista de nombres. Presenta una tenue mancha oscura, posiblemente tinta o veneno residual, en una esquina.",
+      "id": "tablilla_de_cera_borrada_(tabula_cerata_evasa)_604"
+    },
+    {
+      "type": "healing",
+      "healing_amount": 60,
+      "properties": [
+        "consumable",
+        "instant"
+      ],
+      "name": "El Bálsamo de la Concordia (Unguentum Concordiae)",
+      "description": "Un pequeño frasco de cristal, delicadamente tallado con la imagen de la Concordia, diosa de la armonía. Contiene una pomada aromática de hierbas raras, recolectadas en secreto por las vestales. Aplicar el bálsamo a una herida no solo acelera la curación, sino que también insufla un fugaz alivio mental, reduciendo la ansiedad y la sospecha. Rumores susurran que su verdadera eficacia reside en el equilibrio de sus ingredientes, un secreto celosamente guardado, y que su uso excesivo puede volver a la persona demasiado confiada, vulnerable a las traiciones del turbulento mundo romano.",
+      "id": "el_blsamo_de_la_concordia_(unguentum_concordiae)_542"
+    },
+    {
+      "type": "quest",
+      "properties": [
+        "plot_critical",
+        "cannot_drop"
+      ],
+      "id": "anillo_escorpion",
+      "name": "Anillo del Escorpión",
+      "description": "Un anillo con un escorpión tallado. Pertenece a un miembro de 'Los Escorpiones', y puede ser la clave para desentrañar la conspiración detrás de la desaparición de Escipión. Contiene un sello que podría ser rastreado hasta los conspiradores.",
+      "template_id": "QUEST_ITEM_MACGUFFIN"
+    },
+    {
+      "type": "quest",
+      "properties": [
+        "plot_critical",
+        "cannot_drop"
+      ],
+      "id": "tableta_cifrada",
+      "name": "Tableta Cifrada",
+      "description": "Una tableta de cera, oculta dentro de la toga del senador Mesala. Contiene un mensaje cifrado que, una vez descifrado, revela información crucial sobre la conspiración.",
+      "template_id": "QUEST_ITEM_MACGUFFIN"
+    },
+    {
+      "type": "quest",
+      "properties": [
+        "plot_critical",
+        "cannot_drop"
+      ],
+      "id": "tinta_simpatica",
+      "name": "Tinta Simpática de Cicerón",
+      "description": "Un frasco de tinta especial que se hace visible solo bajo la luz de una antorcha específica. Un recurso importante para los espías y mensajeros romanos.",
+      "template_id": "QUEST_ITEM_MACGUFFIN"
+    },
+    {
+      "type": "quest",
+      "properties": [
+        "plot_critical",
+        "cannot_drop"
+      ],
+      "id": "mensaje_cifrado",
+      "name": "El Mensaje del Fénix",
+      "description": "Un pergamino fragmentado con un mensaje escrito en una compleja cifrado. Contiene información crucial sobre una conspiración para socavar el Triunvirato.",
+      "template_id": "QUEST_ITEM_MACGUFFIN"
+    },
+    {
+      "type": "quest",
+      "properties": [
+        "plot_critical",
+        "cannot_drop"
+      ],
+      "id": "carta_incriminatoria",
+      "name": "Carta Incriminatoria",
+      "description": "Un documento falsificado, supuestamente escrito por Messala, que le acusa de conspirar contra la República. Es la pieza clave de la calumnia.",
+      "template_id": "QUEST_ITEM_MACGUFFIN"
+    },
+    {
+      "type": "quest",
+      "properties": [
+        "plot_critical",
+        "cannot_drop"
+      ],
+      "id": "anillo_valerio",
+      "name": "Anillo de Signo del Senador Valerio",
+      "description": "Un anillo de oro con el escudo familiar de Valerio. Prueba irrefutable de que el mensajero trabajaba para él y que la información contenida en el mensaje es crucial para la política de Roma.",
+      "template_id": "QUEST_ITEM_MACGUFFIN"
+    },
+    {
+      "type": "quest",
+      "properties": [
+        "plot_critical",
+        "cannot_drop"
+      ],
+      "id": "papiro_cifrado",
+      "name": "Papiro Cifrado",
+      "description": "Un papiro escrito con símbolos y jeroglíficos crípticos, que contiene el mensaje crucial para desenmascarar la conspiración.",
+      "template_id": "QUEST_ITEM_MACGUFFIN"
+    },
+    {
+      "type": "quest",
+      "properties": [
+        "plot_critical",
+        "cannot_drop"
+      ],
+      "id": "amuleto_sibila",
+      "name": "Amuleto de la Sibila",
+      "description": "Un pequeño amuleto de plata con el símbolo del sol y la luna. Se dice que amplifica la clarividencia. La Sibila lo llevaba siempre y puede ser la clave para comprender la profecía completa.",
+      "template_id": "QUEST_ITEM_MACGUFFIN"
+    },
+    {
+      "type": "quest",
+      "properties": [
+        "plot_critical",
+        "cannot_drop"
+      ],
+      "id": "pergamino_cifrado",
+      "name": "Pergamino Cifrado de Severus",
+      "description": "Un pergamino de papiro fino, enrollado y atado con una cinta de seda roja. Contiene un mensaje codificado que revela la conspiración detrás del envenenamiento del senador.",
+      "template_id": "QUEST_ITEM_MACGUFFIN"
+    }
+  ],
+  "npc_templates": [
+    {
+      "id": "L-001",
+      "name": "Eusebio",
+      "description": "A thin and nervous man of middle age with a scar crossing his left cheek and a keen gaze. He wears modest, but well-cared-for clothing, revealing his freedman origin. His restless hands betray his past as a scribe and current role as a confidant and liaison. He smells of papyrus and cheap incense.",
+      "status": "friendly",
+      "dialogue_prompt": "¡Por los dioses! ¡Gracias que te encuentro! Me llamo Eusebio, y soy liberto al servicio del Senador Valerio. Su colega, el Senador Lucio Cornelio, ha desaparecido, y Valerio está desesperado por encontrarlo. Se rumorea que lo último que se supo de él fue en la Subura. ¿Conoces algo? Necesito saber cualquier cosa. Lucio… Lucio era un buen hombre, o eso creíamos… Y si no lo encontramos, el caos se apoderará de Roma.",
+      "quest_giver": true,
+      "hp": 25,
+      "attack": 5,
+      "xp": 50,
+      "stats": {
+        "dexterity": 12,
+        "intelligence": 14,
+        "charisma": 13
+      },
+      "abilities": [
+        "Insightful Observer (advantage on Perception checks)",
+        "Liaison (can provide information and support)",
+        "Scribe's Expertise (advantage on History checks)"
+      ],
+      "weaknesses": [
+        "Physically weak",
+        "Vulnerable to intimidation"
+      ],
+      "assigned_role": "quest_giver",
+      "narrative_role": "Un liberto astuto con conexiones en la Subura, sirviente de un senador preocupado por el destino de su colega desaparecido."
+    },
+    {
+      "id": "CS-003",
+      "name": "Enigmatic Noble",
+      "description": "A tall, slender man with a thin scar across his left cheek, a testament to his past as a soldier. He wears imported silk robes, though his gaze is cold and calculating. His hair, meticulously combed back, reveals a clear forehead that gives him an air of authority. Always surrounded by a silent and attentive escort. It is said that blood runs strong in him, and that he will not hesitate to spill it to achieve his goals.",
+      "status": "hostile",
+      "dialogue_prompt": "Mientras te mira fijamente, con sus ojos oscuros escudriñando tu alma, Bruto te dice con voz suave, casi susurrante: 'La República está enferma, mi amigo. Y solo un cirujano con el bisturí afilado puede curarla. Dime, ¿estás dispuesto a empuñar el bisturí?'",
+      "location_influence": "Domus Bruti, el foro, reuniones secretas en la Subura, lugares de altercados.",
+      "hp": 70,
+      "attack": 18,
+      "xp": 120,
+      "assigned_role": "boss",
+      "narrative_role": "Un rico propietario de tierras y senador rival de Escipión, impulsado por la ambición y la sed de poder, que está dispuesto a usar cualquier medio, incluida la violencia, para avanzar en su carrera política."
+    },
+    {
+      "id": "Pretor_Valerio_60BC",
+      "name": "Joven Pretor",
+      "description": "Un joven pretor de unos treinta años, de rostro afilado y ojos penetrantes que denotan inteligencia y preocupación. Viste con pulcritud, aunque sin la ostentación exagerada de otros patricios. Su toga, impecable, delata su estatus, pero su expresión revela una lucha interna entre su idealismo y las presiones del poder.",
+      "status": "friendly",
+      "dialogue_prompt": "«Necesito tu discreción, más que tu habilidad, aunque ambas son bienvenidas. Hay un asunto delicado… una cifra, en realidad, que ha aparecido en las Termas Oscuras, un lugar que prefiero evitar. Lo que se susurra sobre ella podría desestabilizar la República. He sido presionado para investigar, pero necesito a alguien que no esté atado a los intereses de la clase política. ¿Estás dispuesto a ayudarme, y a mantener esto en secreto?»",
+      "hp": 75,
+      "attack": 40,
+      "defense": 30,
+      "xp": 150,
+      "abilities": [
+        "Intimidate (Chance to lower enemy Attack)",
+        "Legal Expertise (Grants a small boost to defense)",
+        "Leadership (Buffs allies in a battle)"
+      ],
+      "weaknesses": [
+        "Stronger physical attacks",
+        "Intense emotional manipulation"
+      ],
+      "assigned_role": "quest_giver",
+      "narrative_role": "Un pretor joven e idealista, pero presionado por sus superiores, que necesita un investigador independiente y discreto."
+    },
+    {
+      "id": "CifraTermasOscuras_Boss_001",
+      "name": "Veteran Warrior",
+      "description": "A battle-hardened man with a scar across his left cheek and a cold gaze. He wears simple, yet high-quality clothes that contrast with his disheveled appearance. His hands, thick and strong, still remember the feel of a sword. He moves with the agility of a younger man, despite his grey hair.",
+      "status": "hostile",
+      "dialogue_prompt": "¿Así que te has metido en mis asuntos? La curiosidad mató al gato, muchacho. La República está podrida, pero yo no soy el responsable de su putrefacción. Soy un simple hombre que busca su recompensa. ¿Quieres unirte o serás otra víctima más? El silencio también es una respuesta, aunque a menudo la más dolorosa.",
+      "secrets": [
+        "Tiene una red de espías infiltrados en las más altas esferas de la República.",
+        "Está financiando en secreto a grupos de descontentos populares.",
+        "Su objetivo final es hacerse con el control de una importante suma de dinero, con la que pretende huir a Oriente y vivir en la opulencia."
+      ],
+      "hp": 85,
+      "attack": 60,
+      "xp": 150,
+      "assigned_role": "boss",
+      "narrative_role": "Un antiguo oficial del ejército de Pompeyo, ahora retirado y resentido, que dirige una red de espionaje con el objetivo de desestabilizar la República para beneficio personal."
+    },
+    {
+      "id": "Caius_Valerius_Flaccus_001",
+      "name": "Veteran Soldier",
+      "description": "A burly man, his face etched with battle scars and a penetrating gaze that seems to have seen too much. He wears modest, yet well-maintained clothing and carries a small silver bracelet, a memento of his time in the army. His gait is firm and determined, but there is a silent sadness in his eyes.",
+      "status": "friendly",
+      "dialogue_prompt": "Mira, amigo. El Foro murmura. Y no son halagos. Sabes que el Triunvirato es un castillo de naipes, ¿verdad? César lo sabe. Y yo, aunque me avergüence decirlo, trabajo para él. Pero no por ambición, sino por… lo que queda de lealtad. He oído susurros de una conspiración, una que podría destrozar todo lo que hemos construido. Necesito saber... ¿sabes algo? ¿Has oído 'El Murmullo del Foro'?",
+      "quest_giver": true,
+      "hp": 75,
+      "attack": 12,
+      "xp": 100,
+      "assigned_role": "quest_giver",
+      "narrative_role": "Un ex-legionario, ahora informante para César, que busca desmantelar la conspiración antes de que desestabilice el Triunvirato."
+    },
+    {
+      "id": "SEN_001",
+      "name": "Hombre de Mediana Edad",
+      "description": "Un hombre de mediana edad, elegante pero con un aire sombrío. Sus finos rasgos, heredados de una nobleza antigua, contrastan con la frialdad calculada en sus ojos grises. Siempre viste con ropas lujosas y un anillo de sello que denota su linaje. Su voz es suave y persuasiva, pero tras ella se esconde una determinación de acero.",
+      "status": "hostile",
+      "dialogue_prompt": "«Mis queridos amigos, la República se tambalea. El poder se concentra en manos de unos pocos, mientras el pueblo sufre. La corrupción es un cáncer que corroe nuestro legado. Debemos actuar, debemos purgar Roma… y yo, Marco Junio Bruto, estoy dispuesto a liderar esta… necesaria renovación. ¿Estáis con nosotros?»",
+      "motivations": "Desea fervientemente restaurar la antigua gloria de la República Romana, pero bajo su propio mando. Desconfía de César, Pompeyo y Craso, considerándolos tiranos en potencia. Utiliza la manipulación, el soborno y la propaganda para debilitar a sus oponentes y ganar apoyo popular.",
+      "secrets": "Secretamente, Bruto conspira para asesinar a César, creyendo que su muerte es el primer paso para una Roma verdaderamente libre. Utiliza a otros como peones en su complot, prometiendo poder y gloria a cambio de lealtad. También posee evidencia de corrupción de sus rivales políticos, que utiliza para chantajearlos o desacreditarlos.",
+      "weaknesses": "Su arrogancia y creencia en su propia superioridad moral le ciegan a menudo ante los peligros reales. Es propenso a subestimar a sus oponentes y a confiar en la manipulación, que puede ser contrarrestada con astucia y valentía. Además, su necesidad de mantener una imagen pública impecable lo hace vulnerable a la exposición de sus secretos.",
+      "hp": 75,
+      "attack": 55,
+      "xp": 180,
+      "assigned_role": "boss",
+      "narrative_role": "Un senador astuto y manipulador que está dispuesto a derrocar el orden establecido por cualquier medio necesario, con ambiciones para gobernar Roma."
+    },
+    {
+      "id": "LCMF_QuestGiver_1",
+      "name": "Aulo",
+      "description": "A middle-aged, thin man with a penetrating gaze that rarely blinks. Aulo wears the dark, simple tunic of a scribe, with slight wear on the sleeves from constant contact with papyrus. His brown hair, already peppered with gray, is cut to shoulder length. He wears a discreet ring with the Legion's seal on his little finger, hidden under dirt.",
+      "status": "friendly",
+      "dialogue_prompt": "¡Silencio! No hables en voz alta, la ciudad tiene oídos. Escucha bien: he descubierto algo... podrido. Documentos robados, mensajes cifrados... una conspiración que amenaza la propia República. Necesito a alguien discreto, alguien con agallas y astucia. ¿Estás dispuesto a ayudarme? Puedo ofrecerte más que el pago habitual... puedo ofrecerte la verdad. La verdad, y la libertad. Pero el precio... ese lo decidirán tus acciones.",
+      "quest_details": {
+        "quest_name": "El Mensaje Cifrado del Fénix",
+        "quest_description": "Aulo Manlio, el escriba, necesita que el grupo desentrañen un mensaje cifrado encontrado entre documentos secretos de la Legión. El mensaje parece ser la clave para una conspiración que podría afectar al Triunvirato.",
+        "quest_objective": "Descifrar el mensaje y descubrir la identidad del Fénix, el cabecilla de la conspiración.",
+        "quest_rewards": [
+          "Información crucial para la trama principal.",
+          "Favores de la Legión.",
+          "Posiblemente una recompensa monetaria, dependiendo del éxito."
+        ],
+        "quest_hooks": [
+          "El mensaje está escrito en un idioma inusual, posiblemente griego antiguo.",
+          "El mensaje menciona lugares específicos en Roma y sus alrededores.",
+          "Aulo posee la clave inicial para el cifrado, pero necesita que se complete.",
+          "Otros grupos están interesados en el mensaje, por lo que el grupo debe actuar con cautela."
+        ]
+      },
+      "hp": 45,
+      "attack": 10,
+      "xp": 75,
+      "assigned_role": "quest_giver",
+      "narrative_role": "Un informante de la Legión, un escriba con acceso a documentos secretos, que busca una persona discreta para desentrañar una peligrosa conspiración."
+    },
+    {
+      "id": "CF-001",
+      "name": "Senator Valerius",
+      "description": "A corpulent man with a piercing gaze, graying hair, and a scar that crosses his left cheek. He wears an unadorned senatorial tunic, but his presence radiates an authority that few dare to question. He always carries a ring bearing the seal of a wolf howling at the moon.",
+      "status": "Hostile",
+      "dialogue_prompt": "Ah, aventureros... ¿Creéis que podéis husmear en asuntos que escapan a vuestra comprensión? El Fénix renacerá de las cenizas, y aquellos que os interponéis en su camino seréis consumidos por el fuego. El mensaje… es una distracción. Buscadlo, pero no esperéis vivir para contarlo. El caos es la clave, y la victoria, mi recompensa.",
+      "secrets": [
+        {
+          "name": "The Phoenix Conspiracy",
+          "description": "Silvano is secretly leading a faction of disaffected nobles and ambitious military figures, known as the 'Order of the Phoenix,' who seek to destabilize the Republic and seize power under a new, tyrannical regime. They believe the current Triunvirate is weak and ineffective.",
+          "relevance": "Extremely important for the plot. The players must uncover Silvano's true allegiance and the details of the conspiracy to succeed in their mission."
+        },
+        {
+          "name": "The Coded Message",
+          "description": "The 'message' is not just a simple code. It's a complex set of instructions guiding the Phoenix's operations, identifying key targets, and detailing their plan for a coup. It is crafted to implicate others.",
+          "relevance": "The core objective for players. Deciphering the message is paramount for understanding the scope of the conspiracy and for identifying the conspirators.",
+          "location": "Hidden within a trusted informer (initially)."
+        }
+      ],
+      "hp": 100,
+      "attack": 22,
+      "xp": 200,
+      "assigned_role": "boss",
+      "narrative_role": "Un general romano ambicioso, secretamente un agente de una facción enemiga, que busca el caos y el poder personal para el bien de la nueva facción que se alzará."
+    },
+    {
+      "id": "senator_aurelius",
+      "name": "Aurelio Varrón",
+      "description": "Un joven senador, de apariencia pulcra y nerviosa. Viste con elegancia, pero su mirada delata una inquietud constante. Parece más cómodo entre libros y debates filosóficos que en las intrigas políticas en las que se ve inmerso. Amigo cercano de Messala, pero todavía inexperto en las artes del poder. Se muestra ansioso y preocupado por el futuro de la República.",
+      "status": "friendly",
+      "dialogue_prompt": "¡Por los dioses! ¡Es usted! Me alegro de encontrarle. Messala, mi buen amigo, me ha recomendado encarecidamente que hable con usted. Me encuentro en una situación… delicada. Rumores, calumnias, susurros venenosos… todo apunta a una campaña difamatoria en mi contra. No sé a quién recurrir, y Messala sugirió que… quizá usted y sus asociados podrían ayudarme. No me malinterprete, no estoy pidiendo…favores ilegales, por supuesto. Solo necesito la verdad, y si es necesario, un poco de discreción. ¿Puede ayudarme a desentrañar la sombra de la calumnia que me acecha?",
+      "quest_giver": {
+        "quest_name": "La Sombra de la Calumnia",
+        "description": "Aurelio Varrón necesita ayuda para descubrir la fuente de los rumores que están dañando su reputación y poniendo en peligro su carrera política. El jugador debe investigar y descubrir quién está detrás de la campaña de desprestigio.",
+        "initial_dialogue": "Aurelio, visiblemente agitado, explica que rumores infundados sobre él se están extendiendo por toda Roma, dañando su reputación y amenazando su posición. Sospecha de una facción política rival, pero necesita pruebas concretas. Ofrece una recompensa considerable por la verdad, y por la interrupción de la campaña.",
+        "objectives": [
+          "Investigar los orígenes de los rumores. Hablar con diversas fuentes, como clientes, otros senadores y plebeyos.",
+          "Identificar a los responsables de la propagación de los rumores. Buscar pistas en las conversaciones, cartas, o en la Subura.",
+          "Recopilar pruebas concretas de la campaña de difamación. Encontrar evidencia escrita, o conseguir testigos que puedan corroborar los rumores.",
+          "Presentar las pruebas a Aurelio. Decidir cómo lidiar con los responsables, ya sea confrontándolos, o exponiendo públicamente sus acciones."
+        ],
+        "rewards": [
+          "Una suma de sestercios, proporcional a la calidad de la ayuda prestada.",
+          "El favor de Aurelio, que puede ser útil en futuras interacciones políticas.",
+          "Información valiosa sobre las intrigas políticas romanas."
+        ]
+      },
+      "assigned_role": "quest_giver",
+      "narrative_role": "Un senador joven, amigo de Messala, pero temeroso y algo inexperto, que actúa como intermediario y enlace con los jugadores."
+    },
+    {
+      "id": "CP-007",
+      "name": "Cayo Aurelio Corvus",
+      "description": "Un hombre de mediana edad, corpulento y de rostro curtido, con ojos pequeños y astutos que rara vez parpadean. Viste túnicas costosas, aunque ligeramente desaliñadas, y suele llevar anillos pesados con sellos que denotan su posición. Su voz es suave pero firme, y a menudo gesticula con las manos, especialmente al enfatizar mentiras y medias verdades. Siempre parece estar a punto de susurrar un secreto.",
+      "status": "hostile",
+      "dialogue_prompt": "¡Ah, mis queridos! No es la verdad lo que mueve el mundo, sino la percepción de la verdad. Y en este juego de sombras, la calumnia es una herramienta tan afilada como una espada. ¿Interesados en saber cómo se forjan rumores y se destruyen reputaciones? Digamos que Messala ha cometido algunos errores, y la gente debe saberlo, ¿no creen?",
+      "location_influence": "Controla la circulación de noticias y rumores en el Foro Romano y en las tabernas clave. Tiene contactos entre los escribas y los pregoneros, asegurando que sus mensajes se difundan.",
+      "hp": 40,
+      "attack": 12,
+      "xp": 90,
+      "assigned_role": "boss",
+      "narrative_role": "Un tribuno de la plebe corrupto, aliado secreto de Pompeyo, que manipula la información y orquesta la campaña de desprestigio contra Messala, utilizando la calumnia como arma política."
+    },
+    {
+      "id": "senator_fabius",
+      "name": "Marco Fabio Bíbulo",
+      "description": "Un senador romano de mediana edad, de rostro afilado y cabello cuidadosamente peinado, siempre impecablemente vestido con una toga de color púrura. La preocupación se dibuja en las finas líneas alrededor de sus ojos. Aunque su postura es erguida, se percibe una sutil tensión en su cuerpo, como si estuviera siempre al borde de la explosión. Porta un anillo de sello con el escudo familiar de los Fabii, un detalle que constantemente acaricia con sus dedos.",
+      "status": "neutral",
+      "dialogue_prompt": "Amigo mío, la República se tambalea, y no por la falta de enemigos declarados. La verdadera amenaza reside en la sombra, en las palabras que se susurran, en los secretos que se ocultan. Y en este caso, en un mensajero desaparecido. Uno que, desafortunadamente, portaba mis documentos. No puedo... no *quiero* involucrar a las autoridades. La publicidad es mi peor enemigo. ¿Podría usted, discretamente, investigar la desaparición de este mensajero? La recompensa será generosa, por supuesto. Y, entre nosotros, su discreción aseguraría mi gratitud... y algo más.",
+      "quest_giver": true,
+      "assigned_role": "quest_giver",
+      "narrative_role": "Un ambicioso senador preocupado por su reputación y la estabilidad de la República, que prefiere mantener la discreción antes que recurrir a la justicia."
+    },
+    {
+      "id": "senator_corvus_72bc",
+      "name": "Cayo Valerio Corvus",
+      "description": "Un hombre de mediana edad, de complexión robusta, con ojos oscuros y penetrantes que rara vez parpadean. Viste togas opulentas, pero sin excesos llamativos, prefiriendo la elegancia discreta que denota riqueza y poder subyacente. Su rostro, enmarcado por un cabello cuidadosamente peinado, muestra una constante expresión de astucia y desdén. Un ligero tic en su labio superior revela la impaciencia que le corroe. Su anillo de sello, con la imagen de un cuervo, brilla sutilmente en su dedo.",
+      "status": "hostile",
+      "dialogue_prompt": "¿Así que… has estado husmeando en asuntos que no te conciernen? La Subura es un hervidero de basura, y aquellos que se ensucian las manos allí, a menudo terminan igual de sucios. Dime… ¿qué has descubierto? Y, lo más importante… ¿quién te ha enviado a espiar a mi persona? No creas que puedo ser engañado fácilmente, muchacho. La verdad, como el veneno, es algo que hay que saber administrar. Y te aseguro, yo sé cómo hacerlo.",
+      "location_description": "Su villa, ubicada en la cima del Palatino, es un monumento a la riqueza y el poder. Los mosaicos brillantes y las estatuas imponentes dan testimonio de su estatus, pero la atmósfera es fría y distante, con un aire de amenaza subyacente. Guardias armados patrullan los pasillos y los patios, vigilando cada movimiento.",
+      "hp": 75,
+      "attack": 15,
+      "xp": 200,
+      "assigned_role": "boss",
+      "narrative_role": "Un senador rival, astuto y despiadado, que busca aumentar su poder manipulando las tensiones políticas y derribando a sus oponentes. Está dispuesto a cualquier cosa para conseguirlo, incluso a provocar una guerra civil."
+    },
+    {
+      "id": "liberto_cifras",
+      "name": "Nervous Scribe",
+      "description": "A thin and nervous man, with eyes that dart with anxiety and a bald spot revealing years of indoor work. He wears worn clothing, but his former elegance, learned in patrician domus, still peeks through in the way he carries himself. His hands, once skilled with a quill, tremble constantly. He smells of cheap ink and cold sweat.",
+      "status": "friendly",
+      "dialogue_prompt": "¡Por los dioses! ¿Creíais que podría escapar de esto? ¡No, no, no! Lo he visto, lo sé, y ahora… ahora me persiguen. Os suplico… os suplico que me ayudéis. Han descubierto… el mensaje. El Mensaje Cifrado de la Subura. Si cae en las manos equivocadas… la República… ¡se acabará! Solo pido… solo necesito que lo recuperéis, que lo escondáis… ¡antes de que me maten! Pero… os lo advierto, no es un trabajo sencillo. La Subura es un nido de ratas y de traidores. Necesitáis… necesitas ser astutos. Y rápidos.",
+      "quest_giver": true,
+      "hp": 10,
+      "attack": 2,
+      "xp": 15,
+      "assigned_role": "quest_giver",
+      "narrative_role": "Un liberto ex-escriba que ha caído en desgracia, ahora involucrado en el submundo de la información y el contrabando, aterrorizado por las consecuencias de su descubrimiento."
+    },
+    {
+      "id": "senator_corvus",
+      "name": "Corvus",
+      "description": "A corpulent man with a perpetually somber expression and penetrating eyes that seem to analyze every movement. He wears expensive and ornate silk togas, though his skin, beneath the fine clothing, betrays a life of excess. He wears a signet ring bearing the image of a raven, symbol of his gens and his cunning.",
+      "status": "hostile",
+      "dialogue_prompt": "¿Creéis que la Subura es asunto vuestro, *peregrini*? La escoria y la podredumbre son necesarias, pero deben permanecer contenidas. Si os inmiscuís en asuntos que no os incumben, os aseguro que encontraréis consecuencias desagradables. Mis informantes son numerosos, y mis recursos, ilimitados. Ahora, si no tenéis nada más que decir... *discedite*.",
+      "secrets": [
+        "Financia en secreto a grupos paramilitares en la Subura para desestabilizar a sus rivales políticos.",
+        "Está involucrado en contrabando de armas y esclavos a través de conexiones en el puerto de Ostia.",
+        "Conoce la identidad del remitente del mensaje cifrado y está dispuesto a todo para silenciarlo."
+      ],
+      "hp": 75,
+      "attack": 18,
+      "xp": 150,
+      "traits": [
+        "Corpulent",
+        "Somber Expression",
+        "Penetrating Eyes",
+        "Wealthy",
+        "Cunning",
+        "Raven Signet"
+      ],
+      "assigned_role": "boss",
+      "narrative_role": "Un senador corrupto y manipulador, astuto y ambicioso, con conexiones en todos los estratos de la sociedad romana, dispuesto a cualquier cosa para aumentar su poder y prestigio."
+    },
+    {
+      "id": "SPQR_007",
+      "name": "Cayo Valerio Flaco",
+      "description": "Un hombre corpulento, de cabello canoso y ojos que parecen escudriñar cada movimiento. Viste togas de seda fina, aunque su rostro siempre muestra una sombra de preocupación. Constantemente se frota el mentón y parece estar en un estado de alerta perpetua. Un anillo de oro con el sello familiar adorna su mano derecha.",
+      "status": "neutral",
+      "dialogue_prompt": "¡Por los dioses! ¿Quién eres tú y qué deseas? La República está al borde del abismo, amenazada por la turbulencia y las lenguas viperinas. Si quieres mi ayuda, debes demostrar tu valía y tu discreción. Rumores sobre una profecía, 'El Susurro de la Sibila', se extienden como la peste. Debemos saber la verdad antes de que la plebe se enardezca. ¿Estás dispuesto a servir a Roma, o solo eres otro charlatán?",
+      "quest_giver": true,
+      "assigned_role": "quest_giver",
+      "narrative_role": "Un senador influyente y paranoico, que teme una revuelta popular y necesita una red de espías encubiertos para silenciar cualquier amenaza a su posición."
+    },
+    {
+      "id": "TS001",
+      "name": "El Togado",
+      "description": "Un hombre de mediana edad, de rostro anguloso y mirada penetrante, a menudo adornado con una toga impecable que contrasta con la agitación interna que lo consume. Su voz es suave, casi susurrante, pero sus palabras siempre tienen un filo de acero. Lleva un anillo de sello con un cuervo, símbolo de su linaje y ambiciones.",
+      "status": "hostile",
+      "dialogue_prompt": "Aproximándote a él en la Curia, Corvus te recibe con una sonrisa estudiada. 'Ah, mi querido amigo/a, siempre es un placer encontrarse con un rostro conocido. El destino, como la sibila, es un enigma que debemos descifrar. Dime, ¿qué te trae a mi humilde presencia? ¿Vienes en busca de la verdad, o solo a husmear en la oscuridad? Tal vez la profecía nos revele un camino... un camino pavimentado con las mejores intenciones, por supuesto...'",
+      "secrets": [
+        "Está en contacto secreto con Catilina y sus seguidores.",
+        "Está financiando en secreto a ciertos grupos de agitadores en la Subura.",
+        "Está manipulando las decisiones del Senado aprovechándose de la creciente inestabilidad."
+      ],
+      "hp": 80,
+      "attack": 35,
+      "xp": 150,
+      "assigned_role": "boss",
+      "narrative_role": "Un tribuno de la plebe ambicioso y astuto, secretamente aliado con los rebeldes, quien intenta usar la profecía para desestabilizar la República y abrir el camino a su propia ambición."
+    },
+    {
+      "id": "medico_alejandro",
+      "name": "Asclepius's Disciple",
+      "description": "A middle-aged man with a graying beard and black hair tied back with a ribbon. He wears a simple, high-quality tunic. His deep, tired eyes reflect sharp intelligence and deep concern. He wears a gold bracelet with the symbol of Asclepius and always smells of herbs and unguents.",
+      "status": "friendly",
+      "dialogue_prompt": "¡Por los dioses! ¡Necesito vuestra ayuda, forasteros! Un veneno sutil se cierne sobre Roma, y sospecho que las sombras del Senado están involucradas. Un mensaje cifrado, crucial para desenmascarar esta conspiración, ha sido robado del Foro. Debemos recuperarlo antes de que sea demasiado tarde, antes de que Roma se desangre en una guerra civil... ¿Me ayudaréis? El destino de la República podría depender de ello.",
+      "quest_giver": true,
+      "hp": 70,
+      "attack": 12,
+      "xp": 80,
+      "assigned_role": "quest_giver",
+      "narrative_role": "Un médico griego con conexiones en el Senado, alertado sobre el envenenamiento y desesperado por mantener el orden."
+    },
+    {
+      "id": "SEN_003",
+      "name": "El Observador",
+      "description": "A corpulent man with a cold, penetrating gaze that rarely blinks. He wears fine togas, but his face betrays a calculated fatigue and inherent distrust. Always surrounded by two silent, muscular bodyguards. His voice is soft, almost whispering, but every word seems calibrated to impact.",
+      "status": "hostile",
+      "dialogue_prompt": "Ah, los asuntos del Foro... Siempre tan bulliciosos, tan llenos de pequeñas aves que cantan las melodías de otros. ¿Qué mensaje te trae, muchacho? ¿Un rumor? ¿Una amenaza? O tal vez... una oportunidad. La República, como la conocemos, está en su último estertor. El Triunvirato es un monstruo de tres cabezas, y pronto caerán. La pregunta es: ¿de qué lado quieres estar cuando eso suceda?",
+      "motivations": [
+        "Derrocar al Triunvirato.",
+        "Acumular poder absoluto en Roma.",
+        "Reconstruir la República a su imagen, sin la 'corrupción' del Triunvirato.",
+        "Controlar los recursos económicos y militares de Roma."
+      ],
+      "secrets": [
+        "Financia en secreto un ejército privado.",
+        "Utiliza códigos complejos para comunicarse con sus conspiradores.",
+        "Mantiene una red de informantes en todo Roma.",
+        "Tiene vínculos con bandas criminales para desestabilizar a sus oponentes.",
+        "Está en posesión de documentos que comprometen a importantes figuras del Triunvirato."
+      ],
+      "hp": 75,
+      "attack": 20,
+      "xp": 150,
+      "stats": {
+        "strength": 14,
+        "dexterity": 10,
+        "constitution": 15,
+        "intelligence": 18,
+        "wisdom": 16,
+        "charisma": 17
+      },
+      "abilities": [
+        "Intimidation (Proficient)",
+        "Deception (Expert)",
+        "Insight (Proficient)",
+        "Commanding Presence"
+      ],
+      "assigned_role": "boss",
+      "narrative_role": "Un miembro del Senado, manipulador y astuto, que está construyendo un ejército privado y conspirando para derrocar al Triunvirato y tomar el poder."
+    }
+  ],
+  "quests": [
+    {
+      "title": "El Murmullo de la Subura",
+      "description": "Un influyente senador, Publio Cornelio Escipión, ha desaparecido. Rumores susurran en los barrios bajos de la Subura sobre un ajuste de cuentas político. Los jugadores son contratados para investigar, adentrándose en las sombras de la ciudad para descubrir la verdad tras la desaparición y desentrañar una conspiración que amenaza con desestabilizar el delicado equilibrio del Triunvirato.",
+      "steps": [
+        {
+          "description": "Investigar la última ubicación conocida de Escipión: una taberna sórdida en la Subura llamada 'La Serpiente Rústica'. Reúne información de los parroquianos, buscando pistas sobre la presencia de Escipión y cualquier persona que lo haya visto por última vez. Observa cualquier señal de lucha o conflicto.",
+          "objective": {
+            "type": "location_clue",
+            "id": "taberna_serpiente",
+            "description": "Descubrir la última ubicación conocida de Escipión en 'La Serpiente Rústica' y recopilar pistas sobre su desaparición."
+          }
+        },
+        {
+          "description": "Seguir el rastro de un peculiar símbolo encontrado en la taberna: un escorpión tallado en una moneda. Este símbolo pertenece a una organización secreta conocida como 'Los Escorpiones', supuestamente involucrada en la extorsión y el asesinato político. La investigación debe llevar a los jugadores a contactar con el mercado negro, buscando la fuente de la moneda, e infiltrándose en las redes de información de la Subura para descubrir la verdadera naturaleza de 'Los Escorpiones' y sus vínculos con la desaparición.",
+          "objective": {
+            "type": "social_interaction",
+            "id": "escorpiones_network",
+            "description": "Identificar y contactar con un miembro clave de 'Los Escorpiones' para obtener información sobre la desaparición de Escipión."
+          }
+        },
+        {
+          "description": "La investigación lleva a los jugadores a una antigua villa a las afueras de Roma, propiedad de un rival político de Escipión. Aquí, deben enfrentarse a un grupo de mercenarios contratados y al propio instigador del complot, revelando la red de traiciones y el motivo detrás del secuestro y posterior asesinato de Escipión, que podría desatar una crisis dentro del Triunvirato.",
+          "objective": {
+            "type": "combat_and_reveal",
+            "id": "villa_escipion",
+            "description": "Luchar contra los mercenarios y confrontar al cerebro detrás de la conspiración, revelando el destino de Escipión y los secretos que lo llevaron a la muerte."
+          }
+        }
+      ],
+      "quest_giver_role": "Un liberto astuto con conexiones en la Subura, sirviente de un senador preocupado por el destino de su colega desaparecido.",
+      "boss_role": "Un rico propietario de tierras y senador rival de Escipión, impulsado por la ambición y la sed de poder, que está dispuesto a usar cualquier medio, incluida la violencia, para avanzar en su carrera política.",
+      "id": "QUEST_EL_MURMULLO_DE_LA_SUBURA_319",
+      "starting_npc_id": "L-001",
+      "final_boss_id": "CS-003"
+    },
+    {
+      "title": "La Cifra de las Termas Oscuras",
+      "description": "Un importante senador, Marco Valerio Mesala, ha sido encontrado muerto en circunstancias sospechosas en las Termas de Agripa. Sospechas de asesinato político se ciernen sobre la República, y el personaje del jugador es reclutado para investigar discretamente. La clave de la verdad reside en un mensaje cifrado oculto, supuestamente en posesión del senador, y el jugador debe desenmascarar la red de espionaje que se esconde tras su muerte, antes de que la inestabilidad política desate una guerra civil.",
+      "steps": [
+        {
+          "description": "Primero, el jugador debe infiltrarse en la domus de Mesala y encontrar cualquier pista que revele su actividad secreta y el posible contenido de su mensaje cifrado. Investigar la biblioteca del senador y hablar con sus sirvientes podría revelar secretos.",
+          "objective": {
+            "type": "location",
+            "id": "domus_mesala",
+            "description": "Encontrar pistas en la domus de Mesala."
+          }
+        },
+        {
+          "description": "Siguiendo las pistas, el jugador debe rastrear a un grupo de conspiradores que frecuentaban las Termas de Agripa, el lugar donde Mesala murió. Hablar con los baños, observando a los bañistas, y buscando objetos ocultos en los vestuarios y salones de masaje, podría revelar la identidad de los espías y la ubicación del mensaje cifrado.",
+          "objective": {
+            "type": "interaction",
+            "id": "conspiradores",
+            "description": "Identificar y rastrear a los conspiradores en las Termas de Agripa."
+          }
+        },
+        {
+          "description": "Finalmente, el jugador debe descifrar el mensaje, revelando la trama de traición que llevó a la muerte de Mesala. El mensaje cifrado, una vez descifrado, revela los nombres de los implicados y el alcance de la conspiración. El jugador debe decidir a quién revelar la información, con consecuencias potencialmente fatales para sí mismo y para la República.",
+          "objective": {
+            "type": "item",
+            "id": "cifrado_final",
+            "description": "Descifrar el mensaje y descubrir la verdad."
+          }
+        }
+      ],
+      "quest_giver_role": "Un pretor joven e idealista, pero presionado por sus superiores, que necesita un investigador independiente y discreto.",
+      "boss_role": "Un antiguo oficial del ejército de Pompeyo, ahora retirado y resentido, que dirige una red de espionaje con el objetivo de desestabilizar la República para beneficio personal.",
+      "id": "QUEST_LA_CIFRA_DE_LAS_TERMAS_OSCURAS_740",
+      "starting_npc_id": "Pretor_Valerio_60BC",
+      "final_boss_id": "CifraTermasOscuras_Boss_001"
+    },
+    {
+      "title": "El Murmullo del Foro",
+      "description": "El jugador es reclutado para investigar una serie de rumores que corren por el Foro Romano. Se susurra que un grupo de senadores, liderados por el enigmático Senator Cassio, están planeando una conspiración contra el Triunvirato. Se sospecha que tienen un mensajero que utiliza un código secreto para comunicar con sus cómplices. El jugador debe descubrir la verdad, averiguar quiénes están involucrados y desbaratar el complot, todo mientras navega por el traicionero mundo de la política romana.",
+      "steps": [
+        {
+          "description": "El jugador debe infiltrarse en una reunión secreta celebrada en las Termas de Agripa, donde se rumorea que se reúnen los conspiradores. Para ello, necesita obtener una invitación. Esto implica sobornar a un guardia, robar una invitación de un senador o conseguir una por medio de favores. Dentro, el jugador debe observar discretamente para identificar a los sospechosos y escuchar sus conversaciones.",
+          "objective": {
+            "type": "location",
+            "id": "termas_agripa",
+            "description": "Infiltrarse en las Termas de Agripa y obtener información sobre los conspiradores."
+          }
+        },
+        {
+          "description": "Tras identificar al mensajero, el jugador debe seguirle a su guarida en la Subura, un barrio peligroso y lleno de trampas. Allí, debe registrar su habitación en busca de pruebas, desifrar el código secreto que usa, o obtener la información necesaria para identificar a los conspiradores y sus planes. El jugador se enfrentará a matones y espías mientras busca la verdad.",
+          "objective": {
+            "type": "information",
+            "id": "codigo_secreto",
+            "description": "Descifrar el código secreto del mensajero o obtener información sobre la conspiración."
+          }
+        },
+        {
+          "description": "El jugador debe confrontar a Senator Cassio, el presunto líder de la conspiración. La confrontación puede tener lugar en una lujosa domus patricia, un campamento militar en las afueras de la ciudad o incluso en el propio Foro. El jugador debe decidir si revelar sus hallazgos al Triunvirato, intentar detener la conspiración por su cuenta, o usarlos para su propio beneficio, todo mientras se enfrenta a la Guardia Pretoriana y a los sicarios de Cassio.",
+          "objective": {
+            "type": "confrontation",
+            "id": "cassio",
+            "description": "Confrontar a Senator Cassio y decidir el destino de la conspiración."
+          }
+        }
+      ],
+      "quest_giver_role": "Un ex-legionario, ahora informante para César, que busca desmantelar la conspiración antes de que desestabilice el Triunvirato.",
+      "boss_role": "Un senador astuto y manipulador que está dispuesto a derrocar el orden establecido por cualquier medio necesario, con ambiciones para gobernar Roma.",
+      "id": "QUEST_EL_MURMULLO_DEL_FORO_582",
+      "starting_npc_id": "Caius_Valerius_Flaccus_001",
+      "final_boss_id": "SEN_001"
+    },
+    {
+      "title": "El Mensaje Cifrado del Fénix",
+      "description": "El jugador es contactado por una fuente anónima dentro de la Legión, revelando una conspiración que involucra a altos mandos y un mensaje encriptado que podría revelar un complot para desestabilizar el Triunvirato. El jugador debe descifrar el mensaje, descubrir a los conspiradores y exponerlos antes de que puedan actuar.",
+      "steps": [
+        {
+          "description": "El jugador debe encontrar y entrevistar a un desertor de la Legión, un tal Marco, que tiene fragmentos del mensaje cifrado, escondido en una taberna de la Subura. Marco es paranoico y desconfiado, y solo hablará a cambio de protección y algo de vino Falerno.",
+          "objective": {
+            "type": "character_interaction",
+            "id": "marco_el_desertor",
+            "description": "Encontrar a Marco y obtener la primera parte del mensaje cifrado."
+          }
+        },
+        {
+          "description": "Con los fragmentos del mensaje en su poder, el jugador debe infiltrarse en una domus patricia donde se rumorea que se reúnen los conspiradores. El jugador deberá usar sus habilidades de persuasión, subterfugio o combate para acceder a la sala del consejo y encontrar la segunda parte del mensaje cifrado y pistas sobre la clave.",
+          "objective": {
+            "type": "location_discovery",
+            "id": "domus_de_la_conspiracion",
+            "description": "Infiltrarse en la domus y obtener la segunda parte del mensaje cifrado."
+          }
+        },
+        {
+          "description": "El jugador, con las dos partes del mensaje y pistas sobre la clave, debe descifrar el mensaje completo. Este mensaje revela el plan para asesinar a un miembro clave del Triunvirato, Pompeyo o Craso, y el jugador debe decidir qué hacer con la información: denunciar a los conspiradores, alertar a la víctima, o usarlas para su propio beneficio.",
+          "objective": {
+            "type": "moral_choice",
+            "id": "descifrado_del_mensaje",
+            "description": "Descifrar el mensaje y decidir el destino de la conspiración y el miembro del Triunvirato afectado."
+          }
+        }
+      ],
+      "quest_giver_role": "Un informante de la Legión, un escriba con acceso a documentos secretos, que busca una persona discreta para desentrañar una peligrosa conspiración.",
+      "boss_role": "Un general romano ambicioso, secretamente un agente de una facción enemiga, que busca el caos y el poder personal para el bien de la nueva facción que se alzará.",
+      "id": "QUEST_EL_MENSAJE_CIFRADO_DEL_FNIX_481",
+      "starting_npc_id": "LCMF_QuestGiver_1",
+      "final_boss_id": "CF-001"
+    },
+    {
+      "title": "La Sombra de la Calumnia",
+      "description": "Un senador poderoso, Marco Valerio Messala, ha sido acusado de corrupción y traición. El rumor corre por Roma como un reguero de pólvora, y sus enemigos están ansiosos por su caída. Los jugadores son contratados por el propio Messala, actuando a través de un intermediario, para investigar el origen de la calumnia y desenmascarar a los verdaderos conspiradores antes de que la reputación del senador, y tal vez su vida, sean arruinadas.",
+      "steps": [
+        {
+          "description": "Investigar el origen del rumor. Los jugadores deben moverse por la ciudad, interrogando a informantes en la Subura, participando en conversaciones en las termas, y posiblemente infiltrándose en reuniones secretas en una domus rival para recabar información sobre quiénes están detrás de la campaña de desprestigio.",
+          "objective": {
+            "type": "location",
+            "id": "domus_rival",
+            "name": "Domus de Gneo Pompeyo",
+            "description": "Descubrir si Pompeyo está directamente involucrado en la difamación."
+          }
+        },
+        {
+          "description": "Encontrar la fuente de la calumnia: un documento falso que compromete a Messala con una traición. Este documento, supuestamente escrito por el mismo Messala, es la base de la acusación. Los jugadores deberán rastrear la creación y distribución del documento, buscando a los calígrafos, los intermediarios y los posibles involucrados en su falsificación. Se rumorea que fue sellado con cera de una abeja específica, envenenada, que solo un apicultor de la zona produce.",
+          "objective": {
+            "type": "item",
+            "id": "sello_falso",
+            "name": "Sello de Cera Falsificado",
+            "description": "Un sello de cera sospechoso que parece haber sido usado para validar el documento falso contra Messala."
+          }
+        },
+        {
+          "description": "Exponer a los conspiradores. Con la evidencia reunida, los jugadores deben decidir cómo exponer a los verdaderos culpables. Pueden presentarlos ante el Senado, enfrentarlos directamente en una confrontación peligrosa, o incluso negociar un acuerdo encubierto para proteger a Messala. La elección tendrá graves consecuencias políticas y personales.",
+          "objective": {
+            "type": "character",
+            "id": "conspirador_principal",
+            "name": "Decimus Brutus",
+            "description": "Revelar a Decimus Brutus como el cerebro detrás de la conspiración para dañar a Messala."
+          }
+        }
+      ],
+      "quest_giver_role": "Un senador joven, amigo de Messala, pero temeroso y algo inexperto, que actúa como intermediario y enlace con los jugadores.",
+      "boss_role": "Un tribuno de la plebe corrupto, aliado secreto de Pompeyo, que manipula la información y orquesta la campaña de desprestigio contra Messala, utilizando la calumnia como arma política.",
+      "id": "QUEST_LA_SOMBRA_DE_LA_CALUMNIA_135",
+      "starting_npc_id": "senator_aurelius",
+      "final_boss_id": "CP-007"
+    },
+    {
+      "title": "El Mensajero Desaparecido de la Subura",
+      "description": "Un mensajero de confianza del Senador Marco Valerio ha desaparecido en el laberíntico barrio de la Subura, llevando consigo un mensaje vital con información sobre una inminente traición dentro del Triunvirato. Valerio, con temor por su vida y su influencia política, contrata a los personajes para encontrar al mensajero y recuperar el mensaje, antes de que caiga en manos equivocadas.",
+      "steps": [
+        {
+          "description": "Investigar la última ruta conocida del mensajero a través de la Subura. Recopilar información de tabernas, burdeles y mercados para rastrear sus últimos movimientos y cualquier sospechoso involucrado.",
+          "objective": {
+            "type": "location",
+            "id": "taberna_del_lobo_negro",
+            "name": "La Taberna del Lobo Negro",
+            "description": "Una taberna sórdida y concurrida en la Subura, conocida por sus peleas y la venta de información barata. Un lugar ideal para encontrar pistas, pero también para caer en una emboscada."
+          }
+        },
+        {
+          "description": "Seguir las pistas obtenidas en la Subura, que llevan a un encuentro clandestino en las ruinas abandonadas de un antiguo templo. Allí, los personajes deberán enfrentarse a los matones que retienen al mensajero y que trabajan para el Senador corrupto Cayo Servilio, el cual planea usar el mensaje para desacreditar a César.",
+          "objective": {
+            "type": "combat",
+            "id": "combate_matones",
+            "enemy_type": "Matones de Servilio",
+            "quantity": 4,
+            "description": "Cuatro matones armados con espadas y puñales, dispuestos a proteger a su patrón y silenciar al mensajero."
+          }
+        },
+        {
+          "description": "Recuperar el mensaje cifrado y descifrarlo. El mensaje revela los planes de Servilio para socavar la alianza del Triunvirato, pero también menciona una cita secreta entre Servilio y una persona de gran influencia, que podría ser el verdadero cerebro detrás de la conspiración. Deben decidir si revelan el mensaje al Senador Valerio, o si lo utilizan para sus propios fines.",
+          "objective": {
+            "type": "item",
+            "id": "mensaje_cifrado",
+            "name": "Mensaje Cifrado",
+            "description": "Un rollo de papiro con un mensaje escrito en un código complejo. Su descifrado revelará la verdad tras la conspiración."
+          }
+        }
+      ],
+      "quest_giver_role": "Un ambicioso senador preocupado por su reputación y la estabilidad de la República, que prefiere mantener la discreción antes que recurrir a la justicia.",
+      "boss_role": "Un senador rival, astuto y despiadado, que busca aumentar su poder manipulando las tensiones políticas y derribando a sus oponentes. Está dispuesto a cualquier cosa para conseguirlo, incluso a provocar una guerra civil.",
+      "id": "QUEST_EL_MENSAJERO_DESAPARECIDO_DE_LA_SUBURA_991",
+      "starting_npc_id": "senator_fabius",
+      "final_boss_id": "senator_corvus_72bc"
+    },
+    {
+      "title": "El Mensaje Cifrado de la Subura",
+      "description": "Los jugadores son reclutados por un liberto sospechoso de actividades ilegales que ha recibido un mensaje cifrado de la Subura, con información vital para un complot político en ciernes. El liberto, aterrado, pide ayuda a los jugadores para descifrar el mensaje y descubrir la verdad antes de que sea demasiado tarde. El mensaje revela la ubicación de una reunión secreta y una conspiración que involucra a un poderoso senador.",
+      "steps": [
+        {
+          "description": "El liberto, llamado Milo, revela a los jugadores el mensaje, una serie de jeroglíficos y símbolos extraños. Deben descifrarlo buscando pistas en la Subura, preguntando a informantes y buscando textos antiguos.",
+          "objective": {
+            "type": "skill_check",
+            "skill": "Inteligencia (Historia o Investigación)",
+            "difficulty": 15
+          }
+        },
+        {
+          "description": "Tras descifrar el mensaje, los jugadores descubren que la reunión secreta se celebrará en las Termas de Agripa. Deben infiltrarse, vigilar a los asistentes y recopilar pruebas incriminatorias sin ser descubiertos.",
+          "objective": {
+            "type": "location",
+            "id": "Termas de Agripa",
+            "action": "recopilar pruebas",
+            "requirement": "sigilo"
+          }
+        },
+        {
+          "description": "Los jugadores descubren que el Senador Corvus, un hombre conocido por su ambición y crueldad, está detrás de la conspiración. Deben decidir cómo actuar: alertar a las autoridades, confrontar a Corvus directamente, o usar la información para su propio beneficio. El final dependerá de sus acciones.",
+          "objective": {
+            "type": "moral_choice",
+            "id": "Senador Corvus",
+            "options": [
+              "Denunciar a Corvus (al Senado o a Pompeyo)",
+              "Confrontar a Corvus",
+              "Usar la información para chantajear o obtener poder propio"
+            ]
+          }
+        }
+      ],
+      "quest_giver_role": "Un liberto ex-escriba que ha caído en desgracia, ahora involucrado en el submundo de la información y el contrabando, aterrorizado por las consecuencias de su descubrimiento.",
+      "boss_role": "Un senador corrupto y manipulador, astuto y ambicioso, con conexiones en todos los estratos de la sociedad romana, dispuesto a cualquier cosa para aumentar su poder y prestigio.",
+      "id": "QUEST_EL_MENSAJE_CIFRADO_DE_LA_SUBURA_741",
+      "starting_npc_id": "liberto_cifras",
+      "final_boss_id": "senator_corvus"
+    },
+    {
+      "title": "El Susurro de la Sibila",
+      "description": "Un rumor inquietante recorre Roma: una sibila, recluida en el templo de Apolo, ha profetizado la inminente caída de la República. El Senado, dividido y temeroso, busca acallar la profecía y la sibila. Sin embargo, la información sobre la profecía es fragmentada y protegida por diversas facciones. Los jugadores, contratados por una figura oscura del Senado, deben desentrañar la verdad, navegar por la telaraña política y decidir si la profecía se cumple o no. Sus acciones pueden sellar el destino de Roma.",
+      "steps": [
+        {
+          "description": "Investigar la fuente inicial del rumor. Visitar la Subura para hablar con informantes y encontrar el origen del rumor. Escuchar los rumores en las Termas y el Foro. Desenterrar pistas sobre el contacto de la sibila.",
+          "objective": {
+            "type": "location",
+            "id": "Subura",
+            "description": "Encontrar un informante fiable en la Subura que pueda darles la primera pista sobre la profecía de la Sibila."
+          }
+        },
+        {
+          "description": "Recuperar una tablilla oculta que contiene una parte de la profecía. La tablilla está en posesión de un mercader sirio corrupto que opera en secreto, vendiendo información valiosa a diferentes facciones políticas. Deben negociar, robar o coaccionar al mercader para obtener la tablilla.",
+          "objective": {
+            "type": "item",
+            "id": "tablilla_profecia",
+            "description": "La tablilla de cera contiene la primera parte de la profecía de la Sibila, la clave para la siguiente fase de la misión."
+          }
+        },
+        {
+          "description": "Infiltrarse en el templo de Apolo, donde la Sibila está cautiva. Deben encontrar y hablar con la Sibila, quien puede ser reticente a revelar sus secretos. Deben decidir cómo lidiar con la profecía final, que podría llevar a la República a la guerra civil.",
+          "objective": {
+            "type": "character",
+            "id": "Sibila",
+            "description": "Conseguir una audiencia con la Sibila y descubrir la conclusión de la profecía, y decidir cómo usar esta información."
+          }
+        }
+      ],
+      "quest_giver_role": "Un senador influyente y paranoico, que teme una revuelta popular y necesita una red de espías encubiertos para silenciar cualquier amenaza a su posición.",
+      "boss_role": "Un tribuno de la plebe ambicioso y astuto, secretamente aliado con los rebeldes, quien intenta usar la profecía para desestabilizar la República y abrir el camino a su propia ambición.",
+      "id": "QUEST_EL_SUSURRO_DE_LA_SIBILA_622",
+      "starting_npc_id": "SPQR_007",
+      "final_boss_id": "TS001"
+    },
+    {
+      "title": "El Mensaje Cifrado del Foro",
+      "description": "Un senador influyente, Marcus Aurelius Severus, ha sido envenenado lentamente. La única pista es un mensaje cifrado encontrado en su estudio, aparentemente relacionado con una traición a gran escala. Los jugadores deben descifrar el mensaje, descubrir la identidad del envenenador y desenmascarar la conspiración antes de que la República se vea comprometida.",
+      "steps": [
+        {
+          "description": "Los jugadores deben examinar el estudio de Severus, buscando pistas entre sus posesiones. Esto incluye interrogar a su familia y sirvientes, así como buscar objetos ocultos o inusuales.",
+          "objective": {
+            "type": "location",
+            "id": "estudio_senador",
+            "description": "Hallar pistas cruciales en el estudio de Marcus Aurelius Severus."
+          }
+        },
+        {
+          "description": "El mensaje cifrado, escrito en un pergamino delicado, debe ser descifrado. Esto implica investigar la existencia de un código secreto y, posiblemente, buscar ayuda en fuentes inesperadas, como un erudito griego residente en Roma o un mercader conocedor de la cultura oriental.",
+          "objective": {
+            "type": "clue",
+            "id": "mensaje_cifrado_decodificado",
+            "description": "Descifrar el código del mensaje para revelar su contenido."
+          }
+        },
+        {
+          "description": "Una vez descifrado, el mensaje revela el nombre del envenenador y los planes de una conspiración mayor. Los jugadores deben rastrear a los involucrados, que podrían estar en diferentes facciones de la sociedad romana, desde la élite senatorial hasta los bajos fondos de la Subura, para detener el complot. El enfrentamiento final, probablemente, requerirá infiltración y subterfugio.",
+          "objective": {
+            "type": "enemy",
+            "id": "conspiradores",
+            "description": "Exponer y neutralizar a los conspiradores, revelando su conexión con el envenenamiento de Severus y la amenaza a la República."
+          }
+        }
+      ],
+      "quest_giver_role": "Un médico griego con conexiones en el Senado, alertado sobre el envenenamiento y desesperado por mantener el orden.",
+      "boss_role": "Un miembro del Senado, manipulador y astuto, que está construyendo un ejército privado y conspirando para derrocar al Triunvirato y tomar el poder.",
+      "id": "QUEST_EL_MENSAJE_CIFRADO_DEL_FORO_651",
+      "starting_npc_id": "medico_alejandro",
+      "final_boss_id": "SEN_003"
+    }
+  ]
+}

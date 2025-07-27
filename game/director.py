@@ -12,409 +12,357 @@ from models import LocationDefinition, WorldDefinition, WorldGraph
 
 
 class DirectorAgent:
-    """
-    Actúa como un "Dungeon Master AI" para crear un mundo jugable a partir
-    de una estructura de grafo y un manifiesto de alto nivel.
-    """
     def __init__(self, provider: AIProviderInterface, manifest_path: str, base_items_path: str):
         print("--- Director Agent Initialized ---")
         self.provider = provider
-
-        # Cargar el manifiesto del usuario
         with open(manifest_path, 'r', encoding='utf-8') as f:
             self.manifest = yaml.safe_load(f)
-
-        # Cargar las plantillas de items base
         with open(base_items_path, 'r', encoding='utf-8') as f:
             self.base_item_templates = json.load(f)
 
-        # --- VALIDACIÓN TEMPRANA DEL IDIOMA ---
         self.world_language = self.manifest.get('language')
         if not self.world_language:
-            raise ValueError("FATAL: 'language' key not found or is empty in your manifest .yaml file. Please add it (e.g., 'language: Español').")
+            raise ValueError("FATAL: 'language' key not found in manifest.")
 
         self.world_id = self.manifest.get('world_id', 'default_world')
         self.world_theme = self.manifest.get('world_theme', 'A mysterious world')
-        print(f"Loaded manifest for world '{self.manifest.get('world_name', self.world_id)}' in '{self.world_language}'")
-        print(f"Theme: '{self.world_theme[:60]}...'")
+        self.creative_examples = self.manifest.get('creative_examples', {})
 
-
-        # Almacenes de contenido generado
-        self.location_definitions: Dict[str, Dict[str, Any]] = {}
-        self.npc_templates: Dict[str, Dict[str, Any]] = {}
-        self.item_templates: Dict[str, Dict[str, Any]] = {}
-        self.quests: List[Dict[str, Any]] = []
-        self.world_graph: WorldGraph | None = None
-    def _generate_creative_json(self, prompt: str, attempts=3) -> dict | list:
-        """
-        Envoltura robusta para generar JSON.
-        Intenta extraer y limpiar el JSON de la respuesta de la IA.
-        Realiza varios intentos si falla.
-        """
-        print(f"  - Sending prompt to AI: '{prompt[:70]}...'")
+        # --- NUEVO: Diccionario de Esquemas de Validación ---
+        self.validation_schemas = {
+            "location": ["name", "description"],
+            "trap": ["name", "description", "damage", "disarm_difficulty"],
+            "generic_item": ["name", "description"],
+            "quest": ["title", "description", "steps", "key_quest_item", "quest_giver_role", "boss_role"],
+            "npc": ["id", "name", "description", "status", "dialogue_prompt"],
+            "stats": ["hp", "attack", "xp"]
+        }
         
-        for attempt in range(attempts):
+        # Almacenes de contenido
+        self.location_definitions: Dict[str, Dict[str, Any]] = {}
+        self.item_templates: Dict[str, Dict[str, Any]] = {}
+        self.npc_templates: Dict[str, Dict[str, Any]] = {}
+        self.quests: List[Dict[str, Any]] = []
+        self.traps: Dict[str, Dict[str, Any]] = {}
+
+    def _generate_and_validate_json(self, prompt: str, schema_key: str, max_attempts: int = 3) -> dict | list:
+        """
+        Genera JSON, lo valida contra un esquema y pide correcciones a la IA si falla.
+        """
+        required_keys = self.validation_schemas.get(schema_key, [])
+        original_prompt = prompt
+
+        for attempt in range(max_attempts):
+            print(f"  -> Sending prompt to AI (Attempt {attempt + 1}/{max_attempts}): '{prompt[:80]}...'")
             try:
-                response_text = self.provider.generate_text(prompt, temperature=0.5)
-                print("    -> Pausing for 5 seconds to respect API rate limits...")
+                response_text = self.provider.generate_text(prompt, temperature=0.7)
                 time.sleep(5)
                 match = re.search(r'```(?:json)?\s*([\[\{].*?[\]\}])\s*```', response_text, re.DOTALL)
                 if match:
                     json_str = match.group(1)
                 else:
-                    start = -1
-                    if 'list of strings' in prompt.lower():
-                        start = response_text.find('[')
-                        end = response_text.rfind(']')
-                    else:
-                        start = response_text.find('{')
-                        end = response_text.rfind('}')
-
-                    if start != -1 and end != -1 and start < end:
-                        json_str = response_text[start:end+1]
-                    else:
-                        json_str = response_text
-                
+                    json_match = re.search(r'[\[\{].*?[\]\}]', response_text, re.DOTALL)
+                    json_str = json_match.group(0) if json_match else response_text
                 json_str = re.sub(r',\s*([\}\]])', r'\1', json_str)
-                return json.loads(json_str)
+                generated_json = json.loads(json_str)
+            except Exception as e:
+                print(f"    -> AI generation/parsing failed: {e}")
+                prompt = (
+                    f"{original_prompt}\n\n"
+                    f"PREVIOUS ATTEMPT FAILED. The response was not valid JSON. "
+                    f"Please correct the formatting and provide ONLY the valid JSON object. "
+                    f"Your invalid response was:\n{response_text}"
+                )
+                continue
 
-            except (json.JSONDecodeError, Exception) as e:
-                print(f"    -> AI generation/parsing failed on attempt {attempt + 1}/{attempts}. Error: {e}")
-                if attempt == attempts - 1:
-                    return {} if '{' in prompt else []
-        
-        return {} if '{' in prompt else []
+            missing_keys = [key for key in required_keys if key not in generated_json]
+            if not missing_keys:
+                print("    -> Validation PASSED.")
+                return generated_json
+            print(f"    -> Validation FAILED. Missing keys: {missing_keys}")
+            prompt = (
+                f"{original_prompt}\n\n"
+                f"PREVIOUS ATTEMPT FAILED. The JSON you provided was missing these required keys: {', '.join(missing_keys)}. "
+                f"Please correct your response and include ALL the required keys. "
+                f"Your invalid JSON was:\n{json.dumps(generated_json, indent=2)}"
+            )
+        print(f"  -> CRITICAL: Failed to generate valid JSON for schema '{schema_key}' after {max_attempts} attempts.")
+        return {} if isinstance(required_keys, list) and required_keys else []
+
+    def _get_creative_context(self) -> str:
+        """Construye una cadena de texto con el contexto creativo del manifiesto."""
+        context_parts = [
+            f"You are a creative Dungeon Master designing a role-playing game in {self.world_language}.",
+            f"The world's theme is: '{self.world_theme}'.",
+            f"The historical context is: '{self.manifest.get('historical_context', 'not specified')}'.",
+            "Your creations must be coherent, logical, and fit the established theme."
+        ]
+        if 'location_types' in self.creative_examples:
+            context_parts.append(f"Examples of locations include: {', '.join(self.creative_examples['location_types'])}.")
+        if 'npc_archetypes_examples' in self.creative_examples:
+            context_parts.append(f"Examples of character archetypes include: {', '.join(self.creative_examples['npc_archetypes_examples'])}.")
+        return "\n".join(context_parts)
 
     def orchestrate_world_creation(self, graph: WorldGraph):
-        """Orquesta el proceso completo de creación de un mundo sorprendente."""
-        print("\n--- Starting World Orchestration ---")
-        density_rules = self.manifest.get('density', {})
-        self.world_graph = graph
+        """Orquesta el proceso completo basándose en el blueprint del Arquitecto."""
+        print("\n--- Starting World Orchestration (Blueprint-Driven) ---")
+        
+        # --- ¡CORREGIDO! Accedemos a los atributos con . en lugar de .get() ---
+        total_npcs_needed = sum(node.npc_count for node in graph.nodes.values())
+        total_items_needed = sum(node.item_count for node in graph.nodes.values())
+        total_quests_needed = sum(1 for node in graph.nodes.values() if node.has_quest_start)
+        total_traps_needed = sum(1 for node in graph.nodes.values() if node.has_trap)
+        
+        print(f"  -> Blueprint requires: {total_quests_needed} Quests, {total_npcs_needed} NPCs, {total_items_needed} Items, {total_traps_needed} Traps.")
+        
+        # El resto de la cadena de montaje
         self._create_themed_locations(graph)
-        npc_archetypes = self._design_npc_archetypes(density_rules)
-        self._create_specific_npcs(npc_archetypes)
-        self._create_themed_items()
-        self._design_quests(density_rules)
-        self._place_content_in_world()
+        self._create_themed_traps(total_traps_needed)
+        self._create_generic_items(total_items_needed)
+        self._design_quests_and_key_assets(total_quests_needed)
+        self._create_generic_npcs(total_npcs_needed)
+        self._place_content_in_world(graph)
         
         print("\n--- Orchestration Complete ---")
-        
-    # --- MÉTODOS DE CREACIÓN DE CONTENIDO (CON PROMPTS MEJORADOS) ---
 
     def _create_themed_locations(self, graph: WorldGraph):
-        print("\n[Master Thought 1/6]: Giving a name and soul to each location...")
+        print("\n[Stage 1.1] Creating themed locations...")
+        creative_context = self._get_creative_context()
         for node_id, node in graph.nodes.items():
             prompt = (
-                f"You MUST respond in {self.world_language}. "
-                f"The world's theme is: '{self.world_theme}'.\n"
-                f"Invent a unique and evocative name and a 2-sentence atmospheric description for a location of type '{node.type}'. "
-                f"The name and description MUST be in {self.world_language}. "
-                f"Existing names to avoid: {[loc.get('name') for loc in self.location_definitions.values()]}. "
-                "Respond ONLY with the JSON object: {\"name\": \"...\", \"description\": \"...\"}"
+                f"{creative_context}\n\n"
+                f"**Task:** Invent a unique and evocative name and a 2-sentence atmospheric description for a location with these properties: type='{node.type}', tags={node.tags}.\n"
+                f"Respond ONLY with the JSON object: {{\"name\": \"...\", \"description\": \"...\"}}"
             )
-            content = self._generate_creative_json(prompt)
-            
+            content = self._generate_and_validate_json(prompt, schema_key="location")
             loc_def = LocationDefinition(
-                id=node_id, world_id=self.world_id, name=content.get('name', f"Unnamed {node.type}"),
-                description=content.get('description', 'A mysterious place.'), type=node.type, tags=node.tags,
-                connections={conn.direction: conn.target_node_id for conn in node.connections},
-                initial_npcs=[], initial_items=[]
+                id=node_id,
+                world_id=self.world_id,
+                name=content.get('name', f"Unnamed Location"),
+                description=content.get('description', 'A mysterious place.'),
+                type=node.type,
+                tags=node.tags,
+                connections={conn['direction']: conn['target_node_id'] for conn in node.connections},
+                initial_npcs=[],
+                initial_items=[],
+                traps={}
             )
             self.location_definitions[node_id] = loc_def.model_dump()
 
-    def _design_npc_archetypes(self, density: Dict) -> List[str]:
-        print("\n[Master Thought 2/6]: Reading character archetypes directly from manifest...")
-        
-        # Leemos los arquetipos EXACTOS que has definido en el manifiesto.
-        archetypes = self.manifest.get('structure', {}).get('npc_archetypes', [])
-        
-        if not archetypes:
-            # Si el manifiesto no los tiene, generamos unos de fallback.
-            print("  -> No archetypes found in manifest. Generating them with AI...")
-            density_map = {"low": 3, "medium": 5, "high": 7}
-            num_archetypes = density_map.get(density.get('npcs', 'medium'), 5)
+    def _create_themed_traps(self, num_traps_needed: int):
+        print(f"\n[Stage 1.2] Creatively designing {num_traps_needed} themed traps...")
+        if num_traps_needed == 0: return
+        creative_context = self._get_creative_context()
+        for i in range(num_traps_needed):
             prompt = (
-                f"You MUST respond in {self.world_language}. "
-                f"For a world with theme '{self.world_theme}', brainstorm {num_archetypes} unique character archetypes. "
-                f"Respond ONLY with a JSON list of strings in {self.world_language}."
+                f"{creative_context}\n\n"
+                f"**Task:** Invent a creative, thematic trap. Provide a `name`, a detailed `description`, a `damage` value (10-50), and a `disarm_difficulty` ('simple', 'challenging', 'very_challenging').\n"
+                f"Respond ONLY with the JSON object."
             )
-            archetypes = self._generate_creative_json(prompt)
-        else:
-            print(f"  -> Found {len(archetypes)} archetypes in manifest.")
-            
-        return archetypes if isinstance(archetypes, list) else []
+            trap_data = self._generate_and_validate_json(prompt, schema_key="trap")
+            if trap_data and 'name' in trap_data and 'damage' in trap_data:
+                trap_id = f"trap_{trap_data['name'].encode('ascii', 'ignore').decode('ascii').lower().replace(' ', '_')}_{random.randint(100,999)}"
+                self.traps[trap_id] = {**trap_data, "id": trap_id, "triggered": False}
 
-    def _create_specific_npcs(self, archetypes: List[str]):
-        print("\n[Master Thought 3/6]: Creating unique individuals for these roles...")
-        for archetype in archetypes:
+    def _create_generic_items(self, num_items_needed: int):
+        print(f"\n[Stage 1.3] Creating {num_items_needed} generic themed items...")
+        if num_items_needed == 0: return
+        creative_context = self._get_creative_context()
+        templates = [t for t in self.base_item_templates.values() if t.get('type') != 'quest']
+        for _ in range(num_items_needed):
+            base_data = random.choice(templates)
             prompt = (
-                f"You MUST respond in {self.world_language}. "
-                f"Create a specific character for the role '{archetype}' in a world with theme '{self.world_theme}'. "
-                f"Provide a unique ID (lowercase_with_underscores, NO accents or special characters), their name, a short description, status (friendly/neutral/hostile), and a personality/dialogue prompt. "
-                f"The name, description, and dialogue_prompt MUST be in {self.world_language}. "
-                "Respond ONLY with the JSON object: {\"id\": \"...\", \"name\": \"...\", \"description\": \"...\", \"status\": \"...\", \"dialogue_prompt\": \"...\"}"
-            )
-            npc_data = self._generate_creative_json(prompt)
-            
-            if not npc_data or not all(k in npc_data for k in ['id', 'name', 'description']):
-                print(f"    -> WARNING: AI failed to provide basic info for archetype '{archetype}'. Skipping.")
-                continue
-
-            stats_prompt = f"Based on this character: '{npc_data['description']}', provide balanced game stats (HP between 10-100, Attack between 1-20, XP between 5-50). Respond ONLY with the JSON object: {{\"hp\": ..., \"attack\": ..., \"xp\": ...}}"
-            stats = self._generate_creative_json(stats_prompt)
-
-            if not stats or not all(k in stats for k in ['hp', 'attack', 'xp']):
-                print(f"    -> WARNING: AI failed to provide valid stats for NPC '{npc_data['name']}'. Skipping.")
-                continue
-
-            npc_data.update(stats)
-            npc_data['role'] = archetype 
-            self.npc_templates[npc_data['id']] = npc_data
-    
-    def _create_themed_items(self):
-        print("\n[Master Thought 4/6]: Theming base items for treasures and tools...")
-        for template_id, base_data in self.base_item_templates.items():
-            prompt = (
-                f"You MUST respond in {self.world_language}. "
-                f"Give a unique, thematic name and description for a '{base_data['type']}' item (template: {template_id}) that fits the world theme '{self.world_theme}'. "
-                f"The name and description MUST be in {self.world_language}. "
+                f"{creative_context}\n\n"
+                f"**Task:** Give a unique, thematic name and description for a '{base_data['type']}' item.\n"
                 "Respond ONLY with the JSON object: {\"name\": \"...\", \"description\": \"...\"}"
             )
-            themed_data = self._generate_creative_json(prompt)
-            
-            final_item = base_data.copy()
-            final_item.update(themed_data)
-            # Crear ID a partir del nombre en inglés o un fallback
-            safe_name = themed_data.get('name', f'item_{template_id}').encode('ascii', 'ignore').decode('ascii').lower().replace(' ', '_')
+            themed_data = self._generate_and_validate_json(prompt, schema_key="generic_item")
+            final_item = {**base_data, **themed_data}
+            safe_name = themed_data.get('name', f'item_{base_data["type"]}').encode('ascii', 'ignore').decode('ascii').lower().replace(' ', '_')
             final_item['id'] = f"{safe_name}_{random.randint(100,999)}"
-            final_item['template_id'] = template_id
             self.item_templates[final_item['id']] = final_item
 
-
-    def _design_quests(self, density: Dict):
-        print("\n--- [DEBUG] Master Thought 5/6: Entering _design_quests ---")
-        self.quests = []
-
-        quest_seeds = self.manifest.get('quest_seeds', [])
-        if not quest_seeds:
-            print("  -> [DEBUG] CRITICAL: No 'quest_seeds' found in manifest. Aborting.")
-            return
-
-        density_map = {"low": 1, "medium": 2, "high": 3}
-        quest_density_setting = density.get('quests', 'medium')
-        num_quests_to_generate = min(density_map.get(quest_density_setting, 2), len(quest_seeds))
-        print(f"  -> [DEBUG] Quest density is '{quest_density_setting}'. Will generate {num_quests_to_generate} quest(s).")
-        selected_seeds = random.sample(quest_seeds, num_quests_to_generate)
-        
-        for i, seed in enumerate(selected_seeds):
-            print(f"  -> [DEBUG] Developing seed '{seed.get('title', 'NO TITLE')}'")
-            
-            # --- PROMPT A PRUEBA DE TODO ---
-            # Le pedimos solo texto, separado por un token especial que podamos parsear.
+    def _design_quests_and_key_assets(self, num_quests_needed: int):
+        print(f"\n[Stage 2.1] Creatively designing {num_quests_needed} quests from scratch...")
+        if num_quests_needed == 0: return
+        creative_context = self._get_creative_context()
+        for i in range(num_quests_needed):
+            print(f"  -> Inventing Quest {i+1}/{num_quests_needed}...")
             prompt = (
-                f"You are a quest designer writing in {self.world_language}. "
-                f"Based on this quest idea: '{seed.get('description', '')}', write a full quest. "
-                f"First, write a detailed, engaging 'full_description' for the player. "
-                f"Then, on new lines, write exactly 3 short, one-sentence descriptions for the quest steps, each starting with 'STEP:'. "
-                f"Do NOT use JSON format. Respond ONLY with plain text."
-                f"\n\nEXAMPLE:\n"
-                f"Esta es la descripción completa y detallada de la misión...\n"
-                f"STEP: Este es el objetivo del primer paso.\n"
-                f"STEP: Este es el objetivo del segundo paso.\n"
-                f"STEP: Este es el objetivo del tercer paso."
+                f"{creative_context}\n\n"
+                f"**Your Task:** Invent a NEW, original quest that fits the world.\n"
+                f"**Instructions for the JSON response:**\n"
+                f"- `title`: A compelling title for the quest.\n"
+                f"- `description`: A detailed plot description.\n"
+                f"- `steps`: A list of 3 logical steps, each with a `description` and a structured `objective` (e.g., {{\"type\": \"item\", \"id\": \"daga_secreta\"}}).\n"
+                f"- `key_quest_item`: An object for a crucial item for this quest, with its own `id`, `name`, and `description`.\n"
+                f"- `quest_giver_role`: **Invent** a short, descriptive role for the character who gives the quest (e.g., 'a cynical spymaster who needs a deniable agent').\n"
+                f"- `boss_role`: **Invent** a short, descriptive role for the main antagonist (e.g., 'a charismatic cult leader manipulating senators').\n"
+                f"Respond ONLY with the complete JSON object for this single quest."
             )
-            
-            # Usamos generate_text, no _generate_creative_json
-            full_text_response = self.provider.generate_text(prompt)
-            print(f"  -> [DEBUG] AI returned raw text:\n{full_text_response}")
-            
-            # --- PARSEO MANUAL Y ENSAMBLAJE ---
-            try:
-                parts = full_text_response.split("STEP:")
-                if len(parts) >= 4: # Debe haber una descripción y al menos 3 pasos
-                    full_description = parts[0].strip()
-                    step_descriptions = [step.strip() for step in parts[1:]]
+            quest_data = self._generate_and_validate_json(prompt, schema_key="quest")
+            if not (quest_data and 'title' in quest_data and 'steps' in quest_data and 'quest_giver_role' in quest_data):
+                print(f"    -> FAILED to generate a valid quest structure. Skipping.")
+                continue
+            quest_data['id'] = f"QUEST_{quest_data['title'].encode('ascii', 'ignore').decode('ascii').upper().replace(' ', '_')}_{random.randint(100,999)}"
+            key_item_info = quest_data.pop('key_quest_item', {})
+            if 'id' in key_item_info:
+                item_id = key_item_info['id']
+                self.item_templates[item_id] = {**self.base_item_templates["QUEST_ITEM_MACGUFFIN"], **key_item_info, "template_id": "QUEST_ITEM_MACGUFFIN"}
+            quest_giver_role = quest_data.get('quest_giver_role')
+            if quest_giver_role:
+                giver_npc = self._create_npc_for_role(quest_giver_role, 'quest_giver', quest_data['title'])
+                if giver_npc:
+                    quest_data['starting_npc_id'] = giver_npc['id']
+                    self.npc_templates[giver_npc['id']] = giver_npc
+                    print(f"    -> Invented Quest Giver: '{giver_npc['name']}' (Role: {quest_giver_role})")
+            boss_role = quest_data.get('boss_role')
+            if boss_role:
+                boss_npc = self._create_npc_for_role(boss_role, 'boss', quest_data['title'])
+                if boss_npc:
+                    quest_data['final_boss_id'] = boss_npc['id']
+                    self.npc_templates[boss_npc['id']] = boss_npc
+                    print(f"    -> Invented Boss: '{boss_npc['name']}' (Role: {boss_role})")
+            self.quests.append(quest_data)
 
-                    print("    -> [DEBUG] Manual parsing SUCCESSFUL.")
-                    
-                    safe_title = seed.get('title', f'QUEST_{i}').encode('ascii', 'ignore').decode('ascii').upper().replace(' ', '_')
-                    quest_id = f"QUEST_{safe_title}"
+    def _create_npc_for_role(self, narrative_role: str, function_in_story: str, quest_context: str) -> Dict | None:
+        print(f"  -> Inventing a specific NPC for the story function '{function_in_story}' described as: '{narrative_role}'...")
+        creative_context = self._get_creative_context()
+        prompt = (
+            f"{creative_context}\n\n"
+            f"**Your Task:** Create a specific, unique character who fits this **narrative role**: '{narrative_role}'.\n"
+            f"This character will serve as the '{function_in_story}' in a story about '{quest_context}'.\n"
+            f"Give them a fitting `name`, `description`, `status` (friendly/neutral/hostile), and a `dialogue_prompt` that captures their personality. Also provide a unique `id`.\n"
+            f"Respond ONLY with the JSON object."
+        )
+        npc_data = self._generate_and_validate_json(prompt, schema_key="npc")
+        if npc_data and 'id' in npc_data:
+            stats_prompt = f"Based on '{npc_data.get('description', '')}', provide balanced stats (hp, attack, xp). JSON ONLY."
+            stats = self._generate_and_validate_json(stats_prompt, schema_key="stats")
+            npc_data.update(stats or {})
+            npc_data['assigned_role'] = function_in_story
+            npc_data['narrative_role'] = narrative_role
+            return npc_data
+        return None
 
-                    steps = []
-                    for j, step_desc in enumerate(step_descriptions):
-                        steps.append({
-                            "id": f"paso_{j+1}",
-                            "description": step_desc,
-                            "objective": {"type": "narrative", "id": "unknown"}
-                        })
-
-                    final_quest = {
-                        "id": quest_id, "title": seed.get('title'),
-                        "description": full_description, "steps": steps,
-                        "quest_giver_archetype": seed.get('quest_giver_archetype'),
-                        "boss_archetype": seed.get('boss_archetype')
-                    }
-                    
-                    self.quests.append(final_quest)
-                    print(f"    -> [DEBUG] SUCCESS! Quest '{final_quest['title']}' added to self.quests.")
-                else:
-                    raise ValueError("Response did not contain enough 'STEP:' separators.")
-
-            except Exception as e:
-                print(f"    -> [DEBUG] CRITICAL FAILURE: Could not parse AI's text response. Error: {e}. Skipping.")
+    def _create_generic_npcs(self, num_npcs_needed: int):
+        num_extras_to_create = num_npcs_needed - len(self.npc_templates)
+        if num_extras_to_create <= 0: return
         
-        print(f"--- [DEBUG] Exiting _design_quests. Total quests generated: {len(self.quests)} ---")
+        print(f"\n[Stage 3.1] Creatively designing {num_extras_to_create} generic world inhabitants (extras)...")
+        creative_context = self._get_creative_context()
 
-    def _place_content_in_world(self):
-        print("\n--- [Master Thought 6/6] Placing content intelligently using the zoned map ---")
-        
-        if not self.world_graph or not self.location_definitions:
-            print("  -> CRITICAL: World graph or location definitions are missing. Aborting placement.")
-            return
+        for i in range(num_extras_to_create):
+            # Le pedimos a la IA que se invente un rol para un extra
+            prompt_role = (
+                f"{creative_context}\n\n"
+                f"**Your Task:** Invent a simple, one-sentence role for a generic background character in this world.\n"
+                f"Example roles might be: 'a gossiping street vendor', 'a weary legionary on leave', 'a nervous patrician's body-slave'.\n"
+                f"Respond with a single JSON object: {{\"role\": \"...\"}}"
+            )
+            role_data = self._generate_and_validate_json(prompt_role, schema_key="npc")
+            narrative_role = role_data.get('role', 'a generic citizen')
 
-        # --- 1. CLASIFICAR LAS LOCALIZACIONES BASÁNDONOS EN LOS TAGS DEL MAPA ---
-        locations_by_tag = {"all": list(self.world_graph.nodes.keys())}
-        for node_id, node_data in self.world_graph.nodes.items():
-            for tag in node_data.tags:
-                if tag not in locations_by_tag:
-                    locations_by_tag[tag] = []
-                locations_by_tag[tag].append(node_id)
-        
-        print(f"  -> Classified locations by tags: {list(locations_by_tag.keys())}")
+            print(f"  -> Inventing extra NPC {i+1}/{num_extras_to_create} with role: '{narrative_role}'...")
+            generic_npc = self._create_npc_for_role(narrative_role, "extra", "the daily life of the world")
+            if generic_npc and generic_npc['id'] not in self.npc_templates:
+                self.npc_templates[generic_npc['id']] = generic_npc
 
-        # --- 2. CLASIFICAR EL CONTENIDO GENERADO ---
-        placed_npc_ids = set()
-        placed_item_ids = set()
+    def _place_content_in_world(self, graph: WorldGraph):
+        print("\n[Stage 4.1] Placing all content according to the blueprint...")
+        if not self.location_definitions: return
 
-        # --- 3. PRIORIDAD 1: COLOCACIÓN DE TRAMA (MISIONES) ---
-        if self.quests:
-            for quest in self.quests:
-                print(f"  -> Placing content for Quest: '{quest.get('title')}'")
-                
-                # 3.1. Colocar al Quest Giver
-                giver_archetype = quest.get('quest_giver_archetype')
-                quest_giver_npc = next((npc for npc in self.npc_templates.values() if npc.get('role') == giver_archetype), None)
-                
-                # Buscamos un nodo con tag 'quest_start'. Si no hay, usamos un 'hub'.
-                possible_giver_locs = locations_by_tag.get('quest_start', locations_by_tag.get('hub', locations_by_tag['all']))
-                
-                if quest_giver_npc and possible_giver_locs:
-                    target_loc = random.choice(possible_giver_locs)
-                    self.location_definitions[target_loc]['initial_npcs'].append(quest_giver_npc['id'])
-                    quest['starting_npc_id'] = quest_giver_npc['id']
-                    placed_npc_ids.add(quest_giver_npc['id'])
-                    print(f"    -> Placed Quest Giver '{quest_giver_npc['name']}' in tagged location '{target_loc}'.")
+        # Preparamos listas de nuestro contenido para poder distribuirlo
+        all_quests = self.quests[:]
+        all_traps = list(self.traps.values())
+        quest_givers = [npc for npc in self.npc_templates.values() if npc.get('assigned_role') == 'quest_giver']
+        bosses = [npc for npc in self.npc_templates.values() if npc.get('assigned_role') == 'boss']
+        extras = [npc for npc in self.npc_templates.values() if npc.get('assigned_role') == 'extra']
+        quest_items = [item for item in self.item_templates.values() if item.get('type') == 'quest']
+        generic_items = [item for item in self.item_templates.values() if item.get('type') != 'quest']
 
-                # 3.2. Colocar al Jefe Final
-                boss_archetype = quest.get('boss_archetype')
-                boss_npc = next((npc for npc in self.npc_templates.values() if npc.get('role') == boss_archetype), None)
-                
-                # Buscamos un nodo con tag 'quest_end'. Si no, uno 'dangerous'.
-                possible_boss_locs = locations_by_tag.get('quest_end', locations_by_tag.get('dangerous', locations_by_tag['all']))
-
-                if boss_npc and possible_boss_locs:
-                    lair_id = random.choice(possible_boss_locs)
-                    self.location_definitions[lair_id]['initial_npcs'].append(boss_npc['id'])
-                    placed_npc_ids.add(boss_npc['id'])
-                    print(f"    -> Placed Boss '{boss_npc['name']}' in tagged location '{lair_id}'.")
-                
-                # 3.3. Colocar Objetos de Misión
-                for step in quest.get('steps', []):
-                    objective = step.get('objective', {})
-                    if objective.get('type') == 'item':
-                        item_id = objective.get('id')
-                        if item_id in self.item_templates:
-                            # Lo colocamos en una localización peligrosa para que sea un desafío
-                            placement_loc_id = random.choice(locations_by_tag.get('dangerous', locations_by_tag['all']))
-                            self.location_definitions[placement_loc_id]['initial_items'].append(item_id)
-                            placed_item_ids.add(item_id)
-                            print(f"    -> Placed Quest Item '{self.item_templates[item_id]['name']}' in '{placement_loc_id}'.")
-
-        # --- 4. PRIORIDAD 2: DISTRIBUCIÓN DEL RESTO DEL CONTENIDO ---
-        remaining_npcs = [npc for npc in self.npc_templates.values() if npc['id'] not in placed_npc_ids]
-        for npc in remaining_npcs:
-            # Usamos afinidades: hostiles en lugares peligrosos, neutrales en cualquier sitio, amistosos en hubs.
-            if npc.get('status') == 'hostile' and 'dangerous' in locations_by_tag:
-                target_loc = random.choice(locations_by_tag['dangerous'])
-            elif npc.get('status') == 'friendly' and 'safe' in locations_by_tag:
-                target_loc = random.choice(locations_by_tag['safe'])
-            else:
-                target_loc = random.choice(locations_by_tag['all'])
-            self.location_definitions[target_loc]['initial_npcs'].append(npc['id'])
+        # Iteramos sobre CADA NODO del plano y cumplimos sus requisitos
+        for node_id, node_blueprint in graph.nodes.items():
+            location = self.location_definitions[node_id]
             
-        remaining_items = [item for item in self.item_templates.values() if item['id'] not in placed_item_ids and item['type'] != 'quest']
-        for item in remaining_items:
-            # Colocamos items de forma aleatoria por todo el mapa
-            target_loc = random.choice(locations_by_tag['all'])
-            self.location_definitions[target_loc]['initial_items'].append(item['id'])
+            # --- ¡CORREGIDO! Usamos . en lugar de .get() para acceder a los atributos del blueprint ---
+            
+            # 1. Colocar Misión (si el plano lo pide)
+            if node_blueprint.has_quest_start and all_quests:
+                quest_to_place = all_quests.pop(0)
+                giver_id = quest_to_place.get('starting_npc_id')
+                giver_npc = next((g for g in quest_givers if g['id'] == giver_id), None)
+                if giver_npc:
+                    location['initial_npcs'].append(giver_npc['id'])
+                    quest_givers.remove(giver_npc)
 
-        print("\n--- Content Placement Complete ---")
-        total_npcs = sum(len(loc['initial_npcs']) for loc in self.location_definitions.values())
-        total_items = sum(len(loc['initial_items']) for loc in self.location_definitions.values())
-        print(f" -> Total NPCs placed: {total_npcs}")
-        print(f" -> Total Items placed: {total_items}")
+            # 2. Colocar NPCs (el número exacto que pide el plano)
+            num_npcs_to_place = node_blueprint.npc_count
+            while len(location['initial_npcs']) < num_npcs_to_place:
+                npc_pool = bosses or extras
+                if not npc_pool: break
+                npc_to_place = npc_pool.pop(0)
+                location['initial_npcs'].append(npc_to_place['id'])
+            
+            # 3. Colocar Items (el número exacto que pide el plano)
+            num_items_to_place = node_blueprint.item_count
+            while len(location['initial_items']) < num_items_to_place:
+                item_pool = quest_items or generic_items
+                if not item_pool: break
+                item_to_place = item_pool.pop(0)
+                location['initial_items'].append(item_to_place['id'])
+
+            # 4. Colocar Trampa (si el plano lo pide)
+            if node_blueprint.has_trap and all_traps:
+                trap_to_place = all_traps.pop(0)
+                location.setdefault('traps', {})[trap_to_place['id']] = trap_to_place
+        
+        print("--- Blueprint-driven placement complete ---")
 
     def assemble_and_save(self, graph: WorldGraph, output_path: str):
-        """Assembles the final world data and saves it to a file."""
         print("\n--- Assembling Final World File ---")
         starting_node_id = list(graph.nodes.keys())[0] if graph.nodes else "node_0_0"
-        
+        main_quests_dict = {q['id']: q for q in self.quests}
         try:
-            world_def = WorldDefinition(
-                id=self.world_id,
-                name=self.manifest.get('world_name', 'A New World'),
-                style=self.world_theme,
-                lore=self.manifest.get('world_description', ''),
-                language=self.world_language,
-                starting_location_id=starting_node_id,
-                main_quests={q['id']: q for q in self.quests}
-            ).model_dump()
+            world_def_data = {
+                "id": self.world_id, "name": self.manifest.get('world_name', 'A New World'),
+                "style": self.world_theme, "lore": self.manifest.get('world_description', ''),
+                "language": self.world_language, "inhabitant_description": self.manifest.get('inhabitant_description'),
+                "starting_location_id": starting_node_id, "main_quests": main_quests_dict
+            }
+            world_def = WorldDefinition(**world_def_data).model_dump()
         except Exception as e:
-            print(f"Error creating WorldDefinition Pydantic model: {e}")
+            print(f"--- CRITICAL FAILURE: Error creating WorldDefinition Pydantic model. ---")
+            print(f"  -> Error: {e}")
             raise
-
         final_data = {
-            "world": world_def,
-            "locations": list(self.location_definitions.values()),
+            "world": world_def, "locations": list(self.location_definitions.values()),
             "item_templates": list(self.item_templates.values()),
-            "npc_templates": list(self.npc_templates.values()),
-            "quests": self.quests,
+            "npc_templates": list(self.npc_templates.values()), "quests": self.quests,
         }
-        
-        # Guardar con encoding utf-8 para preservar caracteres especiales
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(final_data, f, indent=2, ensure_ascii=False)
-        print(f"SUCCESS! World import file '{output_path}' has been generated.")
-
+        print(f"\n--- SUCCESS! World import file '{output_path}' has been generated. ---")
+        print(f" -> Contained {len(self.quests)} quests.")
+        print(f" -> Contained {len(self.npc_templates)} NPC templates.")
+        print(f" -> Contained {len(self.item_templates)} item templates.")
+        print("-----------------------------------------------------------------")
 
 if __name__ == "__main__":
-    # --- CONFIGURACIÓN ---
     try:
-        # Esto hace las rutas relativas al script, más robusto
         script_dir = os.path.dirname(__file__)
-        project_root = os.path.dirname(script_dir) # Sube un nivel desde 'game'
-
-        GRAPH_FILE = os.path.join(project_root, "grid_map_5x5_p50_zoned_structure.json")
+        project_root = os.path.dirname(script_dir)
+        GRAPH_FILE = os.path.join(project_root, "grid_map_3x3_p60_blueprint.json")
         MANIFEST_FILE = os.path.join(project_root, "manifest_Roma.yaml")
         BASE_ITEMS_FILE = os.path.join(project_root, "base_item_templates.json")
         OUTPUT_FILE = os.path.join(project_root, "world_import_generated.json")
-
-        # 1. Cargar el grafo estructural
         with open(GRAPH_FILE, 'r', encoding='utf-8') as f:
             world_graph = WorldGraph(**json.load(f))
-
-        # 2. Inicializar el Director y el proveedor de IA
         ai_provider = GeminiProvider()
         director = DirectorAgent(provider=ai_provider, manifest_path=MANIFEST_FILE, base_items_path=BASE_ITEMS_FILE)
-
-        # 3. Orquestar la creación del mundo
         director.orchestrate_world_creation(world_graph)
-
-        # 4. Guardar el resultado final
         director.assemble_and_save(world_graph, OUTPUT_FILE)
-
     except FileNotFoundError as e:
         print(f"\nERROR: Could not find a required file: {e}.")
-        print("Please ensure your graph, manifest, and base items files exist at the project root.")
     except Exception as e:
         print(f"\nAN UNEXPECTED ERROR OCCURRED: {e}")
