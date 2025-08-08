@@ -1,5 +1,5 @@
 {
-  "graph_id": "grid_map_3x3_p60",
+  "graph_id": "grid_map_3x3_p100",
   "nodes": {
     "node_0_0": {
       "id": "node_0_0",
@@ -11,10 +11,10 @@
           "direction": "sur"
         }
       ],
-      "npc_count": 0,
-      "item_count": 2,
-      "has_quest_start": true,
-      "has_trap": false
+      "npc_count": 1,
+      "item_count": 1,
+      "has_quest_start": false,
+      "has_trap": true
     },
     "node_1_0": {
       "id": "node_1_0",
@@ -22,13 +22,17 @@
       "tags": [],
       "connections": [
         {
+          "target_node_id": "node_2_0",
+          "direction": "este"
+        },
+        {
           "target_node_id": "node_1_1",
           "direction": "sur"
         }
       ],
       "npc_count": 1,
-      "item_count": 2,
-      "has_quest_start": true,
+      "item_count": 0,
+      "has_quest_start": false,
       "has_trap": true
     },
     "node_2_0": {
@@ -37,13 +41,13 @@
       "tags": [],
       "connections": [
         {
-          "target_node_id": "node_2_1",
-          "direction": "sur"
+          "target_node_id": "node_1_0",
+          "direction": "oeste"
         }
       ],
-      "npc_count": 1,
+      "npc_count": 0,
       "item_count": 1,
-      "has_quest_start": true,
+      "has_quest_start": false,
       "has_trap": true
     },
     "node_0_1": {
@@ -54,10 +58,6 @@
         {
           "target_node_id": "node_0_0",
           "direction": "norte"
-        },
-        {
-          "target_node_id": "node_0_2",
-          "direction": "sur"
         },
         {
           "target_node_id": "node_1_1",
@@ -88,19 +88,15 @@
         }
       ],
       "npc_count": 0,
-      "item_count": 2,
-      "has_quest_start": true,
-      "has_trap": true
+      "item_count": 0,
+      "has_quest_start": false,
+      "has_trap": false
     },
     "node_2_1": {
       "id": "node_2_1",
       "type": "sala",
       "tags": [],
       "connections": [
-        {
-          "target_node_id": "node_2_0",
-          "direction": "norte"
-        },
         {
           "target_node_id": "node_1_1",
           "direction": "oeste"
@@ -111,9 +107,9 @@
         }
       ],
       "npc_count": 0,
-      "item_count": 2,
-      "has_quest_start": true,
-      "has_trap": false
+      "item_count": 1,
+      "has_quest_start": false,
+      "has_trap": true
     },
     "node_0_2": {
       "id": "node_0_2",
@@ -121,20 +117,24 @@
       "tags": [],
       "connections": [
         {
-          "target_node_id": "node_0_1",
-          "direction": "norte"
+          "target_node_id": "node_1_2",
+          "direction": "este"
         }
       ],
       "npc_count": 0,
-      "item_count": 1,
-      "has_quest_start": true,
-      "has_trap": true
+      "item_count": 0,
+      "has_quest_start": false,
+      "has_trap": false
     },
     "node_1_2": {
       "id": "node_1_2",
       "type": "sala",
       "tags": [],
       "connections": [
+        {
+          "target_node_id": "node_0_2",
+          "direction": "oeste"
+        },
         {
           "target_node_id": "node_2_2",
           "direction": "este"
@@ -160,9 +160,9 @@
         }
       ],
       "npc_count": 0,
-      "item_count": 2,
+      "item_count": 1,
       "has_quest_start": true,
-      "has_trap": true
+      "has_trap": false
     }
   }
 }

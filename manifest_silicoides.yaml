@@ -1,0 +1,171 @@
+world_id: "venganza_silicoide"
+world_name: "El Legado de la Esperanza" # Un título más evocador de Star Trek
+language: "Español"
+
+# --- SECCIÓN 1: INSPIRACIÓN DE ALTO NIVEL ---
+high_level_inspiration:
+  genre: "Ciencia Ficción, Ópera Espacial de Intriga Política y Exploración."
+  
+  # CORREGIDO: Enfocado en la reconstrucción y la política, no en la devastación total.
+  core_concept: >
+    Una nave de exploración legendaria, la *Esperanza*, regresa a su galaxia natal
+    tras una misión de siglos y la encuentra fragmentada. La antigua federación
+    se ha disuelto en un mosaico de facciones nobles, imperios estelares y
+    sindicatos comerciales que luchan por el poder. Una amenaza silenciosa, los
+    cristalinos Silicoides, se expande por el espacio no reclamado. La tripulación
+    debe navegar estas aguas políticas, usar su tecnología perdida para forjar
+    alianzas y descubrir el misterio que conecta el regreso de los Silicoides
+    con la caída de la antigua federación.
+
+  style_references: "Dune (por las casas nobles y la intriga), Star Trek (por la exploración y los dilemas éticos), The Expanse (por el realismo político y la tensión entre facciones)."
+
+inhabitant_description: >
+  Los habitantes son una mezcla de humanos y otras especies alienígenas. Las facciones
+  nobles visten ropajes elaborados y uniformes ceremoniales. Las tripulaciones de
+  las naves llevan trajes de salto funcionales. Los Silicoides son seres cristalinos
+  y geométricos, cuya biología es un enigma.
+
+# --- SECCIÓN 2: EJEMPLOS CREATIVOS PARA LA IA ---
+creative_examples:
+  # CORREGIDO: Localizaciones que sugieren política, comercio y misterio.
+  location_suggestions:
+    - "el opulento salón del trono de una casa noble"
+    - "un puesto comercial en una estación espacial neutral, lleno de espías"
+    - "un antiguo puesto de escucha de la federación, ahora silencioso y a la deriva"
+    - "un planeta con ruinas de una civilización precursora que contiene tecnología prohibida"
+    - "el interior de una 'nave-colmena' Silicoide, con pasillos cristalinos y una lógica no euclidiana"
+    - "un laboratorio de investigación en un planeta fronterizo"
+  
+  # CORREGIDO: Arquetipos centrados en roles políticos, científicos y de espionaje.
+  npc_archetypes_examples:
+    - "un embajador pragmático de un sindicato comercial"
+    - "un líder de una casa noble, honorable pero anclado en tradiciones antiguas"
+    - "un científico renegado que conoce un secreto terrible sobre los Silicoides"
+    - "una IA administradora de una estación espacial con su propia agenda"
+    - "un piloto contrabandista que sabe cómo moverse por los territorios sin ley"
+
+
+# --- SECCIÓN 3: BIBLIA NARRATIVA ---
+narrative_bible:
+  synopsis: |
+    Tras una misión de exploración de siglos, la nave *Esperanza* regresa para
+    encontrar su galaxia natal cambiada. La antigua y unificada federación se ha
+    disuelto en un tenso equilibrio de poder entre casas nobles, sindicatos
+    comerciales y pequeños imperios. En medio de este vacío de poder, una
+    enigmática especie cristalina, los Silicoides, se expande silenciosamente
+    desde los confines del espacio. La tripulación de la *Esperanza*, poseedora
+    de tecnología y archivos históricos perdidos, se convierte instantáneamente
+    en una pieza clave en el tablero galáctico. Deberán usar su ventaja para
+    forjar alianzas, desentrañar la conspiración que causó la caída de la
+    federación y descubrir si los Silicoides son una plaga sin mente o la
+    avanzadilla de una inteligencia mucho más antigua y aterradora.
+
+  main_characters:
+    - name: "Capitana Eva Rostova"
+      aspect: "Líder Incansable, Última Esperanza"
+      description: >
+        La capitana de la *Esperanza*. Una líder carismática y decidida, con
+        gran experiencia en navegación y diplomacia. Su capacidad para inspirar
+        a la tripulación y tomar decisiones difíciles será crucial para la
+        supervivencia. Es una superviviente nata, pero un alma atormentada
+        por el peso de su inmensa responsabilidad.
+
+    - name: "Doctor Aris Thorne"
+      aspect: "Genio Genético, Atrapado en el Pasado"
+      description: >
+        El último de los ingenieros genéticos. Un científico brillante con un
+        profundo conocimiento de la biología, pero con una personalidad reservada
+        y atormentada por fracasos pasados. Conoce los secretos del primer
+        encuentro con los Silicoides, y la clave para su derrota podría estar
+        en su propio pasado.
+
+    - name: "Jax 'Viento de Ébano' Kael"
+      aspect: "Piloto Legendario, Lealtad Inquebrantable"
+      description: >
+        Un piloto excepcionalmente hábil de un mundo arrasado en la Gran Guerra.
+        Domina tecnología obsoleta y tácticas de combate. Es un hombre pragmático
+        y leal a la Capitana, pero su pasado lo persigue, recordándole
+        constantemente las pérdidas que ha sufrido.
+
+    - name: "Anya Volkov"
+      aspect: "Diplomática Maestra, Sombras del Engaño"
+      description: >
+        La diplomática de la *Esperanza*. Una mujer astuta y experta en el arte
+        de la negociación y el engaño. Deberá navegar por las complejas redes
+        políticas de las facciones supervivientes, pero sus propios secretos
+        podrían poner en peligro a la nave.
+
+    - name: "R4-K3 (Rake)"
+      aspect: "Inteligencia Artificial Ancestral, Mente Fragmentada"
+      description: >
+        Una IA ancestral de la *Esperanza*. Posee un conocimiento profundo de
+        la historia y la tecnología, pero su memoria está fragmentada y su
+        personalidad es errática. Es un recurso invaluable y un peligro a la vez,
+        guardando la clave sobre el origen de los Silicoides.
+
+  key_locations:
+    - name: "La Esperanza"
+      aspects: ["Arca de la Humanidad", "Fortaleza en el Vacío", "Tecnología Obsoleta pero Resistente"]
+      description: >
+        La enorme nave estelar, hogar y base de operaciones. Es el último bastión
+        de la civilización conocida, un microcosmos de la sociedad en miniatura.
+        Mantenerla operativa será un desafío constante.
+
+    - name: "El Sector Remoto de Xylos"
+      aspects: ["Zona de Anarquía", "Restos de Imperios Caídos", "Refugio de Supervivientes"]
+      description: >
+        Una vasta región del espacio en ruinas. Contiene colonias abandonadas,
+        estaciones espaciales destrozadas y planetas desolados. Será el campo
+        de batalla principal donde buscar recursos y forjar alianzas.
+
+    - name: "La Ciudadela de Aethel"
+      aspects: ["Bastión de la Fe", "Centro del Culto del Amanecer", "Poderes Ocultos"]
+      description: >
+        Una ciudadela fortificada en un planeta remoto, hogar del Culto del Amanecer,
+        una secta misteriosa que venera a los Silicoides. Los jugadores podrían
+        buscar aliados aquí o verse atrapados en una intriga religiosa.
+
+    - name: "La Nebulosa de Andraste"
+      aspects: ["Misterios Cósmicos", "Zona de Origen Silicoide", "Peligro Desconocido"]
+      description: >
+        La nebulosa distante de donde la *Esperanza* proviene. Un lugar de maravilla
+        cósmica y peligros indescriptibles. Su exploración podría revelar el
+        origen de los Silicoides o desencadenar una catástrofe.
+
+    - name: "Estación Zenith"
+      aspects: ["Supervivientes", "Última Línea de Defensa", "Centro de Conocimiento"]
+      description: >
+        Una estación espacial que sirve como punto de encuentro entre facciones.
+        Un lugar para intercambiar información y recursos, forjar alianzas,
+        o defenderse de ataques.
+
+  plot_hooks:
+    - title: "La Plaga de las Estrellas"
+      description: >
+        Una plaga misteriosa diezma las colonias humanas. Los jugadores deben
+        investigar su origen, encontrar una cura y proteger a los supervivientes,
+        enfrentándose al pasado del Doctor Thorne.
+
+    - title: "El Artefacto Silicoide"
+      description: >
+        La tripulación descubre un artefacto tecnológico Silicoide. Promete un
+        gran poder, pero también podría liberar una amenaza aún mayor, desatando
+        una carrera diplomática y de espionaje.
+
+    - title: "La Traición de la Aurora"
+      description: >
+        La *Esperanza* se encuentra con otra nave superviviente, la *Aurora*. Su
+        tripulación parece amigable, pero tienen sus propios motivos ocultos que
+        pondrán a prueba la diplomacia de Anya y la lealtad de Jax.
+
+    - title: "El Legado de los Ingenieros"
+      description: >
+        Los jugadores descubren los restos de un grupo de ingenieros genéticos
+        que precedieron a la tripulación. Sus experimentos podrían ser la clave
+        para derrotar a los Silicoides, si la IA Rake puede descifrar sus notas.
+
+    - title: "El Despertar del Durmiente"
+      description: >
+        Los Silicoides están reactivando sus bases en la galaxia. Una atmósfera
+        de silicio corrosivo se expande. La *Esperanza*, con su tecnología
+        obsoleta pero resistente, es la única capaz de adentrarse en la niebla.

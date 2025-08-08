@@ -177,7 +177,6 @@
       },
       "initial_npcs": [],
       "initial_items": [
-        "qitem_cifrador_espectral_531",
         "qitem_fragmento_de_luz_estelar_366"
       ],
       "traps": {
@@ -267,7 +266,9 @@
       "initial_npcs": [
         "XYLOS_370"
       ],
-      "initial_items": [],
+      "initial_items": [
+        "qitem_cifrador_espectral_531"
+      ],
       "traps": {}
     },
     {
@@ -452,7 +453,7 @@
       "description": "Un misterioso mensaje cifrado, transmitido a través de una anomalía espacial, llega a tus manos. Parece provenir de una antigua baliza Silicoide, ahora inactiva. Un científico renegado, atormentado por el conocimiento, te suplica que investigues, temiendo una amenaza ancestral que yace dormida.",
       "steps": [
         {
-          "id": 1,
+          "id": "step_1",
           "description": "Viaja a las ruinas de la baliza Silicoide en el sector Xylos, un lugar de energía distorsionada y extraños ecos. Encuentra la cámara central.",
           "objective": {
             "type": "location",
@@ -460,7 +461,7 @@
           }
         },
         {
-          "id": 2,
+          "id": "step_2",
           "description": "Dentro de la cámara, activa la 'Lágrima de Cristal', un artefacto Silicoide que se cree contiene el conocimiento perdido. Debes descifrar la secuencia de resonancia correcta para evitar una reacción catastrófica.",
           "objective": {
             "type": "item",
@@ -468,7 +469,7 @@
           }
         },
         {
-          "id": 3,
+          "id": "step_3",
           "description": "Después de activar el artefacto, enfrentate a la 'Entidad de Eco'. Esta entidad es una manifestación espectral de la baliza, alimentada por la información corrupta que protege. Destrúyela para evitar la propagación del 'Vacío Glacial'.",
           "objective": {
             "type": "npc",
@@ -487,7 +488,7 @@
       "description": "Un disturbio en la frontera galáctica anuncia la reaparición de un fragmento de cristal Silicoide, una señal de un peligro ancestral. Un embajador pragmático del Gremio Comercial, preocupado por la estabilidad del comercio, te contrata para investigar la anomalía y descubrir la verdad antes de que la inestabilidad se propague por las rutas comerciales.",
       "steps": [
         {
-          "id": 1,
+          "id": "step_1",
           "description": "Dirígete a la estación espacial abandonada 'Ecos Perdidos', donde se detectó la primera señal del fragmento Silicoide. Investiga el área en busca de pistas sobre su origen y propósito.",
           "objective": {
             "type": "location",
@@ -495,7 +496,7 @@
           }
         },
         {
-          "id": 2,
+          "id": "step_2",
           "description": "En 'Ecos Perdidos', busca y examina los restos de una antigua nave Silicoide estrellada, 'La Geometría Rota'. Recopila la información del 'Archivo de Memorias de la Fractura' para descifrar el mensaje oculto dentro de los cristales.",
           "objective": {
             "type": "item",
@@ -503,7 +504,7 @@
           }
         },
         {
-          "id": 3,
+          "id": "step_3",
           "description": "Sigue la señal de energía residual dejada por la actividad Silicoide hasta el asteroide 'Última Esperanza'. Allí, enfrenta a una 'Conciencia Silicoide Fragmentada', que intenta reensamblar el fragmento y liberar a sus hermanos.",
           "objective": {
             "type": "npc",
@@ -522,7 +523,7 @@
       "description": "Una señal críptica, emanando de una antigua baliza estelar abandonada, ha captado la atención del sindicato comercial. Se rumorea que la señal contiene información vital sobre los Silicoides y la fuente de una energía desconocida que impulsa sus naves. Un científico renegado, exiliado por sus herejías, podría tener la clave para decodificarla, pero sus métodos son… poco convencionales.",
       "steps": [
         {
-          "id": 1,
+          "id": "step_1",
           "description": "Viaja a las ruinas de la estación espacial 'Erebus', donde se encuentra la baliza. Busca los restos de la señal, pero ten cuidado: el área está infestada de drones de seguridad defectuosos y los fantasmas digitales de los técnicos caídos aún merodean.",
           "objective": {
             "type": "location",
@@ -530,15 +531,15 @@
           }
         },
         {
-          "id": 2,
-          "description": "Encuentra al científico renegado, el Dr. Aris Thorne, escondido en una instalación subterránea debajo de Erebus. Debe ser persuadido para que comparta su conocimiento, pero desconfía de todos y exigirá una muestra del 'Rostro Silente' para confiar en ti.",
+          "id": "step_2",
+          "description": "Erebus humea con secretos. Rumores susurran de un corazón roto, un fragmento del pasado que acecha en las profundidades subterráneas. Para desentrañar el misterio del Cristal Silente, debes enfrentarte a El Corazón Fracturado (ID: CORAZÓN_819). Solo al superar su dolor y desconfianza, podrás obtener la clave para contactar al esquivo Dr. Thorne y desvelar el secreto de las estrellas caídas.",
           "objective": {
             "type": "npc",
             "id": "CORAZÓN_819"
           }
         },
         {
-          "id": 3,
+          "id": "step_3",
           "description": "Una vez que el Dr. Thorne se haya ganado la confianza, analiza el 'Rostro Silente' y decodifica la señal. Esto revelará la ubicación de una mina de cristal Silicoide abandonada y los peligros que acechan en su interior.",
           "objective": {
             "type": "item",

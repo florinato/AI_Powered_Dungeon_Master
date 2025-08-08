@@ -15,14 +15,19 @@ class LocationNode(BaseModel):
     type: str = "sala"
     tags: List[str] = Field(default_factory=list)
     
-    # Se ajusta para aceptar la lista de diccionarios simple del generador.
     connections: List[Dict[str, Any]] = Field(default_factory=list)
 
-    # Campos del blueprint que el Director leerá.
-    npc_count: int = 0
-    item_count: int = 0
-    has_quest_start: bool = False
-    has_trap: bool = False
+    # Campos del blueprint que el Director leerá. ¡Nombres unificados!
+    # Ya no usamos alias, esperamos estos nombres exactos en el JSON.
+    npc_count: int
+    item_count: int
+    has_quest_start: bool
+    has_trap: bool
+
+    class Config:
+        # Esto es de Pydantic v1. En V2, el comportamiento es por defecto.
+        # Lo quitamos para evitar warnings.
+        pass
 
 class WorldGraph(BaseModel):
     """El modelo raíz para el esqueleto estructural del mundo."""
@@ -77,7 +82,8 @@ class NpcDefinition(BaseModel):
     status: str = "neutral"
     xp: int = 0
     dialogue_prompt: Optional[str] = None
-    # Podríamos añadir más campos generados por el Director aquí
+    assigned_role: Optional[str] = None # Para saber su función en la historia
+    narrative_role: Optional[str] = None # La descripción creativa de su rol
 
 class QuestStep(BaseModel):
     """Define un paso o etapa dentro de una misión."""
@@ -92,7 +98,7 @@ class QuestDefinition(BaseModel):
     description: str
     steps: List[QuestStep] = Field(default_factory=list)
     starting_npc_id: Optional[str] = None
-    # Podríamos añadir más campos como `final_boss_id`, etc.
+    final_boss_id: Optional[str] = None # Añadido para el jefe final
 
 
 # --- Modelos para el Estado de la Partida (Datos del Jugador) ---
@@ -120,7 +126,6 @@ class PlayerState(BaseModel):
     current_location_id: str
     location_history: List[str] = Field(default_factory=list)
     
-    # AJUSTADO: Acepta una lista de diccionarios, solucionando el ValidationError.
     inventory: List[Dict[str, Any]] = Field(default_factory=list)
     
     active_quests: Dict[str, PlayerQuestState] = Field(default_factory=dict)

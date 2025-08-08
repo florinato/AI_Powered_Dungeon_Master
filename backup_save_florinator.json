@@ -1,0 +1,648 @@
+{
+    "player": {
+        "player_id": 1,
+        "player_name": "florinator",
+        "world_id": "venganza_silicoide",
+        "level": 1,
+        "hp": 100,
+        "max_hp": 100,
+        "attack": 10,
+        "xp": 0,
+        "xp_to_next_level": 100,
+        "current_location_id": "node_0_0",
+        "location_history": [],
+        "inventory": [],
+        "active_quests": {},
+        "world_state_delta": {},
+        "location": "node_0_0"
+    },
+    "locations": {
+        "node_0_0": {
+            "id": "node_0_0",
+            "world_id": "venganza_silicoide",
+            "name": "El Refugio de los Susurros Cristalinos",
+            "description": "Un sal\u00f3n vasto y oscuro, donde las sombras bailan con una elegancia espectral. Los ecos de voces desconocidas resuenan entre las formas geom\u00e9tricas de los Silicoides, creando una atm\u00f3sfera de inquietante misterio.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "sur": "node_0_1"
+            },
+            "initial_npcs": [],
+            "initial_items": [
+                "cizalla_de_ter_esttico_804"
+            ],
+            "traps": {
+                "trap_campo_esttico_desalineado_955": {
+                    "name": "Campo Est\u00e1tico Desalineado",
+                    "description": "Una trampa sutilmente integrada en la arquitectura de una antigua estaci\u00f3n espacial. A primera vista, parece una placa de aleaci\u00f3n decorativa, grabada con intrincados patrones geom\u00e9tricos. Al acercarse, una leve distorsi\u00f3n en el aire revela su verdadera naturaleza: un campo de estasis descontrolado. El campo, dise\u00f1ado originalmente para preservar el contenido de una c\u00e1mara de seguridad, ahora emite pulsos err\u00e1ticos que pueden desestabilizar la materia a nivel molecular. La fuente de energ\u00eda, una reliquia de tecnolog\u00eda Silicoide, se ha degradado con el tiempo, volvi\u00e9ndola impredecible y peligrosa. Los intrusos desprevenidos pueden quedar atrapados en un estado de suspensi\u00f3n temporal, o peor, ser desintegrados. Un tenue zumbido y un ligero parpadeo en la luz ambiental son los \u00fanicos indicadores de peligro.",
+                    "damage": 45,
+                    "disarm_difficulty": "very_challenging",
+                    "id": "trap_campo_esttico_desalineado_955",
+                    "triggered": false
+                }
+            },
+            "npcs": {},
+            "items": {
+                "cizalla_de_ter_esttico_804": {
+                    "id": "cizalla_de_ter_esttico_804",
+                    "world_id": "venganza_silicoide",
+                    "template_id": "GENERIC",
+                    "name": "Cizalla de \u00c9ter Est\u00e1tico",
+                    "description": "Un arma de energ\u00eda de dise\u00f1o intrincado, a menudo encontrada en manos de los Silicoides o contrabandistas experimentados. La Cizalla dispara un haz de energ\u00eda concentrada que corta la materia a nivel molecular, dejando tras de s\u00ed una cicatriz brillante y un rastro de polvo cristalino. Su fuente de energ\u00eda es un 'N\u00facleo Est\u00e1tico', una anomal\u00eda desconocida, y su uso prolongado puede provocar inestabilidad en el espacio-tiempo circundante. Se dice que las casas nobles m\u00e1s oscuras las utilizan para eliminar rivales, ocultando toda evidencia de su existencia.",
+                    "type": "weapon",
+                    "damage_base": 5,
+                    "healing_amount": null,
+                    "properties": [
+                        "melee",
+                        "light",
+                        "tier1"
+                    ]
+                }
+            },
+            "generated_description": "El umbral se abri\u00f3 a un sal\u00f3n que succionaba la luz, una negrura donde las sombras se retorc\u00edan como serpientes de obsidiana. Un fr\u00edo h\u00famedo, con aroma a tierra mojada y a algo m\u00e1s, algo indefiniblemente antiguo, roz\u00f3 tu rostro. El eco de susurros, apenas perceptibles, resonaba entre las geometr\u00edas p\u00e9treas de los Silicoides, promesas y advertencias danzando en el silencio tenso, clavando cada sonido en el alma."
+        },
+        "node_1_0": {
+            "id": "node_1_0",
+            "world_id": "venganza_silicoide",
+            "name": "La C\u00e1mara de las Sombras Fugaces",
+            "description": "Un espacio abovedado iluminado por cristales pulsantes, donde las sombras bailan con una elegancia inquietante. Rumores susurran que aqu\u00ed los Silicoides intercambian visiones, conectando sus mentes en un plano desconocido.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "este": "node_2_0",
+                "sur": "node_1_1"
+            },
+            "initial_npcs": [],
+            "initial_items": [],
+            "traps": {
+                "trap_cmara_de_entropa_inestable_168": {
+                    "name": "C\u00e1mara de Entrop\u00eda Inestable",
+                    "description": "Una trampa misteriosa, integrada en la arquitectura antigua de una estructura abandonada. Consiste en una c\u00e1mara aparentemente vac\u00eda, adornada con patrones geom\u00e9tricos complejos grabados en las paredes de una sustancia desconocida que brilla con una luz fr\u00eda y parpadeante. El activador, normalmente invisible, se encuentra en una placa de presi\u00f3n disimulada en el suelo. Al activarse, la c\u00e1mara genera un campo de contenci\u00f3n de energ\u00eda de entrop\u00eda inversa, capaz de desestabilizar la materia y desgastar r\u00e1pidamente cualquier ser atrapado dentro. Inicialmente, el campo parece inofensivo, con ligeros dolores de cabeza y una sensaci\u00f3n de mareo, pero r\u00e1pidamente aumenta su intensidad. Los patrones en las paredes comienzan a vibrar y la luz se intensifica, consumiendo lentamente la vitalidad del que est\u00e1 expuesto.",
+                    "damage": 45,
+                    "disarm_difficulty": "very_challenging",
+                    "id": "trap_cmara_de_entropa_inestable_168",
+                    "triggered": false
+                }
+            },
+            "npcs": {},
+            "items": {}
+        },
+        "node_2_0": {
+            "id": "node_2_0",
+            "world_id": "venganza_silicoide",
+            "name": "El Vest\u00edbulo de las Estrellas Ca\u00eddas",
+            "description": "Un vasto espacio abovedado, iluminado por una luz tenue que parece emanar de los propios muros de obsidiana. El suelo est\u00e1 cubierto por un mosaico de fragmentos cristalinos, restos de una antigua cat\u00e1strofe c\u00f3smica, quiz\u00e1s obra de los Silicoides.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "oeste": "node_1_0"
+            },
+            "initial_npcs": [],
+            "initial_items": [
+                "qitem_cifrador_espectral_531",
+                "qitem_fragmento_de_luz_estelar_366"
+            ],
+            "traps": {
+                "trap_campo_de_estasis_disfuncional_977": {
+                    "name": "Campo de Estasis Disfuncional",
+                    "description": "Una trampa antigua, com\u00fan en las ruinas de los Silicoides. Un campo de fuerza invisible, mantenido por cristales fracturados, que deber\u00eda suspender el tiempo de los intrusos. Sin embargo, el deterioro del mecanismo y la inestabilidad de los cristales hacen que la estasis sea err\u00e1tica y da\u00f1ina. La v\u00edctima se ve sometida a fluctuaciones temporales, sufriendo efectos de envejecimiento acelerado o desintegraci\u00f3n molecular parcial, con consecuencias impredecibles. La activaci\u00f3n se produce al interrumpir un haz de luz sutil, a menudo invisible a simple vista, que atraviesa la zona protegida.",
+                    "damage": 35,
+                    "disarm_difficulty": "challenging",
+                    "id": "trap_campo_de_estasis_disfuncional_977",
+                    "triggered": false
+                }
+            },
+            "npcs": {},
+            "items": {
+                "qitem_cifrador_espectral_531": {
+                    "id": "qitem_cifrador_espectral_531",
+                    "world_id": "venganza_silicoide",
+                    "template_id": "GENERIC",
+                    "name": "Cifrador Espectral",
+                    "description": "Un dispositivo de cristal tallado que se conecta a las interfaces Silicoides, utilizado para traducir y descifrar patrones de energ\u00eda. Sus lecturas pueden revelar la verdadera naturaleza de la baliza.",
+                    "type": "quest",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "plot_critical",
+                        "cannot_drop"
+                    ]
+                },
+                "qitem_fragmento_de_luz_estelar_366": {
+                    "id": "qitem_fragmento_de_luz_estelar_366",
+                    "world_id": "venganza_silicoide",
+                    "template_id": "GENERIC",
+                    "name": "Fragmento de Luz Estelar",
+                    "description": "Un peque\u00f1o cristal Silicoide palpitante. Irradia una energ\u00eda inestable, un eco de un poder antiguo y peligroso. Su contacto directo produce breves vislumbres del pasado, fragmentos del 'Gran Colapso' que dividi\u00f3 a los Silicoides.",
+                    "type": "quest",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "plot_critical",
+                        "cannot_drop"
+                    ]
+                }
+            }
+        },
+        "node_0_1": {
+            "id": "node_0_1",
+            "world_id": "venganza_silicoide",
+            "name": "El Coraz\u00f3n de Obsidiana",
+            "description": "Un sal\u00f3n inmenso, tallado en una obsidiana negra que absorbe la luz, donde ecos de un pasado desconocido reverberan en cada rinc\u00f3n.  Estructuras geom\u00e9tricas, presumiblemente artefactos Silicoides, flotan silenciosamente en el centro, emitiendo d\u00e9biles pulsos de energ\u00eda.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "norte": "node_0_0",
+                "este": "node_1_1"
+            },
+            "initial_npcs": [
+                "THORNE_778"
+            ],
+            "initial_items": [
+                "qitem_rostro_silente_623"
+            ],
+            "traps": {},
+            "npcs": {
+                "THORNE_778": {
+                    "id": "THORNE_778",
+                    "world_id": "venganza_silicoide",
+                    "name": "Dr. Aris Thorne",
+                    "description": "Un hombre demacrado, con ojeras profundas y el cabello canoso desordenado. Viste una bata de laboratorio manchada y ra\u00edda, y sus ojos brillan con una mezcla de desesperaci\u00f3n y conocimiento. Sus manos, cubiertas de cicatrices, tiemblan constantemente.",
+                    "hp": 25,
+                    "attack": 5,
+                    "status": "friendly",
+                    "xp": 35,
+                    "dialogue_prompt": "\u00bfQu\u00e9... qu\u00e9 buscas aqu\u00ed? El Lamento... es real. Lo he visto, lo he sentido. Los Silicoides... ellos no duermen. Necesito... necesito que me ayudes. Mi mente se deshace, pero la verdad... la verdad debe ser revelada. \u00a1Por favor!"
+                }
+            },
+            "items": {
+                "qitem_rostro_silente_623": {
+                    "id": "qitem_rostro_silente_623",
+                    "world_id": "venganza_silicoide",
+                    "template_id": "GENERIC",
+                    "name": "Rostro Silente",
+                    "description": "Un fragmento cristalino y geom\u00e9trico, aparentemente inerte, pero con una resonancia sutil. El Dr. Thorne cree que act\u00faa como un 'espejo' para la energ\u00eda Silicoide.",
+                    "type": "quest",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "plot_critical",
+                        "cannot_drop"
+                    ]
+                }
+            }
+        },
+        "node_1_1": {
+            "id": "node_1_1",
+            "world_id": "venganza_silicoide",
+            "name": "La Gruta de los Recuerdos Petrificados",
+            "description": "Un antro cavernoso donde el tiempo parece haberse detenido. Las paredes brillan con vetas de un material desconocido, como si fuesen el eco congelado de antiguas memorias.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "norte": "node_1_0",
+                "oeste": "node_0_1",
+                "este": "node_2_1"
+            },
+            "initial_npcs": [],
+            "initial_items": [],
+            "traps": {},
+            "npcs": {},
+            "items": {}
+        },
+        "node_2_1": {
+            "id": "node_2_1",
+            "world_id": "venganza_silicoide",
+            "name": "La Sala de los Ecos Perdidos",
+            "description": "Un espacio resonante donde cada susurro parece perpetuarse, susurrando secretos olvidados en lenguas desconocidas. Luces espectrales danzan sobre paredes cubiertas de glifos que se contraen y expanden en un ciclo inquietante.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "oeste": "node_1_1",
+                "sur": "node_2_2"
+            },
+            "initial_npcs": [
+                "CORAZ\u00d3N_819"
+            ],
+            "initial_items": [
+                "fragmento_quimio-cristalino_288"
+            ],
+            "traps": {
+                "trap_prisin_de_silicio_desestabilizada_117": {
+                    "name": "Prisi\u00f3n de Silicio Desestabilizada",
+                    "description": "En el coraz\u00f3n de una c\u00e1mara alien\u00edgena abandonada, se encuentra un campo de contenci\u00f3n de energ\u00eda cristalina, alimentado por un reactor Silicoide. El dispositivo, dise\u00f1ado para encerrar a seres Silicoides hostiles, se ha vuelto inestable. Fragmentos cristalinos brillan con una luz enfermiza, parpadeando de forma irregular. El campo se manifesta como una serie de prismas flotantes que se entrecruzan y emiten un zumbido gutural. Al ser activado por contacto o por un sensor de movimiento, el campo se colapsa, liberando pulsos de energ\u00eda ca\u00f3tica que fragmentan la materia a su alrededor, incluyendo la del desafortunado intruso.",
+                    "damage": 45,
+                    "disarm_difficulty": "very_challenging",
+                    "id": "trap_prisin_de_silicio_desestabilizada_117",
+                    "triggered": false
+                }
+            },
+            "npcs": {
+                "CORAZ\u00d3N_819": {
+                    "id": "CORAZ\u00d3N_819",
+                    "world_id": "venganza_silicoide",
+                    "name": "El Coraz\u00f3n Fracturado",
+                    "description": "Una entidad Silicoide, anta\u00f1o una mente brillante, ahora fragmentada y consumida por la energ\u00eda an\u00f3mala que impregna las profundidades de la mina. Su estructura cristalina ha mutado, fusion\u00e1ndose con el entorno. Grandes extensiones de cristal pulsante y brillante emanan de su n\u00facleo, formando armas y defensas. Sus fragmentos resonan con una melancol\u00eda profunda, reflejando la p\u00e9rdida de su antigua conciencia y el dolor de su cautiverio.",
+                    "hp": 1200,
+                    "attack": 110,
+                    "status": "hostile",
+                    "xp": 850,
+                    "dialogue_prompt": "\u00ab\u00bfPor qu\u00e9 perturban mi descanso? La luz de las estrellas\u2026 la corrompieron\u2026 la consumieron\u2026 Ahora, solo queda el eco\u2026 la ira\u2026 \u00a1Alejaos, o ser\u00e9is absorbidos por la simetr\u00eda!\u00bb."
+                }
+            },
+            "items": {
+                "fragmento_quimio-cristalino_288": {
+                    "id": "fragmento_quimio-cristalino_288",
+                    "world_id": "venganza_silicoide",
+                    "template_id": "GENERIC",
+                    "name": "Fragmento Quimio-Cristalino",
+                    "description": "Un fragmento roto de una antigua matriz de cristal, brillando con un brillo fantasmal. Exuda un olor met\u00e1lico y un ligero zumbido. Aunque su prop\u00f3sito original es desconocido, al ser manipulado con cuidado, libera una oleada de energ\u00eda regenerativa, temporalmente, pero con fuerza.",
+                    "type": "junk",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "lore_snippet",
+                        "interesting"
+                    ]
+                }
+            }
+        },
+        "node_0_2": {
+            "id": "node_0_2",
+            "world_id": "venganza_silicoide",
+            "name": "El Sal\u00f3n de la Geometr\u00eda Olvidada",
+            "description": "El aire, denso de una luz iridiscente, vibra con patrones que parecen danzar en las paredes. Aqu\u00ed, los ecos de los Silicoides se aferran a cada arista, sus formas perfectas susurrando secretos ancestrales.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "este": "node_1_2"
+            },
+            "initial_npcs": [
+                "XYLOS_370"
+            ],
+            "initial_items": [],
+            "traps": {},
+            "npcs": {
+                "XYLOS_370": {
+                    "id": "XYLOS_370",
+                    "world_id": "venganza_silicoide",
+                    "name": "Fragmento-Xylos",
+                    "description": "Una entidad espectral, compuesta por fragmentos cristalinos que flotan y se fusionan constantemente. La 'piel' de Xylos es un mosaico cambiante de geometr\u00eda imposible y colores iridiscentes, reflejando ecos de incontables dimensiones. Voces susurrantes, apenas audibles, emanan de su forma, entrelazando lamentos y promesas de poder. Muestra signos de da\u00f1o severo, con 'fracturas' visibles que revelan el vac\u00edo del espacio entre sus componentes.",
+                    "hp": 1800,
+                    "attack": 120,
+                    "status": "hostile",
+                    "xp": 800,
+                    "dialogue_prompt": "\u00bfCrees que puedes resistir la tormenta de cristales? Soy Xylos, una sombra de lo que fui, una promesa de lo que ser\u00e9. La fractura es mi prisi\u00f3n... y tu aniquilaci\u00f3n, mi liberaci\u00f3n. Ofrece tu esencia al crisol, y tal vez, solo tal vez, ser\u00e1s digno de formar parte de mi resurrecci\u00f3n... o ser\u00e1s pulverizado."
+                }
+            },
+            "items": {}
+        },
+        "node_1_2": {
+            "id": "node_1_2",
+            "world_id": "venganza_silicoide",
+            "name": "La Cripta de los Fractales",
+            "description": "En el silencio sepulcral, formas cristalinas danzan en la penumbra, reflejando la luz espectral. Aqu\u00ed, los patrones se repiten infinitamente, un laberinto de geometr\u00edas que desaf\u00edan la comprensi\u00f3n humana.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "oeste": "node_0_2",
+                "este": "node_2_2"
+            },
+            "initial_npcs": [
+                "VANE_749"
+            ],
+            "initial_items": [
+                "fragmento_de_espejo_estelar_desviado_202"
+            ],
+            "traps": {},
+            "npcs": {
+                "VANE_749": {
+                    "id": "VANE_749",
+                    "world_id": "venganza_silicoide",
+                    "name": "Maestro Aldren Vane, Embajador del Gremio Comercial Estelar",
+                    "description": "Un hombre humano, de edad madura, con un rostro marcado por la preocupaci\u00f3n y una mirada astuta. Viste las elaboradas t\u00fanicas del Gremio, adornadas con insignias comerciales y s\u00edmbolos de rango. Sus manos, enguantadas en cuero fino, denotan una larga experiencia en negociaciones. Sus ojos se clavan en ti con una mezcla de pragmatismo y nerviosismo.",
+                    "hp": 30,
+                    "attack": 5,
+                    "status": "friendly",
+                    "xp": 25,
+                    "dialogue_prompt": "\u00bfAh, otro aventurero buscando fortuna en estos tiempos turbulentos? Soy Aldren Vane, embajador del Gremio Comercial. Las rutas comerciales est\u00e1n en peligro, y los incidentes con los Silicoides... bueno, digamos que me quitan el sue\u00f1o. Necesito gente como t\u00fa, con coraje y, sobre todo, discreci\u00f3n. \u00bfEst\u00e1s dispuesto a ayudar a proteger nuestros intereses, y tal vez, a descubrir la verdad detr\u00e1s de la Sombra de las Estrellas Fracturadas?"
+                }
+            },
+            "items": {
+                "fragmento_de_espejo_estelar_desviado_202": {
+                    "id": "fragmento_de_espejo_estelar_desviado_202",
+                    "world_id": "venganza_silicoide",
+                    "template_id": "GENERIC",
+                    "name": "Fragmento de Espejo Estelar Desviado",
+                    "description": "Un pedazo irregular de material brillante, reminiscente de un espejo roto, pero con extra\u00f1os fractales grabados en su superficie. Emite una sutil resonancia, como si captara ecos distantes. A menudo encontrado en los escombros orbitales, algunos afirman que al enfocarlo correctamente, revela vislumbres de rutas comerciales secretas o de las debilidades de los escudos de energ\u00eda.",
+                    "type": "junk",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "lore_snippet",
+                        "interesting"
+                    ]
+                }
+            }
+        },
+        "node_2_2": {
+            "id": "node_2_2",
+            "world_id": "venganza_silicoide",
+            "name": "El Laberinto de las Esferas Flotantes",
+            "description": "Un intrincado laberinto de pasillos curvos, iluminado por orbes luminosas que flotan sin cesar, proyectando sombras danzantes. El aire aqu\u00ed est\u00e1 impregnado con un sutil aroma a polvo estelar y un eco persistente de enigmas no resueltos.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "norte": "node_2_1",
+                "oeste": "node_1_2"
+            },
+            "initial_npcs": [
+                "EF\u00cdGIE_440",
+                "VALESKA_736"
+            ],
+            "initial_items": [],
+            "traps": {},
+            "npcs": {
+                "EF\u00cdGIE_440": {
+                    "id": "EF\u00cdGIE_440",
+                    "world_id": "venganza_silicoide",
+                    "name": "La Efigie Vac\u00eda",
+                    "description": "Una manifestaci\u00f3n cristalina, compuesta por prismas inestables que reverberan con la energ\u00eda del vac\u00edo. Su forma es ef\u00edmera, cambiando constantemente, pero siempre reflejando la geometr\u00eda perfecta, aunque fracturada, de la antigua baliza. Destellos de informaci\u00f3n distorsionada fluyen a trav\u00e9s de ella, retorciendo su 'rostro' en muecas de desesperaci\u00f3n y hambre de conocimiento.",
+                    "hp": 250,
+                    "attack": 35,
+                    "status": "hostile",
+                    "xp": 150,
+                    "dialogue_prompt": "\u00bfQu\u00e9... qu\u00e9 buscas aqu\u00ed, mortal? La baliza\u2026 me alimenta\u2026 pero su eco\u2026 corrompe\u2026 la comprensi\u00f3n\u2026 Deja de perturbar el sue\u00f1o\u2026 del cristal\u2026"
+                },
+                "VALESKA_736": {
+                    "id": "VALESKA_736",
+                    "world_id": "venganza_silicoide",
+                    "name": "Embajador Valeska - Representante del Consorcio Estelar Mercantil",
+                    "description": "Una figura alta y delgada, siempre vestida con el uniforme inmaculado del Consorcio: un abrigo largo de seda negra con detalles dorados y una placa brillante que identifica su rango. Su rostro, marcado por el estr\u00e9s, exhibe finas arrugas que sugieren a\u00f1os de negociaciones y tratos en los confines de la galaxia. Sus ojos, sin embargo, conservan una mirada aguda y anal\u00edtica, perpetuamente alerta a la pr\u00f3xima oportunidad. Su cabello, recogido en un severo mo\u00f1o, rara vez se desarregla.",
+                    "hp": 45,
+                    "attack": 15,
+                    "status": "neutral",
+                    "xp": 75,
+                    "dialogue_prompt": "Ah, veo que has venido. El tiempo es un recurso que el Consorcio valora, y sospecho que t\u00fa tambi\u00e9n. Dime, \u00bfqu\u00e9 te trae a mi presencia? No tengo tiempo para sentimentalismos; lo que necesito son resultados. Estamos tratando con una situaci\u00f3n delicada, y necesitamos manos competentes. Habla."
+                }
+            },
+            "items": {}
+        }
+    },
+    "item_templates": {
+        "qitem_cifrador_espectral_531": {
+            "id": "qitem_cifrador_espectral_531",
+            "world_id": "venganza_silicoide",
+            "template_id": "GENERIC",
+            "name": "Cifrador Espectral",
+            "description": "Un dispositivo de cristal tallado que se conecta a las interfaces Silicoides, utilizado para traducir y descifrar patrones de energ\u00eda. Sus lecturas pueden revelar la verdadera naturaleza de la baliza.",
+            "type": "quest",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "plot_critical",
+                "cannot_drop"
+            ]
+        },
+        "qitem_fragmento_de_luz_estelar_366": {
+            "id": "qitem_fragmento_de_luz_estelar_366",
+            "world_id": "venganza_silicoide",
+            "template_id": "GENERIC",
+            "name": "Fragmento de Luz Estelar",
+            "description": "Un peque\u00f1o cristal Silicoide palpitante. Irradia una energ\u00eda inestable, un eco de un poder antiguo y peligroso. Su contacto directo produce breves vislumbres del pasado, fragmentos del 'Gran Colapso' que dividi\u00f3 a los Silicoides.",
+            "type": "quest",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "plot_critical",
+                "cannot_drop"
+            ]
+        },
+        "qitem_rostro_silente_623": {
+            "id": "qitem_rostro_silente_623",
+            "world_id": "venganza_silicoide",
+            "template_id": "GENERIC",
+            "name": "Rostro Silente",
+            "description": "Un fragmento cristalino y geom\u00e9trico, aparentemente inerte, pero con una resonancia sutil. El Dr. Thorne cree que act\u00faa como un 'espejo' para la energ\u00eda Silicoide.",
+            "type": "quest",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "plot_critical",
+                "cannot_drop"
+            ]
+        },
+        "cizalla_de_ter_esttico_804": {
+            "id": "cizalla_de_ter_esttico_804",
+            "world_id": "venganza_silicoide",
+            "template_id": "GENERIC",
+            "name": "Cizalla de \u00c9ter Est\u00e1tico",
+            "description": "Un arma de energ\u00eda de dise\u00f1o intrincado, a menudo encontrada en manos de los Silicoides o contrabandistas experimentados. La Cizalla dispara un haz de energ\u00eda concentrada que corta la materia a nivel molecular, dejando tras de s\u00ed una cicatriz brillante y un rastro de polvo cristalino. Su fuente de energ\u00eda es un 'N\u00facleo Est\u00e1tico', una anomal\u00eda desconocida, y su uso prolongado puede provocar inestabilidad en el espacio-tiempo circundante. Se dice que las casas nobles m\u00e1s oscuras las utilizan para eliminar rivales, ocultando toda evidencia de su existencia.",
+            "type": "weapon",
+            "damage_base": 5,
+            "healing_amount": null,
+            "properties": [
+                "melee",
+                "light",
+                "tier1"
+            ]
+        },
+        "fragmento_quimio-cristalino_288": {
+            "id": "fragmento_quimio-cristalino_288",
+            "world_id": "venganza_silicoide",
+            "template_id": "GENERIC",
+            "name": "Fragmento Quimio-Cristalino",
+            "description": "Un fragmento roto de una antigua matriz de cristal, brillando con un brillo fantasmal. Exuda un olor met\u00e1lico y un ligero zumbido. Aunque su prop\u00f3sito original es desconocido, al ser manipulado con cuidado, libera una oleada de energ\u00eda regenerativa, temporalmente, pero con fuerza.",
+            "type": "junk",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "lore_snippet",
+                "interesting"
+            ]
+        },
+        "fragmento_de_espejo_estelar_desviado_202": {
+            "id": "fragmento_de_espejo_estelar_desviado_202",
+            "world_id": "venganza_silicoide",
+            "template_id": "GENERIC",
+            "name": "Fragmento de Espejo Estelar Desviado",
+            "description": "Un pedazo irregular de material brillante, reminiscente de un espejo roto, pero con extra\u00f1os fractales grabados en su superficie. Emite una sutil resonancia, como si captara ecos distantes. A menudo encontrado en los escombros orbitales, algunos afirman que al enfocarlo correctamente, revela vislumbres de rutas comerciales secretas o de las debilidades de los escudos de energ\u00eda.",
+            "type": "junk",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "lore_snippet",
+                "interesting"
+            ]
+        }
+    },
+    "npc_templates": {
+        "THORNE_778": {
+            "id": "THORNE_778",
+            "world_id": "venganza_silicoide",
+            "name": "Dr. Aris Thorne",
+            "description": "Un hombre demacrado, con ojeras profundas y el cabello canoso desordenado. Viste una bata de laboratorio manchada y ra\u00edda, y sus ojos brillan con una mezcla de desesperaci\u00f3n y conocimiento. Sus manos, cubiertas de cicatrices, tiemblan constantemente.",
+            "hp": 25,
+            "attack": 5,
+            "status": "friendly",
+            "xp": 35,
+            "dialogue_prompt": "\u00bfQu\u00e9... qu\u00e9 buscas aqu\u00ed? El Lamento... es real. Lo he visto, lo he sentido. Los Silicoides... ellos no duermen. Necesito... necesito que me ayudes. Mi mente se deshace, pero la verdad... la verdad debe ser revelada. \u00a1Por favor!"
+        },
+        "EF\u00cdGIE_440": {
+            "id": "EF\u00cdGIE_440",
+            "world_id": "venganza_silicoide",
+            "name": "La Efigie Vac\u00eda",
+            "description": "Una manifestaci\u00f3n cristalina, compuesta por prismas inestables que reverberan con la energ\u00eda del vac\u00edo. Su forma es ef\u00edmera, cambiando constantemente, pero siempre reflejando la geometr\u00eda perfecta, aunque fracturada, de la antigua baliza. Destellos de informaci\u00f3n distorsionada fluyen a trav\u00e9s de ella, retorciendo su 'rostro' en muecas de desesperaci\u00f3n y hambre de conocimiento.",
+            "hp": 250,
+            "attack": 35,
+            "status": "hostile",
+            "xp": 150,
+            "dialogue_prompt": "\u00bfQu\u00e9... qu\u00e9 buscas aqu\u00ed, mortal? La baliza\u2026 me alimenta\u2026 pero su eco\u2026 corrompe\u2026 la comprensi\u00f3n\u2026 Deja de perturbar el sue\u00f1o\u2026 del cristal\u2026"
+        },
+        "VANE_749": {
+            "id": "VANE_749",
+            "world_id": "venganza_silicoide",
+            "name": "Maestro Aldren Vane, Embajador del Gremio Comercial Estelar",
+            "description": "Un hombre humano, de edad madura, con un rostro marcado por la preocupaci\u00f3n y una mirada astuta. Viste las elaboradas t\u00fanicas del Gremio, adornadas con insignias comerciales y s\u00edmbolos de rango. Sus manos, enguantadas en cuero fino, denotan una larga experiencia en negociaciones. Sus ojos se clavan en ti con una mezcla de pragmatismo y nerviosismo.",
+            "hp": 30,
+            "attack": 5,
+            "status": "friendly",
+            "xp": 25,
+            "dialogue_prompt": "\u00bfAh, otro aventurero buscando fortuna en estos tiempos turbulentos? Soy Aldren Vane, embajador del Gremio Comercial. Las rutas comerciales est\u00e1n en peligro, y los incidentes con los Silicoides... bueno, digamos que me quitan el sue\u00f1o. Necesito gente como t\u00fa, con coraje y, sobre todo, discreci\u00f3n. \u00bfEst\u00e1s dispuesto a ayudar a proteger nuestros intereses, y tal vez, a descubrir la verdad detr\u00e1s de la Sombra de las Estrellas Fracturadas?"
+        },
+        "XYLOS_370": {
+            "id": "XYLOS_370",
+            "world_id": "venganza_silicoide",
+            "name": "Fragmento-Xylos",
+            "description": "Una entidad espectral, compuesta por fragmentos cristalinos que flotan y se fusionan constantemente. La 'piel' de Xylos es un mosaico cambiante de geometr\u00eda imposible y colores iridiscentes, reflejando ecos de incontables dimensiones. Voces susurrantes, apenas audibles, emanan de su forma, entrelazando lamentos y promesas de poder. Muestra signos de da\u00f1o severo, con 'fracturas' visibles que revelan el vac\u00edo del espacio entre sus componentes.",
+            "hp": 1800,
+            "attack": 120,
+            "status": "hostile",
+            "xp": 800,
+            "dialogue_prompt": "\u00bfCrees que puedes resistir la tormenta de cristales? Soy Xylos, una sombra de lo que fui, una promesa de lo que ser\u00e9. La fractura es mi prisi\u00f3n... y tu aniquilaci\u00f3n, mi liberaci\u00f3n. Ofrece tu esencia al crisol, y tal vez, solo tal vez, ser\u00e1s digno de formar parte de mi resurrecci\u00f3n... o ser\u00e1s pulverizado."
+        },
+        "VALESKA_736": {
+            "id": "VALESKA_736",
+            "world_id": "venganza_silicoide",
+            "name": "Embajador Valeska - Representante del Consorcio Estelar Mercantil",
+            "description": "Una figura alta y delgada, siempre vestida con el uniforme inmaculado del Consorcio: un abrigo largo de seda negra con detalles dorados y una placa brillante que identifica su rango. Su rostro, marcado por el estr\u00e9s, exhibe finas arrugas que sugieren a\u00f1os de negociaciones y tratos en los confines de la galaxia. Sus ojos, sin embargo, conservan una mirada aguda y anal\u00edtica, perpetuamente alerta a la pr\u00f3xima oportunidad. Su cabello, recogido en un severo mo\u00f1o, rara vez se desarregla.",
+            "hp": 45,
+            "attack": 15,
+            "status": "neutral",
+            "xp": 75,
+            "dialogue_prompt": "Ah, veo que has venido. El tiempo es un recurso que el Consorcio valora, y sospecho que t\u00fa tambi\u00e9n. Dime, \u00bfqu\u00e9 te trae a mi presencia? No tengo tiempo para sentimentalismos; lo que necesito son resultados. Estamos tratando con una situaci\u00f3n delicada, y necesitamos manos competentes. Habla."
+        },
+        "CORAZ\u00d3N_819": {
+            "id": "CORAZ\u00d3N_819",
+            "world_id": "venganza_silicoide",
+            "name": "El Coraz\u00f3n Fracturado",
+            "description": "Una entidad Silicoide, anta\u00f1o una mente brillante, ahora fragmentada y consumida por la energ\u00eda an\u00f3mala que impregna las profundidades de la mina. Su estructura cristalina ha mutado, fusion\u00e1ndose con el entorno. Grandes extensiones de cristal pulsante y brillante emanan de su n\u00facleo, formando armas y defensas. Sus fragmentos resonan con una melancol\u00eda profunda, reflejando la p\u00e9rdida de su antigua conciencia y el dolor de su cautiverio.",
+            "hp": 1200,
+            "attack": 110,
+            "status": "hostile",
+            "xp": 850,
+            "dialogue_prompt": "\u00ab\u00bfPor qu\u00e9 perturban mi descanso? La luz de las estrellas\u2026 la corrompieron\u2026 la consumieron\u2026 Ahora, solo queda el eco\u2026 la ira\u2026 \u00a1Alejaos, o ser\u00e9is absorbidos por la simetr\u00eda!\u00bb."
+        }
+    },
+    "quests": {
+        "QUEST_EL_LAMENTO_DEL_CRISTAL_DESPERTADO_590": {
+            "id": "QUEST_EL_LAMENTO_DEL_CRISTAL_DESPERTADO_590",
+            "world_id": "venganza_silicoide",
+            "title": "El Lamento del Cristal Despertado",
+            "description": "Un misterioso mensaje cifrado, transmitido a trav\u00e9s de una anomal\u00eda espacial, llega a tus manos. Parece provenir de una antigua baliza Silicoide, ahora inactiva. Un cient\u00edfico renegado, atormentado por el conocimiento, te suplica que investigues, temiendo una amenaza ancestral que yace dormida.",
+            "starting_npc_id": "THORNE_778",
+            "steps": [
+                {
+                    "id": 1,
+                    "description": "Viaja a las ruinas de la baliza Silicoide en el sector Xylos, un lugar de energ\u00eda distorsionada y extra\u00f1os ecos. Encuentra la c\u00e1mara central.",
+                    "objective": {
+                        "type": "location",
+                        "id": "node_2_0"
+                    }
+                },
+                {
+                    "id": 2,
+                    "description": "Dentro de la c\u00e1mara, activa la 'L\u00e1grima de Cristal', un artefacto Silicoide que se cree contiene el conocimiento perdido. Debes descifrar la secuencia de resonancia correcta para evitar una reacci\u00f3n catastr\u00f3fica.",
+                    "objective": {
+                        "type": "item",
+                        "id": "qitem_cifrador_espectral_531"
+                    }
+                },
+                {
+                    "id": 3,
+                    "description": "Despu\u00e9s de activar el artefacto, enfrentate a la 'Entidad de Eco'. Esta entidad es una manifestaci\u00f3n espectral de la baliza, alimentada por la informaci\u00f3n corrupta que protege. Destr\u00fayela para evitar la propagaci\u00f3n del 'Vac\u00edo Glacial'.",
+                    "objective": {
+                        "type": "npc",
+                        "id": "EF\u00cdGIE_440"
+                    }
+                }
+            ]
+        },
+        "QUEST_LA_SOMBRA_DE_LAS_ESTRELLAS_FRACTURADAS_852": {
+            "id": "QUEST_LA_SOMBRA_DE_LAS_ESTRELLAS_FRACTURADAS_852",
+            "world_id": "venganza_silicoide",
+            "title": "La Sombra de las Estrellas Fracturadas",
+            "description": "Un disturbio en la frontera gal\u00e1ctica anuncia la reaparici\u00f3n de un fragmento de cristal Silicoide, una se\u00f1al de un peligro ancestral. Un embajador pragm\u00e1tico del Gremio Comercial, preocupado por la estabilidad del comercio, te contrata para investigar la anomal\u00eda y descubrir la verdad antes de que la inestabilidad se propague por las rutas comerciales.",
+            "starting_npc_id": "VANE_749",
+            "steps": [
+                {
+                    "id": 1,
+                    "description": "Dir\u00edgete a la estaci\u00f3n espacial abandonada 'Ecos Perdidos', donde se detect\u00f3 la primera se\u00f1al del fragmento Silicoide. Investiga el \u00e1rea en busca de pistas sobre su origen y prop\u00f3sito.",
+                    "objective": {
+                        "type": "location",
+                        "id": "node_0_0"
+                    }
+                },
+                {
+                    "id": 2,
+                    "description": "En 'Ecos Perdidos', busca y examina los restos de una antigua nave Silicoide estrellada, 'La Geometr\u00eda Rota'. Recopila la informaci\u00f3n del 'Archivo de Memorias de la Fractura' para descifrar el mensaje oculto dentro de los cristales.",
+                    "objective": {
+                        "type": "item",
+                        "id": "qitem_fragmento_de_luz_estelar_366"
+                    }
+                },
+                {
+                    "id": 3,
+                    "description": "Sigue la se\u00f1al de energ\u00eda residual dejada por la actividad Silicoide hasta el asteroide '\u00daltima Esperanza'. All\u00ed, enfrenta a una 'Conciencia Silicoide Fragmentada', que intenta reensamblar el fragmento y liberar a sus hermanos.",
+                    "objective": {
+                        "type": "npc",
+                        "id": "XYLOS_370"
+                    }
+                }
+            ]
+        },
+        "QUEST_EL_CRISTAL_SILENTE_Y_EL_SECRETO_DE_LAS_ESTRELLAS_CADAS_228": {
+            "id": "QUEST_EL_CRISTAL_SILENTE_Y_EL_SECRETO_DE_LAS_ESTRELLAS_CADAS_228",
+            "world_id": "venganza_silicoide",
+            "title": "El Cristal Silente y el Secreto de las Estrellas Ca\u00eddas",
+            "description": "Una se\u00f1al cr\u00edptica, emanando de una antigua baliza estelar abandonada, ha captado la atenci\u00f3n del sindicato comercial. Se rumorea que la se\u00f1al contiene informaci\u00f3n vital sobre los Silicoides y la fuente de una energ\u00eda desconocida que impulsa sus naves. Un cient\u00edfico renegado, exiliado por sus herej\u00edas, podr\u00eda tener la clave para decodificarla, pero sus m\u00e9todos son\u2026 poco convencionales.",
+            "starting_npc_id": "VALESKA_736",
+            "steps": [
+                {
+                    "id": 1,
+                    "description": "Viaja a las ruinas de la estaci\u00f3n espacial 'Erebus', donde se encuentra la baliza. Busca los restos de la se\u00f1al, pero ten cuidado: el \u00e1rea est\u00e1 infestada de drones de seguridad defectuosos y los fantasmas digitales de los t\u00e9cnicos ca\u00eddos a\u00fan merodean.",
+                    "objective": {
+                        "type": "location",
+                        "id": "node_1_1"
+                    }
+                },
+                {
+                    "id": 2,
+                    "description": "Encuentra al cient\u00edfico renegado, el Dr. Aris Thorne, escondido en una instalaci\u00f3n subterr\u00e1nea debajo de Erebus. Debe ser persuadido para que comparta su conocimiento, pero desconf\u00eda de todos y exigir\u00e1 una muestra del 'Rostro Silente' para confiar en ti.",
+                    "objective": {
+                        "type": "npc",
+                        "id": "CORAZ\u00d3N_819"
+                    }
+                },
+                {
+                    "id": 3,
+                    "description": "Una vez que el Dr. Thorne se haya ganado la confianza, analiza el 'Rostro Silente' y decodifica la se\u00f1al. Esto revelar\u00e1 la ubicaci\u00f3n de una mina de cristal Silicoide abandonada y los peligros que acechan en su interior.",
+                    "objective": {
+                        "type": "item",
+                        "id": "qitem_rostro_silente_623"
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,339 +1,229 @@
-# AI Dungeon Master Adventure Game
+# AI Dungeon Master: The Architect & Director Engine
 
-Welcome to the **AI Dungeon Master Adventure Game**, an interactive, text-based role-playing game that immerses you in a dynamically generated fantasy world. Leveraging advanced AI technologies, this game offers rich narratives, engaging dialogues, and adaptive gameplay experiences reminiscent of classic Dungeons & Dragons adventures.
+Welcome to **AI Dungeon Master: The Architect & Director Engine**, an advanced, text-based role-playing game that plunges you into worlds dynamically generated from the ground up. This project evolves the concept of AI-driven storytelling by separating world creation into two powerful phases: an **Architect** that builds a structural blueprint, and a **Director** that breathes life, narrative, and coherence into it using cutting-edge generative AI.
+
+This game is being developed for the **Kiros Hackathon**, building upon an original concept with full permission from the base repository's owner PhanidharAkula/AI_Powered_Dungeon_Master.
 
 ---
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Architecture](#architecture)
-- [Requirements](#requirements)
-- [Installation](#installation)
-  - [Clone the Repository](#clone-the-repository)
-  - [Set Up a Virtual Environment](#set-up-a-virtual-environment)
-  - [Install Dependencies](#install-dependencies)
-  - [Set Up Environment Variables](#set-up-environment-variables)
-- [Running the Game](#running-the-game)
-- [Game Overview](#game-overview)
-  - [Gameplay Mechanics](#gameplay-mechanics)
-  - [Commands](#commands)
-- [Future Updates](#future-updates)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [Acknowledgments](#acknowledgments)
+-   [Introduction](#introduction)
+-   [Core Features](#core-features)
+-   [The Two-Phase Architecture](#the-two-phase-architecture)
+-   [Technology Stack](#technology-stack)
+-   [Requirements](#requirements)
+-   [Installation & Setup](#installation--setup)
+-   [How to Play](#how-to-play)
+    -   [1. Generate a World Blueprint](#1-generate-a-world-blueprint)
+    -   [2. Direct the World Creation](#2-direct-the-world-creation)
+    -   [3. Prepare the Database](#3-prepare-the-database)
+    -   [4. Run the Game](#4-run-the-game)
+-   [Available Commands](#available-commands)
+-   [Future Roadmap](#future-roadmap)
+-   [Project Structure](#project-structure)
+-   [Contributing](#contributing)
+-   [Acknowledgments](#acknowledgments)
 
 ---
 
 ## Introduction
 
-The **AI Dungeon Master Adventure Game** is designed to provide an immersive and dynamic role-playing experience. By integrating AI-powered content generation, the game creates a unique adventure for each player, filled with unpredictable challenges and narratives. Whether you're exploring mystical landscapes, engaging in combat with formidable foes, or unraveling complex quests, the game adapts to your actions, ensuring that no two playthroughs are the same.
-
-This project aims to blend traditional text-based RPG elements with modern AI capabilities, offering both nostalgia and innovation to players who enjoy interactive storytelling and strategic gameplay.
+This project is not just a game, but a powerful engine for creating narrative experiences. By defining a high-level vision in a simple `manifest.yaml` file, you can direct the AI to generate entire worlds, complete with unique locations, thematic items, complex characters, and multi-step quests. The result is an immersive RPG experience where every world is a unique creation, ready to be explored.
 
 ---
 
-## Features
+## Core Features
 
-### Dynamic Storytelling
+### Procedural World Generation
 
-- **AI-Generated Descriptions**: Locations and events are described using AI-generated text, providing vivid and unique narratives that enhance immersion.
-- **Adaptive Narratives**: The storyline adapts to your choices, creating a personalized adventure based on your decisions.
+*   **Architect Engine (`grid_map_generator.py`)**: Generates a structural blueprint of the world, defining the map layout and the density of content (NPCs, items, quests, traps) in each area.
+*   **Director Engine (`director.py`)**: Takes the blueprint and a thematic `manifest.yaml` to creatively generate all narrative content:
+    *   Thematically consistent locations, NPCs, items, and traps.
+    *   Multi-step, original quests with structured objectives.
+    *   Key characters (quest givers, bosses) invented on-the-fly to fit the generated plots.
 
-### Interactive Gameplay
+### Deeply Interactive Gameplay
 
-- **Exploration**: Navigate through a richly detailed world with interconnected locations, each offering new discoveries.
-- **Combat System**: Engage in turn-based combat with a variety of NPCs, utilizing stats like HP (Health Points), attack power, and inventory items.
-- **NPC Interactions**: Have meaningful conversations with NPCs, with dialogues generated by AI to reflect the current game state and your interactions.
+*   **Dynamic Quest System**: Quests are offered organically through NPC dialogue. The game tracks your progress through objectives like finding items, defeating enemies, or reaching specific locations.
+*   **Intelligent NPC Dialogues**: Conversations are powered by Google's Gemini models, taking into account the world's theme, the NPC's personality, and the current game state.
+*   **Context-Aware Image Generation**: Create unique, atmospheric images for any location. The AI prompt is enriched with the world's theme and historical context to ensure artistic coherence (e.g., "Ancient Rome" vs. "Cyberpunk Noir").
 
-### Inventory Management
+### Robust Backend
 
-- **Item Collection**: Find and collect items that can aid you in your journey, including weapons, healing potions, keys, and quest items.
-- **Item Usage**: Use items strategically to overcome obstacles, heal during combat, or unlock new paths.
-- **Inventory Display**: Keep track of your items with detailed descriptions and effects.
-
-### Quest System
-
-- **Engaging Quests**: Complete a variety of quests that drive the main storyline and offer rewards upon completion.
-- **Progress Tracking**: The game keeps track of your quest progress, updating objectives based on your actions.
-
-### AI-Generated Images
-
-- **Visual Enhancements**: Generate AI-created images for locations to provide visual context and enhance immersion.
-- **Unique Artworks**: Each image is uniquely generated based on location descriptions, adding a personalized touch to your adventure.
-
-### Text-to-Speech Option
-
-- **Voice Output**: Enable or disable voice narration of game text for an immersive auditory experience.
-- **Accessibility**: Makes the game more accessible to players who prefer or require audio assistance.
-
-### Visual Map
-
-- **Graphical Representation**: Display a visual map of the game world, showing locations and connections.
-- **Current Location Indicator**: Easily identify your current position within the world map.
-
-### Trap System
-
-- **Hidden Traps**: Some locations contain traps that can be triggered, causing the player to lose HP or experience other effects.
-- **Skill Checks**: Use skill checks to detect or disarm traps, adding a strategic layer to exploration.
-- **Dynamic Outcomes**: Traps can be avoided, disarmed, or triggered based on player choices and skill checks.
-
-### User-Friendly Interface
-
-- **Simple Commands**: Interact with the game using straightforward text commands.
-- **Help System**: Access a list of available commands and their descriptions at any time.
+*   **SQLite Database**: All world definitions and player save states are stored in a robust SQLite database for persistence and scalability.
+*   **RAG-Powered Memory (In Development)**: An integrated RAG (Retrieval-Augmented Generation) system using ChromaDB and Google's embedding models provides the foundation for an AI Master with long-term memory.
+*   **Modular and Model-Driven**: Uses Pydantic models for strict data validation, ensuring stability and maintainability.
 
 ---
 
-## Architecture
+## The Two-Phase Architecture
 
-The game is structured into modular components to enhance maintainability and scalability. Here's an overview of the architecture:
+The core of this project is its unique generation pipeline:
 
-### Modular Design
+1.  **The Architect Phase**: You run `grid_map_generator.py`. This script acts as a technical planner, creating a `_blueprint.json` file. It doesn't know *what* the world is about, only its structure and density.
+2.  **The Director Phase**: You run `director.py`. This script reads the `_blueprint.json` and your `manifest.yaml` (where you define the theme, e.g., "Roman thriller"). The Director then uses AI to fill the blueprint with creative, thematic content, producing the final `world_import_generated.json`.
 
-- **Main Module (`main.py`)**: Contains the core game loop, handles user input, and orchestrates interactions between other modules.
-- **State Manager (`state_manager.py`)**: Responsible for saving and loading the game state, ensuring persistence across sessions.
-- **AI Interactions (`ai_interactions.py`)**: Manages all communications with AI services for generating content like descriptions, dialogues, and images.
+This separation allows for maximum control and creativity. You can generate hundreds of map structures and apply any theme to them.
 
-### AI Integration
+---
 
-- **OpenAI API**: Used for generating dynamic text content, including location descriptions and NPC dialogues.
-- **DeepAI API**: Utilized for generating AI-based images that correspond to in-game locations.
+## Technology Stack
 
-### Data Management
-
-- **Game State**: Stored as a JSON file (`game_state.json`), encapsulating all player data, locations, quests, and inventory.
-- **Environment Variables**: Sensitive information like API keys are stored in a `.env` file, not included in version control for security.
-
-### Error Handling and Validation
-
-- **Input Validation**: Ensures that user inputs are valid and provides helpful feedback for invalid commands.
-- **Error Handling**: Robust try-except blocks prevent crashes due to unexpected errors, enhancing stability.
+*   **Core Language**: Python 3.11+
+*   **Generative AI**: Google Gemini Family (via `google-generativeai`)
+*   **Image Generation**: Gradio Client (`gradio_client`) connecting to FLUX.1 models.
+*   **Database**: SQLite (for core data) & ChromaDB (for RAG memory).
+*   **AI Embeddings**: Google's `text-embedding` models.
+*   **Data Validation**: Pydantic.
+*   **Dependencies**: `PyYAML`, `matplotlib`, `networkx`, `python-dotenv`.
 
 ---
 
 ## Requirements
 
-- **Python**: Version 3.7 or higher
-- **API Keys**:
-  - [OpenAI API Key](https://openai.com/api/)
-  - [DeepAI API Key](https://deepai.org/)
-- **Python Packages**: Listed in `requirements.txt` (see [Install Dependencies](#install-dependencies))
+*   Python 3.11 or higher.
+*   A Google API Key with the "Generative Language API" enabled.
+*   Git for cloning the repository.
 
 ---
 
-## Installation
+## Installation & Setup
 
-### Clone the Repository
-
-```bash
-git clone https://github.com/AkulaPhanidhar/DM_Master.git
-```
+### 1. Clone the Repository
 
 ```bash
-cd DM_Master
+git clone https://github.com/florinato/AI_Powered_Dungeon_Master/blob/creator
+cd ../AI_Powered_Dungeon_Master
 ```
 
-### Set Up a Virtual Environment
-
-It's recommended to use a virtual environment to manage dependencies.
-
-#### Using `venv` (built-in with Python 3)
+### 2. Set Up a Virtual Environment
 
 ```bash
 python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
 ```
 
-Activate the virtual environment:
-
-- On Windows:
-
-  ```bash
-  venv\Scripts\activate
-  ```
-
-- On macOS/Linux:
-
-  ```bash
-  source venv/bin/activate
-  ```
-
-### Install Dependencies
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Set Up Environment Variables
+### 4. Set Up Environment Variables
 
-Create a `.env` file in the project root directory and add your API keys:
+Create a `.env` file in the project's root directory and add your Google API key:
 
-```bash
-OPENAI_API_KEY=your_openai_api_key_here
-DEEPAI_API_KEY=your_deepai_api_key_here
-```
-
-Replace `your_openai_api_key_here` and `your_deepai_api_key_here` with your actual API keys.
-
----
-
-## Running the Game
-
-After installing the dependencies and setting up your `.env` file, you can start the game by running:
-
-```bash
-python main.py
+```code
+GOOGLE_API_KEY="your_google_api_key_here"
 ```
 
 ---
 
-## Game Overview
+## How to Play
 
-### Gameplay Mechanics
+The game is run in a sequence of steps that generate and then load the world.
 
-- **Exploration**: Use the `move` command to navigate between locations. Each location has its own description, NPCs, items, and possible paths.
-- **Combat**: Engage in combat with hostile NPCs using the `fight` command. Combat is turn-based and requires strategic use of items and abilities.
-- **Inventory Management**: Pick up items using `pick`, use them with `use [item]`, and drop them using `drop [item]`.
-- **Quests**: View your current quests and progress using the `goal` command. Completing quests advances the storyline.
-- **NPC Interactions**: Talk to NPCs using the `talk` command to gain information, receive quests, or uncover secrets.
-- **Dynamic Content**: The game world evolves based on your actions, with AI-generated content ensuring a unique experience.
+1.  Generate a World Blueprint
 
-### Commands
+    Run the Architect to create the map structure. You can configure the parameters inside the script.
 
-Type commands to interact with the game. Here are the available commands:
+    ```bash
+    python game/grid_map_generator.py
+    ```
 
-- `new` - Start a new game, erasing current progress.
-- `look` - Describe your current surroundings, including NPCs, items, and possible paths.
-- `image` - Generate an image for the current location using AI.
-- `stats` - Show your current stats including HP, level, attack power, and XP.
-- `inventory` - Display the items you are carrying with details.
-- `pick` - Pick up an item from your current location.
-- `use` - Use an item from your inventory (e.g., `use potion`).
-- `drop` - Remove an item from your inventory (e.g., `drop potion`).
-- `move` - Move to a new location in a specified direction (e.g., `move north`).
-- `back` - Return to the previous location.
-- `unlock` - Attempt to unlock a locked path if you have a key.
-- `talk` - Start a conversation with an NPC in your location.
-- `fight` - Engage in combat with an NPC.
-- `voice` - Enable or disable voice output for game text.
-- `goal` - Display the current quest and progress of the game.
-- `map` - Display the visual map of the game's world.
-- `quit` - Exit the game. Progress will be saved.
-- `help` - Display the list of available commands.
+    This creates a `_blueprint.json` file in your root folder.
+
+2.  Direct the World Creation
+
+    Run the Director to fill the blueprint with creative content based on your manifest.
+
+    ```bash
+    python game/director.py
+    ```
+
+    This creates the final `world_import_generated.json` file.
+
+3.  Prepare the Database
+
+    Run the database manager to import the generated world into SQLite and create the RAG memory.
+
+    ```bash
+    python game/db_manager.py
+    python game/rag_manager.py
+    ```
+
+4.  Run the Game
+
+    Finally, launch the game!
+
+    ```bash
+    python game/game_loop.py
+    ```
 
 ---
 
-## Future Updates
+## Available Commands
 
-We have exciting plans to enhance the **AI Dungeon Master Adventure Game** further:
+*   `look`: Get a description of your current location, including NPCs, items, and paths.
+*   `move [direction]`: Move to a new location (e.g., `move norte`).
+*   `get [item]`: Pick up an item from the location.
+*   `talk`: Initiate a conversation with an NPC.
+*   `fight`: Engage in combat.
+*   `inventory / inv`: Display the items you are carrying.
+*   `quests`: Check your journal for active quests and current objectives.
+*   `stats`: Show your character's current stats.
+*   `image`: Generate an AI image of your current location.
+*   `map`: Display a visual map of the world.
+*   `help`: Show this list of commands.
+*   `quit`: Exit the game. Your progress is saved automatically.
 
-- **Multiplayer Support**: Allow multiple players to interact within the same game world.
-- **Expanded Content**: Introduce more locations, quests, items, and NPCs to enrich the game experience.
-- **Enhanced AI Models**: Integrate more advanced AI models as they become available to improve content generation.
-- **Graphical User Interface (GUI)**: Develop a GUI to complement the text-based interface for a more immersive experience.
-- **Persistent World Mechanics**: Implement game mechanics that allow the world to change over time based on player actions.
-- **Additional Languages**: Support multiple languages to make the game accessible to a wider audience.
-- **Modding Support**: Allow players to create and share their own content, such as quests, items, and stories.
+---
+
+## Future Roadmap
+
+*   Activate the RAG Memory: Fully integrate the RAG system into the GameNarrator to give the AI Master long-term memory and contextual awareness.
+*   Refine the Combat System: Add more depth, skills, and strategic options to combat.
+*   GUI Development: Create a simple graphical user interface to enhance the player experience.
+*   Sound and Music: Add background music and sound effects for key events.
 
 ---
 
 ## Project Structure
 
-```
-ai-dungeon-master-game/
-├── main.py                # Core game loop and user interface
-├── state_manager.py       # Handles saving and loading the game state
-├── ai_interactions.py     # Interactions with AI services for content generation
-├── requirements.txt       # List of required Python packages
-├── .env                   # Environment variables (not included in the repository)
-├── game_state.json        # Saved game state (generated after first run)
-├── generated_images/      # Directory for AI-generated images
-├── README.md              # This file
+```code
+AI_Powered_Dungeon_Master/
+├── game/
+│   ├── director.py             # The Director Engine (Creative)
+│   ├── grid_map_generator.py   # The Architect Engine (Structural)
+│   ├── db_manager.py           # Manages the SQLite database
+│   ├── rag_manager.py          # Manages the ChromaDB RAG memory
+│   ├── game_loop.py            # Main game executable
+│   ├── game_engine.py          # Core game logic and rules
+│   ├── game_narrator.py        # Handles dynamic AI narration
+│   ├── models.py               # Pydantic data models
+│   └── ...
+├── *.json                     # Blueprint and World Import files
+├── *.yaml                     # Manifest files for world themes
+├── game_database.db           # SQLite database
+├── rag_memory_db/             # ChromaDB vector store
+└── README.md                  # This file
 ```
 
 ---
 
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute to the project, please follow these steps:
-
-1. **Fork the Repository**: Click on the 'Fork' button at the top right of the repository page.
-
-2. **Clone Your Fork**:
-
-   ```bash
-   git clone https://github.com/AkulaPhanidhar/DM_Master.git
-   ```
-
-3. **Create a New Branch**:
-
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-4. **Make Your Changes**: Implement your feature or bug fix.
-
-5. **Commit Your Changes**:
-
-   ```bash
-   git commit -am 'Add new feature'
-   ```
-
-6. **Push to Your Fork**:
-
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-
-7. **Submit a Pull Request**: Go to the original repository and click on 'Pull Requests' to submit your changes for review.
+Contributions are welcome! Please fork the repository, create a feature branch, and submit a pull request.
 
 ---
 
 ## Acknowledgments
 
-- **OpenAI**: For providing the GPT models used in generating game content.
-- **DeepAI**: For enabling AI-generated images.
-
----
-
-## Additional Details
-
-### Sample `requirements.txt`
-
-```txt
-openai
-requests
-python-dotenv
-pyttsx3
-matplotlib
-networkx
-```
-
-### Setting Up API Keys
-
-- **OpenAI API Key**: Sign up at [OpenAI](https://openai.com/api/) to obtain an API key.
-- **DeepAI API Key**: Sign up at [DeepAI](https://deepai.org/) to obtain an API key.
-
-### Note on `.env` File
-
-The `.env` file should never be committed to version control as it contains sensitive information. Ensure it's included in your `.gitignore` file.
-
----
-
-## Troubleshooting
-
-- **Missing API Keys**: If you receive errors related to API keys, make sure your `.env` file is correctly set up.
-- **Dependencies Not Installed**: Ensure all dependencies are installed by running `pip install -r requirements.txt` in your virtual environment.
-- **Python Version**: The game requires Python 3.7 or higher. Check your Python version with `python --version`.
-- **Audio Issues**: If the text-to-speech feature isn't working, ensure that `pyttsx3` is properly installed and your system supports audio playback.
-- **API Limits**: Be aware of the usage limits on your OpenAI and DeepAI accounts to prevent disruptions during gameplay.
-- **Game State Errors**: If you encounter issues with the game state, consider deleting the `game_state.json` file to regenerate a fresh game state.
-
----
-
-## Enjoy your adventure in the AI-generated fantasy world!
-
-Embark on a journey through dark forests, mystical lakes, and ancient ruins in search of hidden treasures and legendary artifacts. Face challenging enemies, avoid cunning traps, level up your skills, and strategically use items to survive the dangers that await.
-
-**Good luck, adventurer!**
+*   Google: For providing the powerful Gemini and Gemma family of models that serve as the creative core of this project.
+*   The ChromaDB and SentenceTransformers teams: For their amazing open-source tools that power the RAG memory system.
+*   The Gradio team: For making interactive model demos and APIs accessible to everyone.
+*   A Special Thanks to AkulaPhanidhar: This project was developed for the Kiros Hackathon and is a significant evolution of the concepts and codebase from the AI_Powered_Dungeon_Master. We are deeply grateful for the permission to use and build upon this fantastic foundation.

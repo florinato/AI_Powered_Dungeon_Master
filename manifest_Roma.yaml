@@ -3,54 +3,60 @@ world_name: "Las Sombras de Roma"
 language: "Español"
 
 # --- INSPIRACIÓN DE ALTO NIVEL ---
-# Directrices principales que definen el universo del juego.
 
-historical_context: >
-  República Romana Tardía, alrededor del 60 a.C. durante el Primer Triunvirato
-  de César, Pompeyo y Craso. Una época de inmensa riqueza, ambición política
-  y conspiraciones.
+# El contexto ahora es mucho más rico y narrativo.
+historical_context: |
+  Estamos en la República Romana Tardía, aproximadamente en el 60 a.C.
+  Este no es un periodo de paz. Es un punto de inflexión, una olla a presión a punto de estallar.
+  El poder está concentrado en tres hombres, el Primer Triunvirato:
+  - Julio César: El genio militar y político populista, amado por la plebe y temido por el Senado.
+  - Pompeyo Magno: El general más célebre de Roma, un héroe de guerra que representa el viejo orden.
+  - Marco Licinio Craso: El hombre más rico de Roma, que financia a ambos y juega a dos bandas.
+  Estos tres "aliados" se odian y desconfían entre sí. Cada uno conspira para ser el único amo de Roma.
+  El Senado, liderado por figuras como Cicerón y Catón, intenta desesperadamente preservar la República y frenar la ambición de estos hombres.
+  Las calles son un hervidero de veteranos de guerra sin empleo, esclavos desesperados y ciudadanos hambrientos, fáciles de manipular.
 
 inhabitant_description: >
-  Ciudadanos de la antigua Roma vistiendo togas, túnicas y sandalias.
-  La vestimenta y los accesorios deben ser históricamente precisos para la
-  República Romana.
+  Ciudadanos de la antigua Roma. Los patricios visten togas de lino fino, los plebeyos
+  túnicas de lana áspera y los soldados armaduras de cuero y hierro (lorica).
+  La vestimenta, las armas (gladius, pugio, pilum) y los accesorios deben ser
+  históricamente precisos para este periodo final de la República.
 
 world_theme: >
-  Thriller político y de espionaje con elementos de la vida cotidiana romana.
-  Piensa en la serie 'Roma' de HBO mezclada con una novela de John le Carré.
+  Una crónica de intriga política y espionaje, inspirada en las obras de
+  autores como Robert Harris ("Imperium") y Colleen McCullough ("El Primer Hombre de Roma").
+  El tono es de suspense, cinismo y peligro inminente, donde las batallas más importantes
+  no se libran en el campo de batalla, sino en los pasillos del Senado y en los
+  callejones oscuros.
 
 world_description: |
   Roma no es solo mármol y gloria; es una bestia que se alimenta de secretos.
-  Mientras los senadores, ataviados con togas inmaculadas, debaten el destino
-  del mundo bajo los artesonados dorados de la Curia, en las oscuras y fétidas
-  tabernas de la Subura se tejen traiciones que derribarán a hombres poderosos
-  con una simple copa de vino envenenado.
+  Mientras los senadores debaten el destino del mundo, en las fétidas tabernas de la
+  Subura se tejen traiciones que derribarán a hombres poderosos con una simple
+  copa de vino envenenado. Esta es una guerra silenciosa combatida con susurros,
+  papiros cifrados y dagas ocultas, esperando el momento en que un secreto
+  valga más que una vida.
 
-  Las legiones conquistan tierras lejanas en nombre de la República, pero la
-  verdadera batalla, la que importa, se libra aquí, en sus calles laberínticas.
-  Es una guerra silenciosa combatida con susurros en los baños públicos, con
-  papiros cifrados pasados de mano en mercados bulliciosos, y con dagas ocultas
-  que encuentran su blanco en callejones sin luna.
-
-  Aquí, la lealtad es una moneda que se devalúa con cada amanecer, la verdad
-  es una mercancía vendida al mejor postor, y la justicia es un lujo que solo
-  los poderosos pueden permitirse. En las sombras de Roma, no puedes confiar en
-  los dioses ni en la ley. Solo puedes confiar en tu ingenio, en la información
-  que atesoras, y en el frío acero que llevas oculto, esperando el momento
-  en que un secreto valga más que una vida.
-
-# --- EJEMPLOS PARA GUIAR LA CREATIVIDAD DE LA IA ---
-# Estos no son reglas, son guías de inspiración para el DirectorAgent.
+# --- EJEMPLOS E INSPIRACIÓN CREATIVA ---
+# Le damos a la IA un "tour" por la Roma de la época para inspirar sus creaciones.
 
 creative_examples:
-  location_types:
-    - "una opulenta domus patricia llena de intrigas"
-    - "una insula popular pobre y peligrosa en la Subura"
-    - "unas termas públicas donde se cierran negocios y se intercambian secretos"
-    - "un campamento militar en las afueras, lleno de veteranos descontentos"
+  # Sugerencias de localizaciones reales y arquetípicas.
+  location_suggestions:
+    - "la Curia Hostilia en el Foro, donde el Senado debate"
+    - "una lujosa domus en la colina del Palatino, hogar de un senador"
+    - "una insula abarrotada y peligrosa en el barrio de la Subura"
+    - "las grandiosas y bulliciosas Termas de Agripa, un nido de rumores"
+    - "el Templo de Vesta, custodiado por las sagradas vestales"
+    - "los muelles de Ostia, el puerto de Roma, llenos de marineros y mercancías exóticas"
+    - "un campamento de la Legión X a las afueras, en la Vía Apia"
+    - "una catacumba secreta usada para reuniones clandestinas"
   
+  # Ejemplos de los personajes que pueblan este mundo de intriga.
   npc_archetypes_examples:
-    - "un legionario veterano y leal, pero hastiado de la corrupción"
-    - "un senador ambicioso capaz de cualquier cosa por el poder"
-    - "una vestal que guarda un secreto que podría derribar la República"
-    - "un mercader sirio que comercia con información tan valiosa como sus especias"
+    - "un legionario veterano leal a su general por encima de todo"
+    - "un senador de los Optimates, conservador y enemigo acérrimo de César"
+    - "un tribuno de la plebe, un agitador popular con sus propias ambiciones"
+    - "un esclavo griego, educado y astuto, que actúa como escriba y espía de su amo"
+    - "una matrona patricia que utiliza sus conexiones sociales para influir en la política"
+    - "un mercader sirio que trafica con información tan valiosa como sus especias"

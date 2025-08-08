@@ -115,29 +115,45 @@ class GridMapGenerator:
         """Prepara el diccionario final para el DirectorAgent, combinando toda la información."""
         nodes_output_dict = {}
         for node_id, node_data in self.nodes_dict.items():
-            # El blueprint ahora solo contiene los contadores y flags
+            # ¡CORRECCIÓN CLAVE!
+            # El blueprint final ahora usa los nombres exactos que espera el modelo Pydantic:
+            # 'npc_count' en lugar de 'generic_npc_count'.
             nodes_output_dict[node_id] = {
                 "id": node_id,
                 "type": "sala",
                 "tags": [],
                 "connections": [],
-                "generic_npc_count": node_data.get('generic_npc_count', 0),
+                "npc_count": node_data.get('generic_npc_count', 0), # Mapeamos aquí
                 "item_count": node_data.get('item_count', 0),
                 "has_quest_start": node_data.get('has_quest_start', False),
                 "has_trap": node_data.get('has_trap', False)
             }
         
+        # Esta parte de las conexiones estaba mal, usaba 'sur'/'norte'/'este'/'oeste'
+        # cuando debería usar las coordenadas para determinar la dirección.
         for u, v in self.graph.edges():
-            x1, y1 = map(int, u.split('_')[1:])
-            x2, y2 = map(int, v.split('_')[1:])
-            dir_uv, dir_vu = ("sur", "norte") if x1 == x2 else ("este", "oeste")
-            
+            # Extraemos coordenadas para una lógica de dirección robusta
+            try:
+                x1, y1 = map(int, u.split('_')[1:])
+                x2, y2 = map(int, v.split('_')[1:])
+
+                if y1 < y2:
+                    dir_uv, dir_vu = "sur", "norte"
+                elif y1 > y2:
+                    dir_uv, dir_vu = "norte", "sur"
+                elif x1 < x2:
+                    dir_uv, dir_vu = "este", "oeste"
+                else: # x1 > x2
+                    dir_uv, dir_vu = "oeste", "este"
+            except (ValueError, IndexError):
+                 # Fallback si los IDs no son numéricos
+                 dir_uv, dir_vu = "conexion", "conexion"
+
             nodes_output_dict[u]['connections'].append({"target_node_id": v, "direction": dir_uv})
             nodes_output_dict[v]['connections'].append({"target_node_id": u, "direction": dir_vu})
 
         graph_id = f"grid_map_{self.width}x{self.height}_p{int(self.pruning_ratio*100)}"
         return {"graph_id": graph_id, "nodes": nodes_output_dict}
-
     def visualize_map(self):
         """Visualiza el mapa con información de la densidad de contenido."""
         plt.figure(figsize=(self.width * 2.5, self.height * 2.5))
@@ -176,10 +192,10 @@ if __name__ == "__main__":
     
     # 1. TAMAÑO DEL MAPA
     MAP_WIDTH = 3
-    MAP_HEIGHT = 4
+    MAP_HEIGHT = 3
     
     # 2. CONECTIVIDAD (0.0 = laberinto, 1.0 = rejilla completa)
-    PRUNING_RATIO = 0.4
+    PRUNING_RATIO = 1
     
     # 3. NÚMERO TOTAL DE MISIONES EN EL MUNDO
     TOTAL_QUESTS = 3
@@ -188,10 +204,10 @@ if __name__ == "__main__":
     GENERIC_NPCS_PER_NODE = (0, 1)
     
     # 5. OBJETOS TOTALES POR SALA (min, max)
-    ITEMS_PER_NODE = (0, 2)
+    ITEMS_PER_NODE = (0, 1)
     
     # 6. PROBABILIDAD DE TRAMPA POR NODO
-    TRAP_CHANCE = 0.20 # 20% de las salas
+    TRAP_CHANCE = 0.50 # 20% de las salas
     
     # ------------------------------------------------------------------
     

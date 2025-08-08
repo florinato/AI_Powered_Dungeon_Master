@@ -1,0 +1,1423 @@
+{
+    "player": {
+        "player_id": 1,
+        "player_name": "florinatus",
+        "world_id": "roma_republicana",
+        "level": 1,
+        "hp": 100,
+        "max_hp": 100,
+        "attack": 10,
+        "xp": 0,
+        "xp_to_next_level": 100,
+        "current_location_id": "node_0_0",
+        "location_history": [
+            "node_0_0",
+            "node_0_0"
+        ],
+        "inventory": [
+            {
+                "id": "anillo_senatorial_envenenado",
+                "world_id": "roma_republicana",
+                "template_id": "QUEST_ITEM_MACGUFFIN",
+                "name": "Anillo Senatorial envenenado",
+                "description": "Un anillo que perteneci\u00f3 a un senador fallecido, impregnado con rastros del veneno mortal. Sirve como prueba clave para demostrar la conspiraci\u00f3n y suplantaci\u00f3n del senador.",
+                "type": "quest",
+                "damage_base": null,
+                "healing_amount": null,
+                "properties": [
+                    "plot_critical",
+                    "cannot_drop"
+                ]
+            }
+        ],
+        "active_quests": {
+            "QUEST_EL_VENENO_DE_LA_VICTORIA_161": {
+                "quest_id": "QUEST_EL_VENENO_DE_LA_VICTORIA_161",
+                "current_step_id": "step1",
+                "completed": false,
+                "status": "active"
+            },
+            "QUEST_LA_SOMBRA_DE_LA_LEX_GABINIA_305": {
+                "quest_id": "QUEST_LA_SOMBRA_DE_LA_LEX_GABINIA_305",
+                "title": "La Sombra de la Lex Gabinia",
+                "current_step_id": "step1",
+                "completed": false
+            }
+        },
+        "world_state_delta": {},
+        "location": "node_0_1"
+    },
+    "locations": {
+        "node_0_0": {
+            "id": "node_0_0",
+            "world_id": "roma_republicana",
+            "name": "La Curia Hostilia en Sombras",
+            "description": "La Curia Hostilia, otrora el coraz\u00f3n palpitante de la Rep\u00fablica, ahora se cierne bajo una penumbra constante, sus muros manchados por la intriga y las sombras de las ambiciones crecientes. El eco de las palabras pronunciadas en su interior resuena en los callejones, transform\u00e1ndose en cuchillos que se clavan en la espalda de la Rep\u00fablica.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "sur": "node_0_1"
+            },
+            "initial_npcs": [
+                "cortesana_veneno"
+            ],
+            "initial_items": [
+                "anillo_envenenado",
+                "cartas_comprometedoras"
+            ],
+            "traps": {},
+            "npcs": {
+                "cortesana_veneno": {
+                    "id": "cortesana_veneno",
+                    "world_id": "roma_republicana",
+                    "name": "Livia Drusilla",
+                    "description": "Una mujer de belleza serena pero penetrante, Livia es m\u00e1s que una cortesana; es una maestra de la manipulaci\u00f3n. Sus vestidos de seda y joyas exquisitas contrastan con la frialdad de sus ojos, que observan y juzgan cada interacci\u00f3n. Su ingenio esfiloso como una daga, y su lealtad, un bien muy preciado (y caro). Sus contactos se extienden por todo el Senado, y sus o\u00eddos recogen secretos que cambian el destino de Roma.",
+                    "hp": 50,
+                    "attack": 5,
+                    "status": "friendly",
+                    "xp": 10,
+                    "dialogue_prompt": "\u00bfAh, buscas un favor, querido? Roma est\u00e1 llena de peticiones, y el tiempo, como el vino, escasea. Pero supongo que puedo escuchar tus preocupaciones... siempre y cuando puedas ofrecerme algo de valor a cambio. Algo m\u00e1s que simples palabras, claro. He o\u00eddo rumores inquietantes sobre el reciente envenenamiento de un senador importante, y me temo que el veneno de la victoria es m\u00e1s amargo de lo que cualquiera imagina. \u00bfEst\u00e1s dispuesto a desentra\u00f1ar una madeja tan peligrosa, o te conformar\u00e1s con una copa de vino y un poco de conversaci\u00f3n?"
+                }
+            },
+            "items": {
+                "anillo_envenenado": {
+                    "id": "anillo_envenenado",
+                    "world_id": "roma_republicana",
+                    "template_id": "QUEST_ITEM_MACGUFFIN",
+                    "name": "Anillo del Envenenador",
+                    "description": "Un anillo ceremonial, aparentemente de un senador, impregnado de un veneno de acci\u00f3n lenta y pr\u00e1cticamente indetectable.",
+                    "type": "quest",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "plot_critical",
+                        "cannot_drop"
+                    ]
+                },
+                "cartas_comprometedoras": {
+                    "id": "cartas_comprometedoras",
+                    "world_id": "roma_republicana",
+                    "template_id": "QUEST_ITEM_MACGUFFIN",
+                    "name": "Cartas Comprometedoras",
+                    "description": "Un conjunto de cartas selladas, aparentemente escritas por C\u00e9sar, Pompeyo y Craso, que revelan planes secretos, traiciones y posibles alianzas. Su contenido es explosivo y podr\u00eda provocar la ca\u00edda del Primer Triunvirato.",
+                    "type": "quest",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "plot_critical",
+                        "cannot_drop"
+                    ]
+                }
+            },
+            "generated_description": "La Curia Hostilia, antes un crisol de oratoria y poder, ahora exhala un aliento f\u00e9tido, una mezcla de incienso quemado y el olor acre del miedo. Las antorchas parpadean, proyectando danzas grotescas de sombras sobre las estatuas de m\u00e1rmol, sus ojos vac\u00edos testigos mudos de complots. El silencio tenso, roto solo por el goteo constante de agua en el patio, parece susurrar secretos, promesas de traici\u00f3n, y la certeza de que la muerte acecha tras cada columna corintia."
+        },
+        "node_1_0": {
+            "id": "node_1_0",
+            "world_id": "roma_republicana",
+            "name": "El Atrio de los Susurros",
+            "description": "Las gruesas columnas de m\u00e1rmol resuenan con los rumores que se filtran de las reuniones senatoriales, creando una cacofon\u00eda de medias verdades y mentiras completas. A la sombra de estatuas ancestrales, los esp\u00edas y los informantes intercambian secretos en un baile peligroso de miradas y gestos.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "sur": "node_1_1"
+            },
+            "initial_npcs": [
+                "liberto_spy_001"
+            ],
+            "initial_items": [
+                "tablilla_cifrada",
+                "carta_cifrada"
+            ],
+            "traps": {
+                "trap_el_susurro_de_la_serpiente_de_bronce_176": {
+                    "name": "El Susurro de la Serpiente de Bronce",
+                    "description": "En un estrecho pasillo oscuro, donde los muros gotean humedad y el olor a cloaca es penetrante, una estatua de bronce de una serpiente, a medio camino entre la escultura y la trampa mec\u00e1nica, est\u00e1 fijada a la pared. Su boca, grotescamente abierta, oculta un mecanismo complejo. Al pisar una placa de presi\u00f3n disimulada bajo una capa de polvo, la serpiente 'susurra' un gas venenoso, una mezcla de opio y veneno de serpiente, que paraliza y debilita al incauto. La trampa est\u00e1 ingeniosamente camuflada, usando la oscuridad y el sonido sutil de la ca\u00edda de agua como distracci\u00f3n.",
+                    "damage": 35,
+                    "disarm_difficulty": "very_challenging",
+                    "id": "trap_el_susurro_de_la_serpiente_de_bronce_176",
+                    "triggered": false
+                }
+            },
+            "npcs": {
+                "liberto_spy_001": {
+                    "id": "liberto_spy_001",
+                    "world_id": "roma_republicana",
+                    "name": "Arist\u00f3n de Samos",
+                    "description": "Un hombre de mediana edad, esbelto y con la mirada siempre alerta. Viste ropas sencillas de liberto, pero la calidad de la tela delata cierto refinamiento. Su cabello, una vez negro azabache, est\u00e1 salpicado de canas. Lleva consigo un peque\u00f1o estuche de cuero donde guarda plumas, tinta y un sello personal. Su voz, suave pero firme, conserva un ligero acento griego que le da un aire de misterio. Sus movimientos son silenciosos y calculados, como los de un gato.",
+                    "hp": 50,
+                    "attack": 5,
+                    "status": "friendly",
+                    "xp": 10,
+                    "dialogue_prompt": "\u00bfBuscas al senador Valerio? Un hombre de gran perspicacia. Pero para llegar a \u00e9l, debes probar tu val\u00eda. Hay rumores, susurros en las sombras... sobre cartas. Cartas perdidas, que podr\u00edan desestabilizar a C\u00e9sar. Si est\u00e1s dispuesto a ensuciarte las manos y tienes la astucia necesaria, puedo ayudarte... pero el conocimiento siempre tiene un precio, \u00bfentiendes?"
+                }
+            },
+            "items": {
+                "tablilla_cifrada": {
+                    "id": "tablilla_cifrada",
+                    "world_id": "roma_republicana",
+                    "template_id": "QUEST_ITEM_MACGUFFIN",
+                    "name": "Tablilla Cifrada de Cera",
+                    "description": "Una peque\u00f1a tablilla de cera con un mensaje escrito en s\u00edmbolos extra\u00f1os y un fragmento del mensaje secreto de Craso. El texto est\u00e1 incompleto, pero su decifrado revela informaci\u00f3n crucial.",
+                    "type": "quest",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "plot_critical",
+                        "cannot_drop"
+                    ]
+                },
+                "carta_cifrada": {
+                    "id": "carta_cifrada",
+                    "world_id": "roma_republicana",
+                    "template_id": "QUEST_ITEM_MACGUFFIN",
+                    "name": "Carta Cifrada de C\u00e9sar",
+                    "description": "Una carta encriptada, encontrada durante la investigaci\u00f3n, que detalla las instrucciones de C\u00e9sar para la campa\u00f1a de difamaci\u00f3n y el financiamiento de la misma.",
+                    "type": "quest",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "plot_critical",
+                        "cannot_drop"
+                    ]
+                }
+            }
+        },
+        "node_2_0": {
+            "id": "node_2_0",
+            "world_id": "roma_republicana",
+            "name": "El Tabularium de la Concordia",
+            "description": "El Tabularium de la Concordia, una sala de archivo donde se guardan los edictos y contratos m\u00e1s cruciales de la Rep\u00fablica, resuena con el susurro constante de pergaminos y el olor a cera de sellar. Aqu\u00ed, entre gruesas paredes y la mirada fr\u00eda de los dioses, la verdad y la mentira se entrelazan, esperando ser descubiertas o suprimidas por manos h\u00e1biles.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "sur": "node_2_1"
+            },
+            "initial_npcs": [
+                "CRASSO_CONTACTO_001"
+            ],
+            "initial_items": [
+                "anillo_escriba"
+            ],
+            "traps": {
+                "trap_la_trampa_de_la_serpiente_de_bronce_979": {
+                    "name": "La Trampa de la Serpiente de Bronce",
+                    "description": "En el lujoso estudio de un senador, camuflada bajo un elegante mueble de escritura de madera de \u00e9bano, se encuentra una intrincada trampa. Una serpiente de bronce, finamente esculpida y pulida, adorna el frente. Al abrir un caj\u00f3n espec\u00edfico o al mover un objeto clave sobre la mesa (como un pergamino con informaci\u00f3n comprometedora), un mecanismo silencioso activa la trampa. La serpiente, impulsada por resortes ocultos y un complejo sistema de poleas, se proyecta hacia adelante, intentando morder a la persona que la ha activado. La mordida, dise\u00f1ada para infligir la m\u00e1xima cantidad de da\u00f1o, no solo causa da\u00f1o f\u00edsico, sino que tambi\u00e9n inyecta un veneno paralizante de origen desconocido, presumiblemente importado de Oriente. La trampa est\u00e1 dise\u00f1ada para parecerse a una obra de arte, un toque final de elegancia peligrosa, propio de un senador con secretos oscuros.",
+                    "damage": 35,
+                    "disarm_difficulty": "very_challenging",
+                    "id": "trap_la_trampa_de_la_serpiente_de_bronce_979",
+                    "triggered": false
+                }
+            },
+            "npcs": {
+                "CRASSO_CONTACTO_001": {
+                    "id": "CRASSO_CONTACTO_001",
+                    "world_id": "roma_republicana",
+                    "name": "Nervous Scholar",
+                    "description": "A middle-aged man with a receding hairline and shrewd eyes. He wears fine but discreet robes, and his hands, though well-kept, betray a life devoted to the pen and parchment. He always seems nervous, constantly looking over his shoulder.",
+                    "hp": 20,
+                    "attack": 3,
+                    "status": "neutral",
+                    "xp": 25,
+                    "dialogue_prompt": "Susurro, con la voz baja y llena de cautela: 'Craso no debe saber de esto. Necesito que alguien, con la discreci\u00f3n de un fantasma, recupere un mensaje crucial. Se encuentra en el Templo de Isis, custodiado por fan\u00e1ticos. El secreto es vital para mi supervivencia\u2026 y, quiz\u00e1s, para Roma. \u00bfEst\u00e1s dispuesto a ayudarme?'"
+                }
+            },
+            "items": {
+                "anillo_escriba": {
+                    "id": "anillo_escriba",
+                    "world_id": "roma_republicana",
+                    "template_id": "QUEST_ITEM_MACGUFFIN",
+                    "name": "Anillo del Escriba",
+                    "description": "Un anillo de oro con un escarabajo grabado, perteneciente al escriba personal del or\u00e1culo. Es una pista clave para encontrar a aquellos que manipulan la profec\u00eda.",
+                    "type": "quest",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "plot_critical",
+                        "cannot_drop"
+                    ]
+                }
+            }
+        },
+        "node_0_1": {
+            "id": "node_0_1",
+            "world_id": "roma_republicana",
+            "name": "El Despacho de los Augures",
+            "description": "En el coraz\u00f3n del templo de J\u00fapiter, el despacho est\u00e1 ba\u00f1ado por una luz tenue, filtrada a trav\u00e9s de vidrieras polvorientas que representan presagios funestos. Aqu\u00ed, los augures leen los vuelos de los p\u00e1jaros y las entra\u00f1as de animales, pronosticando el futuro de Roma y, a menudo, el destino de sus enemigos.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "norte": "node_0_0",
+                "sur": "node_0_2",
+                "este": "node_1_1"
+            },
+            "initial_npcs": [
+                "optimate_senator_gaius"
+            ],
+            "initial_items": [
+                "anillo_senatorial_envenenado"
+            ],
+            "traps": {},
+            "npcs": {
+                "optimate_senator_gaius": {
+                    "id": "optimate_senator_gaius",
+                    "world_id": "roma_republicana",
+                    "name": "Sospechoso Romano",
+                    "description": "Un hombre delgado y nervioso, con ojos hundidos y una barba descuidada. Viste togas de lino costoso, pero su porte es desali\u00f1ado, como si el peso de Roma cayera sobre sus hombros. Constantemente se frota las manos y mira a su alrededor con sospecha. Tiene una cicatriz fina y p\u00e1lida que le cruza la mejilla, un recuerdo de un encuentro desafortunado durante una de sus misiones encubiertas.",
+                    "hp": 30,
+                    "attack": 12,
+                    "status": "friendly",
+                    "xp": 60,
+                    "dialogue_prompt": "\u00bfAh, es usted? Espero que traiga noticias valiosas, no rumores. Roma se tambalea, y C\u00e9sar, con su 'Lex Gabinia', amenaza con hundirnos a todos. Necesito *pruebas*, no conjeturas. Pruebas que demuestren su verdadera ambici\u00f3n, su total desprecio por la Rep\u00fablica. La 'Lex Gabinia', con su pretexto de combatir la pirater\u00eda, es una herramienta que le otorga un poder militar sin precedentes. Busque entre las sombras, investigue en los bajos fondos. Encuentre algo que pueda usarse contra \u00e9l. Y h\u00e1galo r\u00e1pido, por los dioses, *r\u00e1pido*."
+                }
+            },
+            "items": {},
+            "generated_description": "El aire, denso con el incienso y el rancio olor a v\u00edsceras, se aferra a la garganta al entrar al Despacho de los Augures. La luz mortecina, te\u00f1ida de tonos sepulcrales por las vidrieras sombr\u00edas, dibuja figuras grotescas sobre los muros, cada sombra un augurio de desgracia. Un silencio expectante, roto \u00fanicamente por el susurro del viento filtr\u00e1ndose por las grietas y el suave crepitar de las brasas, parece anticipar el destino que aguarda en este santuario de la intriga."
+        },
+        "node_1_1": {
+            "id": "node_1_1",
+            "world_id": "roma_republicana",
+            "name": "El Templo de la Discordia Oculta",
+            "description": "En las profundidades del barrio de Subura, lejos de la mirada del Senado, se encuentra este templo consagrado a las deidades que alimentan la divisi\u00f3n. Dentro, a la luz tenue de las antorchas, se fraguan complots y alianzas secretas, mientras los susurros de la traici\u00f3n resuenan en sus muros.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "norte": "node_1_0",
+                "oeste": "node_0_1",
+                "este": "node_2_1"
+            },
+            "initial_npcs": [
+                "Livia_Claudia_001"
+            ],
+            "initial_items": [
+                "collar_vestal",
+                "codice_veneno"
+            ],
+            "traps": {
+                "trap_la_trampa_de_la_serpiente_de_bronce_796": {
+                    "name": "La Trampa de la Serpiente de Bronce",
+                    "description": "En una alcoba oscura y oculta, bajo una alfombra de seda desgastada, se encuentra una serpiente de bronce finamente elaborada. A primera vista, parece una simple pieza decorativa. Sin embargo, al pisar una placa de presi\u00f3n disimulada, la serpiente se desliza hacia arriba con un silbido sibilante y abre su boca, revelando colmillos huecos rellenos con un veneno de acci\u00f3n lenta. La trampa est\u00e1 meticulosamente dise\u00f1ada para que la v\u00edctima crea que ha sido mordida por una serpiente real, amplificando el p\u00e1nico y permitiendo al verdadero agresor escapar sin sospechas. El veneno causa un dolor punzante inicial seguido de debilidad muscular y finalmente, par\u00e1lisis temporal.",
+                    "damage": 35,
+                    "disarm_difficulty": "very_challenging",
+                    "id": "trap_la_trampa_de_la_serpiente_de_bronce_796",
+                    "triggered": false
+                }
+            },
+            "npcs": {
+                "Livia_Claudia_001": {
+                    "id": "Livia_Claudia_001",
+                    "world_id": "roma_republicana",
+                    "name": "Livia Claudia",
+                    "description": "Una joven patricia de unos veinte a\u00f1os, de finos rasgos y ojos inteligentes que denotan una preocupaci\u00f3n constante. Viste con elegancia, pero sin ostentaci\u00f3n excesiva, prefiriendo la sobriedad a la pompa. Se mueve con gracia y determinaci\u00f3n, y su mirada siempre parece estar observando algo m\u00e1s all\u00e1 de lo que se ve a simple vista. Su cabello, recogido en un elaborado peinado, revela su posici\u00f3n social, pero tambi\u00e9n su dedicaci\u00f3n a la tradici\u00f3n.",
+                    "hp": 50,
+                    "attack": 5,
+                    "status": "friendly",
+                    "xp": 10,
+                    "dialogue_prompt": "Espero que seas de fiar. Roma se tambalea al borde del abismo, y los augurios... bueno, los augurios son terribles. Necesito ayuda, antes de que sea demasiado tarde. La Sibila, en Cumas, ha hablado, y sus profec\u00edas siempre se cumplen. \u00bfEst\u00e1s dispuesto a escuchar y a actuar? No esperes riquezas, sino la satisfacci\u00f3n de salvar a Roma... si es que eso a\u00fan es posible."
+                }
+            },
+            "items": {
+                "collar_vestal": {
+                    "id": "collar_vestal",
+                    "world_id": "roma_republicana",
+                    "template_id": "QUEST_ITEM_MACGUFFIN",
+                    "name": "Collar de la Vestal",
+                    "description": "Un collar sagrado con un medall\u00f3n oculto que contiene un mensaje vital. Es el \u00fanico objeto que se ha confirmado que la Vestal ten\u00eda consigo antes de su desaparici\u00f3n.",
+                    "type": "quest",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "plot_critical",
+                        "cannot_drop"
+                    ]
+                },
+                "codice_veneno": {
+                    "id": "codice_veneno",
+                    "world_id": "roma_republicana",
+                    "template_id": "QUEST_ITEM_MACGUFFIN",
+                    "name": "C\u00f3dice del Veneno",
+                    "description": "Un antiguo manuscrito griego que detalla la elaboraci\u00f3n de venenos mortales, con ilustraciones que implican a figuras pol\u00edticas romanas.",
+                    "type": "quest",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "plot_critical",
+                        "cannot_drop"
+                    ]
+                }
+            }
+        },
+        "node_2_1": {
+            "id": "node_2_1",
+            "world_id": "roma_republicana",
+            "name": "La Cripta de las Vestales Silentes",
+            "description": "En el coraz\u00f3n del Foro, bajo las estatuas de m\u00e1rmol, se encuentra una cripta oscura y h\u00fameda, donde las vestales ca\u00eddas en desgracia son silenciadas para siempre. El aire est\u00e1 impregnado del olor a incienso rancio y secretos enterrados, un recordatorio constante de la fragilidad del poder y la implacabilidad de Roma.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "norte": "node_2_0",
+                "oeste": "node_1_1",
+                "sur": "node_2_2"
+            },
+            "initial_npcs": [
+                "CICERO_INVESTIGATOR_001"
+            ],
+            "initial_items": [
+                "medallon_cifrado",
+                "lorica_segmentata_de_las_sombras_282"
+            ],
+            "traps": {},
+            "npcs": {
+                "CICERO_INVESTIGATOR_001": {
+                    "id": "CICERO_INVESTIGATOR_001",
+                    "world_id": "roma_republicana",
+                    "name": "Veterano Romano",
+                    "description": "Un hombre curtido por el sol y la guerra, con cicatrices que cuentan m\u00e1s historias que cualquier libro. Su mirada gris, siempre alerta, refleja a\u00f1os de servicio en las legiones romanas y una profunda desconfianza hacia la intriga pol\u00edtica. Viste ropas sencillas, pero su postura erguida y la firmeza en sus movimientos delatan a un hombre acostumbrado al peligro. Siempre lleva una daga oculta y parece observar cada detalle del entorno.",
+                    "hp": 65,
+                    "attack": 18,
+                    "status": "friendly",
+                    "xp": 100,
+                    "dialogue_prompt": "\u00bfBuscas problemas? Porque te aseguro que Roma est\u00e1 llena de ellos. Soy Marco Valerio Corvo, y trabajo para Cicer\u00f3n. Si tienes algo que te corroe por dentro, algo sucio que necesitas sacar a la luz, quiz\u00e1s pueda ayudarte. Pero no te equivoques, la verdad en este lugar tiene un precio, y a veces es la propia vida. \u00bfQu\u00e9 te trae por aqu\u00ed, ciudadano?"
+                }
+            },
+            "items": {
+                "medallon_cifrado": {
+                    "id": "medallon_cifrado",
+                    "world_id": "roma_republicana",
+                    "template_id": "QUEST_ITEM_MACGUFFIN",
+                    "name": "Medall\u00f3n de Mensajero",
+                    "description": "Un peque\u00f1o medall\u00f3n de oro, grabado con s\u00edmbolos y n\u00fameros romanos. Contiene un mensaje cifrado, la clave para la verdad detr\u00e1s de la conspiraci\u00f3n.",
+                    "type": "quest",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "plot_critical",
+                        "cannot_drop"
+                    ]
+                },
+                "lorica_segmentata_de_las_sombras_282": {
+                    "id": "lorica_segmentata_de_las_sombras_282",
+                    "world_id": "roma_republicana",
+                    "template_id": "GENERIC",
+                    "name": "Lorica Segmentata de las Sombras",
+                    "description": "Una armadura de segmentos de acero pulido, oscurecida por un tratamiento especial, casi invisible en la penumbra. Forjada en secreto por artesanos celtas, esta lorica no solo protege contra espadas y proyectiles, sino que tambi\u00e9n amortigua el sonido, permitiendo al portador moverse con una sigilosa gracia. Sus bandas de cuero est\u00e1n impregnadas de hierbas que enmascaran el olor del sudor y la sangre. Se dice que perteneci\u00f3 a un asesino consular, desaparecido misteriosamente hace a\u00f1os, y que fue utilizada para 'reducir' opositores pol\u00edticos que nadie extra\u00f1ar\u00eda.",
+                    "type": "armor",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "wearable",
+                        "torso",
+                        "heavy_armor",
+                        "requires_strength"
+                    ]
+                }
+            }
+        },
+        "node_0_2": {
+            "id": "node_0_2",
+            "world_id": "roma_republicana",
+            "name": "El Cen\u00e1culo de las M\u00e1scaras",
+            "description": "En esta sala, a menudo iluminada solo por las tenues luces de las antorchas, los conspiradores m\u00e1s astutos y los esp\u00edas m\u00e1s silenciosos intercambian secretos. El aire denso huele a incienso barato, vino a\u00f1ejo y la promesa de traici\u00f3n consumada.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "norte": "node_0_1"
+            },
+            "initial_npcs": [
+                "spymaster_spice"
+            ],
+            "initial_items": [
+                "blsamo_de_la_sombra_de_esculapio_413"
+            ],
+            "traps": {
+                "trap_la_trampa_de_la_serpiente_de_bronce_563": {
+                    "name": "La Trampa de la Serpiente de Bronce",
+                    "description": "En una c\u00e1mara secreta, camuflada tras una estatua de bronce de una serpiente, se encuentra esta trampa mortal. Al activar un mecanismo de presi\u00f3n (posiblemente por una placa invisible al pisarla), la estatua se desliza hacia un lado, revelando un pozo oculto. Dentro del pozo, una serie de cuchillas retr\u00e1ctiles, impregnadas con un veneno de efecto lento, se activan por un complejo sistema de poleas y contrapesos. Las cuchillas, cubiertas con una p\u00e1tina verde, son casi invisibles en la oscuridad. El veneno provoca una par\u00e1lisis gradual seguida de una muerte dolorosa.",
+                    "damage": 35,
+                    "disarm_difficulty": "very_challenging",
+                    "id": "trap_la_trampa_de_la_serpiente_de_bronce_563",
+                    "triggered": false
+                }
+            },
+            "npcs": {
+                "spymaster_spice": {
+                    "id": "spymaster_spice",
+                    "world_id": "roma_republicana",
+                    "name": "El Perfumista",
+                    "description": "A middle-aged man with a thick, black beard streaked with grey. His dark, piercing eyes observe with cunning from beneath bushy eyebrows. He wears luxurious, though discreet, clothing that betrays his wealth and Eastern origin. He always carries a small vial of spikenard, whose perfume fills the air, even in the dirtiest alleys.",
+                    "hp": 75,
+                    "attack": 50,
+                    "status": "neutral",
+                    "xp": 200,
+                    "dialogue_prompt": "\u00bfAh, interesado en los asuntos de las Vestales? Un tema delicado, muy delicado. He escuchado susurros, rumores... que hablan de un silencio inquietante en el Atrio de Vesta. Un silencio que podr\u00eda costar la Rep\u00fablica. \u00bfQu\u00e9 sabes t\u00fa de ello, amigo m\u00edo? Dime, \u00bfpor qu\u00e9 te interesas en este asunto? Quiz\u00e1s, con la informaci\u00f3n correcta, yo pueda... *ayudarte*. A un precio, claro. El conocimiento es la especia m\u00e1s valiosa, y a m\u00ed, me gustan las buenas especias."
+                }
+            },
+            "items": {
+                "blsamo_de_la_sombra_de_esculapio_413": {
+                    "id": "blsamo_de_la_sombra_de_esculapio_413",
+                    "world_id": "roma_republicana",
+                    "template_id": "GENERIC",
+                    "name": "B\u00e1lsamo de la Sombra de Esculapio",
+                    "description": "Una peque\u00f1a ampolla de cer\u00e1mica negra, sellada con cera carmes\u00ed. El b\u00e1lsamo, un l\u00edquido oscuro y fragante, se extrae de hierbas raras cultivadas en los jardines secretos de los templos de Esculapio. Cura heridas superficiales con una rapidez notable, dejando tras de s\u00ed una cicatriz m\u00ednima. Rumores susurran que tambi\u00e9n alivia el dolor del alma, aunque su uso excesivo puede nublar la mente y volverte susceptible a los susurros de la oscuridad, haci\u00e9ndote un pe\u00f3n f\u00e1cil para los conspiradores.",
+                    "type": "healing",
+                    "damage_base": null,
+                    "healing_amount": 25,
+                    "properties": [
+                        "consumable",
+                        "instant"
+                    ]
+                }
+            }
+        },
+        "node_1_2": {
+            "id": "node_1_2",
+            "world_id": "roma_republicana",
+            "name": "La C\u00e1rcel Mamertina, El Pozo de la Traici\u00f3n",
+            "description": "Humedad y oscuridad perpetua envuelven este antiguo calabozo, donde las paredes rezuman secretos y los gritos de los ca\u00eddos a\u00fan resuenan. El hedor a podredumbre y la promesa de una muerte ignominiosa definen este lugar donde se extinguen las esperanzas de los enemigos de Roma.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "este": "node_2_2"
+            },
+            "initial_npcs": [
+                "ex-legionario-intermediario-001"
+            ],
+            "initial_items": [
+                "la_sombra_de_calope_579"
+            ],
+            "traps": {},
+            "npcs": {
+                "ex-legionario-intermediario-001": {
+                    "id": "ex-legionario-intermediario-001",
+                    "world_id": "roma_republicana",
+                    "name": "Veterano de Farsalia",
+                    "description": "Un hombre de mediana edad, con una cicatriz que le cruza el rostro desde la sien hasta la mejilla, recordatorio de la batalla de Farsalia. Su ojo izquierdo es de un azul p\u00e1lido y turbio. Viste ropas modestas, pero bien cuidadas, que ocultan un cuerpo a\u00fan marcado por la dura vida del legionario. Siempre lleva consigo una daga oculta y un pergamino enrollado, probablemente con informaci\u00f3n importante. Su cojera, producto de una flecha clavada en la rodilla, le obliga a usar un bast\u00f3n, aunque no le impide moverse con astucia.",
+                    "hp": 60,
+                    "attack": 15,
+                    "status": "neutral",
+                    "xp": 75,
+                    "dialogue_prompt": "Observa a su interlocutor con mirada calculadora, ajustando el pergamino en su mano. Su voz es grave, con un ligero acento militar que delata sus or\u00edgenes. 'No busques la gloria, muchacho/a. La gloria es para los necios. Aqu\u00ed, en las sombras, lo que importa es la supervivencia. \u00bfQu\u00e9 quieres? \u00bfInformaci\u00f3n? La tengo. \u00bfAyuda? Depende de lo que est\u00e9s dispuesto a ofrecer. He o\u00eddo que andas buscando 'El C\u00f3dice del Veneno'. Un documento peligroso, capaz de desatar una tormenta... \u00bfInteresado? Quiz\u00e1s pueda ayudarte, por un precio...'"
+                }
+            },
+            "items": {
+                "la_sombra_de_calope_579": {
+                    "id": "la_sombra_de_calope_579",
+                    "world_id": "roma_republicana",
+                    "template_id": "GENERIC",
+                    "name": "La Sombra de Cal\u00edope",
+                    "description": "Un sello de \u00f3palo negro, exquisitamente tallado con la figura de una lira rota, que perteneci\u00f3 a un bardo griego ejecutado por espionaje. Rumores susurran que el sello, al ser usado con cera espec\u00edfica, revela mensajes ocultos, cifrados en versos de poetas desaparecidos. Su posesi\u00f3n atrae tanto el inter\u00e9s de los esp\u00edas de C\u00e9sar, que buscan desentra\u00f1ar sus secretos, como la ira de los Optimates, que temen la influencia que concede al portador.",
+                    "type": "key",
+                    "damage_base": null,
+                    "healing_amount": null,
+                    "properties": [
+                        "unlocks_chest",
+                        "plot_related"
+                    ]
+                }
+            }
+        },
+        "node_2_2": {
+            "id": "node_2_2",
+            "world_id": "roma_republicana",
+            "name": "El Triclinio de los Escribas",
+            "description": "En el coraz\u00f3n del Foro, el Triclinio de los Escribas bull\u00eda con el incesante murmullo de plumas rasgando pergamino. Las sombras proyectadas por las antorchas danzaban sobre los rostros concentrados de los escribas, un mar de secretos y maniobras a punto de ser revelados.",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "norte": "node_2_1",
+                "oeste": "node_1_2"
+            },
+            "initial_npcs": [
+                "tabernero_republicano_001"
+            ],
+            "initial_items": [
+                "la_sibilina_757",
+                "sica_de_la_serpiente_714"
+            ],
+            "traps": {
+                "trap_la_trampa_de_la_serpiente_de_bronce_602": {
+                    "name": "La Trampa de la Serpiente de Bronce",
+                    "description": "En un sombr\u00edo cub\u00edculo de la villa de un senador corrupto, una estatua de bronce de una serpiente enroscada, meticulosamente detallada, oculta una trampa mortal. La serpiente est\u00e1 montada sobre un pedestal que, al ser presionado con un peso incorrecto o en un patr\u00f3n espec\u00edfico, libera una lluvia de dardos envenenados. Los dardos, finamente tallados y casi invisibles, est\u00e1n impregnados de veneno de \u00e1spid, debilitante y mortal. El mecanismo est\u00e1 ingeniosamente dise\u00f1ado para pasar desapercibido a simple vista, camuflado entre la decoraci\u00f3n opulenta.",
+                    "damage": 35,
+                    "disarm_difficulty": "very_challenging",
+                    "id": "trap_la_trampa_de_la_serpiente_de_bronce_602",
+                    "triggered": false
+                }
+            },
+            "npcs": {
+                "tabernero_republicano_001": {
+                    "id": "tabernero_republicano_001",
+                    "world_id": "roma_republicana",
+                    "name": "Elio",
+                    "description": "Un ex-legionario convertido en tabernero, conocido por su discreci\u00f3n.",
+                    "hp": 75,
+                    "attack": 10,
+                    "status": "friendly",
+                    "xp": 150,
+                    "dialogue_prompt": "\u00bfQu\u00e9 te trae por aqu\u00ed, ciudadano? \u00bfSed de vino o de\u2026 noticias? A veces, en esta ciudad, la diferencia es sutil. Escucha bien, porque aqu\u00ed se murmuran cosas que los o\u00eddos del Senado no deben escuchar. La Rep\u00fablica est\u00e1 en peligro, lo s\u00e9, lo siento en los huesos. Esos tres\u2026 [gesticula con desprecio]\u2026 se disputan el poder y nosotros, el pueblo, somos el campo de batalla. Tengo mis ojos y o\u00eddos en muchos lugares, y s\u00e9 que algo gordo se avecina. Quiz\u00e1s, solo quiz\u00e1s, t\u00fa puedas ayudar a que Roma no caiga en manos de estos ambiciosos."
+                }
+            },
+            "items": {
+                "la_sibilina_757": {
+                    "id": "la_sibilina_757",
+                    "world_id": "roma_republicana",
+                    "template_id": "GENERIC",
+                    "name": "La Sibilina",
+                    "description": "Una daga de origen desconocido, con una hoja de acero negro pulido a la perfecci\u00f3n y una empu\u00f1adura adornada con obsidiana. Se dice que fue forjada en el mism\u00edsimo infierno, y que su filo est\u00e1 imbuido de la capacidad de susurrar promesas de poder a su portador. Su verdadero valor reside en su veneno, un compuesto letal de hierbas raras y minerales triturados, aplicado con extrema precisi\u00f3n a la hoja. Un simple corte es suficiente para causar una par\u00e1lisis progresiva, seguida de una muerte lenta y silenciosa, indetectable a simple vista. Rumores susurran que fue utilizada por asesinos a sueldo para silenciar a aquellos que se interpon\u00edan en el camino de la ambici\u00f3n, dejando a sus v\u00edctimas en la sombra, olvidadas por todos.",
+                    "type": "weapon",
+                    "damage_base": 6,
+                    "healing_amount": null,
+                    "properties": [
+                        "ranged",
+                        "light",
+                        "tier1"
+                    ]
+                },
+                "sica_de_la_serpiente_714": {
+                    "id": "sica_de_la_serpiente_714",
+                    "world_id": "roma_republicana",
+                    "template_id": "GENERIC",
+                    "name": "Sica de la Serpiente",
+                    "description": "Una peque\u00f1a sica, una daga curva, fabricada con acero de Damasco y engarzada con una empu\u00f1adura de \u00e9bano pulido. Grabada en la hoja se encuentra una intrincada representaci\u00f3n de una serpiente enrollada, su mirada fija y venenosa. Su hoja, afilada como una navaja, est\u00e1 sutilmente envenenada con un compuesto de hierbas y venenos raros provenientes del Oriente, lo que garantiza que incluso un ligero roce pueda ser fatal. Se dice que perteneci\u00f3 a una famosa esclava griega, agente doble y envenenadora en el c\u00edrculo \u00edntimo de Pompeyo. Su nombre es sin\u00f3nimo de muerte silenciosa y traici\u00f3n.",
+                    "type": "weapon",
+                    "damage_base": 6,
+                    "healing_amount": null,
+                    "properties": [
+                        "ranged",
+                        "light",
+                        "tier1"
+                    ]
+                }
+            }
+        }
+    },
+    "item_templates": {
+        "lorica_segmentata_de_las_sombras_282": {
+            "id": "lorica_segmentata_de_las_sombras_282",
+            "world_id": "roma_republicana",
+            "template_id": "GENERIC",
+            "name": "Lorica Segmentata de las Sombras",
+            "description": "Una armadura de segmentos de acero pulido, oscurecida por un tratamiento especial, casi invisible en la penumbra. Forjada en secreto por artesanos celtas, esta lorica no solo protege contra espadas y proyectiles, sino que tambi\u00e9n amortigua el sonido, permitiendo al portador moverse con una sigilosa gracia. Sus bandas de cuero est\u00e1n impregnadas de hierbas que enmascaran el olor del sudor y la sangre. Se dice que perteneci\u00f3 a un asesino consular, desaparecido misteriosamente hace a\u00f1os, y que fue utilizada para 'reducir' opositores pol\u00edticos que nadie extra\u00f1ar\u00eda.",
+            "type": "armor",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "wearable",
+                "torso",
+                "heavy_armor",
+                "requires_strength"
+            ]
+        },
+        "blsamo_de_la_sombra_de_esculapio_413": {
+            "id": "blsamo_de_la_sombra_de_esculapio_413",
+            "world_id": "roma_republicana",
+            "template_id": "GENERIC",
+            "name": "B\u00e1lsamo de la Sombra de Esculapio",
+            "description": "Una peque\u00f1a ampolla de cer\u00e1mica negra, sellada con cera carmes\u00ed. El b\u00e1lsamo, un l\u00edquido oscuro y fragante, se extrae de hierbas raras cultivadas en los jardines secretos de los templos de Esculapio. Cura heridas superficiales con una rapidez notable, dejando tras de s\u00ed una cicatriz m\u00ednima. Rumores susurran que tambi\u00e9n alivia el dolor del alma, aunque su uso excesivo puede nublar la mente y volverte susceptible a los susurros de la oscuridad, haci\u00e9ndote un pe\u00f3n f\u00e1cil para los conspiradores.",
+            "type": "healing",
+            "damage_base": null,
+            "healing_amount": 25,
+            "properties": [
+                "consumable",
+                "instant"
+            ]
+        },
+        "la_sombra_de_calope_579": {
+            "id": "la_sombra_de_calope_579",
+            "world_id": "roma_republicana",
+            "template_id": "GENERIC",
+            "name": "La Sombra de Cal\u00edope",
+            "description": "Un sello de \u00f3palo negro, exquisitamente tallado con la figura de una lira rota, que perteneci\u00f3 a un bardo griego ejecutado por espionaje. Rumores susurran que el sello, al ser usado con cera espec\u00edfica, revela mensajes ocultos, cifrados en versos de poetas desaparecidos. Su posesi\u00f3n atrae tanto el inter\u00e9s de los esp\u00edas de C\u00e9sar, que buscan desentra\u00f1ar sus secretos, como la ira de los Optimates, que temen la influencia que concede al portador.",
+            "type": "key",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "unlocks_chest",
+                "plot_related"
+            ]
+        },
+        "la_sibilina_757": {
+            "id": "la_sibilina_757",
+            "world_id": "roma_republicana",
+            "template_id": "GENERIC",
+            "name": "La Sibilina",
+            "description": "Una daga de origen desconocido, con una hoja de acero negro pulido a la perfecci\u00f3n y una empu\u00f1adura adornada con obsidiana. Se dice que fue forjada en el mism\u00edsimo infierno, y que su filo est\u00e1 imbuido de la capacidad de susurrar promesas de poder a su portador. Su verdadero valor reside en su veneno, un compuesto letal de hierbas raras y minerales triturados, aplicado con extrema precisi\u00f3n a la hoja. Un simple corte es suficiente para causar una par\u00e1lisis progresiva, seguida de una muerte lenta y silenciosa, indetectable a simple vista. Rumores susurran que fue utilizada por asesinos a sueldo para silenciar a aquellos que se interpon\u00edan en el camino de la ambici\u00f3n, dejando a sus v\u00edctimas en la sombra, olvidadas por todos.",
+            "type": "weapon",
+            "damage_base": 6,
+            "healing_amount": null,
+            "properties": [
+                "ranged",
+                "light",
+                "tier1"
+            ]
+        },
+        "sica_de_la_serpiente_714": {
+            "id": "sica_de_la_serpiente_714",
+            "world_id": "roma_republicana",
+            "template_id": "GENERIC",
+            "name": "Sica de la Serpiente",
+            "description": "Una peque\u00f1a sica, una daga curva, fabricada con acero de Damasco y engarzada con una empu\u00f1adura de \u00e9bano pulido. Grabada en la hoja se encuentra una intrincada representaci\u00f3n de una serpiente enrollada, su mirada fija y venenosa. Su hoja, afilada como una navaja, est\u00e1 sutilmente envenenada con un compuesto de hierbas y venenos raros provenientes del Oriente, lo que garantiza que incluso un ligero roce pueda ser fatal. Se dice que perteneci\u00f3 a una famosa esclava griega, agente doble y envenenadora en el c\u00edrculo \u00edntimo de Pompeyo. Su nombre es sin\u00f3nimo de muerte silenciosa y traici\u00f3n.",
+            "type": "weapon",
+            "damage_base": 6,
+            "healing_amount": null,
+            "properties": [
+                "ranged",
+                "light",
+                "tier1"
+            ]
+        },
+        "el_blsamo_de_la_fortuna_(unguentum_fortunae)_578": {
+            "id": "el_blsamo_de_la_fortuna_(unguentum_fortunae)_578",
+            "world_id": "roma_republicana",
+            "template_id": "GENERIC",
+            "name": "El B\u00e1lsamo de la Fortuna (Unguentum Fortunae)",
+            "description": "Un ung\u00fcento verde esmeralda, guardado en un peque\u00f1o frasco de cer\u00e1mica decorado con la imagen de la diosa Fortuna. Se dice que este b\u00e1lsamo, hecho con hierbas raras de Oriente y aceites sagrados, no solo cura heridas superficiales, sino que tambi\u00e9n alivia el 'dolor del alma', trayendo un breve respiro a la fatiga y las preocupaciones. Rumores susurran que su uso prolongado atrae la buena suerte, pero otros advierten sobre la vanidad y la tentaci\u00f3n que esconde su poder: la verdadera Fortuna es tan inconstante como la pol\u00edtica romana.",
+            "type": "healing",
+            "damage_base": null,
+            "healing_amount": 60,
+            "properties": [
+                "consumable",
+                "instant"
+            ]
+        },
+        "dolabellum_de_sullae_947": {
+            "id": "dolabellum_de_sullae_947",
+            "world_id": "roma_republicana",
+            "template_id": "GENERIC",
+            "name": "Dolabellum de Sullae",
+            "description": "Una daga ceremonial, supuestamente perteneciente al difunto dictador Sila. La hoja, hecha de acero damasquinado, exhibe un intrincado grabado que representa un gorg\u00f3n y un laberinto. Se dice que Sila la usaba para firmar las proscripciones, y algunos supersticiosos creen que empu\u00f1arla atrae la desgracia y el caos a quien la porta. La daga ha estado en manos de varias familias patricias, siempre usada en secreto y en momentos cruciales de intriga y asesinato. Recientemente, ha reaparecido en el mercado negro, manchada de una p\u00e1tina oscura y con un ligero olor a almendras amargas, lo que sugiere el uso reciente de veneno.",
+            "type": "weapon",
+            "damage_base": 5,
+            "healing_amount": null,
+            "properties": [
+                "melee",
+                "light",
+                "tier1"
+            ]
+        },
+        "lorica_segmentata_de_la_furia_719": {
+            "id": "lorica_segmentata_de_la_furia_719",
+            "world_id": "roma_republicana",
+            "template_id": "GENERIC",
+            "name": "Lorica Segmentata de la Furia",
+            "description": "Esta lorica segmentata, aunque aparentemente ordinaria, irradia una sutil sensaci\u00f3n de temor. Fue forjada para un centuri\u00f3n de la legi\u00f3n cesariana, y se dice que absorbe parte de la rabia de su portador, amplific\u00e1ndola en batalla. Las placas de hierro est\u00e1n ligeramente oxidadas, como si hubiesen sido ba\u00f1adas en la sangre de innumerables enemigos, y a\u00fan conservan peque\u00f1os fragmentos de tela carmes\u00ed, vestigios de las insignias de la legi\u00f3n y el fervor de sus portadores originales. Lleva grabada, casi invisible al ojo inexperto, una frase en lat\u00edn: 'Gloria et Mors', Gloria y Muerte.",
+            "type": "armor",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "wearable",
+                "torso",
+                "heavy_armor",
+                "requires_strength"
+            ]
+        },
+        "lorica_musculata_de_las_sombras_(cuirass_of_shadows)_113": {
+            "id": "lorica_musculata_de_las_sombras_(cuirass_of_shadows)_113",
+            "world_id": "roma_republicana",
+            "template_id": "GENERIC",
+            "name": "Lorica Musculata de las Sombras (Cuirass of Shadows)",
+            "description": "Esta lorica musculata, meticulosamente forjada en bronce pulido y oscurecido, es un trabajo de artesan\u00eda excepcional. Su superficie, una vez brillante, ahora est\u00e1 deliberadamente opaca, reflejando la luz con un brillo tenue que la hace casi invisible en la penumbra. Grabada con elaboradas representaciones de m\u00fasculos y victorias militares, la armadura perteneci\u00f3 a un legado de generales y esp\u00edas que prefirieron la discreci\u00f3n al despliegue p\u00fablico. Se rumorea que cada placa de bronce ha sido empapada en un brebaje secreto que la vuelve casi silenciosa al contacto y reduce el reflejo de la luz. Su nombre, 'De las Sombras', proviene de su habilidad para ser una herramienta silenciosa y efectiva en el terreno de la intriga y el secreto.",
+            "type": "armor",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "wearable",
+                "torso",
+                "heavy_armor",
+                "requires_strength"
+            ]
+        },
+        "tessera_de_la_discordia_465": {
+            "id": "tessera_de_la_discordia_465",
+            "world_id": "roma_republicana",
+            "template_id": "GENERIC",
+            "name": "Tessera de la Discordia",
+            "description": "Una peque\u00f1a baldosa de mosaico, rota en dos, con fragmentos de una imagen borrosa que sugiere una escena de banquete. Se dice que se encontraron m\u00faltiples copias de estas teselas en lugares donde se celebraban conspiraciones y se firmaban pactos secretos. Aunque insignificante a simple vista, su mera presencia evoca la sombra de una traici\u00f3n consumada, un recuerdo tangible de las intrigas y las pugnas que desgarran Roma.",
+            "type": "junk",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "common",
+                "vendor_trash"
+            ]
+        },
+        "tabula_rasurada_de_un_senador_(tablilla_rasurada_de_un_senador)_739": {
+            "id": "tabula_rasurada_de_un_senador_(tablilla_rasurada_de_un_senador)_739",
+            "world_id": "roma_republicana",
+            "template_id": "GENERIC",
+            "name": "Tabula Rasurada de un Senador (Tablilla Rasurada de un Senador)",
+            "description": "Una tablilla de cera, aparentemente en blanco, con un borde finamente tallado. La cera est\u00e1 ligeramente da\u00f1ada en una esquina, revelando rastros imperceptibles de un borrador anterior, un nombre garabateado y un n\u00famero (quiz\u00e1s una referencia a una cantidad de cereales). Probablemente perteneci\u00f3 a un senador de dudosa integridad que reciclaba sus tablillas para borrar evidencia comprometedora o, simplemente, ahorrar en pergamino.",
+            "type": "junk",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "lore_snippet",
+                "interesting"
+            ]
+        },
+        "ungento_de_la_sombra_del_csar_141": {
+            "id": "ungento_de_la_sombra_del_csar_141",
+            "world_id": "roma_republicana",
+            "template_id": "GENERIC",
+            "name": "Ung\u00fcento de la Sombra del C\u00e9sar",
+            "description": "Este ung\u00fcento, elaborado con hierbas secretas cultivadas en los jardines de C\u00e9sar y mezclado con una sustancia misteriosa que recuerda al sudor de los legionarios, es un remedio poderoso. Se dice que su receta fue transmitida por un m\u00e9dico alejandrino que acompa\u00f1\u00f3 a C\u00e9sar en sus campa\u00f1as. Al aplicarlo, el ung\u00fcento sana heridas superficiales con sorprendente rapidez y calma el dolor, dejando tras de s\u00ed un sutil aroma a laurel y la inquietante sensaci\u00f3n de estar siendo observado... como si la sombra del propio C\u00e9sar, presente en cada gota, estuviera observando y juzgando tu val\u00eda.",
+            "type": "healing",
+            "damage_base": null,
+            "healing_amount": 25,
+            "properties": [
+                "consumable",
+                "instant"
+            ]
+        },
+        "ungento_de_la_serpiente_durmiente_(unguento_serpentis_somnus)_813": {
+            "id": "ungento_de_la_serpiente_durmiente_(unguento_serpentis_somnus)_813",
+            "world_id": "roma_republicana",
+            "template_id": "GENERIC",
+            "name": "Ung\u00fcento de la Serpiente Durmiente (Unguento Serpentis Somnus)",
+            "description": "Una p\u00f3cima oscura y espesa, guardada en un peque\u00f1o frasco de obsidiana. Su nombre proviene de la leyenda de una serpiente que, antes de hibernar, se untaba con una hierba que curaba cualquier herida. Al aplicarlo, el unguento produce un intenso calor y una somnolencia que precede a la curaci\u00f3n acelerada. Sin embargo, su uso excesivo puede llevar a una profunda letargia, dificultando la lucidez y la agudeza mental. Rumores susurran que su ingrediente principal proviene del veneno, tratado con secretos alqu\u00edmicos, de una serpiente africana rara, valorada por los curanderos y temida por los envenenadores.",
+            "type": "healing",
+            "damage_base": null,
+            "healing_amount": 25,
+            "properties": [
+                "consumable",
+                "instant"
+            ]
+        },
+        "sica_de_la_sombra_510": {
+            "id": "sica_de_la_sombra_510",
+            "world_id": "roma_republicana",
+            "template_id": "GENERIC",
+            "name": "Sica de la Sombra",
+            "description": "Una peque\u00f1a daga con una hoja curva, forjada en acero de Damasco y engastada con obsidiana negra. Se dice que fue forjada en secreto por artesanos de la provincia de Cilicia, conocidos por su habilidad para crear armas silenciosas y mort\u00edferas. Su empu\u00f1adura est\u00e1 labrada con la imagen de una serpiente que se enrosca sobre s\u00ed misma, simbolizando la traici\u00f3n. La 'Sica de la Sombra' no s\u00f3lo es letal, sino tambi\u00e9n casi invisible en la oscuridad, ideal para las ejecuciones discretas en los callejones y los asesinatos pol\u00edticos que acechan en las sombras de Roma.",
+            "type": "weapon",
+            "damage_base": 5,
+            "healing_amount": null,
+            "properties": [
+                "melee",
+                "light",
+                "tier1"
+            ]
+        },
+        "anillo_envenenado": {
+            "id": "anillo_envenenado",
+            "world_id": "roma_republicana",
+            "template_id": "QUEST_ITEM_MACGUFFIN",
+            "name": "Anillo del Envenenador",
+            "description": "Un anillo ceremonial, aparentemente de un senador, impregnado de un veneno de acci\u00f3n lenta y pr\u00e1cticamente indetectable.",
+            "type": "quest",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "plot_critical",
+                "cannot_drop"
+            ]
+        },
+        "cartas_comprometedoras": {
+            "id": "cartas_comprometedoras",
+            "world_id": "roma_republicana",
+            "template_id": "QUEST_ITEM_MACGUFFIN",
+            "name": "Cartas Comprometedoras",
+            "description": "Un conjunto de cartas selladas, aparentemente escritas por C\u00e9sar, Pompeyo y Craso, que revelan planes secretos, traiciones y posibles alianzas. Su contenido es explosivo y podr\u00eda provocar la ca\u00edda del Primer Triunvirato.",
+            "type": "quest",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "plot_critical",
+                "cannot_drop"
+            ]
+        },
+        "tablilla_cifrada": {
+            "id": "tablilla_cifrada",
+            "world_id": "roma_republicana",
+            "template_id": "QUEST_ITEM_MACGUFFIN",
+            "name": "Tablilla Cifrada de Cera",
+            "description": "Una peque\u00f1a tablilla de cera con un mensaje escrito en s\u00edmbolos extra\u00f1os y un fragmento del mensaje secreto de Craso. El texto est\u00e1 incompleto, pero su decifrado revela informaci\u00f3n crucial.",
+            "type": "quest",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "plot_critical",
+                "cannot_drop"
+            ]
+        },
+        "carta_cifrada": {
+            "id": "carta_cifrada",
+            "world_id": "roma_republicana",
+            "template_id": "QUEST_ITEM_MACGUFFIN",
+            "name": "Carta Cifrada de C\u00e9sar",
+            "description": "Una carta encriptada, encontrada durante la investigaci\u00f3n, que detalla las instrucciones de C\u00e9sar para la campa\u00f1a de difamaci\u00f3n y el financiamiento de la misma.",
+            "type": "quest",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "plot_critical",
+                "cannot_drop"
+            ]
+        },
+        "anillo_escriba": {
+            "id": "anillo_escriba",
+            "world_id": "roma_republicana",
+            "template_id": "QUEST_ITEM_MACGUFFIN",
+            "name": "Anillo del Escriba",
+            "description": "Un anillo de oro con un escarabajo grabado, perteneciente al escriba personal del or\u00e1culo. Es una pista clave para encontrar a aquellos que manipulan la profec\u00eda.",
+            "type": "quest",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "plot_critical",
+                "cannot_drop"
+            ]
+        },
+        "anillo_senatorial_envenenado": {
+            "id": "anillo_senatorial_envenenado",
+            "world_id": "roma_republicana",
+            "template_id": "QUEST_ITEM_MACGUFFIN",
+            "name": "Anillo Senatorial envenenado",
+            "description": "Un anillo que perteneci\u00f3 a un senador fallecido, impregnado con rastros del veneno mortal. Sirve como prueba clave para demostrar la conspiraci\u00f3n y suplantaci\u00f3n del senador.",
+            "type": "quest",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "plot_critical",
+                "cannot_drop"
+            ]
+        },
+        "collar_vestal": {
+            "id": "collar_vestal",
+            "world_id": "roma_republicana",
+            "template_id": "QUEST_ITEM_MACGUFFIN",
+            "name": "Collar de la Vestal",
+            "description": "Un collar sagrado con un medall\u00f3n oculto que contiene un mensaje vital. Es el \u00fanico objeto que se ha confirmado que la Vestal ten\u00eda consigo antes de su desaparici\u00f3n.",
+            "type": "quest",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "plot_critical",
+                "cannot_drop"
+            ]
+        },
+        "codice_veneno": {
+            "id": "codice_veneno",
+            "world_id": "roma_republicana",
+            "template_id": "QUEST_ITEM_MACGUFFIN",
+            "name": "C\u00f3dice del Veneno",
+            "description": "Un antiguo manuscrito griego que detalla la elaboraci\u00f3n de venenos mortales, con ilustraciones que implican a figuras pol\u00edticas romanas.",
+            "type": "quest",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "plot_critical",
+                "cannot_drop"
+            ]
+        },
+        "medallon_cifrado": {
+            "id": "medallon_cifrado",
+            "world_id": "roma_republicana",
+            "template_id": "QUEST_ITEM_MACGUFFIN",
+            "name": "Medall\u00f3n de Mensajero",
+            "description": "Un peque\u00f1o medall\u00f3n de oro, grabado con s\u00edmbolos y n\u00fameros romanos. Contiene un mensaje cifrado, la clave para la verdad detr\u00e1s de la conspiraci\u00f3n.",
+            "type": "quest",
+            "damage_base": null,
+            "healing_amount": null,
+            "properties": [
+                "plot_critical",
+                "cannot_drop"
+            ]
+        }
+    },
+    "npc_templates": {
+        "cortesana_veneno": {
+            "id": "cortesana_veneno",
+            "world_id": "roma_republicana",
+            "name": "Livia Drusilla",
+            "description": "Una mujer de belleza serena pero penetrante, Livia es m\u00e1s que una cortesana; es una maestra de la manipulaci\u00f3n. Sus vestidos de seda y joyas exquisitas contrastan con la frialdad de sus ojos, que observan y juzgan cada interacci\u00f3n. Su ingenio esfiloso como una daga, y su lealtad, un bien muy preciado (y caro). Sus contactos se extienden por todo el Senado, y sus o\u00eddos recogen secretos que cambian el destino de Roma.",
+            "hp": 50,
+            "attack": 5,
+            "status": "friendly",
+            "xp": 10,
+            "dialogue_prompt": "\u00bfAh, buscas un favor, querido? Roma est\u00e1 llena de peticiones, y el tiempo, como el vino, escasea. Pero supongo que puedo escuchar tus preocupaciones... siempre y cuando puedas ofrecerme algo de valor a cambio. Algo m\u00e1s que simples palabras, claro. He o\u00eddo rumores inquietantes sobre el reciente envenenamiento de un senador importante, y me temo que el veneno de la victoria es m\u00e1s amargo de lo que cualquiera imagina. \u00bfEst\u00e1s dispuesto a desentra\u00f1ar una madeja tan peligrosa, o te conformar\u00e1s con una copa de vino y un poco de conversaci\u00f3n?"
+        },
+        "MERCATOR_GRANUM_001": {
+            "id": "MERCATOR_GRANUM_001",
+            "world_id": "roma_republicana",
+            "name": "Vitellius",
+            "description": "A corpulent man in a spotless linen tunic, slightly stained with flour. His face, adorned with a well-groomed beard and shrewd eyes, betrays an intelligence and an unbridled ambition. Always accompanied by two robust Libyan slaves who act as bodyguards and bearers of his money bag, Vitellius projects an image of wealth and power, although beneath the surface hides a web of intrigue woven with threads of grain, bribes, and secrets.",
+            "hp": 75,
+            "attack": 15,
+            "status": "neutral",
+            "xp": 250,
+            "dialogue_prompt": "\u00bfAh, buscas grano, joven/se\u00f1or? Roma siempre tiene hambre, y donde hay hambre, hay oportunidad. La vida es un mercado, amigo m\u00edo. Y yo, Marco Aurelio Vitellius, soy el mercader que siempre tiene el mejor producto...y el mejor precio. Dime, \u00bfqu\u00e9 necesitas? Quiz\u00e1s, con el trato adecuado, podr\u00edas necesitar un poco de ayuda extra...\u00bfpara obtener la victoria, dices?"
+        },
+        "liberto_spy_001": {
+            "id": "liberto_spy_001",
+            "world_id": "roma_republicana",
+            "name": "Arist\u00f3n de Samos",
+            "description": "Un hombre de mediana edad, esbelto y con la mirada siempre alerta. Viste ropas sencillas de liberto, pero la calidad de la tela delata cierto refinamiento. Su cabello, una vez negro azabache, est\u00e1 salpicado de canas. Lleva consigo un peque\u00f1o estuche de cuero donde guarda plumas, tinta y un sello personal. Su voz, suave pero firme, conserva un ligero acento griego que le da un aire de misterio. Sus movimientos son silenciosos y calculados, como los de un gato.",
+            "hp": 50,
+            "attack": 5,
+            "status": "friendly",
+            "xp": 10,
+            "dialogue_prompt": "\u00bfBuscas al senador Valerio? Un hombre de gran perspicacia. Pero para llegar a \u00e9l, debes probar tu val\u00eda. Hay rumores, susurros en las sombras... sobre cartas. Cartas perdidas, que podr\u00edan desestabilizar a C\u00e9sar. Si est\u00e1s dispuesto a ensuciarte las manos y tienes la astucia necesaria, puedo ayudarte... pero el conocimiento siempre tiene un precio, \u00bfentiendes?"
+        },
+        "esc_cartas_perdidas_001": {
+            "id": "esc_cartas_perdidas_001",
+            "world_id": "roma_republicana",
+            "name": "Lucio Vitelio, El Cart\u00f3grafo de la Sombra",
+            "description": "Un hombre delgado, con el rostro marcado por el estr\u00e9s y los a\u00f1os de trabajo en la oscuridad. Sus ojos, peque\u00f1os y penetrantes, parecen siempre calcular. Viste ropas modestas, pero bien cuidadas, y aunque intenta pasar desapercibido, una sutil elegancia revela su educaci\u00f3n. Antiguamente escriba de Craso, ahora se mueve en un laberinto de secretos y mentiras, manipulando informaci\u00f3n robada para ascender al poder.",
+            "hp": 50,
+            "attack": 5,
+            "status": "hostile",
+            "xp": 10,
+            "dialogue_prompt": "Te encuentras con Lucio Vitelio en una taberna oscura del Suburra. El lugar est\u00e1 repleto de mercenarios y esp\u00edas. Observas que est\u00e1 escribiendo fren\u00e9ticamente en una tablilla de cera, con una vela humeante que ilumina su rostro. Al alzar la vista, te observa con una mirada de desconfianza mezclada con curiosidad. Parece saber demasiado\u2026 '\u00bfQu\u00e9 quieres? No tengo tiempo para charlatanes. Si buscas respuestas, mejor que tengas algo de valor que ofrecer. El tiempo es oro, y la informaci\u00f3n, incluso m\u00e1s...'"
+        },
+        "CRASSO_CONTACTO_001": {
+            "id": "CRASSO_CONTACTO_001",
+            "world_id": "roma_republicana",
+            "name": "Nervous Scholar",
+            "description": "A middle-aged man with a receding hairline and shrewd eyes. He wears fine but discreet robes, and his hands, though well-kept, betray a life devoted to the pen and parchment. He always seems nervous, constantly looking over his shoulder.",
+            "hp": 20,
+            "attack": 3,
+            "status": "neutral",
+            "xp": 25,
+            "dialogue_prompt": "Susurro, con la voz baja y llena de cautela: 'Craso no debe saber de esto. Necesito que alguien, con la discreci\u00f3n de un fantasma, recupere un mensaje crucial. Se encuentra en el Templo de Isis, custodiado por fan\u00e1ticos. El secreto es vital para mi supervivencia\u2026 y, quiz\u00e1s, para Roma. \u00bfEst\u00e1s dispuesto a ayudarme?'"
+        },
+        "isismaster_001": {
+            "id": "isismaster_001",
+            "world_id": "roma_republicana",
+            "name": "Adept Priest of Isis",
+            "description": "A slender, tall man with a penetrating gaze that seems to see through you. His immaculate white robe, adorned with intricate hieroglyphs, marks his status. He wears a heavy gold chain with the symbol of Isis on his chest. His movements are slow and deliberate, yet there's a latent tension within him, as if constantly assessing risks. His voice is soft, almost whispering, but always with an authoritative tone.",
+            "hp": 65,
+            "attack": 18,
+            "status": "hostile",
+            "xp": 250,
+            "dialogue_prompt": "\u00bfBusc\u00e1is algo, forastero? El Templo de Isis es un lugar de misterios, pero tambi\u00e9n de peligros. No todos est\u00e1n preparados para la verdad que albergamos. Craso tiene una mente h\u00e1bil, y su ambici\u00f3n es insaciable. Yo conozco sus deseos, y sus debilidades. Si os atrev\u00e9is a hurgar en lo que no os concierne... sufrir\u00e9is las consecuencias. La diosa Isis no tolera la intromisi\u00f3n."
+        },
+        "optimate_senator_gaius": {
+            "id": "optimate_senator_gaius",
+            "world_id": "roma_republicana",
+            "name": "Sospechoso Romano",
+            "description": "Un hombre delgado y nervioso, con ojos hundidos y una barba descuidada. Viste togas de lino costoso, pero su porte es desali\u00f1ado, como si el peso de Roma cayera sobre sus hombros. Constantemente se frota las manos y mira a su alrededor con sospecha. Tiene una cicatriz fina y p\u00e1lida que le cruza la mejilla, un recuerdo de un encuentro desafortunado durante una de sus misiones encubiertas.",
+            "hp": 30,
+            "attack": 12,
+            "status": "friendly",
+            "xp": 60,
+            "dialogue_prompt": "\u00bfAh, es usted? Espero que traiga noticias valiosas, no rumores. Roma se tambalea, y C\u00e9sar, con su 'Lex Gabinia', amenaza con hundirnos a todos. Necesito *pruebas*, no conjeturas. Pruebas que demuestren su verdadera ambici\u00f3n, su total desprecio por la Rep\u00fablica. La 'Lex Gabinia', con su pretexto de combatir la pirater\u00eda, es una herramienta que le otorga un poder militar sin precedentes. Busque entre las sombras, investigue en los bajos fondos. Encuentre algo que pueda usarse contra \u00e9l. Y h\u00e1galo r\u00e1pido, por los dioses, *r\u00e1pido*."
+        },
+        "AC-007": {
+            "id": "AC-007",
+            "world_id": "roma_republicana",
+            "name": "Lucius Vorenus",
+            "description": "Un hombre de mediana edad, curtido por el sol y las intrigas, con una cicatriz que le atraviesa la mejilla izquierda, un recordatorio silencioso de sus deberes. Viste ropas discretas, pero de buena calidad, lo que sugiere su posici\u00f3n en la jerarqu\u00eda. Sus ojos son fr\u00edos y observadores, raramente revelando sus verdaderas intenciones. Se mueve con una eficiencia casi fantasmal, siempre en control, siempre un paso por delante.",
+            "hp": 50,
+            "attack": 5,
+            "status": "hostile",
+            "xp": 10,
+            "dialogue_prompt": "Te observa fijamente, sus ojos se estrechan ligeramente. '\u00bfCrees que sabes la verdad, muchacho/a? La verdad es un lujo que Roma no puede permitirse. La Ley Gabinia es un instrumento, y como tal, debe ser usado con precisi\u00f3n y sin escr\u00fapulos. Si tus acciones amenazan el progreso... bueno, perm\u00edteme decirte que he visto a hombres m\u00e1s valientes desaparecer sin dejar rastro. Ahora, \u00bfqu\u00e9 sabes realmente, y a qui\u00e9n piensas servir?'"
+        },
+        "Livia_Claudia_001": {
+            "id": "Livia_Claudia_001",
+            "world_id": "roma_republicana",
+            "name": "Livia Claudia",
+            "description": "Una joven patricia de unos veinte a\u00f1os, de finos rasgos y ojos inteligentes que denotan una preocupaci\u00f3n constante. Viste con elegancia, pero sin ostentaci\u00f3n excesiva, prefiriendo la sobriedad a la pompa. Se mueve con gracia y determinaci\u00f3n, y su mirada siempre parece estar observando algo m\u00e1s all\u00e1 de lo que se ve a simple vista. Su cabello, recogido en un elaborado peinado, revela su posici\u00f3n social, pero tambi\u00e9n su dedicaci\u00f3n a la tradici\u00f3n.",
+            "hp": 50,
+            "attack": 5,
+            "status": "friendly",
+            "xp": 10,
+            "dialogue_prompt": "Espero que seas de fiar. Roma se tambalea al borde del abismo, y los augurios... bueno, los augurios son terribles. Necesito ayuda, antes de que sea demasiado tarde. La Sibila, en Cumas, ha hablado, y sus profec\u00edas siempre se cumplen. \u00bfEst\u00e1s dispuesto a escuchar y a actuar? No esperes riquezas, sino la satisfacci\u00f3n de salvar a Roma... si es que eso a\u00fan es posible."
+        },
+        "SS-001": {
+            "id": "SS-001",
+            "world_id": "roma_republicana",
+            "name": "Senador Misterioso",
+            "description": "Un hombre de mediana edad, de porte elegante pero con una mirada fr\u00eda y calculadora. Viste con t\u00fanicas senatoriales impecables, aunque siempre hay un sutil desorden, como si no le importara la apariencia. Su rostro, surcado por finas arrugas, parece esculpido en piedra. Posee una voz suave pero hipn\u00f3tica, y a menudo se adorna con anillos y amuletos con extra\u00f1os s\u00edmbolos.",
+            "hp": 80,
+            "attack": 45,
+            "status": "Hostile",
+            "xp": 175,
+            "dialogue_prompt": "Salud, ciudadano. La Rep\u00fablica se tambalea, lo s\u00e9. Pero la soluci\u00f3n no reside en las vanas disputas entre C\u00e9sar y Pompeyo, ni en las vacuas diatribas de Cicer\u00f3n. La salvaci\u00f3n de Roma yace en comprender el verdadero destino, el que la Sibila predijo y que ahora se revela. \u00bfEst\u00e1s dispuesto a ver la verdad, incluso si es dolorosa?"
+        },
+        "CICERO_INVESTIGATOR_001": {
+            "id": "CICERO_INVESTIGATOR_001",
+            "world_id": "roma_republicana",
+            "name": "Veterano Romano",
+            "description": "Un hombre curtido por el sol y la guerra, con cicatrices que cuentan m\u00e1s historias que cualquier libro. Su mirada gris, siempre alerta, refleja a\u00f1os de servicio en las legiones romanas y una profunda desconfianza hacia la intriga pol\u00edtica. Viste ropas sencillas, pero su postura erguida y la firmeza en sus movimientos delatan a un hombre acostumbrado al peligro. Siempre lleva una daga oculta y parece observar cada detalle del entorno.",
+            "hp": 65,
+            "attack": 18,
+            "status": "friendly",
+            "xp": 100,
+            "dialogue_prompt": "\u00bfBuscas problemas? Porque te aseguro que Roma est\u00e1 llena de ellos. Soy Marco Valerio Corvo, y trabajo para Cicer\u00f3n. Si tienes algo que te corroe por dentro, algo sucio que necesitas sacar a la luz, quiz\u00e1s pueda ayudarte. Pero no te equivoques, la verdad en este lugar tiene un precio, y a veces es la propia vida. \u00bfQu\u00e9 te trae por aqu\u00ed, ciudadano?"
+        },
+        "senator_poison": {
+            "id": "senator_poison",
+            "world_id": "roma_republicana",
+            "name": "Senador Desconocido",
+            "description": "Un hombre de mediana edad, de constituci\u00f3n robusta y mirada penetrante. Viste con elegancia pero sin ostentaci\u00f3n, favoreciendo las togas de tonos oscuros. Sus gestos son calculados y su voz, aunque suave, tiene una resonancia que cautiva a su audiencia. Siempre parece estar sonriendo, pero sus ojos revelan una inteligencia fr\u00eda y una ambici\u00f3n sin l\u00edmites. Se dice que tiene un don para persuadir, y su habilidad para manipular a sus colegas senadores es legendaria. Una cicatriz apenas perceptible recorre su mejilla izquierda, un recordatorio de una escaramuza olvidada, pero que \u00e9l atesora.",
+            "hp": 80,
+            "attack": 35,
+            "status": "hostile",
+            "xp": 300,
+            "dialogue_prompt": "\u201cAh, bienvenido, amigo m\u00edo\u2026 o deber\u00edamos decir, colega. Roma se encuentra en un momento delicado, \u00bfno cree? La plebe murmura, los generales se pavonean, y el Senado\u2026 bueno, el Senado est\u00e1 dividido. Pero no se preocupe, las divisiones son un caldo de cultivo para el progreso, \u00bfno es as\u00ed? Solo hay que saber c\u00f3mo cosechar los frutos. D\u00edgame, \u00bfqu\u00e9 piensa usted de la salud de nuestra Rep\u00fablica? \u00bfCree que es necesario un poco de\u2026 purga para asegurar su futuro? Observemos juntos, y tomemos la mejor postura para sacar provecho de lo que se avecina.\u201d"
+        },
+        "spymaster_spice": {
+            "id": "spymaster_spice",
+            "world_id": "roma_republicana",
+            "name": "El Perfumista",
+            "description": "A middle-aged man with a thick, black beard streaked with grey. His dark, piercing eyes observe with cunning from beneath bushy eyebrows. He wears luxurious, though discreet, clothing that betrays his wealth and Eastern origin. He always carries a small vial of spikenard, whose perfume fills the air, even in the dirtiest alleys.",
+            "hp": 75,
+            "attack": 50,
+            "status": "neutral",
+            "xp": 200,
+            "dialogue_prompt": "\u00bfAh, interesado en los asuntos de las Vestales? Un tema delicado, muy delicado. He escuchado susurros, rumores... que hablan de un silencio inquietante en el Atrio de Vesta. Un silencio que podr\u00eda costar la Rep\u00fablica. \u00bfQu\u00e9 sabes t\u00fa de ello, amigo m\u00edo? Dime, \u00bfpor qu\u00e9 te interesas en este asunto? Quiz\u00e1s, con la informaci\u00f3n correcta, yo pueda... *ayudarte*. A un precio, claro. El conocimiento es la especia m\u00e1s valiosa, y a m\u00ed, me gustan las buenas especias."
+        },
+        "senator_fulvius_23": {
+            "id": "senator_fulvius_23",
+            "world_id": "roma_republicana",
+            "name": "Marco Fulvio Lupo",
+            "description": "Un hombre de mediana edad, elegante pero con una mirada que revela una inteligencia despiadada. Siempre bien vestido, con la toga impecable y un anillo con el sello familiar que denota su linaje. Sus modales son refinados, pero su sonrisa nunca llega a los ojos. Su rostro, marcado por finas arrugas, refleja tanto la fatiga como la ambici\u00f3n acumulada durante a\u00f1os de intrigas.",
+            "hp": 50,
+            "attack": 5,
+            "status": "hostile",
+            "xp": 10,
+            "dialogue_prompt": "\u00bfAh, as\u00ed que te interesas por el Silencio de las Vestales? Un asunto delicado, que podr\u00eda volverse muy peligroso para los incautos. Pero si demuestras ser \u00fatil, quiz\u00e1s pueda 'compartir' cierta informaci\u00f3n. Dime, \u00bfa qui\u00e9n sirves realmente? Porque en esta ciudad, las lealtades son tan vol\u00e1tiles como el viento."
+        },
+        "ex-legionario-intermediario-001": {
+            "id": "ex-legionario-intermediario-001",
+            "world_id": "roma_republicana",
+            "name": "Veterano de Farsalia",
+            "description": "Un hombre de mediana edad, con una cicatriz que le cruza el rostro desde la sien hasta la mejilla, recordatorio de la batalla de Farsalia. Su ojo izquierdo es de un azul p\u00e1lido y turbio. Viste ropas modestas, pero bien cuidadas, que ocultan un cuerpo a\u00fan marcado por la dura vida del legionario. Siempre lleva consigo una daga oculta y un pergamino enrollado, probablemente con informaci\u00f3n importante. Su cojera, producto de una flecha clavada en la rodilla, le obliga a usar un bast\u00f3n, aunque no le impide moverse con astucia.",
+            "hp": 60,
+            "attack": 15,
+            "status": "neutral",
+            "xp": 75,
+            "dialogue_prompt": "Observa a su interlocutor con mirada calculadora, ajustando el pergamino en su mano. Su voz es grave, con un ligero acento militar que delata sus or\u00edgenes. 'No busques la gloria, muchacho/a. La gloria es para los necios. Aqu\u00ed, en las sombras, lo que importa es la supervivencia. \u00bfQu\u00e9 quieres? \u00bfInformaci\u00f3n? La tengo. \u00bfAyuda? Depende de lo que est\u00e9s dispuesto a ofrecer. He o\u00eddo que andas buscando 'El C\u00f3dice del Veneno'. Un documento peligroso, capaz de desatar una tormenta... \u00bfInteresado? Quiz\u00e1s pueda ayudarte, por un precio...'"
+        },
+        "SC_0003": {
+            "id": "SC_0003",
+            "world_id": "roma_republicana",
+            "name": "Senador Romano",
+            "description": "Un senador romano de mediana edad, de complexi\u00f3n robusta y mirada penetrante. Viste con ropas costosas, aunque algo desali\u00f1adas, denotando un cierto descuido estudiado. Su rostro, surcado por arrugas precoces, muestra una mezcla de astucia y cinismo. Siempre lleva un anillo de sello con la imagen de un lobo, s\u00edmbolo de su familia y de su naturaleza depredadora. Huele a vino barato y a incienso caro, una combinaci\u00f3n que refleja su estilo de vida hedonista y sus ambiciones pol\u00edticas.",
+            "hp": 85,
+            "attack": 45,
+            "status": "hostile",
+            "xp": 160,
+            "dialogue_prompt": "Sonr\u00ede con desd\u00e9n, frot\u00e1ndose el anillo del sello. 'Ah, \u00bfasuntos de inter\u00e9s, eh? En este pantano llamado Roma, todos tenemos nuestros secretos. Y cr\u00e9eme, muchacho/a, algunos secretos son m\u00e1s valiosos que el oro. La Rep\u00fablica, \u00bfsabes? Una fachada. Los verdaderos juegos se juegan en la sombra. \u00bfQu\u00e9 sabes t\u00fa del C\u00f3dice del Veneno? Un simple rumor\u2026 o tal vez, una herramienta. Y las herramientas, como los senadores, pueden ser usadas\u2026 o desechadas. \u00bfQu\u00e9 quieres a cambio de tu silencio... o, quiz\u00e1, de tu colaboraci\u00f3n?'"
+        },
+        "tabernero_republicano_001": {
+            "id": "tabernero_republicano_001",
+            "world_id": "roma_republicana",
+            "name": "Elio",
+            "description": "Un ex-legionario convertido en tabernero, conocido por su discreci\u00f3n.",
+            "hp": 75,
+            "attack": 10,
+            "status": "friendly",
+            "xp": 150,
+            "dialogue_prompt": "\u00bfQu\u00e9 te trae por aqu\u00ed, ciudadano? \u00bfSed de vino o de\u2026 noticias? A veces, en esta ciudad, la diferencia es sutil. Escucha bien, porque aqu\u00ed se murmuran cosas que los o\u00eddos del Senado no deben escuchar. La Rep\u00fablica est\u00e1 en peligro, lo s\u00e9, lo siento en los huesos. Esos tres\u2026 [gesticula con desprecio]\u2026 se disputan el poder y nosotros, el pueblo, somos el campo de batalla. Tengo mis ojos y o\u00eddos en muchos lugares, y s\u00e9 que algo gordo se avecina. Quiz\u00e1s, solo quiz\u00e1s, t\u00fa puedas ayudar a que Roma no caiga en manos de estos ambiciosos."
+        },
+        "SEN-COR-001": {
+            "id": "SEN-COR-001",
+            "world_id": "roma_republicana",
+            "name": "Vitelio",
+            "description": "A man of robust build, with a face chiseled by greed and ambition. His always-impeccable toga hides sumptuous clothes and discreet jewels. His small, dark eyes are constantly in motion, calculating and evaluating. Famous for his investments and usurious loans, Vitelio controls much of the flow of money in Rome. It is rumored that he has contacts with criminal gangs and does not hesitate to employ violence to silence his enemies. His voice, soft and honeyed, hides ruthless coldness.",
+            "hp": 60,
+            "attack": 10,
+            "status": "hostile",
+            "xp": 200,
+            "dialogue_prompt": "Has llegado a mi presencia\u2026 interesante. Imagino que has o\u00eddo hablar de mis \u2018servicios\u2019. Perm\u00edteme ser claro: el poder no se obtiene mendigando, sino compr\u00e1ndolo. Y el dinero, joven/a (tu t\u00edtulo), es solo una herramienta. Dime, \u00bfqu\u00e9 precio est\u00e1s dispuesto a pagar por lo que deseas? No me hables de lealtad, me aburre. H\u00e1blame de valor, de riesgo, de\u2026 *oportunidad*. Porque en este juego, todos somos peones, y el \u00fanico rey es el que posee la corona\u2026 o la espada, ya sabes. \u00bfQu\u00e9 quieres? \u00bfQu\u00e9 necesitas? Habla. Pero apres\u00farate, el tiempo, al igual que el dinero, es un bien escaso, y yo no suelo malgastarlo."
+        }
+    },
+    "quests": {
+        "QUEST_EL_VENENO_DE_LA_VICTORIA_161": {
+            "id": "QUEST_EL_VENENO_DE_LA_VICTORIA_161",
+            "world_id": "roma_republicana",
+            "title": "El Veneno de la Victoria",
+            "description": "Un rumor corre por Roma: C\u00e9sar, en su af\u00e1n de ganar popularidad, ha ordenado liberar grano a la plebe, pero la calidad es sospechosa. El verdadero prop\u00f3sito es envenenar a sus detractores. El jugador, reclutado por una figura influyente, debe investigar la veracidad de esta acusaci\u00f3n, desentra\u00f1ando una red de corrupci\u00f3n y conspiraci\u00f3n que podr\u00eda desestabilizar la Rep\u00fablica, y posiblemente acabar con la vida de muchos. El juego de poder entre el Triunvirato y el Senado se intensifica, y el jugador debe navegar por las traicioneras aguas de la intriga pol\u00edtica.",
+            "starting_npc_id": "cortesana_veneno",
+            "steps": [
+                {
+                    "description": "Recabar informaci\u00f3n en el mercado y los barrios bajos de Roma. El jugador debe hablar con comerciantes, esclavos y miembros de la plebe para descubrir la procedencia del grano, las condiciones en las que se almacena, y qui\u00e9n se est\u00e1 beneficiando de su distribuci\u00f3n.",
+                    "objective": {
+                        "type": "location",
+                        "id": "mercado_roma",
+                        "description": "Obtener informaci\u00f3n valiosa en el Foro Romano."
+                    }
+                },
+                {
+                    "description": "Infiltrarse en un almac\u00e9n donde se guarda el grano sospechoso. El jugador debe encontrar una forma de acceder al almac\u00e9n (soborno, enga\u00f1o, fuerza) y recolectar una muestra del grano para analizarla, evitando a los guardias y los esp\u00edas que vigilan el lugar.",
+                    "objective": {
+                        "type": "item",
+                        "id": "muestra_grano",
+                        "description": "Una peque\u00f1a muestra del grano sospechoso."
+                    }
+                },
+                {
+                    "description": "Entregar la muestra a un alquimista de confianza (o en su defecto a un m\u00e9dico) para analizarla y determinar si contiene veneno. El jugador debe interpretar los resultados de la prueba, enfrent\u00e1ndose a la verdad y decidiendo qu\u00e9 hacer con la informaci\u00f3n obtenida: \u00bfrevelarla al Senado, avisar a los posibles envenenados, o usarla para sus propios fines?",
+                    "objective": {
+                        "type": "dialogue",
+                        "id": "alquimista_analisis",
+                        "description": "Escuchar el dictamen del alquimista."
+                    }
+                }
+            ]
+        },
+        "QUEST_EL_SECRETO_DE_LAS_CARTAS_PERDIDAS_476": {
+            "id": "QUEST_EL_SECRETO_DE_LAS_CARTAS_PERDIDAS_476",
+            "world_id": "roma_republicana",
+            "title": "El Secreto de las Cartas Perdidas",
+            "description": "Un rumor corre por Roma: unas cartas comprometedoras, supuestamente escritas por figuras clave del Primer Triunvirato, han sido robadas y podr\u00edan ser utilizadas para desestabilizar el delicado equilibrio de poder. El jugador es reclutado para encontrar estas cartas y descubrir qui\u00e9n las busca y para qu\u00e9. La situaci\u00f3n es m\u00e1s compleja de lo que parece, ya que cada facci\u00f3n est\u00e1 involucrada de alguna forma y las lealtades son difusas.",
+            "starting_npc_id": "liberto_spy_001",
+            "steps": [
+                {
+                    "description": "El jugador debe investigar en el barrio de Subura, el nido de esp\u00edas y delincuentes, para obtener pistas sobre el robo. Se necesita contactar con individuos de la baja cala\u00f1a para reconstruir los acontecimientos que llevaron al robo y descubrir la ubicaci\u00f3n del primer contacto involucrado.",
+                    "objective": {
+                        "type": "location",
+                        "id": "Subura_contact_location"
+                    }
+                },
+                {
+                    "description": "Tras encontrar el primer contacto, el jugador debe seguir un rastro de pistas, que le llevar\u00e1n a una serie de encuentros peligrosos: un escondite de gladiadores, una taberna donde se re\u00fanen los agitadores populares, e incluso una audiencia secreta con un senador corrupto. Deber\u00e1 reunir fragmentos de informaci\u00f3n para determinar el paradero de las cartas.",
+                    "objective": {
+                        "type": "character_interaction",
+                        "id": "Senador_corrupto"
+                    }
+                },
+                {
+                    "description": "La b\u00fasqueda lleva al jugador a las afueras de Roma, a una villa escondida en las colinas, donde las cartas est\u00e1n a punto de ser utilizadas. El jugador debe decidir c\u00f3mo actuar: robar las cartas para s\u00ed, entregarlas a la facci\u00f3n que considera menos peligrosa, o tratar de revelarlas en el Senado, arriesg\u00e1ndose a la ira de todos.",
+                    "objective": {
+                        "type": "moral_choice",
+                        "id": "decision_cartas"
+                    }
+                }
+            ]
+        },
+        "QUEST_EL_MENSAJE_CIFRADO_DEL_TEMPLO_DE_ISIS_218": {
+            "id": "QUEST_EL_MENSAJE_CIFRADO_DEL_TEMPLO_DE_ISIS_218",
+            "world_id": "roma_republicana",
+            "title": "El Mensaje Cifrado del Templo de Isis",
+            "description": "Un secreto crucial sobre las verdaderas intenciones de Craso se ha ocultado en un mensaje cifrado, resguardado por un culto egipcio que opera en las sombras de Roma. Un informante, infiltrado en el c\u00edrculo \u00edntimo de Craso, ha logrado enviar un fragmento del mensaje antes de ser descubierto. La informaci\u00f3n contenida podr\u00eda cambiar el equilibrio de poder en Roma, y los jugadores deben descifrarlo y, posiblemente, usarlo para su propio beneficio o el de su facci\u00f3n.",
+            "starting_npc_id": "CRASSO_CONTACTO_001",
+            "steps": [
+                {
+                    "description": "El jugador debe encontrar y reunirse con el informante, un antiguo liberto de Craso llamado Aurelio. Aurelio est\u00e1 oculto en un barrio pobre, bajo protecci\u00f3n de un grupo de gladiadores leales. Aurelio le entrega al jugador una peque\u00f1a tablilla de cera con una porci\u00f3n del mensaje cifrado y la clave inicial: una serie de s\u00edmbolos grabados en un escarabajo sagrado.",
+                    "objective": {
+                        "type": "character_interaction",
+                        "id": "aurelio"
+                    }
+                },
+                {
+                    "description": "La tablilla contiene s\u00edmbolos extra\u00f1os. El jugador debe encontrar a un experto en jerogl\u00edficos y criptograf\u00eda, posiblemente un erudito griego que resida en la Biblioteca Palatina, para que lo ayude a traducir la escritura y descifrar el mensaje completo. La traducci\u00f3n requiere una serie de pruebas y la adquisici\u00f3n de una clave final: el s\u00edmbolo del ojo de Horus, representado en una joya robada del templo de Isis.",
+                    "objective": {
+                        "type": "item",
+                        "id": "ojo_de_horus"
+                    }
+                },
+                {
+                    "description": "Una vez descifrado, el mensaje revela los planes de Craso para manipular el suministro de grano y provocar disturbios, preparando el terreno para un golpe de estado orquestado en conjunto con otros senadores descontentos con C\u00e9sar y Pompeyo. El jugador debe decidir si revelar el mensaje al Senado (arriesg\u00e1ndose a la ira de Craso y sus aliados), usarlo para chantajear a alguien, o entreg\u00e1rselo a otra facci\u00f3n, como C\u00e9sar o Pompeyo, para obtener influencia.",
+                    "objective": {
+                        "type": "moral_choice",
+                        "id": "revelar_mensaje"
+                    }
+                }
+            ]
+        },
+        "QUEST_LA_SOMBRA_DE_LA_LEX_GABINIA_305": {
+            "id": "QUEST_LA_SOMBRA_DE_LA_LEX_GABINIA_305",
+            "world_id": "roma_republicana",
+            "title": "La Sombra de la Lex Gabinia",
+            "description": "Un decreto secreto, la Lex Gabinia, que otorga poderes extraordinarios a Pompeyo para combatir la pirater\u00eda en el Mediterr\u00e1neo, se debate en el Senado. Rumores de sobornos y manipulaci\u00f3n acechan. Un grupo de senadores 'Optimate' sospecha que C\u00e9sar est\u00e1 financiando una campa\u00f1a de desprestigio contra Pompeyo, para debilitarlo y allanar el camino a su propia ambici\u00f3n. El jugador es reclutado para investigar estas sospechas, descubriendo una red de corrupci\u00f3n y traici\u00f3n que amenaza con desestabilizar Roma.",
+            "starting_npc_id": "optimate_senator_gaius",
+            "steps": [
+                {
+                    "description": "El jugador debe contactar con un informante, un mercader que opera en el puerto de Ostia, conocido por tener contactos en la 'Plebe Urbana'. Este mercader, a cambio de una suma de dinero, revelar\u00e1 detalles sobre los movimientos de un sospechoso, un emisario secreto de C\u00e9sar.",
+                    "objective": {
+                        "type": "location",
+                        "id": "puerto_ostia",
+                        "details": "Encontrar al mercader Flavio en el puerto de Ostia."
+                    }
+                },
+                {
+                    "description": "El jugador debe seguir al emisario, y descubrir el punto de encuentro donde se realiza la entrega de fondos para la campa\u00f1a de difamaci\u00f3n contra Pompeyo. Este punto de encuentro es un prost\u00edbulo discreto en el barrio Subura, frecuentado por plebeyos y sicarios. El jugador debe evitar ser detectado, mientras recopila pruebas incriminatorias (documentos, testimonios, etc.)",
+                    "objective": {
+                        "type": "item",
+                        "id": "evidencia_incriminatoria",
+                        "description": "Recopilar pruebas sobre la financiaci\u00f3n de la campa\u00f1a anti-Pompeyo (cartas, recibos, etc.)."
+                    }
+                },
+                {
+                    "description": "Con la evidencia, el jugador debe presentar el informe a Cicer\u00f3n o a otro Senador 'Optimate' influyente.  Dependiendo de las acciones del jugador, la revelaci\u00f3n de esta informaci\u00f3n podr\u00eda provocar una crisis pol\u00edtica que alterar\u00e1 el equilibrio de poder.  El jugador debe decidir c\u00f3mo presentar la informaci\u00f3n y a qui\u00e9n.",
+                    "objective": {
+                        "type": "relation",
+                        "id": "ciceron_o_optimates",
+                        "details": "Decidir si confiar la informaci\u00f3n a Cicer\u00f3n, Cat\u00f3n, o a otro Senador de influencia."
+                    }
+                }
+            ]
+        },
+        "QUEST_LA_SOMBRA_DE_LA_SIBILA:_UN_PRESAGIO_OSCURO_719": {
+            "id": "QUEST_LA_SOMBRA_DE_LA_SIBILA:_UN_PRESAGIO_OSCURO_719",
+            "world_id": "roma_republicana",
+            "title": "La Sombra de la Sibila: Un Presagio Oscuro",
+            "description": "Una profec\u00eda ambigua, susurrada por la Sibila de Cumas, ha alarmado a la \u00e9lite romana. Un peligro inminente amenaza a la Rep\u00fablica, y las facciones en pugna interpretan la profec\u00eda a su favor. El personaje se ve envuelto en una carrera contra el tiempo para desentra\u00f1ar el significado real de la profec\u00eda y descubrir qui\u00e9n est\u00e1 manipulando el or\u00e1culo para sus propios fines. La verdad podr\u00eda inclinar la balanza del poder en Roma.",
+            "starting_npc_id": "Livia_Claudia_001",
+            "steps": [
+                {
+                    "description": "El personaje debe investigar los rumores y el caos que se ha desatado en la ciudad tras la profec\u00eda. Recopilar informaci\u00f3n en los mercados, tabernas y villas de la nobleza, escuchando rumores y buscando pistas entre la plebe y los optimates. Debe descubrir qui\u00e9nes est\u00e1n comprando y vendiendo las copias de los or\u00e1culos y qui\u00e9nes se benefician del miedo.",
+                    "objective": {
+                        "type": "location",
+                        "id": "mercado_roma",
+                        "name": "El Mercado de Roma",
+                        "description": "El bullicioso coraz\u00f3n de Roma, lleno de vendedores, esp\u00edas y chismosos."
+                    }
+                },
+                {
+                    "description": "El personaje necesita encontrar el texto original de la profec\u00eda, supuestamente guardado por un grupo de sacerdotes de un culto arcano. El personaje debe infiltrarse en el templo, enfrent\u00e1ndose a rituales extra\u00f1os y vigilantes, o bien encontrar una forma de sobornar o persuadir a un sacerdote corrupto para obtener una copia del documento. La profec\u00eda podr\u00eda revelar qui\u00e9n es la verdadera amenaza.",
+                    "objective": {
+                        "type": "item",
+                        "id": "profecia_sibila",
+                        "name": "La Profec\u00eda de la Sibila",
+                        "description": "El texto original de la profec\u00eda, escrito en pergamino antiguo, que contiene la clave para la verdad."
+                    }
+                },
+                {
+                    "description": "Una vez que el personaje tenga la profec\u00eda, debe descifrarla y encontrar a la persona o facci\u00f3n que est\u00e1 explotando el caos. Esto implica rastrear una red de esp\u00edas, informantes y mercenarios, y descubrir la identidad del manipulador que usa la profec\u00eda para desestabilizar Roma. El personaje debe decidir a qui\u00e9n revelar la verdad y si debe actuar contra el manipulador, o utilizar la informaci\u00f3n para sus propias ambiciones.",
+                    "objective": {
+                        "type": "character",
+                        "id": "manipulador",
+                        "name": "El Manipulador",
+                        "description": "El individuo o grupo que orquesta el caos y manipula la profec\u00eda."
+                    }
+                }
+            ]
+        },
+        "QUEST_EL_VINO_ENVENENADO_DEL_SENADO_229": {
+            "id": "QUEST_EL_VINO_ENVENENADO_DEL_SENADO_229",
+            "world_id": "roma_republicana",
+            "title": "El Vino Envenenado del Senado",
+            "description": "Un rumor inquietante se extiende por Roma: un veneno mortal, elaborado con ingredientes ex\u00f3ticos y mortales, est\u00e1 siendo vertido en el vino servido en los banquetes senatoriales. La muerte del Senador Flavio, un prominente opositor a C\u00e9sar, desata el p\u00e1nico. El jugador es reclutado para investigar la conspiraci\u00f3n antes de que otro senador caiga, arrojando a Roma al caos.",
+            "starting_npc_id": "CICERO_INVESTIGATOR_001",
+            "steps": [
+                {
+                    "description": "Investigar la escena del crimen en la villa del Senador Flavio. Buscar pistas sobre el tipo de veneno, el m\u00e9todo de envenenamiento y posibles sospechosos. La guardia pretoriana, liderada por un centuri\u00f3n taciturno, est\u00e1 investigando, y el jugador debe moverse con cautela.",
+                    "objective": {
+                        "type": "location",
+                        "id": "villa_flavio",
+                        "description": "Inspeccionar la villa del Senador Flavio en busca de pistas."
+                    }
+                },
+                {
+                    "description": "Rastrear el origen del vino envenenado. El jugador debe visitar la bodega de un mercader sospechoso en el Foro, interrogar a los sirvientes del Senador (si los hay vivos) y, posiblemente, infiltrarse en un banquete senatorial para observar a los sospechosos y obtener muestras del vino. La influencia de un mercader sirio podr\u00eda ser clave.",
+                    "objective": {
+                        "type": "interact",
+                        "id": "mercader_vino",
+                        "description": "Obtener informaci\u00f3n sobre el vino y sus proveedores, interactuando con un mercader sospechoso y su entorno."
+                    }
+                },
+                {
+                    "description": "Exponer al responsable y prevenir futuros envenenamientos. El jugador debe confrontar al conspirador, ya sea en el Senado o en una reuni\u00f3n secreta, desentra\u00f1ar sus motivos y neutralizar la amenaza. Puede ser necesario revelar pruebas, convencer a los senadores de la verdad o tomar medidas m\u00e1s dr\u00e1sticas.",
+                    "objective": {
+                        "type": "confront",
+                        "id": "conspirador",
+                        "description": "Confrontar al responsable del envenenamiento y frustrar sus planes."
+                    }
+                }
+            ]
+        },
+        "QUEST_EL_SILENCIO_DE_LAS_VESTALES_441": {
+            "id": "QUEST_EL_SILENCIO_DE_LAS_VESTALES_441",
+            "world_id": "roma_republicana",
+            "title": "El Silencio de las Vestales",
+            "description": "Rumores de un complot contra C\u00e9sar se filtran a trav\u00e9s de la red de espionaje. Una Vestal, sacerdotisa sagrada, es la clave para desentra\u00f1ar la conspiraci\u00f3n. Sin embargo, se rumorea que ha sido silenciada, y el misterio que la rodea es tan peligroso como el complot en s\u00ed. Los jugadores deben navegar por los intrincados laberintos de la pol\u00edtica romana, la hipocres\u00eda religiosa y la brutalidad subterr\u00e1nea para descubrir la verdad antes de que estalle la violencia.",
+            "starting_npc_id": "spymaster_spice",
+            "steps": [
+                {
+                    "description": "Investigar la desaparici\u00f3n de la Vestal. La b\u00fasqueda comienza en el templo de Vesta, pero el acceso es restringido. Se debe sobornar a un guardia, recopilar informaci\u00f3n de los sirvientes, o incluso infiltrarse para obtener acceso a los registros del templo.",
+                    "objective": {
+                        "type": "location",
+                        "id": "templo_vesta",
+                        "description": "Obtener acceso a los archivos del templo de Vesta."
+                    }
+                },
+                {
+                    "description": "Desentra\u00f1ar el mensaje oculto. Los archivos del templo revelan una serie de cartas cifradas que se cree que la Vestal envi\u00f3 a un contacto secreto. Los jugadores deben encontrar una forma de descifrar estas cartas, ya sea consultando a un erudito, robando una clave de cifrado o usando sus propias habilidades de deducci\u00f3n.",
+                    "objective": {
+                        "type": "item",
+                        "id": "cartas_cifradas",
+                        "description": "Descifrar el contenido de las cartas de la Vestal."
+                    }
+                },
+                {
+                    "description": "Confrontar al cabecilla de la conspiraci\u00f3n. Las cartas cifradas revelan la identidad del instigador, un poderoso Senador con ambiciones desmedidas. Los jugadores deben decidir c\u00f3mo enfrentarlo: denunci\u00e1ndolo p\u00fablicamente, intentando detenerlo por la fuerza, o negociando una traici\u00f3n que les beneficie.",
+                    "objective": {
+                        "type": "character",
+                        "id": "senador_cabecilla",
+                        "description": "Enfrentar al Senador responsable de la conspiraci\u00f3n."
+                    }
+                }
+            ]
+        },
+        "QUEST_EL_CDICE_DEL_VENENO_270": {
+            "id": "QUEST_EL_CDICE_DEL_VENENO_270",
+            "world_id": "roma_republicana",
+            "title": "El C\u00f3dice del Veneno",
+            "description": "Un enigm\u00e1tico c\u00f3dice, supuestamente escrito por un m\u00e9dico griego en Alejandr\u00eda, ha aparecido en Roma. Contiene secretos sobre la preparaci\u00f3n de venenos mortales y, lo que es peor, est\u00e1 ilustrado con diagramas que apuntan a figuras clave en la pol\u00edtica romana. Un grupo de conspiradores, probablemente conectados con uno de los Triunviros, est\u00e1 intentando adquirirlo y silenciar a quienes lo conocen. El jugador debe encontrar el c\u00f3dice y descubrir qui\u00e9n est\u00e1 detr\u00e1s de la conspiraci\u00f3n, antes de que el veneno caiga sobre la persona equivocada... o la correcta.",
+            "starting_npc_id": "ex-legionario-intermediario-001",
+            "steps": [
+                {
+                    "description": "El jugador debe rastrear los rumores sobre la aparici\u00f3n del c\u00f3dice. Comienza interrogando a informantes en los bajos fondos de Roma, buscando pistas en el Foro y en los mercados, y hablando con eruditos en bibliotecas. El objetivo es localizar a un mercader sirio, llamado Ben-Hadad, que supuestamente vio el c\u00f3dice antes de que desapareciera.",
+                    "objective": {
+                        "type": "location",
+                        "id": "mercado_romano",
+                        "description": "Localizar y hablar con el mercader sirio Ben-Hadad en el mercado romano."
+                    }
+                },
+                {
+                    "description": "Ben-Hadad, un hombre astuto y temeroso, revela que el c\u00f3dice fue robado por un grupo de gladiadores contratados. Ofrece una pista: los gladiadores est\u00e1n asociados con el ludus de un senador corrupto, Metelo Cel\u00e9r, conocido por su hostilidad hacia C\u00e9sar. El jugador debe infiltrarse en el ludus, investigando entre los gladiadores y sus contactos para descubrir la verdad.",
+                    "objective": {
+                        "type": "person",
+                        "id": "gladiador_lider",
+                        "description": "Encontrar e interrogar al l\u00edder de los gladiadores que robaron el c\u00f3dice, dentro del ludus de Metelo Cel\u00e9r."
+                    }
+                },
+                {
+                    "description": "Tras descubrir la participaci\u00f3n de Metelo Cel\u00e9r, el jugador debe decidir a qui\u00e9n entregar el c\u00f3dice. Las opciones incluyen entregarlo a Cicer\u00f3n, para exponer la conspiraci\u00f3n y proteger la Rep\u00fablica; a C\u00e9sar, para ganar su favor; o, guardarlo para s\u00ed mismo y usarlo para sus propios prop\u00f3sitos. La decisi\u00f3n afecta a la reputaci\u00f3n del jugador y la conclusi\u00f3n de la quest.",
+                    "objective": {
+                        "type": "moral_choice",
+                        "id": "entrega_codice",
+                        "description": "Decidir a qui\u00e9n entregar el c\u00f3dice: Cicer\u00f3n, C\u00e9sar, o quedarse con \u00e9l."
+                    }
+                }
+            ]
+        },
+        "QUEST_EL_MENSAJE_CIFRADO_DE_LA_ARENA_109": {
+            "id": "QUEST_EL_MENSAJE_CIFRADO_DE_LA_ARENA_109",
+            "world_id": "roma_republicana",
+            "title": "El Mensaje Cifrado de la Arena",
+            "description": "Un mensajero de confianza del senador Cicer\u00f3n ha sido asesinado en circunstancias misteriosas, justo antes de la entrega de un mensaje crucial. El mensaje, se rumorea, revelaba una conspiraci\u00f3n contra Pompeyo Magno, orquestada por alguien dentro del propio Triunvirato. La tarea del jugador es recuperar el mensaje y descifrarlo antes de que caiga en las manos equivocadas y desestabilice la ya precaria situaci\u00f3n pol\u00edtica.",
+            "starting_npc_id": "tabernero_republicano_001",
+            "steps": [
+                {
+                    "description": "Investiga el lugar del asesinato del mensajero, un callej\u00f3n oscuro cerca del Coliseo. Busca pistas, interroga a testigos (incluyendo gladiadores y prostitutas) y reconstruye los eventos que llevaron a su muerte.",
+                    "objective": {
+                        "type": "location",
+                        "id": "callejon_coliseo",
+                        "description": "Descubrir la escena del crimen y encontrar las primeras pistas."
+                    }
+                },
+                {
+                    "description": "El mensaje, escrito en un complejo c\u00f3digo basado en n\u00fameros romanos, est\u00e1 escondido en un medall\u00f3n que el mensajero llevaba consigo. El jugador debe encontrar el medall\u00f3n (robado, posiblemente) y descifrar el c\u00f3digo utilizando pistas encontradas y sus propios conocimientos de la cultura romana.",
+                    "objective": {
+                        "type": "item",
+                        "id": "medallon_cifrado",
+                        "description": "Recuperar el medall\u00f3n y descifrar el c\u00f3digo romano."
+                    }
+                },
+                {
+                    "description": "Una vez descifrado el mensaje, revela la identidad del conspirador y sus planes. El jugador debe decidir qu\u00e9 hacer con esta informaci\u00f3n: entregarla a Cicer\u00f3n, usarla para chantajear al conspirador, o venderla al mejor postor (C\u00e9sar, Pompeyo, Craso...). Las decisiones del jugador tendr\u00e1n consecuencias directas en el futuro pol\u00edtico de Roma.",
+                    "objective": {
+                        "type": "decision",
+                        "id": "revelacion_conspiracion",
+                        "description": "Decidir el destino de la informaci\u00f3n revelada en el mensaje cifrado."
+                    }
+                }
+            ]
+        }
+    }
+}

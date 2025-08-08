@@ -1,0 +1,17 @@
+world_id: "test_world"
+world_name: "El Caso de la Daga Perdida"
+language: "Español"
+world_theme: "Una breve historia de misterio y detectives en un entorno genérico."
+
+creative_examples:
+  npc_archetypes_examples:
+    - "un capitán de la guardia preocupado"
+    - "un mercader astuto pero nervioso"
+    - "un ladrón escurridizo"
+
+quest_seeds:
+  - title: "La Daga del Capitán"
+    description: "El capitán de la guardia ha perdido su daga ceremonial, un símbolo de su cargo. Sospecha que un ladrón conocido la ha robado para venderla a un mercader en el mercado negro. El jugador debe recuperarla."
+    # El Director creará estos PNJs y los colocará según el blueprint
+    quest_giver_archetype: "un capitán de la guardia preocupado"
+    boss_archetype: "un ladrón escurridizo"

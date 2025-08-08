@@ -244,45 +244,6 @@ def get_player_state(player_id: int) -> Optional[PlayerState]:
         return PlayerState(**player_data)
     return None
 
-def load_world_definition(world_id: str) -> Optional[dict]:
-    """
-    Carga todas las definiciones de un mundo (locations, items, npcs, quests)
-    desde la base de datos y las devuelve en un solo diccionario.
-    """
-    conn = get_db_connection()
-    cursor = conn.cursor()
-
-    # Cargar metainformación del mundo
-    cursor.execute("SELECT * FROM worlds WHERE id = ?", (world_id,))
-    world_row = cursor.fetchone()
-    if not world_row:
-        print(f"World with id '{world_id}' not found in database.")
-        conn.close()
-        return None
-    
-    world_def = dict(world_row)
-    world_def['main_quests'] = json.loads(world_def['main_quests']) # Decodificar JSON
-
-    # Cargar todas las demás definiciones
-    tables_to_load = ['locations', 'item_templates', 'npc_templates', 'quests']
-    for table_name in tables_to_load:
-        cursor.execute(f"SELECT * FROM {table_name} WHERE world_id = ?", (world_id,))
-        rows = cursor.fetchall()
-        # Usamos el ID de la entidad como clave para un acceso rápido
-        world_def[table_name] = {row['id']: dict(row) for row in rows}
-
-        # Decodificar campos JSON dentro de cada entidad si es necesario
-        for entity_id, entity_data in world_def[table_name].items():
-            for key, value in entity_data.items():
-                if isinstance(value, str) and (value.startswith('{') or value.startswith('[')):
-                    try:
-                        entity_data[key] = json.loads(value)
-                    except json.JSONDecodeError:
-                        pass # No era un JSON, lo dejamos como está
-
-    conn.close()
-    print(f"Successfully loaded complete definition for world '{world_id}'.")
-    return world_def
 
 def get_available_saves(world_id: str) -> List[dict]:
     """Devuelve una lista de las partidas guardadas para un mundo específico."""
@@ -321,7 +282,7 @@ if __name__ == "__main__":
     # --- AÑADE ESTA LÍNEA ---
     # ¡Ahora importamos nuestro nuevo mundo de ciencia ficción!
     # (El nombre del archivo debe coincidir con el que se generó)
-    import_world_from_json(conn, "world_import_generated.json")
+    import_world_from_json(conn, "world_import_revisado.json")
     
     conn.close()
         
