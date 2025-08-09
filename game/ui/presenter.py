@@ -1,8 +1,8 @@
 # game/presenter.py
 
-import game_narrator  # Necesario para generar descripciones de localización
+from game.ai import game_narrator  # Necesario para generar descripciones de localización
 import pyttsx3
-from models import PlayerState  # Útil para type hinting en el futuro
+from game.core.models import PlayerState  # Útil para type hinting en el futuro
 
 
 class Presenter:

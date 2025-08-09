@@ -2,7 +2,7 @@
 
 import re
 
-from ai_provider_interface import AIProviderInterface
+from game.ai.ai_provider_interface import AIProviderInterface
 
 
 def generate_location_description(

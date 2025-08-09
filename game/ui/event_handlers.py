@@ -1,10 +1,10 @@
 # game/event_handlers.py
 
-import db_manager
-import game_narrator
-from game_engine import (accept_quest, perform_skill_check,
+from game.data import db_manager
+from game.ai import game_narrator
+from game.core.game_engine import (accept_quest, perform_skill_check,
                          process_combat_turn, trigger_trap)
-from models import PlayerState
+from game.core.models import PlayerState
 
 # --- Gestores de Sub-Bucles y Eventos ---
 

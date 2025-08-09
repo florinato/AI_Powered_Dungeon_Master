@@ -2,21 +2,24 @@
 
 import os
 
-import db_manager
-import game_setup
-import image_generator  # Mantenemos la importación para el comando 'image'
-import map_generator  # Importación necesaria para el comando 'map'
-from ai_factory import get_ai_provider
-from command_parser import parse_command
-# Importamos los manejadores de eventos desde su nuevo módulo
-from event_handlers import handle_combat, handle_dialogue, handle_trap
+from game.ai.ai_factory import get_ai_provider
 # Importamos las funciones de lógica de juego que usa el bucle principal
-from game_engine import (check_quest_progress, drop_item, move_back,
-                         move_player, pick_up_item, unlock_path, use_item)
-from game_setup import create_game_world_instance
-from models import PlayerState
-from presenter import Presenter
-from state_manager import save_game_state
+from game.core.game_engine import (check_quest_progress, drop_item, move_back,
+                                   move_player, pick_up_item, unlock_path,
+                                   use_item)
+from game.core.models import PlayerState
+from game.core.state_manager import save_game_state
+from game.data import db_manager
+from game.ui.command_parser import parse_command
+# Importamos los manejadores de eventos desde su nuevo módulo
+from game.ui.event_handlers import handle_combat, handle_dialogue, handle_trap
+from game.ui.presenter import Presenter
+from game.utils import \
+    image_generator  # Mantenemos la importación para el comando 'image'
+from game.utils import \
+    map_generator  # Importación necesaria para el comando 'map'
+from game.utils import game_setup
+from game.utils.game_setup import create_game_world_instance
 
 
 def run_game():

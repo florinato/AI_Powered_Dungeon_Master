@@ -177,7 +177,8 @@
       },
       "initial_npcs": [],
       "initial_items": [
-        "qitem_fragmento_de_luz_estelar_366"
+        "qitem_fragmento_de_luz_estelar_366",
+        "qitem_cifrador_espectral_531"
       ],
       "traps": {
         "trap_campo_de_estasis_disfuncional_977": {
@@ -204,9 +205,7 @@
       "initial_npcs": [
         "THORNE_778"
       ],
-      "initial_items": [
-        "qitem_rostro_silente_623"
-      ],
+      "initial_items": [],
       "traps": {}
     },
     {
@@ -222,7 +221,9 @@
         "este": "node_2_1"
       },
       "initial_npcs": [],
-      "initial_items": [],
+      "initial_items": [
+        "qitem_rostro_silente_623"
+      ],
       "traps": {}
     },
     {
@@ -266,9 +267,7 @@
       "initial_npcs": [
         "XYLOS_370"
       ],
-      "initial_items": [
-        "qitem_cifrador_espectral_531"
-      ],
+      "initial_items": [],
       "traps": {}
     },
     {
@@ -317,7 +316,7 @@
         "cannot_drop"
       ],
       "id": "qitem_cifrador_espectral_531",
-      "name": "Cifrador Espectral",
+      "name": "Cifrador Silicoide",
       "description": "Un dispositivo de cristal tallado que se conecta a las interfaces Silicoides, utilizado para traducir y descifrar patrones de energía. Sus lecturas pueden revelar la verdadera naturaleza de la baliza."
     },
     {
@@ -327,8 +326,8 @@
         "cannot_drop"
       ],
       "id": "qitem_fragmento_de_luz_estelar_366",
-      "name": "Fragmento de Luz Estelar",
-      "description": "Un pequeño cristal Silicoide palpitante. Irradia una energía inestable, un eco de un poder antiguo y peligroso. Su contacto directo produce breves vislumbres del pasado, fragmentos del 'Gran Colapso' que dividió a los Silicoides."
+      "name": "Fragmento Estelar",
+      "description": "Un cristal Silicoide que palpita con una energía inestable. Al tocarlo, se revelan fragmentos del pasado, ecos del 'Gran Colapso' que dividió a los Silicoides."
     },
     {
       "type": "quest",
@@ -337,7 +336,7 @@
         "cannot_drop"
       ],
       "id": "qitem_rostro_silente_623",
-      "name": "Rostro Silente",
+      "name": "Fragmento Cristalino",
       "description": "Un fragmento cristalino y geométrico, aparentemente inerte, pero con una resonancia sutil. El Dr. Thorne cree que actúa como un 'espejo' para la energía Silicoide."
     },
     {
@@ -378,7 +377,7 @@
       "name": "Dr. Aris Thorne",
       "description": "Un hombre demacrado, con ojeras profundas y el cabello canoso desordenado. Viste una bata de laboratorio manchada y raída, y sus ojos brillan con una mezcla de desesperación y conocimiento. Sus manos, cubiertas de cicatrices, tiemblan constantemente.",
       "status": "friendly",
-      "dialogue_prompt": "¿Qué... qué buscas aquí? El Lamento... es real. Lo he visto, lo he sentido. Los Silicoides... ellos no duermen. Necesito... necesito que me ayudes. Mi mente se deshace, pero la verdad... la verdad debe ser revelada. ¡Por favor!",
+      "dialogue_prompt": "¿Ah, has venido... a ayudar? El Lamento... es real. He visto su influencia. Los Silicoides... no descansan. Necesito... que encuentres la baliza... la baliza y sus secretos. Mi mente se desmorona... pero la verdad debe... ser revelada... ¡por favor!",
       "id": "THORNE_778",
       "hp": 25,
       "attack": 5,
@@ -388,9 +387,9 @@
     },
     {
       "name": "La Efigie Vacía",
-      "description": "Una manifestación cristalina, compuesta por prismas inestables que reverberan con la energía del vacío. Su forma es efímera, cambiando constantemente, pero siempre reflejando la geometría perfecta, aunque fracturada, de la antigua baliza. Destellos de información distorsionada fluyen a través de ella, retorciendo su 'rostro' en muecas de desesperación y hambre de conocimiento.",
+      "description": "Una manifestación cristalina, compuesta por prismas inestables que reverberan con la energía del vacío. Su forma cambia constantemente, pero siempre refleja la geometría perfecta, aunque fracturada, de la antigua baliza. Destellos de información distorsionada fluyen a través de ella, retorciendo su 'rostro' en muecas de desesperación y hambre de conocimiento. Ataca a quien interfiera en su despertar.",
       "status": "hostile",
-      "dialogue_prompt": "¿Qué... qué buscas aquí, mortal? La baliza… me alimenta… pero su eco… corrompe… la comprensión… Deja de perturbar el sueño… del cristal…",
+      "dialogue_prompt": "¿Qué... buscas aquí, intruso? La baliza... me alimenta... pero su eco... corrompe... la comprensión... ¡Lárgate! ¡Deja de perturbar el sueño... del cristal!",
       "id": "EFÍGIE_440",
       "hp": 250,
       "attack": 35,
@@ -402,7 +401,7 @@
       "name": "Maestro Aldren Vane, Embajador del Gremio Comercial Estelar",
       "description": "Un hombre humano, de edad madura, con un rostro marcado por la preocupación y una mirada astuta. Viste las elaboradas túnicas del Gremio, adornadas con insignias comerciales y símbolos de rango. Sus manos, enguantadas en cuero fino, denotan una larga experiencia en negociaciones. Sus ojos se clavan en ti con una mezcla de pragmatismo y nerviosismo.",
       "status": "friendly",
-      "dialogue_prompt": "¿Ah, otro aventurero buscando fortuna en estos tiempos turbulentos? Soy Aldren Vane, embajador del Gremio Comercial. Las rutas comerciales están en peligro, y los incidentes con los Silicoides... bueno, digamos que me quitan el sueño. Necesito gente como tú, con coraje y, sobre todo, discreción. ¿Estás dispuesto a ayudar a proteger nuestros intereses, y tal vez, a descubrir la verdad detrás de la Sombra de las Estrellas Fracturadas?",
+      "dialogue_prompt": "¿Buscando fortuna en tiempos turbulentos, aventurero? Soy Aldren Vane, embajador del Gremio Comercial. Las rutas comerciales están en peligro, y los incidentes con los Silicoides... preocupan. Necesito ayuda. ¿Te encargas de investigar la Sombra de las Estrellas Fracturadas? La estabilidad del comercio, y quizás, la verdad, dependen de ello.",
       "id": "VANE_749",
       "hp": 30,
       "attack": 5,
@@ -424,9 +423,9 @@
     },
     {
       "name": "Embajador Valeska - Representante del Consorcio Estelar Mercantil",
-      "description": "Una figura alta y delgada, siempre vestida con el uniforme inmaculado del Consorcio: un abrigo largo de seda negra con detalles dorados y una placa brillante que identifica su rango. Su rostro, marcado por el estrés, exhibe finas arrugas que sugieren años de negociaciones y tratos en los confines de la galaxia. Sus ojos, sin embargo, conservan una mirada aguda y analítica, perpetuamente alerta a la próxima oportunidad. Su cabello, recogido en un severo moño, rara vez se desarregla.",
+      "description": "El Embajador Valeska, representante del Consorcio Estelar Mercantil, es una figura imponente vestida con el uniforme impecable del Consorcio: un abrigo largo de seda negra con detalles dorados. Su rostro, marcado por el estrés y las arrugas, revela años de negociaciones. Sus ojos, agudos y analíticos, siempre buscan la próxima oportunidad. Su voz es firme y pragmática.",
       "status": "neutral",
-      "dialogue_prompt": "Ah, veo que has venido. El tiempo es un recurso que el Consorcio valora, y sospecho que tú también. Dime, ¿qué te trae a mi presencia? No tengo tiempo para sentimentalismos; lo que necesito son resultados. Estamos tratando con una situación delicada, y necesitamos manos competentes. Habla.",
+      "dialogue_prompt": "Ah, veo que has venido. El Consorcio valora el tiempo, y sospecho que tú también. Una señal críptica de la estación Erebus ha captado nuestra atención. Tenemos información que apunta a que podría estar relacionada con los Silicoides y una fuente de energía desconocida. Necesitamos que investigues. Dime, ¿qué puedes hacer por nosotros?",
       "id": "VALESKA_736",
       "hp": 45,
       "attack": 15,
@@ -436,9 +435,9 @@
     },
     {
       "name": "El Corazón Fracturado",
-      "description": "Una entidad Silicoide, antaño una mente brillante, ahora fragmentada y consumida por la energía anómala que impregna las profundidades de la mina. Su estructura cristalina ha mutado, fusionándose con el entorno. Grandes extensiones de cristal pulsante y brillante emanan de su núcleo, formando armas y defensas. Sus fragmentos resonan con una melancolía profunda, reflejando la pérdida de su antigua conciencia y el dolor de su cautiverio.",
+      "description": "Una entidad Silicoide, antaño una mente brillante, ahora fragmentada y consumida por la energía anómala. Su estructura cristalina ha mutado, fusionándose con el entorno de la mina. Grandes formaciones cristalinas pulsan y brillan alrededor de su núcleo, sirviendo como armas y defensas. Sus fragmentos resuenan con una profunda melancolía, reflejando la pérdida de su antigua conciencia y el dolor de su cautiverio.",
       "status": "hostile",
-      "dialogue_prompt": "«¿Por qué perturban mi descanso? La luz de las estrellas… la corrompieron… la consumieron… Ahora, solo queda el eco… la ira… ¡Alejaos, o seréis absorbidos por la simetría!».",
+      "dialogue_prompt": "¿Quién osa perturbar mi agonía? La energía... me consumió... destruyó... Ya no queda más que el eco... la ira... ¡Retroceded, o seréis destrozados!",
       "id": "CORAZÓN_819",
       "hp": 1200,
       "attack": 110,
@@ -450,11 +449,11 @@
   "quests": [
     {
       "title": "El Lamento del Cristal Despertado",
-      "description": "Un misterioso mensaje cifrado, transmitido a través de una anomalía espacial, llega a tus manos. Parece provenir de una antigua baliza Silicoide, ahora inactiva. Un científico renegado, atormentado por el conocimiento, te suplica que investigues, temiendo una amenaza ancestral que yace dormida.",
+      "description": "Un mensaje críptico, transmitido a través de una anomalía espacial, te alerta sobre una antigua amenaza Silicoide. El Dr. Aris Thorne, un científico atormentado, te suplica que investigues las ruinas de una baliza Silicoide, temiendo el despertar de una entidad de pesadilla.",
       "steps": [
         {
           "id": "step_1",
-          "description": "Viaja a las ruinas de la baliza Silicoide en el sector Xylos, un lugar de energía distorsionada y extraños ecos. Encuentra la cámara central.",
+          "description": "Dirígete a las ruinas de la Baliza Silicoide en el Sector Xylos. Busca la cámara central, donde se presume que se encuentra el artefacto que necesitas.",
           "objective": {
             "type": "location",
             "id": "node_2_0"
@@ -462,7 +461,7 @@
         },
         {
           "id": "step_2",
-          "description": "Dentro de la cámara, activa la 'Lágrima de Cristal', un artefacto Silicoide que se cree contiene el conocimiento perdido. Debes descifrar la secuencia de resonancia correcta para evitar una reacción catastrófica.",
+          "description": "En la cámara central, utiliza el Cifrador Silicoide para activar la 'Lágrima de Cristal'. Descifra la secuencia de resonancia correcta para evitar la liberación de la 'Entidad Vacía'.",
           "objective": {
             "type": "item",
             "id": "qitem_cifrador_espectral_531"
@@ -470,7 +469,7 @@
         },
         {
           "id": "step_3",
-          "description": "Después de activar el artefacto, enfrentate a la 'Entidad de Eco'. Esta entidad es una manifestación espectral de la baliza, alimentada por la información corrupta que protege. Destrúyela para evitar la propagación del 'Vacío Glacial'.",
+          "description": "Una vez activada la 'Lágrima de Cristal' y resuelta la secuencia, enfréntate a la 'Entidad Vacía'. Destrúyela para detener la propagación del 'Vacío Glacial'.",
           "objective": {
             "type": "npc",
             "id": "EFÍGIE_440"
@@ -532,7 +531,7 @@
         },
         {
           "id": "step_2",
-          "description": "Erebus humea con secretos. Rumores susurran de un corazón roto, un fragmento del pasado que acecha en las profundidades subterráneas. Para desentrañar el misterio del Cristal Silente, debes enfrentarte a El Corazón Fracturado (ID: CORAZÓN_819). Solo al superar su dolor y desconfianza, podrás obtener la clave para contactar al esquivo Dr. Thorne y desvelar el secreto de las estrellas caídas.",
+          "description": "Encuentra al científico renegado, el Dr. Aris Thorne, escondido en una instalación subterránea debajo de Erebus. Debe ser persuadido para que comparta su conocimiento, pero desconfía de todos y exigirá una muestra del 'Rostro Silente' para confiar en ti.",
           "objective": {
             "type": "npc",
             "id": "CORAZÓN_819"

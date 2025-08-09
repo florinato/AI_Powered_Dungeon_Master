@@ -4,7 +4,7 @@ import os
 import time
 
 import yaml
-from ai_factory import get_ai_provider
+from game.ai.ai_factory import get_ai_provider
 
 
 class StoryForge:

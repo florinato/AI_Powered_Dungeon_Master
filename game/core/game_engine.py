@@ -1,8 +1,6 @@
-# game/game_engine.py
+# game/core/game_engine.py
 
 import random
-
-import rag_manager
 
 # --- Lógica de Habilidades y Eventos ---
 

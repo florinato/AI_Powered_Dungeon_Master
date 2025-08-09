@@ -3,9 +3,9 @@ import copy
 import json
 from typing import Optional
 
-from db_manager import (get_db_connection, load_world_definition,
+from game.data.db_manager import (get_db_connection, load_world_definition,
                         save_player_state)
-from models import PlayerQuestState, PlayerState
+from game.core.models import PlayerQuestState, PlayerState
 
 
 def create_new_character(world_id: str, player_name: str) -> Optional[PlayerState]:

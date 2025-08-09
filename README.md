@@ -1,229 +1,445 @@
-# AI Dungeon Master: The Architect & Director Engine
 
-Welcome to **AI Dungeon Master: The Architect & Director Engine**, an advanced, text-based role-playing game that plunges you into worlds dynamically generated from the ground up. This project evolves the concept of AI-driven storytelling by separating world creation into two powerful phases: an **Architect** that builds a structural blueprint, and a **Director** that breathes life, narrative, and coherence into it using cutting-edge generative AI.
-
-This game is being developed for the **Kiros Hackathon**, building upon an original concept with full permission from the base repository's owner PhanidharAkula/AI_Powered_Dungeon_Master.
-
----
-
-## Table of Contents
-
--   [Introduction](#introduction)
+# AI Dungeon Master Framework
+Welcome to the AI Dungeon Master Framework, a comprehensive suite of AI agents designed for the creation and execution of dynamic, text-based role-playing games. More than just a game, this project is a powerful toolset for writers, designers, and players to collaboratively and autonomously generate rich narrative experiences.
+The framework is built around a "cast" of specialized AI agents that handle everything from high-level creative brainstorming to the detailed, logical construction of a playable world.
+This project is being developed for the Kiros Hackathon, building upon an original concept with full permission from the base repository's owner, PhanidharAkula/AI_Powered_Dungeon_Master.
+Table of Contents
+-   [The Vision](#the-vision)
+-   [Meet the AI Agents](#meet-the-ai-agents)
 -   [Core Features](#core-features)
--   [The Two-Phase Architecture](#the-two-phase-architecture)
+-   [The Autonomous World Generation Pipeline](#the-autonomous-world-generation-pipeline)
 -   [Technology Stack](#technology-stack)
--   [Requirements](#requirements)
--   [Installation & Setup](#installation--setup)
--   [How to Play](#how-to-play)
-    -   [1. Generate a World Blueprint](#1-generate-a-world-blueprint)
-    -   [2. Direct the World Creation](#2-direct-the-world-creation)
-    -   [3. Prepare the Database](#3-prepare-the-database)
-    -   [4. Run the Game](#4-run-the-game)
--   [Available Commands](#available-commands)
--   [Future Roadmap](#future-roadmap)
 -   [Project Structure](#project-structure)
--   [Contributing](#contributing)
+-   [Installation & Setup](#installation--setup)
+-   [How to Use the Framework](#how-to-use-the-framework)
+-   [In-Game Commands](#in-game-commands)
+-   [Future Roadmap](#future-roadmap)
 -   [Acknowledgments](#acknowledgments)
-
----
-
-## Introduction
-
-This project is not just a game, but a powerful engine for creating narrative experiences. By defining a high-level vision in a simple `manifest.yaml` file, you can direct the AI to generate entire worlds, complete with unique locations, thematic items, complex characters, and multi-step quests. The result is an immersive RPG experience where every world is a unique creation, ready to be explored.
-
----
-
+## The Vision
+The goal of this project is to create a robust framework for generating infinite, high-quality RPG adventures. It addresses the entire creative lifecycle, from the initial spark of an idea to a fully realized, playable world. It achieves this through a clear separation of creative, structural, and editorial tasks, each managed by a dedicated AI agent.
+## Meet the AI Agents
+The framework's power comes from its suite of specialized AI agents, each with a distinct role:
+The Story Forge: An interactive brainstorming partner that uses a dual-persona AI (a creative writer and a shrewd critic) to help you collaboratively develop a story's plot, characters, and setting, resulting in a "Narrative Bible."
+The Architect: A procedural planner that designs the structural blueprint of the world map, focusing on layout, connectivity, and content density without worrying about the story.
+The Director: The creative powerhouse. It takes the Architect's blueprint and a thematic manifest (.yaml) to generate all the world's content: evocative locations, thematic quests, unique items, and memorable characters.
+The Revisor: The AI Quality Assurance Lead. This crucial agent audits the Director's creative "first draft." It performs iterative self-correction passes to fix gameplay pacing issues, resolve narrative inconsistencies, and ensure the final world is logical, coherent, and fun to play.
+The Dungeon Master / Narrator: The in-game performer. It uses AI to dynamically narrate atmospheric descriptions and voice the personalities of every character you meet, bringing the world to life.
 ## Core Features
-
-### Procedural World Generation
-
-*   **Architect Engine (`grid_map_generator.py`)**: Generates a structural blueprint of the world, defining the map layout and the density of content (NPCs, items, quests, traps) in each area.
-*   **Director Engine (`director.py`)**: Takes the blueprint and a thematic `manifest.yaml` to creatively generate all narrative content:
-    *   Thematically consistent locations, NPCs, items, and traps.
-    *   Multi-step, original quests with structured objectives.
-    *   Key characters (quest givers, bosses) invented on-the-fly to fit the generated plots.
-
-### Deeply Interactive Gameplay
-
-*   **Dynamic Quest System**: Quests are offered organically through NPC dialogue. The game tracks your progress through objectives like finding items, defeating enemies, or reaching specific locations.
-*   **Intelligent NPC Dialogues**: Conversations are powered by Google's Gemini models, taking into account the world's theme, the NPC's personality, and the current game state.
-*   **Context-Aware Image Generation**: Create unique, atmospheric images for any location. The AI prompt is enriched with the world's theme and historical context to ensure artistic coherence (e.g., "Ancient Rome" vs. "Cyberpunk Noir").
-
-### Robust Backend
-
-*   **SQLite Database**: All world definitions and player save states are stored in a robust SQLite database for persistence and scalability.
-*   **RAG-Powered Memory (In Development)**: An integrated RAG (Retrieval-Augmented Generation) system using ChromaDB and Google's embedding models provides the foundation for an AI Master with long-term memory.
-*   **Modular and Model-Driven**: Uses Pydantic models for strict data validation, ensuring stability and maintainability.
-
----
-
-## The Two-Phase Architecture
-
-The core of this project is its unique generation pipeline:
-
-1.  **The Architect Phase**: You run `grid_map_generator.py`. This script acts as a technical planner, creating a `_blueprint.json` file. It doesn't know *what* the world is about, only its structure and density.
-2.  **The Director Phase**: You run `director.py`. This script reads the `_blueprint.json` and your `manifest.yaml` (where you define the theme, e.g., "Roman thriller"). The Director then uses AI to fill the blueprint with creative, thematic content, producing the final `world_import_generated.json`.
-
-This separation allows for maximum control and creativity. You can generate hundreds of map structures and apply any theme to them.
-
----
-
+Autonomous World Generation Pipeline: A robust, three-phase pipeline (Architect -> Director -> Revisor) that translates a high-level manifest.yaml into a complete, polished, and playable game world.
+AI-Powered Self-Correction: The Revisor agent intelligently identifies and fixes design flaws, addressing issues with gameplay flow, narrative logic, and pacing by renaming, rewriting, and relocating game assets.
+Deeply Thematic Content: The AI is strictly guided by your manifest, ensuring all generated content—from quest plots to item descriptions—is perfectly aligned with your chosen theme.
+Dynamic and Intelligent Gameplay: Quests are offered organically through AI-driven dialogues. The game tracks progress through clear, mechanically sound objectives, all within a persistent world managed by a SQLite database.
+Interactive Narrative Development: Use the StoryForge to brainstorm and refine a complete story concept with an AI partner, exporting the result as a narrative_bible.txt.
+Context-Aware Visuals: Generate unique, atmospheric images (image command) and a visual map of the world (map command).
+## The Autonomous World Generation Pipeline
+The core of the framework is its unique, quality-focused generation pipeline:
+1. Architecture: The Architect (grid_map_generator.py) creates a structural _blueprint.json file, defining the world's map and content density.
+2. Direction: The Director (director.py) reads the blueprint and your thematic manifest.yaml. It then creatively fills the structure with a narrative, characters, and quests, producing a vibrant "first draft" (world_import_generated.json).
+3. Revision: The Revisor (revisor.py) acts as the editor-in-chief. It analyzes the draft for logical flaws, pacing issues, and narrative contradictions. It then autonomously corrects these issues, producing the final, polished, and highly playable world_import_revisado.json.
 ## Technology Stack
-
-*   **Core Language**: Python 3.11+
-*   **Generative AI**: Google Gemini Family (via `google-generativeai`)
-*   **Image Generation**: Gradio Client (`gradio_client`) connecting to FLUX.1 models.
-*   **Database**: SQLite (for core data) & ChromaDB (for RAG memory).
-*   **AI Embeddings**: Google's `text-embedding` models.
-*   **Data Validation**: Pydantic.
-*   **Dependencies**: `PyYAML`, `matplotlib`, `networkx`, `python-dotenv`.
-
----
-
-## Requirements
-
-*   Python 3.11 or higher.
-*   A Google API Key with the "Generative Language API" enabled.
-*   Git for cloning the repository.
-
----
-
+Core Language: Python 3.11+
+Generative AI: Google Gemini Family (via google-generativeai)
+Database: SQLite (for core data) & ChromaDB (for RAG memory).
+Data Validation: Pydantic.
+Dependencies: PyYAML, matplotlib, networkx, python-dotenv, gradio_client.
+## Project Structure
+The project is organized into a modular structure within the game/ directory:
+code
+Code
+game/
+├── ai/                  # Handles all interactions with AI models (LLMs, Embeddings).
+│   ├── ai_factory.py
+│   └── game_narrator.py
+├── core/                # The heart of the game engine and main loop.
+│   ├── game_engine.py
+│   ├── game_loop.py
+│   └── models.py
+├── data/                # Database management and persistence.
+│   └── db_manager.py
+├── ui/                  # User interface components like the command parser and presenter.
+│   ├── command_parser.py
+│   └── presenter.py
+├── utils/               # Utility scripts for setup and asset generation.
+│   ├── image_generator.py
+│   └── map_generator.py
+└── world_generation/    # The complete pipeline for creating worlds.
+    ├── grid_map_generator.py   # Architect
+    ├── director.py             # Director
+    ├── revisor.py              # Revisor
+    └── story_forge.py          # Interactive storyteller
 ## Installation & Setup
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/florinato/AI_Powered_Dungeon_Master/blob/creator
-cd ../AI_Powered_Dungeon_Master
-```
-
-### 2. Set Up a Virtual Environment
-
-```bash
+1. Clone the Repository
+code
+Bash
+git clone https://github.com/florinato/AI_Powered_Dungeon_Master.git
+cd AI_Powered_Dungeon_Master
+(Note: Adjust URL if you are working on a different fork/branch)
+2. Set Up a Virtual Environment
+code
+Bash
 python -m venv venv
 # On Windows:
 venv\Scripts\activate
 # On macOS/Linux:
 source venv/bin/activate
-```
-
-### 3. Install Dependencies
-
-```bash
+3. Install Dependencies
+code
+Bash
 pip install -r requirements.txt
-```
-
-### 4. Set Up Environment Variables
-
-Create a `.env` file in the project's root directory and add your Google API key:
-
-```code
+4. Set Up Environment Variables
+Create a .env file in the project's root directory and add your Google API key:
+code
+Code
 GOOGLE_API_KEY="your_google_api_key_here"
-```
-
----
-
-## How to Play
-
-The game is run in a sequence of steps that generate and then load the world.
-
-1.  Generate a World Blueprint
-
-    Run the Architect to create the map structure. You can configure the parameters inside the script.
-
-    ```bash
-    python game/grid_map_generator.py
-    ```
-
-    This creates a `_blueprint.json` file in your root folder.
-
-2.  Direct the World Creation
-
-    Run the Director to fill the blueprint with creative content based on your manifest.
-
-    ```bash
-    python game/director.py
-    ```
-
-    This creates the final `world_import_generated.json` file.
-
-3.  Prepare the Database
-
-    Run the database manager to import the generated world into SQLite and create the RAG memory.
-
-    ```bash
-    python game/db_manager.py
-    python game/rag_manager.py
-    ```
-
-4.  Run the Game
-
-    Finally, launch the game!
-
-    ```bash
-    python game/game_loop.py
-    ```
-
----
-
-## Available Commands
-
-*   `look`: Get a description of your current location, including NPCs, items, and paths.
-*   `move [direction]`: Move to a new location (e.g., `move norte`).
-*   `get [item]`: Pick up an item from the location.
-*   `talk`: Initiate a conversation with an NPC.
-*   `fight`: Engage in combat.
-*   `inventory / inv`: Display the items you are carrying.
-*   `quests`: Check your journal for active quests and current objectives.
-*   `stats`: Show your character's current stats.
-*   `image`: Generate an AI image of your current location.
-*   `map`: Display a visual map of the world.
-*   `help`: Show this list of commands.
-*   `quit`: Exit the game. Your progress is saved automatically.
-
----
-
-## Future Roadmap
-
-*   Activate the RAG Memory: Fully integrate the RAG system into the GameNarrator to give the AI Master long-term memory and contextual awareness.
-*   Refine the Combat System: Add more depth, skills, and strategic options to combat.
-*   GUI Development: Create a simple graphical user interface to enhance the player experience.
-*   Sound and Music: Add background music and sound effects for key events.
-
----
-
-## Project Structure
-
-```code
-AI_Powered_Dungeon_Master/
-├── game/
-│   ├── director.py             # The Director Engine (Creative)
-│   ├── grid_map_generator.py   # The Architect Engine (Structural)
-│   ├── db_manager.py           # Manages the SQLite database
-│   ├── rag_manager.py          # Manages the ChromaDB RAG memory
-│   ├── game_loop.py            # Main game executable
-│   ├── game_engine.py          # Core game logic and rules
-│   ├── game_narrator.py        # Handles dynamic AI narration
-│   ├── models.py               # Pydantic data models
-│   └── ...
-├── *.json                     # Blueprint and World Import files
-├── *.yaml                     # Manifest files for world themes
-├── game_database.db           # SQLite database
-├── rag_memory_db/             # ChromaDB vector store
-└── README.md                  # This file
-```
-
----
-
-## Contributing
-
-Contributions are welcome! Please fork the repository, create a feature branch, and submit a pull request.
-
----
-
-## Acknowledgments
-
-*   Google: For providing the powerful Gemini and Gemma family of models that serve as the creative core of this project.
-*   The ChromaDB and SentenceTransformers teams: For their amazing open-source tools that power the RAG memory system.
-*   The Gradio team: For making interactive model demos and APIs accessible to everyone.
-*   A Special Thanks to AkulaPhanidhar: This project was developed for the Kiros Hackathon and is a significant evolution of the concepts and codebase from the AI_Powered_Dungeon_Master. We are deeply grateful for the permission to use and build upon this fantastic foundation.
+## How to Use the Framework
+Workflow 1: Autonomous World Generation & Gameplay
+Use this workflow to generate and play a complete RPG from a theme.
+1. Generate a World Blueprint: Run the Architect to create the map structure.
+code
+Bash
+python -m game.world_generation.grid_map_generator
+Creates a _blueprint.json file.
+2. Direct the Creative Generation: Run the Director to creatively fill the blueprint based on your manifest.yaml.
+code
+Bash
+python -m game.world_generation.director
+Creates the "first draft" world_import_generated.json.
+3. Revise and Polish the World: Run the Revisor to audit and automatically correct the world.
+code
+Bash
+python -m game.world_generation.revisor
+Creates the final, polished world_import_revisado.json.
+4. Prepare the Database: Import the revised world into the game database.
+code
+Bash
+python -m game.data.db_manager
+python -m game.core.rag_manager
+5. Run the Game: Launch the game and start your adventure!
+code
+Bash
+python -m game.core.game_loop
+Workflow 2: Interactive Narrative Design with the Story Forge
+Use this workflow to brainstorm a story idea with an AI partner.
+1. Define Your Vision: Edit a manifest file (e.g., manifest_inspiracion.yaml) with your high-level concept.
+2. Run the Story Forge:
+code
+Bash
+python -m game.world_generation.story_forge
+This starts an interactive session and outputs a narrative_bible.txt.
+In-Game Commands
+look: Describe the current location.
+move [direction]: Move to a new location.
+get [item]: Pick up an item.
+talk: Speak with an NPC.
+fight: Engage in combat.
+inventory / inv: Display your items.
+quests: Check your active quests.
+stats: Show your character's stats.
+image: Generate an AI image of your location.
+map: Display a visual map of the world.
+help: Show this list of commands.
+quit: Exit the game (progress is saved).
+Future Roadmap
+Activate RAG Memory: Fully integrate the RAG system to give the in-game DM long-term, contextual memory of player actions, enabling a truly reactive world.
+"Cuentacuentos" Mode: Implement the new gameplay loop where missions transition into interactive, choice-driven narrative scenes, freeing the game from the rigid grid during quests.
+Director-Bible Integration: Allow the Director to use a narrative_bible.txt as its primary source of truth, creating a seamless pipeline from idea to playable game.
+Acknowledgments
+Google: For providing the powerful Gemini models that serve as the creative and analytical core of this project.
+The open-source community: Including the teams behind ChromaDB, Pydantic, Gradio, and many other libraries that made this possible.
+A Special Thanks to AkulaPhanidhar: This project was developed for the Kiros Hackathon and is a significant evolution of the concepts from the original AI_Powered_Dungeon_Master. We are deeply grateful for the permission to build upon this fantastic foundation.
+AI Dungeon Master Framework
+Welcome to the AI Dungeon Master Framework, a comprehensive suite of AI agents designed for the creation and execution of dynamic, text-based role-playing games. More than just a game, this project is a powerful toolset for writers, designers, and players to collaboratively and autonomously generate rich narrative experiences.
+The framework is built around a "cast" of specialized AI agents that handle everything from high-level creative brainstorming to the detailed, logical construction of a playable world.
+This project is being developed for the Kiros Hackathon, building upon an original concept with full permission from the base repository's owner, PhanidharAkula/AI_Powered_Dungeon_Master.
+Table of Contents
+-   [The Vision](#the-vision)
+-   [Meet the AI Agents](#meet-the-ai-agents)
+-   [Core Features](#core-features)
+-   [The Autonomous World Generation Pipeline](#the-autonomous-world-generation-pipeline)
+-   [Technology Stack](#technology-stack)
+-   [Project Structure](#project-structure)
+-   [Installation & Setup](#installation--setup)
+-   [How to Use the Framework](#how-to-use-the-framework)
+-   [In-Game Commands](#in-game-commands)
+-   [Future Roadmap](#future-roadmap)
+-   [Acknowledgments](#acknowledgments)
+The Vision
+The goal of this project is to create a robust framework for generating infinite, high-quality RPG adventures. It addresses the entire creative lifecycle, from the initial spark of an idea to a fully realized, playable world. It achieves this through a clear separation of creative, structural, and editorial tasks, each managed by a dedicated AI agent.
+Meet the AI Agents
+The framework's power comes from its suite of specialized AI agents, each with a distinct role:
+The Story Forge: An interactive brainstorming partner that uses a dual-persona AI (a creative writer and a shrewd critic) to help you collaboratively develop a story's plot, characters, and setting, resulting in a "Narrative Bible."
+The Architect: A procedural planner that designs the structural blueprint of the world map, focusing on layout, connectivity, and content density without worrying about the story.
+The Director: The creative powerhouse. It takes the Architect's blueprint and a thematic manifest (.yaml) to generate all the world's content: evocative locations, thematic quests, unique items, and memorable characters.
+The Revisor: The AI Quality Assurance Lead. This crucial agent audits the Director's creative "first draft." It performs iterative self-correction passes to fix gameplay pacing issues, resolve narrative inconsistencies, and ensure the final world is logical, coherent, and fun to play.
+The Dungeon Master / Narrator: The in-game performer. It uses AI to dynamically narrate atmospheric descriptions and voice the personalities of every character you meet, bringing the world to life.
+Core Features
+Autonomous World Generation Pipeline: A robust, three-phase pipeline (Architect -> Director -> Revisor) that translates a high-level manifest.yaml into a complete, polished, and playable game world.
+AI-Powered Self-Correction: The Revisor agent intelligently identifies and fixes design flaws, addressing issues with gameplay flow, narrative logic, and pacing by renaming, rewriting, and relocating game assets.
+Deeply Thematic Content: The AI is strictly guided by your manifest, ensuring all generated content—from quest plots to item descriptions—is perfectly aligned with your chosen theme.
+Dynamic and Intelligent Gameplay: Quests are offered organically through AI-driven dialogues. The game tracks progress through clear, mechanically sound objectives, all within a persistent world managed by a SQLite database.
+Interactive Narrative Development: Use the StoryForge to brainstorm and refine a complete story concept with an AI partner, exporting the result as a narrative_bible.txt.
+Context-Aware Visuals: Generate unique, atmospheric images (image command) and a visual map of the world (map command).
+The Autonomous World Generation Pipeline
+The core of the framework is its unique, quality-focused generation pipeline:
+1. Architecture: The Architect (grid_map_generator.py) creates a structural _blueprint.json file, defining the world's map and content density.
+2. Direction: The Director (director.py) reads the blueprint and your thematic manifest.yaml. It then creatively fills the structure with a narrative, characters, and quests, producing a vibrant "first draft" (world_import_generated.json).
+3. Revision: The Revisor (revisor.py) acts as the editor-in-chief. It analyzes the draft for logical flaws, pacing issues, and narrative contradictions. It then autonomously corrects these issues, producing the final, polished, and highly playable world_import_revisado.json.
+Technology Stack
+Core Language: Python 3.11+
+Generative AI: Google Gemini Family (via google-generativeai)
+Database: SQLite (for core data) & ChromaDB (for RAG memory).
+Data Validation: Pydantic.
+Dependencies: PyYAML, matplotlib, networkx, python-dotenv, gradio_client.
+Project Structure
+The project is organized into a modular structure within the game/ directory:
+code
+Code
+game/
+├── ai/                  # Handles all interactions with AI models (LLMs, Embeddings).
+│   ├── ai_factory.py
+│   └── game_narrator.py
+├── core/                # The heart of the game engine and main loop.
+│   ├── game_engine.py
+│   ├── game_loop.py
+│   └── models.py
+├── data/                # Database management and persistence.
+│   └── db_manager.py
+├── ui/                  # User interface components like the command parser and presenter.
+│   ├── command_parser.py
+│   └── presenter.py
+├── utils/               # Utility scripts for setup and asset generation.
+│   ├── image_generator.py
+│   └── map_generator.py
+└── world_generation/    # The complete pipeline for creating worlds.
+    ├── grid_map_generator.py   # Architect
+    ├── director.py             # Director
+    ├── revisor.py              # Revisor
+    └── story_forge.py          # Interactive storyteller
+Installation & Setup
+1. Clone the Repository
+code
+Bash
+git clone https://github.com/florinato/AI_Powered_Dungeon_Master.git
+cd AI_Powered_Dungeon_Master
+(Note: Adjust URL if you are working on a different fork/branch)
+2. Set Up a Virtual Environment
+code
+Bash
+python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+3. Install Dependencies
+code
+Bash
+pip install -r requirements.txt
+4. Set Up Environment Variables
+Create a .env file in the project's root directory and add your Google API key:
+code
+Code
+GOOGLE_API_KEY="your_google_api_key_here"
+How to Use the Framework
+Workflow 1: Autonomous World Generation & Gameplay
+Use this workflow to generate and play a complete RPG from a theme.
+1. Generate a World Blueprint: Run the Architect to create the map structure.
+code
+Bash
+python -m game.world_generation.grid_map_generator
+Creates a _blueprint.json file.
+2. Direct the Creative Generation: Run the Director to creatively fill the blueprint based on your manifest.yaml.
+code
+Bash
+python -m game.world_generation.director
+Creates the "first draft" world_import_generated.json.
+3. Revise and Polish the World: Run the Revisor to audit and automatically correct the world.
+code
+Bash
+python -m game.world_generation.revisor
+Creates the final, polished world_import_revisado.json.
+4. Prepare the Database: Import the revised world into the game database.
+code
+Bash
+python -m game.data.db_manager
+python -m game.core.rag_manager
+5. Run the Game: Launch the game and start your adventure!
+code
+Bash
+python -m game.core.game_loop
+Workflow 2: Interactive Narrative Design with the Story Forge
+Use this workflow to brainstorm a story idea with an AI partner.
+1. Define Your Vision: Edit a manifest file (e.g., manifest_inspiracion.yaml) with your high-level concept.
+2. Run the Story Forge:
+code
+Bash
+python -m game.world_generation.story_forge
+This starts an interactive session and outputs a narrative_bible.txt.
+In-Game Commands
+look: Describe the current location.
+move [direction]: Move to a new location.
+get [item]: Pick up an item.
+talk: Speak with an NPC.
+fight: Engage in combat.
+inventory / inv: Display your items.
+quests: Check your active quests.
+stats: Show your character's stats.
+image: Generate an AI image of your location.
+map: Display a visual map of the world.
+help: Show this list of commands.
+quit: Exit the game (progress is saved).
+Future Roadmap
+Activate RAG Memory: Fully integrate the RAG system to give the in-game DM long-term, contextual memory of player actions, enabling a truly reactive world.
+"Cuentacuentos" Mode: Implement the new gameplay loop where missions transition into interactive, choice-driven narrative scenes, freeing the game from the rigid grid during quests.
+Director-Bible Integration: Allow the Director to use a narrative_bible.txt as its primary source of truth, creating a seamless pipeline from idea to playable game.
+Acknowledgments
+Google: For providing the powerful Gemini models that serve as the creative and analytical core of this project.
+The open-source community: Including the teams behind ChromaDB, Pydantic, Gradio, and many other libraries that made this possible.
+A Special Thanks to AkulaPhanidhar: This project was developed for the Kiros Hackathon and is a significant evolution of the concepts from the original AI_Powered_Dungeon_Master. We are deeply grateful for the permission to build upon this fantastic foundation.
+AI Dungeon Master Framework
+Welcome to the AI Dungeon Master Framework, a comprehensive suite of AI agents designed for the creation and execution of dynamic, text-based role-playing games. More than just a game, this project is a powerful toolset for writers, designers, and players to collaboratively and autonomously generate rich narrative experiences.
+The framework is built around a "cast" of specialized AI agents that handle everything from high-level creative brainstorming to the detailed, logical construction of a playable world.
+This project is being developed for the Kiros Hackathon, building upon an original concept with full permission from the base repository's owner, PhanidharAkula/AI_Powered_Dungeon_Master.
+Table of Contents
+-   [The Vision](#the-vision)
+-   [Meet the AI Agents](#meet-the-ai-agents)
+-   [Core Features](#core-features)
+-   [The Autonomous World Generation Pipeline](#the-autonomous-world-generation-pipeline)
+-   [Technology Stack](#technology-stack)
+-   [Project Structure](#project-structure)
+-   [Installation & Setup](#installation--setup)
+-   [How to Use the Framework](#how-to-use-the-framework)
+-   [In-Game Commands](#in-game-commands)
+-   [Future Roadmap](#future-roadmap)
+-   [Acknowledgments](#acknowledgments)
+The Vision
+The goal of this project is to create a robust framework for generating infinite, high-quality RPG adventures. It addresses the entire creative lifecycle, from the initial spark of an idea to a fully realized, playable world. It achieves this through a clear separation of creative, structural, and editorial tasks, each managed by a dedicated AI agent.
+Meet the AI Agents
+The framework's power comes from its suite of specialized AI agents, each with a distinct role:
+The Story Forge: An interactive brainstorming partner that uses a dual-persona AI (a creative writer and a shrewd critic) to help you collaboratively develop a story's plot, characters, and setting, resulting in a "Narrative Bible."
+The Architect: A procedural planner that designs the structural blueprint of the world map, focusing on layout, connectivity, and content density without worrying about the story.
+The Director: The creative powerhouse. It takes the Architect's blueprint and a thematic manifest (.yaml) to generate all the world's content: evocative locations, thematic quests, unique items, and memorable characters.
+The Revisor: The AI Quality Assurance Lead. This crucial agent audits the Director's creative "first draft." It performs iterative self-correction passes to fix gameplay pacing issues, resolve narrative inconsistencies, and ensure the final world is logical, coherent, and fun to play.
+The Dungeon Master / Narrator: The in-game performer. It uses AI to dynamically narrate atmospheric descriptions and voice the personalities of every character you meet, bringing the world to life.
+Core Features
+Autonomous World Generation Pipeline: A robust, three-phase pipeline (Architect -> Director -> Revisor) that translates a high-level manifest.yaml into a complete, polished, and playable game world.
+AI-Powered Self-Correction: The Revisor agent intelligently identifies and fixes design flaws, addressing issues with gameplay flow, narrative logic, and pacing by renaming, rewriting, and relocating game assets.
+Deeply Thematic Content: The AI is strictly guided by your manifest, ensuring all generated content—from quest plots to item descriptions—is perfectly aligned with your chosen theme.
+Dynamic and Intelligent Gameplay: Quests are offered organically through AI-driven dialogues. The game tracks progress through clear, mechanically sound objectives, all within a persistent world managed by a SQLite database.
+Interactive Narrative Development: Use the StoryForge to brainstorm and refine a complete story concept with an AI partner, exporting the result as a narrative_bible.txt.
+Context-Aware Visuals: Generate unique, atmospheric images (image command) and a visual map of the world (map command).
+The Autonomous World Generation Pipeline
+The core of the framework is its unique, quality-focused generation pipeline:
+1. Architecture: The Architect (grid_map_generator.py) creates a structural _blueprint.json file, defining the world's map and content density.
+2. Direction: The Director (director.py) reads the blueprint and your thematic manifest.yaml. It then creatively fills the structure with a narrative, characters, and quests, producing a vibrant "first draft" (world_import_generated.json).
+3. Revision: The Revisor (revisor.py) acts as the editor-in-chief. It analyzes the draft for logical flaws, pacing issues, and narrative contradictions. It then autonomously corrects these issues, producing the final, polished, and highly playable world_import_revisado.json.
+Technology Stack
+Core Language: Python 3.11+
+Generative AI: Google Gemini Family (via google-generativeai)
+Database: SQLite (for core data) & ChromaDB (for RAG memory).
+Data Validation: Pydantic.
+Dependencies: PyYAML, matplotlib, networkx, python-dotenv, gradio_client.
+Project Structure
+The project is organized into a modular structure within the game/ directory:
+code
+Code
+game/
+├── ai/                  # Handles all interactions with AI models (LLMs, Embeddings).
+│   ├── ai_factory.py
+│   └── game_narrator.py
+├── core/                # The heart of the game engine and main loop.
+│   ├── game_engine.py
+│   ├── game_loop.py
+│   └── models.py
+├── data/                # Database management and persistence.
+│   └── db_manager.py
+├── ui/                  # User interface components like the command parser and presenter.
+│   ├── command_parser.py
+│   └── presenter.py
+├── utils/               # Utility scripts for setup and asset generation.
+│   ├── image_generator.py
+│   └── map_generator.py
+└── world_generation/    # The complete pipeline for creating worlds.
+    ├── grid_map_generator.py   # Architect
+    ├── director.py             # Director
+    ├── revisor.py              # Revisor
+    └── story_forge.py          # Interactive storyteller
+Installation & Setup
+1. Clone the Repository
+code
+Bash
+git clone https://github.com/florinato/AI_Powered_Dungeon_Master.git
+cd AI_Powered_Dungeon_Master
+(Note: Adjust URL if you are working on a different fork/branch)
+2. Set Up a Virtual Environment
+code
+Bash
+python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+3. Install Dependencies
+code
+Bash
+pip install -r requirements.txt
+4. Set Up Environment Variables
+Create a .env file in the project's root directory and add your Google API key:
+code
+Code
+GOOGLE_API_KEY="your_google_api_key_here"
+How to Use the Framework
+Workflow 1: Autonomous World Generation & Gameplay
+Use this workflow to generate and play a complete RPG from a theme.
+1. Generate a World Blueprint: Run the Architect to create the map structure.
+code
+Bash
+python -m game.world_generation.grid_map_generator
+Creates a _blueprint.json file.
+2. Direct the Creative Generation: Run the Director to creatively fill the blueprint based on your manifest.yaml.
+code
+Bash
+python -m game.world_generation.director
+Creates the "first draft" world_import_generated.json.
+3. Revise and Polish the World: Run the Revisor to audit and automatically correct the world.
+code
+Bash
+python -m game.world_generation.revisor
+Creates the final, polished world_import_revisado.json.
+4. Prepare the Database: Import the revised world into the game database.
+code
+Bash
+python -m game.data.db_manager
+python -m game.core.rag_manager
+5. Run the Game: Launch the game and start your adventure!
+code
+Bash
+python -m game.core.game_loop
+Workflow 2: Interactive Narrative Design with the Story Forge
+Use this workflow to brainstorm a story idea with an AI partner.
+1. Define Your Vision: Edit a manifest file (e.g., manifest_inspiracion.yaml) with your high-level concept.
+2. Run the Story Forge:
+code
+Bash
+python -m game.world_generation.story_forge
+This starts an interactive session and outputs a narrative_bible.txt.
+In-Game Commands
+look: Describe the current location.
+move [direction]: Move to a new location.
+get [item]: Pick up an item.
+talk: Speak with an NPC.
+fight: Engage in combat.
+inventory / inv: Display your items.
+quests: Check your active quests.
+stats: Show your character's stats.
+image: Generate an AI image of your location.
+map: Display a visual map of the world.
+help: Show this list of commands.
+quit: Exit the game (progress is saved).
+Future Roadmap
+Activate RAG Memory: Fully integrate the RAG system to give the in-game DM long-term, contextual memory of player actions, enabling a truly reactive world.
+"Cuentacuentos" Mode: Implement the new gameplay loop where missions transition into interactive, choice-driven narrative scenes, freeing the game from the rigid grid during quests.
+Director-Bible Integration: Allow the Director to use a narrative_bible.txt as its primary source of truth, creating a seamless pipeline from idea to playable game.
+Acknowledgments
+Google: For providing the powerful Gemini models that serve as the creative and analytical core of this project.
+The open-source community: Including the teams behind ChromaDB, Pydantic, Gradio, and many other libraries that made this possible.
+A Special Thanks to AkulaPhanidhar: This project was developed for the Kiros Hackathon and is a significant evolution of the concepts from the original AI_Powered_Dungeon_Master. We are deeply grateful for the permission to build upon this fantastic foundation.

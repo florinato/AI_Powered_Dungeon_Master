@@ -4,14 +4,23 @@
         "player_name": "florinato",
         "world_id": "venganza_silicoide",
         "level": 1,
-        "hp": 100,
+        "hp": 0,
         "max_hp": 100,
         "attack": 10,
         "xp": 0,
         "xp_to_next_level": 100,
         "current_location_id": "node_0_0",
         "location_history": [
-            "node_0_0"
+            "node_0_0",
+            "node_0_0",
+            "node_0_1",
+            "node_1_1",
+            "node_1_0",
+            "node_2_0",
+            "node_1_0",
+            "node_0_0",
+            "node_0_1",
+            "node_1_1"
         ],
         "inventory": [
             {
@@ -28,19 +37,105 @@
                     "light",
                     "tier1"
                 ]
+            },
+            {
+                "id": "cizalla_de_ter_esttico_804",
+                "world_id": "venganza_silicoide",
+                "template_id": "GENERIC",
+                "name": "Cizalla de \u00c9ter Est\u00e1tico",
+                "description": "Un arma de energ\u00eda de dise\u00f1o intrincado, a menudo encontrada en manos de los Silicoides o contrabandistas experimentados. La Cizalla dispara un haz de energ\u00eda concentrada que corta la materia a nivel molecular, dejando tras de s\u00ed una cicatriz brillante y un rastro de polvo cristalino. Su fuente de energ\u00eda es un 'N\u00facleo Est\u00e1tico', una anomal\u00eda desconocida, y su uso prolongado puede provocar inestabilidad en el espacio-tiempo circundante. Se dice que las casas nobles m\u00e1s oscuras las utilizan para eliminar rivales, ocultando toda evidencia de su existencia.",
+                "type": "weapon",
+                "damage_base": 5,
+                "healing_amount": null,
+                "properties": [
+                    "melee",
+                    "light",
+                    "tier1"
+                ]
+            },
+            {
+                "id": "cizalla_de_ter_esttico_804",
+                "world_id": "venganza_silicoide",
+                "template_id": "GENERIC",
+                "name": "Cizalla de \u00c9ter Est\u00e1tico",
+                "description": "Un arma de energ\u00eda de dise\u00f1o intrincado, a menudo encontrada en manos de los Silicoides o contrabandistas experimentados. La Cizalla dispara un haz de energ\u00eda concentrada que corta la materia a nivel molecular, dejando tras de s\u00ed una cicatriz brillante y un rastro de polvo cristalino. Su fuente de energ\u00eda es un 'N\u00facleo Est\u00e1tico', una anomal\u00eda desconocida, y su uso prolongado puede provocar inestabilidad en el espacio-tiempo circundante. Se dice que las casas nobles m\u00e1s oscuras las utilizan para eliminar rivales, ocultando toda evidencia de su existencia.",
+                "type": "weapon",
+                "damage_base": 5,
+                "healing_amount": null,
+                "properties": [
+                    "melee",
+                    "light",
+                    "tier1"
+                ]
+            },
+            {
+                "id": "qitem_rostro_silente_623",
+                "world_id": "venganza_silicoide",
+                "template_id": "GENERIC",
+                "name": "Rostro Silente",
+                "description": "Un fragmento cristalino y geom\u00e9trico, aparentemente inerte, pero con una resonancia sutil. El Dr. Thorne cree que act\u00faa como un 'espejo' para la energ\u00eda Silicoide.",
+                "type": "quest",
+                "damage_base": null,
+                "healing_amount": null,
+                "properties": [
+                    "plot_critical",
+                    "cannot_drop"
+                ]
+            },
+            {
+                "id": "qitem_fragmento_de_luz_estelar_366",
+                "world_id": "venganza_silicoide",
+                "template_id": "GENERIC",
+                "name": "Fragmento de Luz Estelar",
+                "description": "Un peque\u00f1o cristal Silicoide palpitante. Irradia una energ\u00eda inestable, un eco de un poder antiguo y peligroso. Su contacto directo produce breves vislumbres del pasado, fragmentos del 'Gran Colapso' que dividi\u00f3 a los Silicoides.",
+                "type": "quest",
+                "damage_base": null,
+                "healing_amount": null,
+                "properties": [
+                    "plot_critical",
+                    "cannot_drop"
+                ]
+            },
+            {
+                "id": "cizalla_de_ter_esttico_804",
+                "world_id": "venganza_silicoide",
+                "template_id": "GENERIC",
+                "name": "Cizalla de \u00c9ter Est\u00e1tico",
+                "description": "Un arma de energ\u00eda de dise\u00f1o intrincado, a menudo encontrada en manos de los Silicoides o contrabandistas experimentados. La Cizalla dispara un haz de energ\u00eda concentrada que corta la materia a nivel molecular, dejando tras de s\u00ed una cicatriz brillante y un rastro de polvo cristalino. Su fuente de energ\u00eda es un 'N\u00facleo Est\u00e1tico', una anomal\u00eda desconocida, y su uso prolongado puede provocar inestabilidad en el espacio-tiempo circundante. Se dice que las casas nobles m\u00e1s oscuras las utilizan para eliminar rivales, ocultando toda evidencia de su existencia.",
+                "type": "weapon",
+                "damage_base": 5,
+                "healing_amount": null,
+                "properties": [
+                    "melee",
+                    "light",
+                    "tier1"
+                ]
+            },
+            {
+                "id": "qitem_rostro_silente_623",
+                "world_id": "venganza_silicoide",
+                "template_id": "GENERIC",
+                "name": "Rostro Silente",
+                "description": "Un fragmento cristalino y geom\u00e9trico, aparentemente inerte, pero con una resonancia sutil. El Dr. Thorne cree que act\u00faa como un 'espejo' para la energ\u00eda Silicoide.",
+                "type": "quest",
+                "damage_base": null,
+                "healing_amount": null,
+                "properties": [
+                    "plot_critical",
+                    "cannot_drop"
+                ]
             }
         ],
         "active_quests": {
             "QUEST_EL_LAMENTO_DEL_CRISTAL_DESPERTADO_590": {
                 "quest_id": "QUEST_EL_LAMENTO_DEL_CRISTAL_DESPERTADO_590",
-                "title": "El Lamento del Cristal Despertado",
-                "current_step_id": "step_1",
+                "current_step_id": "step_2",
                 "completed": false,
                 "status": "active"
             }
         },
         "world_state_delta": {},
-        "location": "node_0_1"
+        "location": "node_1_0"
     },
     "locations": {
         "node_0_0": {
@@ -69,7 +164,7 @@
             },
             "npcs": {},
             "items": {},
-            "generated_description": "El aire, denso como terciopelo negro, te recibe en El Refugio de los Susurros Cristalinos. La luz, una quimera danzante, se refracta en los Silicoides angulares, proyectando siluetas espectrales que se contorsionan en las paredes. Un aroma sutil a \u00f3xido y incienso podrido embriaga los sentidos, mientras que los susurros, casi inaudibles, parecen acariciar tu piel, prometiendo secretos ancestrales y un peligro latente en la oscuridad."
+            "generated_description": "Here's the revised paragraph:\n\nTe adentras en El Refugio de los Susurros Cristalinos, y la oscuridad te abraza como una mortaja sedosa. Un olor a tierra mojada y cristal roto impregna el aire, mezclado con un sutil perfume a melancol\u00eda. Las sombras, danzantes y esquivas, se deslizan entre las aristas de los Silicoides, mientras el eco de un coro fantasmag\u00f3rico susurra secretos inaudibles, hel\u00e1ndote la sangre en las venas."
         },
         "node_1_0": {
             "id": "node_1_0",
@@ -91,11 +186,12 @@
                     "damage": 45,
                     "disarm_difficulty": "very_challenging",
                     "id": "trap_cmara_de_entropa_inestable_168",
-                    "triggered": false
+                    "triggered": true
                 }
             },
             "npcs": {},
-            "items": {}
+            "items": {},
+            "generated_description": "Aqu\u00ed, en la C\u00e1mara de las Sombras Fugaces, el aire se espesa con la fragancia met\u00e1lica del cristal pulsante, un aroma que precede a la visi\u00f3n. Cristales facetados, como l\u00e1grimas de obsidiana, salpican la b\u00f3veda, proyectando danzas silenciosas de sombra que susurran secretos en lenguas olvidadas. Un zumbido bajo, casi imperceptible, vibra en el suelo, prometiendo conexiones mentales y realidades ocultas a todo aquel que se atreva a escuchar."
         },
         "node_2_0": {
             "id": "node_2_0",
@@ -170,23 +266,8 @@
                     "dialogue_prompt": "\u00bfQu\u00e9... qu\u00e9 buscas aqu\u00ed? El Lamento... es real. Lo he visto, lo he sentido. Los Silicoides... ellos no duermen. Necesito... necesito que me ayudes. Mi mente se deshace, pero la verdad... la verdad debe ser revelada. \u00a1Por favor!"
                 }
             },
-            "items": {
-                "qitem_rostro_silente_623": {
-                    "id": "qitem_rostro_silente_623",
-                    "world_id": "venganza_silicoide",
-                    "template_id": "GENERIC",
-                    "name": "Rostro Silente",
-                    "description": "Un fragmento cristalino y geom\u00e9trico, aparentemente inerte, pero con una resonancia sutil. El Dr. Thorne cree que act\u00faa como un 'espejo' para la energ\u00eda Silicoide.",
-                    "type": "quest",
-                    "damage_base": null,
-                    "healing_amount": null,
-                    "properties": [
-                        "plot_critical",
-                        "cannot_drop"
-                    ]
-                }
-            },
-            "generated_description": "Here is a paragraph that fits the prompt:\n\nTe adentras en El Coraz\u00f3n de Obsidiana, un abismo de oscuridad que te engulle. El aire, denso y fr\u00edo, huele a piedra mojada y a un sutil aroma met\u00e1lico, como si la misma tierra sangrara energ\u00eda. A cada paso, el silencio se rompe con d\u00e9biles chasquidos, el eco fantasmal de pulsos desconocidos que emanan de las formas geom\u00e9tricas flotantes, sombras que danzan en la penumbra de la obsidiana pulida."
+            "items": {},
+            "generated_description": "Te adentras, jadeante, en El Coraz\u00f3n de Obsidiana. Un fr\u00edo glacial te recibe, un abrazo de la misma oscuridad de la obsidiana que conforma este sal\u00f3n infinito. El aire, espeso y silencioso, huele a polvo de eras, a un tiempo anterior a la memoria, impregnado con el sutil aroma met\u00e1lico de la energ\u00eda contenida en los flotantes artefactos Silicoides, que parpadean d\u00e9bilmente en el centro, como latidos de un coraz\u00f3n olvidado."
         },
         "node_1_1": {
             "id": "node_1_1",
@@ -204,7 +285,8 @@
             "initial_items": [],
             "traps": {},
             "npcs": {},
-            "items": {}
+            "items": {},
+            "generated_description": "Adentr\u00e1ndote en La Gruta de los Recuerdos Petrificados, un silencio espeso te envuelve, roto solo por el goteo constante de agua que resuena como un latido distante. Las paredes, impregnadas de un brillo fantasmal, emiten un sutil aroma a piedra h\u00fameda y un perfume indefinido, casi et\u00e9reo, que suscita la memoria de algo olvidado.  Aqu\u00ed, en este antro cavernoso, el tiempo parece diluirse, y el aire mismo parece vibrar con los ecos de un pasado incomprensible."
         },
         "node_2_1": {
             "id": "node_2_1",

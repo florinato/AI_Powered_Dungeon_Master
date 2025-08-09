@@ -1,4 +1,4 @@
-# game/models.py
+# game/core/models.py
 
 from typing import Any, Dict, List, Optional
 
@@ -24,10 +24,7 @@ class LocationNode(BaseModel):
     has_quest_start: bool
     has_trap: bool
 
-    class Config:
-        # Esto es de Pydantic v1. En V2, el comportamiento es por defecto.
-        # Lo quitamos para evitar warnings.
-        pass
+
 
 class WorldGraph(BaseModel):
     """El modelo raíz para el esqueleto estructural del mundo."""

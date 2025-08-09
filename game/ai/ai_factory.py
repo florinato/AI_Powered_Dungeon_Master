@@ -1,7 +1,7 @@
 # ai_factory.py
 import os
 
-from ai_provider_interface import AIProviderInterface
+from game.ai.ai_provider_interface import AIProviderInterface
 from dotenv import load_dotenv
 
 # Cargamos las variables del archivo .env al entorno del sistema al iniciar el módulo.
@@ -21,7 +21,7 @@ def get_ai_provider() -> AIProviderInterface:
 
     # 2. Comparamos el nombre y devolvemos una INSTANCIA de la clase correcta.
     if provider_name == "gemini":
-        from gemini_provider import GeminiProvider
+        from game.ai.gemini_provider import GeminiProvider
         return GeminiProvider()  # <-- Creamos y devolvemos la instancia
         
     # elif provider_name == "openai":

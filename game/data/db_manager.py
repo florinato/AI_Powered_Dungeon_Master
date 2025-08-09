@@ -5,7 +5,7 @@ import os
 import sqlite3
 from typing import List, Optional
 
-from models import PlayerState
+from game.core.models import PlayerState
 
 DB_FILE = "game_database.db"
 

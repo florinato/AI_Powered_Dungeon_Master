@@ -7,9 +7,10 @@ import time
 from typing import Any, Dict, List
 
 import yaml
-from ai_factory import get_ai_provider
-from ai_provider_interface import AIProviderInterface
-from models import LocationDefinition, WorldDefinition, WorldGraph
+
+from game.ai.ai_factory import get_ai_provider
+from game.ai.ai_provider_interface import AIProviderInterface
+from game.core.models import LocationDefinition, WorldDefinition, WorldGraph
 
 
 class DirectorAgent:
@@ -443,10 +444,10 @@ if __name__ == "__main__":
         script_dir = os.path.dirname(__file__)
         project_root = os.path.dirname(script_dir) if script_dir else os.getcwd()
         
-        GRAPH_FILE = os.path.join(project_root, "grid_map_3x3_p60_blueprint.json")
-        MANIFEST_FILE = os.path.join(project_root, "manifest_silicoides.yaml")
-        BASE_ITEMS_FILE = os.path.join(project_root, "base_item_templates.json")
-        OUTPUT_FILE = os.path.join(project_root, "world_import_generated.json")
+        GRAPH_FILE = os.path.join(project_root, "../grid_map_3x3_p100_blueprint.json")
+        MANIFEST_FILE = os.path.join(project_root, "../manifest_silicoides.yaml")
+        BASE_ITEMS_FILE = os.path.join(project_root, "../base_item_templates.json")
+        OUTPUT_FILE = os.path.join(project_root, "../world_import_generated.json")
         
         with open(GRAPH_FILE, 'r', encoding='utf-8') as f:
             world_graph_data = json.load(f)
