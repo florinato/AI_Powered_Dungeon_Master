@@ -1,0 +1,11 @@
+# manifest_seed.yaml
+world_id: "spaceballs_revenge"
+world_name: "Spaceballs: La Venganza del Aire Fresco"
+language: "Español"
+
+high_level_inspiration:
+  genre: "Space Opera Comedia"
+  core_concept: "Un grupo de héroes ineptos deben salvar a una princesa y su planeta del malvado Lord Casco Oscuro en una aventura llena de humor absurdo y parodias de ciencia ficción."
+  style_references: ["Spaceballs (Mel Brooks)", "Guía del autoestopista galáctico", "Futurama"]
+  
+inhabitant_description: "Los habitantes de esta galaxia son variopintos y a menudo absurdos. Incluyen mercenarios con problemas de liquidez, clones amenazantes pero incompetentes, miembros de la realeza despistados, droides poetas, y villanos con egos inflados."

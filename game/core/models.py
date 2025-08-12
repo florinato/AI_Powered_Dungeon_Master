@@ -14,17 +14,11 @@ class LocationNode(BaseModel):
     id: str
     type: str = "sala"
     tags: List[str] = Field(default_factory=list)
-    
     connections: List[Dict[str, Any]] = Field(default_factory=list)
-
-    # Campos del blueprint que el Director leerá. ¡Nombres unificados!
-    # Ya no usamos alias, esperamos estos nombres exactos en el JSON.
     npc_count: int
     item_count: int
     has_quest_start: bool
     has_trap: bool
-
-
 
 class WorldGraph(BaseModel):
     """El modelo raíz para el esqueleto estructural del mundo."""
@@ -105,25 +99,21 @@ class PlayerQuestState(BaseModel):
     quest_id: str
     current_step_id: str
     completed: bool = False
-    status: str = "active" 
+    status: str = "active"
 
 class PlayerState(BaseModel):
     """Representa el estado completo de un jugador en una partida."""
     player_id: Optional[int] = None
     player_name: str
     world_id: str
-    
     level: int = 1
     hp: int = 100
     max_hp: int = 100
     attack: int = 10
     xp: int = 0
     xp_to_next_level: int = 100
-    
     current_location_id: str
     location_history: List[str] = Field(default_factory=list)
-    
     inventory: List[Dict[str, Any]] = Field(default_factory=list)
-    
     active_quests: Dict[str, PlayerQuestState] = Field(default_factory=dict)
     world_state_delta: Dict[str, Any] = Field(default_factory=dict)

@@ -1,0 +1,152 @@
+world_id: spaceballs_revenge
+world_name: 'Spaceballs: La Venganza del Aire Fresco'
+language: Español
+high_level_inspiration:
+  genre: Space Opera Comedia
+  core_concept: Un grupo de héroes ineptos deben salvar a una princesa y su planeta
+    del malvado Lord Casco Oscuro en una aventura llena de humor absurdo y parodias
+    de ciencia ficción.
+  style_references:
+  - Spaceballs (Mel Brooks)
+  - Guía del autoestopista galáctico
+  - Futurama
+inhabitant_description: Los habitantes de esta galaxia son variopintos y a menudo
+  absurdos. Incluyen mercenarios con problemas de liquidez, clones amenazantes pero
+  incompetentes, miembros de la realeza despistados, droides poetas, y villanos con
+  egos inflados.
+creative_examples:
+  location_suggestions:
+  - name: El Basurero Estelar Flotante
+    description: Una estación espacial gigante construida de basura interestelar,
+      donde se esconden los mercenarios y se venden armas de dudosa calidad.
+    aspects:
+    - Olores nauseabundos
+    - Negocios turbios
+    - Personajes desaliñados
+  - name: La Cantina de la Nebulosa del Cangrejo
+    description: Un bar decadente en medio de una nebulosa, frecuentado por contrabandistas,
+      piratas espaciales y droides con problemas de hardware.
+    aspects:
+    - Música estridente
+    - Bebidas alienígenas extrañas
+    - Peleas frecuentes
+  - name: El Asteroide de los Clones Desechados
+    description: Un campo de asteroides habitado por clones defectuosos, abandonados
+      por Lord Casco Oscuro.
+    aspects:
+    - Clones con personalidades excéntricas
+    - Tecnología obsoleta
+    - Anhelo de aceptación
+  npc_archetypes_examples:
+  - name: Bartholomew "Barty" Buzzkill
+    description: Un mercenario cínico y con sobrepeso, especializado en el uso de
+      armas láser de baja potencia, siempre endeudado.
+    aspects:
+    - Poco entusiasmo
+    - Deuda constante
+    - Armas defectuosas
+  - name: Princesa Zz
+    description: La princesa del planeta Algodón de Azúcar, más preocupada por su
+      manicura y su imagen pública que por salvar su planeta.
+    aspects:
+    - Superficial
+    - Ingenua
+    - Aficionada a los selfies
+  - name: Droide Poeta 734-B
+    description: Un droide obsoleto que recita poemas dramáticos en momentos inoportunos,
+      incluso durante las batallas.
+    aspects:
+    - Obsesionado con la poesía
+    - Inepto en combate
+    - Voz melodramática
+  - name: Lord Casco Oscuro (con Casco y Peluca)
+    description: El villano principal, con un ego inflado y un complejo de inferioridad.
+      Siempre intenta parecer amenazante, pero rara vez lo consigue, especialmente
+      cuando su casco se cae o su peluca se desacomoda.
+    aspects:
+    - Ego megalómano
+    - Inseguro
+    - Propensos a accidentes ridículos
+narrative_bible:
+  synopsis: En una galaxia lejana, muy lejana (o quizás no tanto), la Princesa Zz
+    del planeta Algodón de Azúcar es secuestrada por el malvado Lord Casco Oscuro,
+    quien busca robar el aire fresco del planeta para venderlo en el mercado negro.
+    Un equipo de héroes, liderado por el cínico mercenario Barty Buzzkill, se embarca
+    en una misión cómica y llena de contratiempos para rescatar a la princesa y salvar
+    el planeta. En su camino, se enfrentarán a droides poetas, clones defectuosos
+    y situaciones absurdas, todo mientras Lord Casco Oscuro intenta, sin éxito, demostrar
+    su maldad.
+  main_characters:
+  - name: Barty Buzzkill
+    aspect: Mercenario cínico y con sobrepeso
+    description: Un mercenario con experiencia en el uso de armas de baja potencia,
+      siempre endeudado y con una actitud pesimista ante la vida. A pesar de su cinismo,
+      tiene un código moral cuestionable que lo lleva a ayudar a los demás, siempre
+      y cuando haya una ganancia económica involucrada.
+  - name: Princesa Zz
+    aspect: Superficial y despistada
+    description: La princesa del planeta Algodón de Azúcar, más preocupada por su
+      manicura y su imagen pública que por los problemas de su planeta. Aunque inicialmente
+      es superficial, aprenderá la importancia de la responsabilidad y la amistad
+      a lo largo de la aventura, aunque de forma un poco torpe.
+  - name: Droide Poeta 734-B
+    aspect: Obsesionado con la poesía y melodramático
+    description: Un droide obsoleto que recita poemas dramáticos en momentos inoportunos,
+      incluso durante las batallas. Su sensibilidad poética a menudo entra en conflicto
+      con las situaciones peligrosas que enfrenta.
+  - name: Lord Casco Oscuro
+    aspect: Megalómano e inseguro
+    description: El villano principal, con un ego inflado y un complejo de inferioridad.
+      Siempre intenta parecer amenazante, pero rara vez lo consigue, especialmente
+      cuando su casco se cae o su peluca se desacomoda.
+  key_locations:
+  - name: El Basurero Estelar Flotante
+    aspects:
+    - Olores nauseabundos
+    - Negocios turbios
+    - Personajes desaliñados
+    description: Una estación espacial gigante construida de basura interestelar,
+      donde se esconden los mercenarios y se venden armas de dudosa calidad. Es el
+      lugar perfecto para encontrar información y contratar a Barty.
+  - name: La Cantina de la Nebulosa del Cangrejo
+    aspects:
+    - Música estridente
+    - Bebidas alienígenas extrañas
+    - Peleas frecuentes
+    description: Un bar decadente en medio de una nebulosa, frecuentado por contrabandistas,
+      piratas espaciales y droides con problemas de hardware. Es un buen lugar para
+      encontrar pistas sobre el paradero de la Princesa Zz y para pelear con los matones
+      de Lord Casco Oscuro.
+  - name: El Asteroide de los Clones Desechados
+    aspects:
+    - Clones con personalidades excéntricas
+    - Tecnología obsoleta
+    - Anhelo de aceptación
+    description: Un campo de asteroides habitado por clones defectuosos, abandonados
+      por Lord Casco Oscuro. Los clones, a pesar de sus defectos, pueden ser aliados
+      inesperados.
+  - name: Planeta Algodón de Azúcar
+    aspects:
+    - Dulzura excesiva
+    - Arquitectura pastel
+    - Preocupación por la moda
+    description: El planeta natal de la Princesa Zz, famoso por su aire fresco y su
+      obsesión por la moda. Será el objetivo final de Lord Casco Oscuro y el lugar
+      donde se decidirá el destino de la galaxia.
+  plot_hooks:
+  - title: El Contrato
+    description: Barty Buzzkill es contactado por una figura misteriosa (o posiblemente
+      torpe) para encontrar a la Princesa Zz, lo que lo involucra en una misión de
+      rescate.
+  - title: El Encuentro en la Cantina
+    description: El equipo se encuentra en La Cantina de la Nebulosa del Cangrejo,
+      donde obtienen información crucial sobre el paradero de la Princesa Zz y se
+      ven involucrados en una pelea.
+  - title: El Asteroide de los Secretos
+    description: El equipo llega al Asteroide de los Clones Desechados, donde descubren
+      una debilidad clave en el plan de Lord Casco Oscuro, pero deben ganarse la confianza
+      de los clones.
+  - title: La Batalla por el Aire Fresco
+    description: El equipo se enfrenta a Lord Casco Oscuro en el Planeta Algodón de
+      Azúcar en una batalla final llena de humor y contratiempos, para decidir el
+      destino del planeta y su aire fresco.

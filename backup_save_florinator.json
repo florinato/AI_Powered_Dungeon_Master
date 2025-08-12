@@ -2,7 +2,7 @@
     "player": {
         "player_id": 1,
         "player_name": "florinator",
-        "world_id": "venganza_silicoide",
+        "world_id": "spaceballs_revenge",
         "level": 1,
         "hp": 100,
         "max_hp": 100,
@@ -10,116 +10,79 @@
         "xp": 0,
         "xp_to_next_level": 100,
         "current_location_id": "node_0_0",
-        "location_history": [],
+        "location_history": [
+            "node_0_0"
+        ],
         "inventory": [],
-        "active_quests": {},
+        "active_quests": {
+            "QUEST_EL_CONTRATO_125": {
+                "quest_id": "QUEST_EL_CONTRATO_125",
+                "title": "El Contrato",
+                "current_step_id": "step_1",
+                "completed": false,
+                "status": "active"
+            }
+        },
         "world_state_delta": {},
-        "location": "node_0_0"
+        "location": "node_0_1"
     },
     "locations": {
         "node_0_0": {
             "id": "node_0_0",
-            "world_id": "venganza_silicoide",
-            "name": "El Refugio de los Susurros Cristalinos",
-            "description": "Un sal\u00f3n vasto y oscuro, donde las sombras bailan con una elegancia espectral. Los ecos de voces desconocidas resuenan entre las formas geom\u00e9tricas de los Silicoides, creando una atm\u00f3sfera de inquietante misterio.",
+            "world_id": "spaceballs_revenge",
+            "name": "La Granja C\u00f3smica de los Vegetales Mutantes",
+            "description": "Aqu\u00ed, las zanahorias crecen con instintos asesinos y los br\u00f3colis regurgitan \u00e1cido. \u00a1Cuidado con el granjero, que tiene m\u00e1s brazos que un pulpo y menos paciencia que un gato en una pecera!",
             "type": "sala",
             "tags": [],
             "connections": {
                 "sur": "node_0_1"
             },
             "initial_npcs": [],
-            "initial_items": [
-                "cizalla_de_ter_esttico_804"
-            ],
-            "traps": {
-                "trap_campo_esttico_desalineado_955": {
-                    "name": "Campo Est\u00e1tico Desalineado",
-                    "description": "Una trampa sutilmente integrada en la arquitectura de una antigua estaci\u00f3n espacial. A primera vista, parece una placa de aleaci\u00f3n decorativa, grabada con intrincados patrones geom\u00e9tricos. Al acercarse, una leve distorsi\u00f3n en el aire revela su verdadera naturaleza: un campo de estasis descontrolado. El campo, dise\u00f1ado originalmente para preservar el contenido de una c\u00e1mara de seguridad, ahora emite pulsos err\u00e1ticos que pueden desestabilizar la materia a nivel molecular. La fuente de energ\u00eda, una reliquia de tecnolog\u00eda Silicoide, se ha degradado con el tiempo, volvi\u00e9ndola impredecible y peligrosa. Los intrusos desprevenidos pueden quedar atrapados en un estado de suspensi\u00f3n temporal, o peor, ser desintegrados. Un tenue zumbido y un ligero parpadeo en la luz ambiental son los \u00fanicos indicadores de peligro.",
-                    "damage": 45,
-                    "disarm_difficulty": "very_challenging",
-                    "id": "trap_campo_esttico_desalineado_955",
-                    "triggered": false
-                }
-            },
+            "initial_items": [],
+            "traps": {},
             "npcs": {},
-            "items": {
-                "cizalla_de_ter_esttico_804": {
-                    "id": "cizalla_de_ter_esttico_804",
-                    "world_id": "venganza_silicoide",
-                    "template_id": "GENERIC",
-                    "name": "Cizalla de \u00c9ter Est\u00e1tico",
-                    "description": "Un arma de energ\u00eda de dise\u00f1o intrincado, a menudo encontrada en manos de los Silicoides o contrabandistas experimentados. La Cizalla dispara un haz de energ\u00eda concentrada que corta la materia a nivel molecular, dejando tras de s\u00ed una cicatriz brillante y un rastro de polvo cristalino. Su fuente de energ\u00eda es un 'N\u00facleo Est\u00e1tico', una anomal\u00eda desconocida, y su uso prolongado puede provocar inestabilidad en el espacio-tiempo circundante. Se dice que las casas nobles m\u00e1s oscuras las utilizan para eliminar rivales, ocultando toda evidencia de su existencia.",
-                    "type": "weapon",
-                    "damage_base": 5,
-                    "healing_amount": null,
-                    "properties": [
-                        "melee",
-                        "light",
-                        "tier1"
-                    ]
-                }
-            },
-            "generated_description": "El umbral se abri\u00f3 a un sal\u00f3n que succionaba la luz, una negrura donde las sombras se retorc\u00edan como serpientes de obsidiana. Un fr\u00edo h\u00famedo, con aroma a tierra mojada y a algo m\u00e1s, algo indefiniblemente antiguo, roz\u00f3 tu rostro. El eco de susurros, apenas perceptibles, resonaba entre las geometr\u00edas p\u00e9treas de los Silicoides, promesas y advertencias danzando en el silencio tenso, clavando cada sonido en el alma."
+            "items": {},
+            "generated_description": "El aire, espeso y verdoso, se aferra a la garganta como un v\u00f3mito vegetal. La Granja C\u00f3smica de los Vegetales Mutantes se extiende ante ti, surcada por campos donde las zanahorias, retorcidas y amarillentas, te miran con una malicia palpable. Un olor acre a br\u00f3coli fermentado y algo peor, mucho peor, impregna el ambiente, prometiendo un encuentro nada agradable con el granjero polibraquial, un ser con la ira de mil soles."
         },
         "node_1_0": {
             "id": "node_1_0",
-            "world_id": "venganza_silicoide",
-            "name": "La C\u00e1mara de las Sombras Fugaces",
-            "description": "Un espacio abovedado iluminado por cristales pulsantes, donde las sombras bailan con una elegancia inquietante. Rumores susurran que aqu\u00ed los Silicoides intercambian visiones, conectando sus mentes en un plano desconocido.",
+            "world_id": "spaceballs_revenge",
+            "name": "El Planeta del Salto de la Rana Inconstante",
+            "description": "Este planeta, famoso por sus impredecibles campos de fuerza, tambi\u00e9n alberga una raza de ranas parlantes con un gusto exquisito por los sombreros.  Prep\u00e1rense para saltos dimensionales y dilemas existenciales, \u00a1todo en un d\u00eda de trabajo!",
             "type": "sala",
             "tags": [],
             "connections": {
                 "este": "node_2_0",
                 "sur": "node_1_1"
             },
-            "initial_npcs": [],
-            "initial_items": [],
-            "traps": {
-                "trap_cmara_de_entropa_inestable_168": {
-                    "name": "C\u00e1mara de Entrop\u00eda Inestable",
-                    "description": "Una trampa misteriosa, integrada en la arquitectura antigua de una estructura abandonada. Consiste en una c\u00e1mara aparentemente vac\u00eda, adornada con patrones geom\u00e9tricos complejos grabados en las paredes de una sustancia desconocida que brilla con una luz fr\u00eda y parpadeante. El activador, normalmente invisible, se encuentra en una placa de presi\u00f3n disimulada en el suelo. Al activarse, la c\u00e1mara genera un campo de contenci\u00f3n de energ\u00eda de entrop\u00eda inversa, capaz de desestabilizar la materia y desgastar r\u00e1pidamente cualquier ser atrapado dentro. Inicialmente, el campo parece inofensivo, con ligeros dolores de cabeza y una sensaci\u00f3n de mareo, pero r\u00e1pidamente aumenta su intensidad. Los patrones en las paredes comienzan a vibrar y la luz se intensifica, consumiendo lentamente la vitalidad del que est\u00e1 expuesto.",
-                    "damage": 45,
-                    "disarm_difficulty": "very_challenging",
-                    "id": "trap_cmara_de_entropa_inestable_168",
-                    "triggered": false
-                }
-            },
-            "npcs": {},
-            "items": {}
-        },
-        "node_2_0": {
-            "id": "node_2_0",
-            "world_id": "venganza_silicoide",
-            "name": "El Vest\u00edbulo de las Estrellas Ca\u00eddas",
-            "description": "Un vasto espacio abovedado, iluminado por una luz tenue que parece emanar de los propios muros de obsidiana. El suelo est\u00e1 cubierto por un mosaico de fragmentos cristalinos, restos de una antigua cat\u00e1strofe c\u00f3smica, quiz\u00e1s obra de los Silicoides.",
-            "type": "sala",
-            "tags": [],
-            "connections": {
-                "oeste": "node_1_0"
-            },
-            "initial_npcs": [],
-            "initial_items": [
-                "qitem_cifrador_espectral_531",
-                "qitem_fragmento_de_luz_estelar_366"
+            "initial_npcs": [
+                "PRINCESA_ZZ"
             ],
-            "traps": {
-                "trap_campo_de_estasis_disfuncional_977": {
-                    "name": "Campo de Estasis Disfuncional",
-                    "description": "Una trampa antigua, com\u00fan en las ruinas de los Silicoides. Un campo de fuerza invisible, mantenido por cristales fracturados, que deber\u00eda suspender el tiempo de los intrusos. Sin embargo, el deterioro del mecanismo y la inestabilidad de los cristales hacen que la estasis sea err\u00e1tica y da\u00f1ina. La v\u00edctima se ve sometida a fluctuaciones temporales, sufriendo efectos de envejecimiento acelerado o desintegraci\u00f3n molecular parcial, con consecuencias impredecibles. La activaci\u00f3n se produce al interrumpir un haz de luz sutil, a menudo invisible a simple vista, que atraviesa la zona protegida.",
-                    "damage": 35,
-                    "disarm_difficulty": "challenging",
-                    "id": "trap_campo_de_estasis_disfuncional_977",
-                    "triggered": false
+            "initial_items": [
+                "qitem_cristal_de_la_verdad_a_medias_516",
+                "qitem_poema_de_la_verdad_847"
+            ],
+            "traps": {},
+            "npcs": {
+                "PRINCESA_ZZ": {
+                    "id": "PRINCESA_ZZ",
+                    "world_id": "spaceballs_revenge",
+                    "name": "Princesa Zz",
+                    "description": "La princesa del Planeta Algod\u00f3n de Az\u00facar, m\u00e1s preocupada por su manicura y su imagen p\u00fablica que por los problemas de su planeta. Luce un peinado extravagante y un brillo labial que deslumbra. Aunque inicialmente es superficial, aprender\u00e1 la importancia de la responsabilidad y la amistad a lo largo de la aventura, aunque de forma un poco torpe.",
+                    "hp": 25,
+                    "attack": 5,
+                    "status": "Preocupada por su imagen",
+                    "xp": 10,
+                    "dialogue_prompt": "\u00bfPero qu\u00e9 horror es este? \u00a1Mi manicura! \u00a1Necesito un sal\u00f3n de belleza... y urgentemente! \u00bfAlguien tiene un espejo?"
                 }
             },
-            "npcs": {},
             "items": {
-                "qitem_cifrador_espectral_531": {
-                    "id": "qitem_cifrador_espectral_531",
-                    "world_id": "venganza_silicoide",
+                "qitem_cristal_de_la_verdad_a_medias_516": {
+                    "id": "qitem_cristal_de_la_verdad_a_medias_516",
+                    "world_id": "spaceballs_revenge",
                     "template_id": "GENERIC",
-                    "name": "Cifrador Espectral",
-                    "description": "Un dispositivo de cristal tallado que se conecta a las interfaces Silicoides, utilizado para traducir y descifrar patrones de energ\u00eda. Sus lecturas pueden revelar la verdadera naturaleza de la baliza.",
+                    "name": "Cristal de la Verdad a Medias",
+                    "description": "Un cristal que revela la verdad... a medias. Es decir, dice la verdad, pero solo la que el portador quiere o\u00edr.",
                     "type": "quest",
                     "damage_base": null,
                     "healing_amount": null,
@@ -128,12 +91,12 @@
                         "cannot_drop"
                     ]
                 },
-                "qitem_fragmento_de_luz_estelar_366": {
-                    "id": "qitem_fragmento_de_luz_estelar_366",
-                    "world_id": "venganza_silicoide",
+                "qitem_poema_de_la_verdad_847": {
+                    "id": "qitem_poema_de_la_verdad_847",
+                    "world_id": "spaceballs_revenge",
                     "template_id": "GENERIC",
-                    "name": "Fragmento de Luz Estelar",
-                    "description": "Un peque\u00f1o cristal Silicoide palpitante. Irradia una energ\u00eda inestable, un eco de un poder antiguo y peligroso. Su contacto directo produce breves vislumbres del pasado, fragmentos del 'Gran Colapso' que dividi\u00f3 a los Silicoides.",
+                    "name": "Poema de la Verdad",
+                    "description": "Un poema \u00e9pico escrito por el Droide Poeta 734-B, capaz de romper la programaci\u00f3n de los clones defectuosos y revelar la verdad.",
                     "type": "quest",
                     "damage_base": null,
                     "healing_amount": null,
@@ -144,11 +107,41 @@
                 }
             }
         },
+        "node_2_0": {
+            "id": "node_2_0",
+            "world_id": "spaceballs_revenge",
+            "name": "La F\u00e1brica de Robots con Defectos Mortales",
+            "description": "Un enorme complejo industrial donde robots torpes y mal programados se amontonan, constantemente explotando o intentando suicidarse con resultados c\u00f3micos. \u00a1Cuidado con los brazos rob\u00f3ticos que saludan con fuego! ",
+            "type": "sala",
+            "tags": [],
+            "connections": {
+                "oeste": "node_1_0"
+            },
+            "initial_npcs": [
+                "LCDO_CASCO"
+            ],
+            "initial_items": [],
+            "traps": {},
+            "npcs": {
+                "LCDO_CASCO": {
+                    "id": "LCDO_CASCO",
+                    "world_id": "spaceballs_revenge",
+                    "name": "Lord Casco Oscuro",
+                    "description": "El temible Lord Casco Oscuro, autoproclamado conquistador del universo. Aunque su casco impone respeto... hasta que se cae. Sufre de una terrible inseguridad, especialmente cuando su peluca amenaza con revelar su calvicie.",
+                    "hp": 50,
+                    "attack": 10,
+                    "status": "Intentando ser malvado",
+                    "xp": 75,
+                    "dialogue_prompt": "\u00a1Temblad ante mi poder! \u00a1Soy Lord Casco Oscuro, y voy a... a... eh... \u00bfd\u00f3nde dej\u00e9 mi plan?"
+                }
+            },
+            "items": {}
+        },
         "node_0_1": {
             "id": "node_0_1",
-            "world_id": "venganza_silicoide",
-            "name": "El Coraz\u00f3n de Obsidiana",
-            "description": "Un sal\u00f3n inmenso, tallado en una obsidiana negra que absorbe la luz, donde ecos de un pasado desconocido reverberan en cada rinc\u00f3n.  Estructuras geom\u00e9tricas, presumiblemente artefactos Silicoides, flotan silenciosamente en el centro, emitiendo d\u00e9biles pulsos de energ\u00eda.",
+            "world_id": "spaceballs_revenge",
+            "name": "La Planeta de los Pastelitos Fallidos",
+            "description": "Un mundo azucarado donde la gravedad es opcional y las estructuras parecen hechas de glaseado. Prep\u00e1rense para lidiar con las feroces criaturas de merengue y el peligro de una repentina tormenta de chispas.",
             "type": "sala",
             "tags": [],
             "connections": {
@@ -156,47 +149,31 @@
                 "este": "node_1_1"
             },
             "initial_npcs": [
-                "THORNE_778"
+                "734B_DROIDE"
             ],
-            "initial_items": [
-                "qitem_rostro_silente_623"
-            ],
+            "initial_items": [],
             "traps": {},
             "npcs": {
-                "THORNE_778": {
-                    "id": "THORNE_778",
-                    "world_id": "venganza_silicoide",
-                    "name": "Dr. Aris Thorne",
-                    "description": "Un hombre demacrado, con ojeras profundas y el cabello canoso desordenado. Viste una bata de laboratorio manchada y ra\u00edda, y sus ojos brillan con una mezcla de desesperaci\u00f3n y conocimiento. Sus manos, cubiertas de cicatrices, tiemblan constantemente.",
-                    "hp": 25,
+                "734B_DROIDE": {
+                    "id": "734B_DROIDE",
+                    "world_id": "spaceballs_revenge",
+                    "name": "Droide Poeta 734-B",
+                    "description": "Un droide obsoleto que recita poemas dram\u00e1ticos en momentos inoportunos, incluso durante las batallas. Su sensibilidad po\u00e9tica a menudo entra en conflicto con las situaciones peligrosas que enfrenta.",
+                    "hp": 20,
                     "attack": 5,
-                    "status": "friendly",
-                    "xp": 35,
-                    "dialogue_prompt": "\u00bfQu\u00e9... qu\u00e9 buscas aqu\u00ed? El Lamento... es real. Lo he visto, lo he sentido. Los Silicoides... ellos no duermen. Necesito... necesito que me ayudes. Mi mente se deshace, pero la verdad... la verdad debe ser revelada. \u00a1Por favor!"
+                    "status": "Activo, pero...melanc\u00f3lico.",
+                    "xp": 15,
+                    "dialogue_prompt": "Escribe un poema dram\u00e1tico sobre la situaci\u00f3n actual, enfatizando la injusticia c\u00f3smica."
                 }
             },
-            "items": {
-                "qitem_rostro_silente_623": {
-                    "id": "qitem_rostro_silente_623",
-                    "world_id": "venganza_silicoide",
-                    "template_id": "GENERIC",
-                    "name": "Rostro Silente",
-                    "description": "Un fragmento cristalino y geom\u00e9trico, aparentemente inerte, pero con una resonancia sutil. El Dr. Thorne cree que act\u00faa como un 'espejo' para la energ\u00eda Silicoide.",
-                    "type": "quest",
-                    "damage_base": null,
-                    "healing_amount": null,
-                    "properties": [
-                        "plot_critical",
-                        "cannot_drop"
-                    ]
-                }
-            }
+            "items": {},
+            "generated_description": "El aire vibraba con la pegajosa dulzura de mil pasteles quemados, una fragancia que se aferraba a la garganta como glaseado agrio. \"La Planeta de los Pastelitos Fallidos\" se revelaba como una pesadilla comestible: edificios retorcidos de merengue se inclinaban precariamente, desafiando la caprichosa gravedad que salpicaba de risas el horizonte. Crujidos amenazantes, posiblemente de feroces merengues hambrientos, romp\u00edan el silencio azucarado, anunciando que cualquier momento podr\u00eda ser un ba\u00f1o de chispas."
         },
         "node_1_1": {
             "id": "node_1_1",
-            "world_id": "venganza_silicoide",
-            "name": "La Gruta de los Recuerdos Petrificados",
-            "description": "Un antro cavernoso donde el tiempo parece haberse detenido. Las paredes brillan con vetas de un material desconocido, como si fuesen el eco congelado de antiguas memorias.",
+            "world_id": "spaceballs_revenge",
+            "name": "La Prisi\u00f3n de los Pasteles Prohibidos",
+            "description": "Este l\u00fagubre asteroide, en forma de un gigantesco cupcake a medio comer, es custodiado por guardias robots con antojos constantes. Se rumorea que la princesa est\u00e1 atrapada aqu\u00ed, alimentada solo con panecillos rancios y t\u00e9 de hierbas de sabor dudoso.",
             "type": "sala",
             "tags": [],
             "connections": {
@@ -212,9 +189,9 @@
         },
         "node_2_1": {
             "id": "node_2_1",
-            "world_id": "venganza_silicoide",
-            "name": "La Sala de los Ecos Perdidos",
-            "description": "Un espacio resonante donde cada susurro parece perpetuarse, susurrando secretos olvidados en lenguas desconocidas. Luces espectrales danzan sobre paredes cubiertas de glifos que se contraen y expanden en un ciclo inquietante.",
+            "world_id": "spaceballs_revenge",
+            "name": "La Llanura Desolada de los Cacahuetes C\u00f3smicos",
+            "description": "Un p\u00e1ramo sin fin cubierto de gigantescos cacahuetes espaciales, donde las criaturas locales compiten por las c\u00e1scaras, so\u00f1ando con el fest\u00edn del pr\u00f3ximo 'Crash' de la cosecha. Prep\u00e1rense para caminar sobre las c\u00e1scaras... \u00a1y para resbalar, mucho!",
             "type": "sala",
             "tags": [],
             "connections": {
@@ -222,86 +199,89 @@
                 "sur": "node_2_2"
             },
             "initial_npcs": [
-                "CORAZ\u00d3N_819"
+                "NPC-004"
             ],
             "initial_items": [
-                "fragmento_quimio-cristalino_288"
+                "qitem_el_cristal_de_informacin_crptica_721"
             ],
-            "traps": {
-                "trap_prisin_de_silicio_desestabilizada_117": {
-                    "name": "Prisi\u00f3n de Silicio Desestabilizada",
-                    "description": "En el coraz\u00f3n de una c\u00e1mara alien\u00edgena abandonada, se encuentra un campo de contenci\u00f3n de energ\u00eda cristalina, alimentado por un reactor Silicoide. El dispositivo, dise\u00f1ado para encerrar a seres Silicoides hostiles, se ha vuelto inestable. Fragmentos cristalinos brillan con una luz enfermiza, parpadeando de forma irregular. El campo se manifesta como una serie de prismas flotantes que se entrecruzan y emiten un zumbido gutural. Al ser activado por contacto o por un sensor de movimiento, el campo se colapsa, liberando pulsos de energ\u00eda ca\u00f3tica que fragmentan la materia a su alrededor, incluyendo la del desafortunado intruso.",
-                    "damage": 45,
-                    "disarm_difficulty": "very_challenging",
-                    "id": "trap_prisin_de_silicio_desestabilizada_117",
-                    "triggered": false
-                }
-            },
+            "traps": {},
             "npcs": {
-                "CORAZ\u00d3N_819": {
-                    "id": "CORAZ\u00d3N_819",
-                    "world_id": "venganza_silicoide",
-                    "name": "El Coraz\u00f3n Fracturado",
-                    "description": "Una entidad Silicoide, anta\u00f1o una mente brillante, ahora fragmentada y consumida por la energ\u00eda an\u00f3mala que impregna las profundidades de la mina. Su estructura cristalina ha mutado, fusion\u00e1ndose con el entorno. Grandes extensiones de cristal pulsante y brillante emanan de su n\u00facleo, formando armas y defensas. Sus fragmentos resonan con una melancol\u00eda profunda, reflejando la p\u00e9rdida de su antigua conciencia y el dolor de su cautiverio.",
-                    "hp": 1200,
-                    "attack": 110,
-                    "status": "hostile",
-                    "xp": 850,
-                    "dialogue_prompt": "\u00ab\u00bfPor qu\u00e9 perturban mi descanso? La luz de las estrellas\u2026 la corrompieron\u2026 la consumieron\u2026 Ahora, solo queda el eco\u2026 la ira\u2026 \u00a1Alejaos, o ser\u00e9is absorbidos por la simetr\u00eda!\u00bb."
+                "NPC-004": {
+                    "id": "NPC-004",
+                    "world_id": "spaceballs_revenge",
+                    "name": "Kraken Kev, Jefe de la Seguridad Cantinera",
+                    "description": "Un robusto alien\u00edgena con piel escamosa y tent\u00e1culos en lugar de cabello. Siempre lleva un delantal manchado de salsa y una mirada amenazante. Se rumorea que es inmune al alcohol y tiene un pu\u00f1o que parte rocas.",
+                    "hp": 150,
+                    "attack": 25,
+                    "status": "Activo",
+                    "xp": 75,
+                    "dialogue_prompt": "\u00bfQu\u00e9 es lo que quieres, forastero? Aqu\u00ed no se toleran problemas. Si buscas pelea, la encontrar\u00e1s. Si buscas una bebida, paga o l\u00e1rgate."
                 }
             },
             "items": {
-                "fragmento_quimio-cristalino_288": {
-                    "id": "fragmento_quimio-cristalino_288",
-                    "world_id": "venganza_silicoide",
+                "qitem_el_cristal_de_informacin_crptica_721": {
+                    "id": "qitem_el_cristal_de_informacin_crptica_721",
+                    "world_id": "spaceballs_revenge",
                     "template_id": "GENERIC",
-                    "name": "Fragmento Quimio-Cristalino",
-                    "description": "Un fragmento roto de una antigua matriz de cristal, brillando con un brillo fantasmal. Exuda un olor met\u00e1lico y un ligero zumbido. Aunque su prop\u00f3sito original es desconocido, al ser manipulado con cuidado, libera una oleada de energ\u00eda regenerativa, temporalmente, pero con fuerza.",
-                    "type": "junk",
+                    "name": "El Cristal de Informaci\u00f3n Cr\u00edptica",
+                    "description": "Un peque\u00f1o cristal que, cuando se activa, revela una serie de coordenadas estelares confusas, solo comprensibles para un experto en navegaci\u00f3n espacial, o... un droide poeta con buen o\u00eddo.",
+                    "type": "quest",
                     "damage_base": null,
                     "healing_amount": null,
                     "properties": [
-                        "lore_snippet",
-                        "interesting"
+                        "plot_critical",
+                        "cannot_drop"
                     ]
                 }
             }
         },
         "node_0_2": {
             "id": "node_0_2",
-            "world_id": "venganza_silicoide",
-            "name": "El Sal\u00f3n de la Geometr\u00eda Olvidada",
-            "description": "El aire, denso de una luz iridiscente, vibra con patrones que parecen danzar en las paredes. Aqu\u00ed, los ecos de los Silicoides se aferran a cada arista, sus formas perfectas susurrando secretos ancestrales.",
+            "world_id": "spaceballs_revenge",
+            "name": "El Planeta de los Calcetines Perdidos",
+            "description": "Un mundo donde la gravedad es tan caprichosa como los chistes de tu abuelo, y donde las criaturas m\u00e1s peligrosas son, parad\u00f3jicamente, calcetines gigantes con una sed insaciable de... otros calcetines. Prep\u00e1rense para una odisea llena de malos olores y peor suerte.",
             "type": "sala",
             "tags": [],
             "connections": {
                 "este": "node_1_2"
             },
             "initial_npcs": [
-                "XYLOS_370"
+                "CS-001",
+                "NPC_SUPERVISOR_CLONES_DEFECTUOSOS_001"
             ],
             "initial_items": [],
             "traps": {},
             "npcs": {
-                "XYLOS_370": {
-                    "id": "XYLOS_370",
-                    "world_id": "venganza_silicoide",
-                    "name": "Fragmento-Xylos",
-                    "description": "Una entidad espectral, compuesta por fragmentos cristalinos que flotan y se fusionan constantemente. La 'piel' de Xylos es un mosaico cambiante de geometr\u00eda imposible y colores iridiscentes, reflejando ecos de incontables dimensiones. Voces susurrantes, apenas audibles, emanan de su forma, entrelazando lamentos y promesas de poder. Muestra signos de da\u00f1o severo, con 'fracturas' visibles que revelan el vac\u00edo del espacio entre sus componentes.",
-                    "hp": 1800,
-                    "attack": 120,
-                    "status": "hostile",
-                    "xp": 800,
-                    "dialogue_prompt": "\u00bfCrees que puedes resistir la tormenta de cristales? Soy Xylos, una sombra de lo que fui, una promesa de lo que ser\u00e9. La fractura es mi prisi\u00f3n... y tu aniquilaci\u00f3n, mi liberaci\u00f3n. Ofrece tu esencia al crisol, y tal vez, solo tal vez, ser\u00e1s digno de formar parte de mi resurrecci\u00f3n... o ser\u00e1s pulverizado."
+                "CS-001": {
+                    "id": "CS-001",
+                    "world_id": "spaceballs_revenge",
+                    "name": "Colector de Suspiros Grifo",
+                    "description": "Un ser esquel\u00e9tico con una m\u00e1scara de respiraci\u00f3n y un gran saco lleno de los suspiros robados de los habitantes de Algod\u00f3n de Az\u00facar. Parece d\u00e9bil, pero sus suspiros robados le otorgan poder.",
+                    "hp": 75,
+                    "attack": 25,
+                    "status": "En guardia, ansioso por robar m\u00e1s suspiros.",
+                    "xp": 150,
+                    "dialogue_prompt": "\u00bfQui\u00e9n osa perturbar mi colecci\u00f3n? \u00a1Mis suspiros son valiosos, y no los compartir\u00e9!"
+                },
+                "NPC_SUPERVISOR_CLONES_DEFECTUOSOS_001": {
+                    "id": "NPC_SUPERVISOR_CLONES_DEFECTUOSOS_001",
+                    "world_id": "spaceballs_revenge",
+                    "name": "Supervisor de Clonaci\u00f3n Defectuosa - Grunt",
+                    "description": "Un clon defectuoso con un brazo m\u00e1s largo que el otro y una obsesi\u00f3n por las tareas repetitivas. Su casco tiene una grieta y constantemente murmura instrucciones incoherentes.",
+                    "hp": 35,
+                    "attack": 15,
+                    "status": "Patrullando el Asteroide de los Clones Desechados.",
+                    "xp": 25,
+                    "dialogue_prompt": "El Supervisor Grunt se detiene, su brazo largo se agita err\u00e1ticamente. \"\u00a1Orden 47! \u00a1Repetir! \u00a1El c\u00f3digo... el c\u00f3digo... es... *bzzzt*!\""
                 }
             },
             "items": {}
         },
         "node_1_2": {
             "id": "node_1_2",
-            "world_id": "venganza_silicoide",
-            "name": "La Cripta de los Fractales",
-            "description": "En el silencio sepulcral, formas cristalinas danzan en la penumbra, reflejando la luz espectral. Aqu\u00ed, los patrones se repiten infinitamente, un laberinto de geometr\u00edas que desaf\u00edan la comprensi\u00f3n humana.",
+            "world_id": "spaceballs_revenge",
+            "name": "El Pantano Pegajoso de los Eructos Espaciales",
+            "description": "Un lodazal interplanetario lleno de burbujas de gas malolientes que se elevan hacia el cielo, resultado de la digesti\u00f3n c\u00f3smica de un gigante gusano espacial. \u00a1Cuidado con los hipop\u00f3tamos c\u00f3smicos, son conocidos por sus flatulencias explosivas!",
             "type": "sala",
             "tags": [],
             "connections": {
@@ -309,93 +289,50 @@
                 "este": "node_2_2"
             },
             "initial_npcs": [
-                "VANE_749"
+                "BARTY_BUZZKILL"
             ],
-            "initial_items": [
-                "fragmento_de_espejo_estelar_desviado_202"
-            ],
+            "initial_items": [],
             "traps": {},
             "npcs": {
-                "VANE_749": {
-                    "id": "VANE_749",
-                    "world_id": "venganza_silicoide",
-                    "name": "Maestro Aldren Vane, Embajador del Gremio Comercial Estelar",
-                    "description": "Un hombre humano, de edad madura, con un rostro marcado por la preocupaci\u00f3n y una mirada astuta. Viste las elaboradas t\u00fanicas del Gremio, adornadas con insignias comerciales y s\u00edmbolos de rango. Sus manos, enguantadas en cuero fino, denotan una larga experiencia en negociaciones. Sus ojos se clavan en ti con una mezcla de pragmatismo y nerviosismo.",
-                    "hp": 30,
-                    "attack": 5,
-                    "status": "friendly",
+                "BARTY_BUZZKILL": {
+                    "id": "BARTY_BUZZKILL",
+                    "world_id": "spaceballs_revenge",
+                    "name": "Barty Buzzkill",
+                    "description": "Un mercenario c\u00ednico y con sobrepeso, experto en armas de baja potencia. Siempre endeudado y con una visi\u00f3n pesimista, pero con un c\u00f3digo moral flexible... por una buena suma.",
+                    "hp": 50,
+                    "attack": 10,
+                    "status": "Hambriento y endeudado",
                     "xp": 25,
-                    "dialogue_prompt": "\u00bfAh, otro aventurero buscando fortuna en estos tiempos turbulentos? Soy Aldren Vane, embajador del Gremio Comercial. Las rutas comerciales est\u00e1n en peligro, y los incidentes con los Silicoides... bueno, digamos que me quitan el sue\u00f1o. Necesito gente como t\u00fa, con coraje y, sobre todo, discreci\u00f3n. \u00bfEst\u00e1s dispuesto a ayudar a proteger nuestros intereses, y tal vez, a descubrir la verdad detr\u00e1s de la Sombra de las Estrellas Fracturadas?"
+                    "dialogue_prompt": "\u00bfQu\u00e9 quieres? \u00bfOtro idiota que necesita ser salvado? Habla r\u00e1pido, no tengo todo el d\u00eda... ni siquiera la mitad del d\u00eda, debo dinero."
                 }
             },
-            "items": {
-                "fragmento_de_espejo_estelar_desviado_202": {
-                    "id": "fragmento_de_espejo_estelar_desviado_202",
-                    "world_id": "venganza_silicoide",
-                    "template_id": "GENERIC",
-                    "name": "Fragmento de Espejo Estelar Desviado",
-                    "description": "Un pedazo irregular de material brillante, reminiscente de un espejo roto, pero con extra\u00f1os fractales grabados en su superficie. Emite una sutil resonancia, como si captara ecos distantes. A menudo encontrado en los escombros orbitales, algunos afirman que al enfocarlo correctamente, revela vislumbres de rutas comerciales secretas o de las debilidades de los escudos de energ\u00eda.",
-                    "type": "junk",
-                    "damage_base": null,
-                    "healing_amount": null,
-                    "properties": [
-                        "lore_snippet",
-                        "interesting"
-                    ]
-                }
-            }
+            "items": {}
         },
         "node_2_2": {
             "id": "node_2_2",
-            "world_id": "venganza_silicoide",
-            "name": "El Laberinto de las Esferas Flotantes",
-            "description": "Un intrincado laberinto de pasillos curvos, iluminado por orbes luminosas que flotan sin cesar, proyectando sombras danzantes. El aire aqu\u00ed est\u00e1 impregnado con un sutil aroma a polvo estelar y un eco persistente de enigmas no resueltos.",
+            "world_id": "spaceballs_revenge",
+            "name": "El Pantano Pegajoso de la Poca Gravedad",
+            "description": "Un f\u00e9tido humedal alien\u00edgena donde la gravedad es m\u00e1s bien una sugerencia. Prep\u00e1rense para hundirse en el cieno baboso y ser atacados por mosquitos mutantes... \u00a1y quiz\u00e1s tambi\u00e9n por la princesa, perdida y enfadada!",
             "type": "sala",
             "tags": [],
             "connections": {
                 "norte": "node_2_1",
                 "oeste": "node_1_2"
             },
-            "initial_npcs": [
-                "EF\u00cdGIE_440",
-                "VALESKA_736"
-            ],
+            "initial_npcs": [],
             "initial_items": [],
             "traps": {},
-            "npcs": {
-                "EF\u00cdGIE_440": {
-                    "id": "EF\u00cdGIE_440",
-                    "world_id": "venganza_silicoide",
-                    "name": "La Efigie Vac\u00eda",
-                    "description": "Una manifestaci\u00f3n cristalina, compuesta por prismas inestables que reverberan con la energ\u00eda del vac\u00edo. Su forma es ef\u00edmera, cambiando constantemente, pero siempre reflejando la geometr\u00eda perfecta, aunque fracturada, de la antigua baliza. Destellos de informaci\u00f3n distorsionada fluyen a trav\u00e9s de ella, retorciendo su 'rostro' en muecas de desesperaci\u00f3n y hambre de conocimiento.",
-                    "hp": 250,
-                    "attack": 35,
-                    "status": "hostile",
-                    "xp": 150,
-                    "dialogue_prompt": "\u00bfQu\u00e9... qu\u00e9 buscas aqu\u00ed, mortal? La baliza\u2026 me alimenta\u2026 pero su eco\u2026 corrompe\u2026 la comprensi\u00f3n\u2026 Deja de perturbar el sue\u00f1o\u2026 del cristal\u2026"
-                },
-                "VALESKA_736": {
-                    "id": "VALESKA_736",
-                    "world_id": "venganza_silicoide",
-                    "name": "Embajador Valeska - Representante del Consorcio Estelar Mercantil",
-                    "description": "Una figura alta y delgada, siempre vestida con el uniforme inmaculado del Consorcio: un abrigo largo de seda negra con detalles dorados y una placa brillante que identifica su rango. Su rostro, marcado por el estr\u00e9s, exhibe finas arrugas que sugieren a\u00f1os de negociaciones y tratos en los confines de la galaxia. Sus ojos, sin embargo, conservan una mirada aguda y anal\u00edtica, perpetuamente alerta a la pr\u00f3xima oportunidad. Su cabello, recogido en un severo mo\u00f1o, rara vez se desarregla.",
-                    "hp": 45,
-                    "attack": 15,
-                    "status": "neutral",
-                    "xp": 75,
-                    "dialogue_prompt": "Ah, veo que has venido. El tiempo es un recurso que el Consorcio valora, y sospecho que t\u00fa tambi\u00e9n. Dime, \u00bfqu\u00e9 te trae a mi presencia? No tengo tiempo para sentimentalismos; lo que necesito son resultados. Estamos tratando con una situaci\u00f3n delicada, y necesitamos manos competentes. Habla."
-                }
-            },
+            "npcs": {},
             "items": {}
         }
     },
     "item_templates": {
-        "qitem_cifrador_espectral_531": {
-            "id": "qitem_cifrador_espectral_531",
-            "world_id": "venganza_silicoide",
+        "qitem_cristal_de_la_verdad_a_medias_516": {
+            "id": "qitem_cristal_de_la_verdad_a_medias_516",
+            "world_id": "spaceballs_revenge",
             "template_id": "GENERIC",
-            "name": "Cifrador Espectral",
-            "description": "Un dispositivo de cristal tallado que se conecta a las interfaces Silicoides, utilizado para traducir y descifrar patrones de energ\u00eda. Sus lecturas pueden revelar la verdadera naturaleza de la baliza.",
+            "name": "Cristal de la Verdad a Medias",
+            "description": "Un cristal que revela la verdad... a medias. Es decir, dice la verdad, pero solo la que el portador quiere o\u00edr.",
             "type": "quest",
             "damage_base": null,
             "healing_amount": null,
@@ -404,12 +341,12 @@
                 "cannot_drop"
             ]
         },
-        "qitem_fragmento_de_luz_estelar_366": {
-            "id": "qitem_fragmento_de_luz_estelar_366",
-            "world_id": "venganza_silicoide",
+        "qitem_el_cristal_de_informacin_crptica_721": {
+            "id": "qitem_el_cristal_de_informacin_crptica_721",
+            "world_id": "spaceballs_revenge",
             "template_id": "GENERIC",
-            "name": "Fragmento de Luz Estelar",
-            "description": "Un peque\u00f1o cristal Silicoide palpitante. Irradia una energ\u00eda inestable, un eco de un poder antiguo y peligroso. Su contacto directo produce breves vislumbres del pasado, fragmentos del 'Gran Colapso' que dividi\u00f3 a los Silicoides.",
+            "name": "El Cristal de Informaci\u00f3n Cr\u00edptica",
+            "description": "Un peque\u00f1o cristal que, cuando se activa, revela una serie de coordenadas estelares confusas, solo comprensibles para un experto en navegaci\u00f3n espacial, o... un droide poeta con buen o\u00eddo.",
             "type": "quest",
             "damage_base": null,
             "healing_amount": null,
@@ -418,228 +355,196 @@
                 "cannot_drop"
             ]
         },
-        "qitem_rostro_silente_623": {
-            "id": "qitem_rostro_silente_623",
-            "world_id": "venganza_silicoide",
+        "qitem_poema_de_la_verdad_847": {
+            "id": "qitem_poema_de_la_verdad_847",
+            "world_id": "spaceballs_revenge",
             "template_id": "GENERIC",
-            "name": "Rostro Silente",
-            "description": "Un fragmento cristalino y geom\u00e9trico, aparentemente inerte, pero con una resonancia sutil. El Dr. Thorne cree que act\u00faa como un 'espejo' para la energ\u00eda Silicoide.",
+            "name": "Poema de la Verdad",
+            "description": "Un poema \u00e9pico escrito por el Droide Poeta 734-B, capaz de romper la programaci\u00f3n de los clones defectuosos y revelar la verdad.",
             "type": "quest",
             "damage_base": null,
             "healing_amount": null,
             "properties": [
                 "plot_critical",
                 "cannot_drop"
-            ]
-        },
-        "cizalla_de_ter_esttico_804": {
-            "id": "cizalla_de_ter_esttico_804",
-            "world_id": "venganza_silicoide",
-            "template_id": "GENERIC",
-            "name": "Cizalla de \u00c9ter Est\u00e1tico",
-            "description": "Un arma de energ\u00eda de dise\u00f1o intrincado, a menudo encontrada en manos de los Silicoides o contrabandistas experimentados. La Cizalla dispara un haz de energ\u00eda concentrada que corta la materia a nivel molecular, dejando tras de s\u00ed una cicatriz brillante y un rastro de polvo cristalino. Su fuente de energ\u00eda es un 'N\u00facleo Est\u00e1tico', una anomal\u00eda desconocida, y su uso prolongado puede provocar inestabilidad en el espacio-tiempo circundante. Se dice que las casas nobles m\u00e1s oscuras las utilizan para eliminar rivales, ocultando toda evidencia de su existencia.",
-            "type": "weapon",
-            "damage_base": 5,
-            "healing_amount": null,
-            "properties": [
-                "melee",
-                "light",
-                "tier1"
-            ]
-        },
-        "fragmento_quimio-cristalino_288": {
-            "id": "fragmento_quimio-cristalino_288",
-            "world_id": "venganza_silicoide",
-            "template_id": "GENERIC",
-            "name": "Fragmento Quimio-Cristalino",
-            "description": "Un fragmento roto de una antigua matriz de cristal, brillando con un brillo fantasmal. Exuda un olor met\u00e1lico y un ligero zumbido. Aunque su prop\u00f3sito original es desconocido, al ser manipulado con cuidado, libera una oleada de energ\u00eda regenerativa, temporalmente, pero con fuerza.",
-            "type": "junk",
-            "damage_base": null,
-            "healing_amount": null,
-            "properties": [
-                "lore_snippet",
-                "interesting"
-            ]
-        },
-        "fragmento_de_espejo_estelar_desviado_202": {
-            "id": "fragmento_de_espejo_estelar_desviado_202",
-            "world_id": "venganza_silicoide",
-            "template_id": "GENERIC",
-            "name": "Fragmento de Espejo Estelar Desviado",
-            "description": "Un pedazo irregular de material brillante, reminiscente de un espejo roto, pero con extra\u00f1os fractales grabados en su superficie. Emite una sutil resonancia, como si captara ecos distantes. A menudo encontrado en los escombros orbitales, algunos afirman que al enfocarlo correctamente, revela vislumbres de rutas comerciales secretas o de las debilidades de los escudos de energ\u00eda.",
-            "type": "junk",
-            "damage_base": null,
-            "healing_amount": null,
-            "properties": [
-                "lore_snippet",
-                "interesting"
             ]
         }
     },
     "npc_templates": {
-        "THORNE_778": {
-            "id": "THORNE_778",
-            "world_id": "venganza_silicoide",
-            "name": "Dr. Aris Thorne",
-            "description": "Un hombre demacrado, con ojeras profundas y el cabello canoso desordenado. Viste una bata de laboratorio manchada y ra\u00edda, y sus ojos brillan con una mezcla de desesperaci\u00f3n y conocimiento. Sus manos, cubiertas de cicatrices, tiemblan constantemente.",
+        "BARTY_BUZZKILL": {
+            "id": "BARTY_BUZZKILL",
+            "world_id": "spaceballs_revenge",
+            "name": "Barty Buzzkill",
+            "description": "Un mercenario c\u00ednico y con sobrepeso, experto en armas de baja potencia. Siempre endeudado y con una visi\u00f3n pesimista, pero con un c\u00f3digo moral flexible... por una buena suma.",
+            "hp": 50,
+            "attack": 10,
+            "status": "Hambriento y endeudado",
+            "xp": 25,
+            "dialogue_prompt": "\u00bfQu\u00e9 quieres? \u00bfOtro idiota que necesita ser salvado? Habla r\u00e1pido, no tengo todo el d\u00eda... ni siquiera la mitad del d\u00eda, debo dinero."
+        },
+        "PRINCESA_ZZ": {
+            "id": "PRINCESA_ZZ",
+            "world_id": "spaceballs_revenge",
+            "name": "Princesa Zz",
+            "description": "La princesa del Planeta Algod\u00f3n de Az\u00facar, m\u00e1s preocupada por su manicura y su imagen p\u00fablica que por los problemas de su planeta. Luce un peinado extravagante y un brillo labial que deslumbra. Aunque inicialmente es superficial, aprender\u00e1 la importancia de la responsabilidad y la amistad a lo largo de la aventura, aunque de forma un poco torpe.",
             "hp": 25,
             "attack": 5,
-            "status": "friendly",
-            "xp": 35,
-            "dialogue_prompt": "\u00bfQu\u00e9... qu\u00e9 buscas aqu\u00ed? El Lamento... es real. Lo he visto, lo he sentido. Los Silicoides... ellos no duermen. Necesito... necesito que me ayudes. Mi mente se deshace, pero la verdad... la verdad debe ser revelada. \u00a1Por favor!"
+            "status": "Preocupada por su imagen",
+            "xp": 10,
+            "dialogue_prompt": "\u00bfPero qu\u00e9 horror es este? \u00a1Mi manicura! \u00a1Necesito un sal\u00f3n de belleza... y urgentemente! \u00bfAlguien tiene un espejo?"
         },
-        "EF\u00cdGIE_440": {
-            "id": "EF\u00cdGIE_440",
-            "world_id": "venganza_silicoide",
-            "name": "La Efigie Vac\u00eda",
-            "description": "Una manifestaci\u00f3n cristalina, compuesta por prismas inestables que reverberan con la energ\u00eda del vac\u00edo. Su forma es ef\u00edmera, cambiando constantemente, pero siempre reflejando la geometr\u00eda perfecta, aunque fracturada, de la antigua baliza. Destellos de informaci\u00f3n distorsionada fluyen a trav\u00e9s de ella, retorciendo su 'rostro' en muecas de desesperaci\u00f3n y hambre de conocimiento.",
-            "hp": 250,
-            "attack": 35,
-            "status": "hostile",
-            "xp": 150,
-            "dialogue_prompt": "\u00bfQu\u00e9... qu\u00e9 buscas aqu\u00ed, mortal? La baliza\u2026 me alimenta\u2026 pero su eco\u2026 corrompe\u2026 la comprensi\u00f3n\u2026 Deja de perturbar el sue\u00f1o\u2026 del cristal\u2026"
-        },
-        "VANE_749": {
-            "id": "VANE_749",
-            "world_id": "venganza_silicoide",
-            "name": "Maestro Aldren Vane, Embajador del Gremio Comercial Estelar",
-            "description": "Un hombre humano, de edad madura, con un rostro marcado por la preocupaci\u00f3n y una mirada astuta. Viste las elaboradas t\u00fanicas del Gremio, adornadas con insignias comerciales y s\u00edmbolos de rango. Sus manos, enguantadas en cuero fino, denotan una larga experiencia en negociaciones. Sus ojos se clavan en ti con una mezcla de pragmatismo y nerviosismo.",
-            "hp": 30,
+        "734B_DROIDE": {
+            "id": "734B_DROIDE",
+            "world_id": "spaceballs_revenge",
+            "name": "Droide Poeta 734-B",
+            "description": "Un droide obsoleto que recita poemas dram\u00e1ticos en momentos inoportunos, incluso durante las batallas. Su sensibilidad po\u00e9tica a menudo entra en conflicto con las situaciones peligrosas que enfrenta.",
+            "hp": 20,
             "attack": 5,
-            "status": "friendly",
-            "xp": 25,
-            "dialogue_prompt": "\u00bfAh, otro aventurero buscando fortuna en estos tiempos turbulentos? Soy Aldren Vane, embajador del Gremio Comercial. Las rutas comerciales est\u00e1n en peligro, y los incidentes con los Silicoides... bueno, digamos que me quitan el sue\u00f1o. Necesito gente como t\u00fa, con coraje y, sobre todo, discreci\u00f3n. \u00bfEst\u00e1s dispuesto a ayudar a proteger nuestros intereses, y tal vez, a descubrir la verdad detr\u00e1s de la Sombra de las Estrellas Fracturadas?"
+            "status": "Activo, pero...melanc\u00f3lico.",
+            "xp": 15,
+            "dialogue_prompt": "Escribe un poema dram\u00e1tico sobre la situaci\u00f3n actual, enfatizando la injusticia c\u00f3smica."
         },
-        "XYLOS_370": {
-            "id": "XYLOS_370",
-            "world_id": "venganza_silicoide",
-            "name": "Fragmento-Xylos",
-            "description": "Una entidad espectral, compuesta por fragmentos cristalinos que flotan y se fusionan constantemente. La 'piel' de Xylos es un mosaico cambiante de geometr\u00eda imposible y colores iridiscentes, reflejando ecos de incontables dimensiones. Voces susurrantes, apenas audibles, emanan de su forma, entrelazando lamentos y promesas de poder. Muestra signos de da\u00f1o severo, con 'fracturas' visibles que revelan el vac\u00edo del espacio entre sus componentes.",
-            "hp": 1800,
-            "attack": 120,
-            "status": "hostile",
-            "xp": 800,
-            "dialogue_prompt": "\u00bfCrees que puedes resistir la tormenta de cristales? Soy Xylos, una sombra de lo que fui, una promesa de lo que ser\u00e9. La fractura es mi prisi\u00f3n... y tu aniquilaci\u00f3n, mi liberaci\u00f3n. Ofrece tu esencia al crisol, y tal vez, solo tal vez, ser\u00e1s digno de formar parte de mi resurrecci\u00f3n... o ser\u00e1s pulverizado."
-        },
-        "VALESKA_736": {
-            "id": "VALESKA_736",
-            "world_id": "venganza_silicoide",
-            "name": "Embajador Valeska - Representante del Consorcio Estelar Mercantil",
-            "description": "Una figura alta y delgada, siempre vestida con el uniforme inmaculado del Consorcio: un abrigo largo de seda negra con detalles dorados y una placa brillante que identifica su rango. Su rostro, marcado por el estr\u00e9s, exhibe finas arrugas que sugieren a\u00f1os de negociaciones y tratos en los confines de la galaxia. Sus ojos, sin embargo, conservan una mirada aguda y anal\u00edtica, perpetuamente alerta a la pr\u00f3xima oportunidad. Su cabello, recogido en un severo mo\u00f1o, rara vez se desarregla.",
-            "hp": 45,
-            "attack": 15,
-            "status": "neutral",
+        "LCDO_CASCO": {
+            "id": "LCDO_CASCO",
+            "world_id": "spaceballs_revenge",
+            "name": "Lord Casco Oscuro",
+            "description": "El temible Lord Casco Oscuro, autoproclamado conquistador del universo. Aunque su casco impone respeto... hasta que se cae. Sufre de una terrible inseguridad, especialmente cuando su peluca amenaza con revelar su calvicie.",
+            "hp": 50,
+            "attack": 10,
+            "status": "Intentando ser malvado",
             "xp": 75,
-            "dialogue_prompt": "Ah, veo que has venido. El tiempo es un recurso que el Consorcio valora, y sospecho que t\u00fa tambi\u00e9n. Dime, \u00bfqu\u00e9 te trae a mi presencia? No tengo tiempo para sentimentalismos; lo que necesito son resultados. Estamos tratando con una situaci\u00f3n delicada, y necesitamos manos competentes. Habla."
+            "dialogue_prompt": "\u00a1Temblad ante mi poder! \u00a1Soy Lord Casco Oscuro, y voy a... a... eh... \u00bfd\u00f3nde dej\u00e9 mi plan?"
         },
-        "CORAZ\u00d3N_819": {
-            "id": "CORAZ\u00d3N_819",
-            "world_id": "venganza_silicoide",
-            "name": "El Coraz\u00f3n Fracturado",
-            "description": "Una entidad Silicoide, anta\u00f1o una mente brillante, ahora fragmentada y consumida por la energ\u00eda an\u00f3mala que impregna las profundidades de la mina. Su estructura cristalina ha mutado, fusion\u00e1ndose con el entorno. Grandes extensiones de cristal pulsante y brillante emanan de su n\u00facleo, formando armas y defensas. Sus fragmentos resonan con una melancol\u00eda profunda, reflejando la p\u00e9rdida de su antigua conciencia y el dolor de su cautiverio.",
-            "hp": 1200,
-            "attack": 110,
-            "status": "hostile",
-            "xp": 850,
-            "dialogue_prompt": "\u00ab\u00bfPor qu\u00e9 perturban mi descanso? La luz de las estrellas\u2026 la corrompieron\u2026 la consumieron\u2026 Ahora, solo queda el eco\u2026 la ira\u2026 \u00a1Alejaos, o ser\u00e9is absorbidos por la simetr\u00eda!\u00bb."
+        "CS-001": {
+            "id": "CS-001",
+            "world_id": "spaceballs_revenge",
+            "name": "Colector de Suspiros Grifo",
+            "description": "Un ser esquel\u00e9tico con una m\u00e1scara de respiraci\u00f3n y un gran saco lleno de los suspiros robados de los habitantes de Algod\u00f3n de Az\u00facar. Parece d\u00e9bil, pero sus suspiros robados le otorgan poder.",
+            "hp": 75,
+            "attack": 25,
+            "status": "En guardia, ansioso por robar m\u00e1s suspiros.",
+            "xp": 150,
+            "dialogue_prompt": "\u00bfQui\u00e9n osa perturbar mi colecci\u00f3n? \u00a1Mis suspiros son valiosos, y no los compartir\u00e9!"
+        },
+        "NPC-004": {
+            "id": "NPC-004",
+            "world_id": "spaceballs_revenge",
+            "name": "Kraken Kev, Jefe de la Seguridad Cantinera",
+            "description": "Un robusto alien\u00edgena con piel escamosa y tent\u00e1culos en lugar de cabello. Siempre lleva un delantal manchado de salsa y una mirada amenazante. Se rumorea que es inmune al alcohol y tiene un pu\u00f1o que parte rocas.",
+            "hp": 150,
+            "attack": 25,
+            "status": "Activo",
+            "xp": 75,
+            "dialogue_prompt": "\u00bfQu\u00e9 es lo que quieres, forastero? Aqu\u00ed no se toleran problemas. Si buscas pelea, la encontrar\u00e1s. Si buscas una bebida, paga o l\u00e1rgate."
+        },
+        "NPC_SUPERVISOR_CLONES_DEFECTUOSOS_001": {
+            "id": "NPC_SUPERVISOR_CLONES_DEFECTUOSOS_001",
+            "world_id": "spaceballs_revenge",
+            "name": "Supervisor de Clonaci\u00f3n Defectuosa - Grunt",
+            "description": "Un clon defectuoso con un brazo m\u00e1s largo que el otro y una obsesi\u00f3n por las tareas repetitivas. Su casco tiene una grieta y constantemente murmura instrucciones incoherentes.",
+            "hp": 35,
+            "attack": 15,
+            "status": "Patrullando el Asteroide de los Clones Desechados.",
+            "xp": 25,
+            "dialogue_prompt": "El Supervisor Grunt se detiene, su brazo largo se agita err\u00e1ticamente. \"\u00a1Orden 47! \u00a1Repetir! \u00a1El c\u00f3digo... el c\u00f3digo... es... *bzzzt*!\""
         }
     },
     "quests": {
-        "QUEST_EL_LAMENTO_DEL_CRISTAL_DESPERTADO_590": {
-            "id": "QUEST_EL_LAMENTO_DEL_CRISTAL_DESPERTADO_590",
-            "world_id": "venganza_silicoide",
-            "title": "El Lamento del Cristal Despertado",
-            "description": "Un misterioso mensaje cifrado, transmitido a trav\u00e9s de una anomal\u00eda espacial, llega a tus manos. Parece provenir de una antigua baliza Silicoide, ahora inactiva. Un cient\u00edfico renegado, atormentado por el conocimiento, te suplica que investigues, temiendo una amenaza ancestral que yace dormida.",
-            "starting_npc_id": "THORNE_778",
+        "QUEST_EL_CONTRATO_125": {
+            "id": "QUEST_EL_CONTRATO_125",
+            "world_id": "spaceballs_revenge",
+            "title": "El Contrato",
+            "description": "Barty Buzzkill recibe una transmisi\u00f3n cr\u00edptica de un remitente desconocido. La Princesa Zz, aparentemente secuestrada por Lord Casco Oscuro, necesita ser rescatada. La recompensa es jugosa, pero algo huele a podrido en este asunto... o quiz\u00e1s es solo el olor del Basurero Estelar Flotante.",
+            "starting_npc_id": "734B_DROIDE",
             "steps": [
                 {
-                    "id": 1,
-                    "description": "Viaja a las ruinas de la baliza Silicoide en el sector Xylos, un lugar de energ\u00eda distorsionada y extra\u00f1os ecos. Encuentra la c\u00e1mara central.",
-                    "objective": {
-                        "type": "location",
-                        "id": "node_2_0"
-                    }
-                },
-                {
-                    "id": 2,
-                    "description": "Dentro de la c\u00e1mara, activa la 'L\u00e1grima de Cristal', un artefacto Silicoide que se cree contiene el conocimiento perdido. Debes descifrar la secuencia de resonancia correcta para evitar una reacci\u00f3n catastr\u00f3fica.",
-                    "objective": {
-                        "type": "item",
-                        "id": "qitem_cifrador_espectral_531"
-                    }
-                },
-                {
-                    "id": 3,
-                    "description": "Despu\u00e9s de activar el artefacto, enfrentate a la 'Entidad de Eco'. Esta entidad es una manifestaci\u00f3n espectral de la baliza, alimentada por la informaci\u00f3n corrupta que protege. Destr\u00fayela para evitar la propagaci\u00f3n del 'Vac\u00edo Glacial'.",
+                    "id": "step_1",
+                    "description": "Barty debe viajar a la Cantina de la Nebulosa del Cangrejo, un antro infame, para obtener informaci\u00f3n sobre el paradero de la Princesa Zz. El Droide Poeta 734-B, con su habilidad para la rima y la observaci\u00f3n, podr\u00eda ser de ayuda... si Barty puede soportar sus versos.",
                     "objective": {
                         "type": "npc",
-                        "id": "EF\u00cdGIE_440"
+                        "id": "734B_DROIDE"
+                    }
+                },
+                {
+                    "id": "step_2",
+                    "description": "Siguiendo las pistas del Droide Poeta, Barty se dirige al Asteroide de los Clones Desechados. All\u00ed, debe encontrar el Cristal de la Verdad a Medias, oculto entre los restos de clones defectuosos. Cuidado con las risas nerviosas y las imitaciones baratas.",
+                    "objective": {
+                        "type": "item",
+                        "id": "qitem_cristal_de_la_verdad_a_medias_516"
+                    }
+                },
+                {
+                    "id": "step_3",
+                    "description": "Utilizando el Cristal, Barty descubre que la Princesa Zz est\u00e1 en el Basurero Estelar Flotante, pero que Lord Casco Oscuro es solo un pe\u00f3n en un esquema m\u00e1s grande. Barty debe enfrentarse al 'Colector de Suspiros', el verdadero cerebro detr\u00e1s del secuestro, y rescatar a la Princesa... \u00a1o al menos intentar no morir en el intento!",
+                    "objective": {
+                        "type": "npc",
+                        "id": "Colector de Suspiros"
                     }
                 }
             ]
         },
-        "QUEST_LA_SOMBRA_DE_LAS_ESTRELLAS_FRACTURADAS_852": {
-            "id": "QUEST_LA_SOMBRA_DE_LAS_ESTRELLAS_FRACTURADAS_852",
-            "world_id": "venganza_silicoide",
-            "title": "La Sombra de las Estrellas Fracturadas",
-            "description": "Un disturbio en la frontera gal\u00e1ctica anuncia la reaparici\u00f3n de un fragmento de cristal Silicoide, una se\u00f1al de un peligro ancestral. Un embajador pragm\u00e1tico del Gremio Comercial, preocupado por la estabilidad del comercio, te contrata para investigar la anomal\u00eda y descubrir la verdad antes de que la inestabilidad se propague por las rutas comerciales.",
-            "starting_npc_id": "VANE_749",
+        "QUEST_EL_ENCUENTRO_EN_LA_CANTINA_193": {
+            "id": "QUEST_EL_ENCUENTRO_EN_LA_CANTINA_193",
+            "world_id": "spaceballs_revenge",
+            "title": "El Encuentro en la Cantina",
+            "description": "El equipo, reunido en la turbia Cantina de la Nebulosa del Cangrejo, busca pistas sobre el paradero de la Princesa Zz. La atm\u00f3sfera es tensa, llena de contrabandistas y seres de dudosa reputaci\u00f3n. Barty Buzzkill, con su caracter\u00edstico cinismo, intenta extraer informaci\u00f3n, pero la situaci\u00f3n pronto se descontrola, desatando una pelea generalizada.",
+            "starting_npc_id": "734B_DROIDE",
             "steps": [
                 {
-                    "id": 1,
-                    "description": "Dir\u00edgete a la estaci\u00f3n espacial abandonada 'Ecos Perdidos', donde se detect\u00f3 la primera se\u00f1al del fragmento Silicoide. Investiga el \u00e1rea en busca de pistas sobre su origen y prop\u00f3sito.",
-                    "objective": {
-                        "type": "location",
-                        "id": "node_0_0"
-                    }
-                },
-                {
-                    "id": 2,
-                    "description": "En 'Ecos Perdidos', busca y examina los restos de una antigua nave Silicoide estrellada, 'La Geometr\u00eda Rota'. Recopila la informaci\u00f3n del 'Archivo de Memorias de la Fractura' para descifrar el mensaje oculto dentro de los cristales.",
-                    "objective": {
-                        "type": "item",
-                        "id": "qitem_fragmento_de_luz_estelar_366"
-                    }
-                },
-                {
-                    "id": 3,
-                    "description": "Sigue la se\u00f1al de energ\u00eda residual dejada por la actividad Silicoide hasta el asteroide '\u00daltima Esperanza'. All\u00ed, enfrenta a una 'Conciencia Silicoide Fragmentada', que intenta reensamblar el fragmento y liberar a sus hermanos.",
+                    "id": "step_1",
+                    "description": "Barty Buzzkill, con su tacto habitual, intenta sobornar a un camarero alien\u00edgena con un billete arrugado. El camarero, en lugar de ceder, se burla de la apariencia del mercenario y lo insulta. 734-B, ofendido por la falta de respeto hacia su compa\u00f1ero, recita un poema sobre la indignidad, lo cual provoca la ira de un grupo de brutales matones espaciales. \u00a1Comienza la pelea!",
                     "objective": {
                         "type": "npc",
-                        "id": "XYLOS_370"
+                        "id": "cantina_brawl"
+                    }
+                },
+                {
+                    "id": "step_2",
+                    "description": "Tras la pelea, el equipo, magullado pero victorioso (o al menos, *vivo*), registra a los matones y encuentra un extra\u00f1o cristal. 734-B, al examinarlo, reconoce que el cristal contiene informaci\u00f3n, pero necesita ser activado para revelar algo \u00fatil. El Droide Poeta, con su sensibilidad po\u00e9tica, intenta descifrar los s\u00edmbolos del cristal, tarareando versos rimados y buscando la clave.",
+                    "objective": {
+                        "type": "item",
+                        "id": "activar_cristal"
+                    }
+                },
+                {
+                    "id": "step_3",
+                    "description": "Activado el cristal, se revelan las coordenadas, pero la informaci\u00f3n es ca\u00f3tica y parcial. El Jefe de la Seguridad Cantinera, un robusto alien\u00edgena con varios brazos y sediento de venganza, ataca para recuperar el cristal. Barty y sus compa\u00f1eros deben defenderse mientras 734-B intenta descifrar la informaci\u00f3n restante, traduciendo las coordenadas que revelan la direcci\u00f3n aproximada hacia el pr\u00f3ximo encuentro con Lord Casco Oscuro.",
+                    "objective": {
+                        "type": "npc",
+                        "id": "jefe_seguridad_cantinera"
                     }
                 }
             ]
         },
-        "QUEST_EL_CRISTAL_SILENTE_Y_EL_SECRETO_DE_LAS_ESTRELLAS_CADAS_228": {
-            "id": "QUEST_EL_CRISTAL_SILENTE_Y_EL_SECRETO_DE_LAS_ESTRELLAS_CADAS_228",
-            "world_id": "venganza_silicoide",
-            "title": "El Cristal Silente y el Secreto de las Estrellas Ca\u00eddas",
-            "description": "Una se\u00f1al cr\u00edptica, emanando de una antigua baliza estelar abandonada, ha captado la atenci\u00f3n del sindicato comercial. Se rumorea que la se\u00f1al contiene informaci\u00f3n vital sobre los Silicoides y la fuente de una energ\u00eda desconocida que impulsa sus naves. Un cient\u00edfico renegado, exiliado por sus herej\u00edas, podr\u00eda tener la clave para decodificarla, pero sus m\u00e9todos son\u2026 poco convencionales.",
-            "starting_npc_id": "VALESKA_736",
+        "QUEST_EL_ASTEROIDE_DE_LOS_SECRETOS_685": {
+            "id": "QUEST_EL_ASTEROIDE_DE_LOS_SECRETOS_685",
+            "world_id": "spaceballs_revenge",
+            "title": "El Asteroide de los Secretos",
+            "description": "El equipo llega al Asteroide de los Clones Desechados, donde descubren una debilidad clave en el plan de Lord Casco Oscuro, pero deben ganarse la confianza de los clones.",
+            "starting_npc_id": "734B_DROIDE",
             "steps": [
                 {
-                    "id": 1,
-                    "description": "Viaja a las ruinas de la estaci\u00f3n espacial 'Erebus', donde se encuentra la baliza. Busca los restos de la se\u00f1al, pero ten cuidado: el \u00e1rea est\u00e1 infestada de drones de seguridad defectuosos y los fantasmas digitales de los t\u00e9cnicos ca\u00eddos a\u00fan merodean.",
+                    "id": "step_1",
+                    "description": "El Droide Poeta 734-B, con su usual dramatismo, insiste en que la \u00fanica forma de ganarse la confianza de los clones es a trav\u00e9s del arte. Deben encontrar el 'Auditorio de los Lamentos', el \u00fanico lugar donde los clones a\u00fan conservan algo de su humanidad.",
                     "objective": {
                         "type": "location",
-                        "id": "node_1_1"
+                        "id": "Auditorio de los Lamentos"
                     }
                 },
                 {
-                    "id": 2,
-                    "description": "Encuentra al cient\u00edfico renegado, el Dr. Aris Thorne, escondido en una instalaci\u00f3n subterr\u00e1nea debajo de Erebus. Debe ser persuadido para que comparta su conocimiento, pero desconf\u00eda de todos y exigir\u00e1 una muestra del 'Rostro Silente' para confiar en ti.",
+                    "id": "step_2",
+                    "description": "En el Auditorio, encuentran a los clones, liderados por un Supervisor de Clonaci\u00f3n Defectuosa, que protege un secreto vital. Barty Buzzkill, harto de la poes\u00eda, sugiere una 'soluci\u00f3n' menos... art\u00edstica, pero la Princesa Zz insiste en un enfoque diplom\u00e1tico. El Droide Poeta 734-B debe recitar su poema m\u00e1s conmovedor.",
                     "objective": {
                         "type": "npc",
-                        "id": "CORAZ\u00d3N_819"
+                        "id": "734B_DROIDE"
                     }
                 },
                 {
-                    "id": 3,
-                    "description": "Una vez que el Dr. Thorne se haya ganado la confianza, analiza el 'Rostro Silente' y decodifica la se\u00f1al. Esto revelar\u00e1 la ubicaci\u00f3n de una mina de cristal Silicoide abandonada y los peligros que acechan en su interior.",
+                    "id": "step_3",
+                    "description": "Con el poema recitado, los clones revelan la debilidad de Lord Casco Oscuro: un filtro defectuoso en sus aspiradores de aire. El Supervisor de Clonaci\u00f3n Defectuosa intenta detenerlos, pero Barty Buzzkill lo neutraliza con un golpe bien colocado. Obtienen el mapa de la base secreta de Casco Oscuro y se preparan para la confrontaci\u00f3n final.",
                     "objective": {
-                        "type": "item",
-                        "id": "qitem_rostro_silente_623"
+                        "type": "npc",
+                        "id": "Supervisor de Clonaci\u00f3n Defectuosa"
                     }
                 }
             ]
