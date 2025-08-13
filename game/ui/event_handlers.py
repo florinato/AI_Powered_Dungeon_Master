@@ -1,10 +1,10 @@
 # game/event_handlers.py
 
-from game.data import db_manager
 from game.ai import game_narrator
 from game.core.game_engine import (accept_quest, perform_skill_check,
-                         process_combat_turn, trigger_trap)
+                                   process_combat_turn, trigger_trap)
 from game.core.models import PlayerState
+from game.data import db_manager
 
 # --- Gestores de Sub-Bucles y Eventos ---
 
@@ -160,3 +160,145 @@ def handle_dialogue(game_state: dict, world_definition: dict, presenter, ai_prov
         presenter.speak(f"{target_display_name}: {response}")
         
     return game_state
+
+
+def handle_quest_scene(game_state: dict, active_scene_data: dict, world_definition: dict, presenter, ai_provider):
+    """
+    Maneja una escena de misión activa (Modo Aventura).
+    Usa el motor narrativo para generar experiencias inmersivas.
+    Ahora con gestión de bucles infinitos mejorada.
+    
+    Returns:
+        tuple: (game_state_updated, result_dict)
+    """
+    from game.ai import game_narrator
+    
+    quest_id = active_scene_data["quest_id"]
+    quest_title = active_scene_data["quest_title"]
+    step_id = active_scene_data["step_id"]
+    quest_status = active_scene_data["quest_status"]
+    
+    # --- NUEVA LÓGICA: GESTIÓN DE BUCLES ---
+    scene_state = quest_status.setdefault('scene_state', {})
+    action_count = scene_state.get('action_count', 0)
+    action_count += 1
+    scene_state['action_count'] = action_count
+    
+    # Si el jugador lleva muchas acciones en la misma escena, forzamos el objetivo
+    if action_count > 5:  # Límite de 5 acciones
+        presenter.speak("[DM]: El tiempo apremia, es hora de actuar decisivamente...")
+        # Forzamos la compleción del objetivo
+        game_state['player']['active_quests'][quest_id]['step_completed_flag'] = True
+        # Reseteamos el contador para la nueva escena
+        scene_state.pop('action_count', None)
+        scene_state.clear()  # Limpiar todo el estado de la escena
+        
+        return game_state, {
+            'type': 'quest_scene',
+            'message': f"¡Paso forzado a completar en {quest_title}!",
+            'quest_title': quest_title,
+            'quest_id': quest_id,
+            'quest_completed': True
+        }
+    
+    # Preparar el contexto completo para el motor narrativo
+    enhanced_game_state = game_state.copy()
+    enhanced_game_state["world_definition"] = world_definition
+    
+    # Usar el motor narrativo para generar la escena
+    try:
+        narration, options = game_narrator.narrate_quest_scene(
+            ai_provider, 
+            enhanced_game_state, 
+            active_scene_data
+        )
+        
+        # Mostrar la narrativa y opciones
+        presenter.speak(f"\n=== {quest_title} ===")
+        presenter.speak(narration)
+        presenter.speak("\n¿Qué decides hacer?")
+        
+        for i, option in enumerate(options, 1):
+            presenter.speak(f"  {i}. {option}")
+        
+        # Obtener la elección del jugador
+        choice_input = input("\nElige tu acción (número): ").strip()
+        
+        try:
+            choice_num = int(choice_input)
+            if 1 <= choice_num <= len(options):
+                selected_option = options[choice_num - 1]
+                
+                # Resolver la acción usando el motor narrativo
+                outcome_narration, outcome_data = game_narrator.resolve_quest_action(
+                    ai_provider,
+                    enhanced_game_state,
+                    active_scene_data,
+                    selected_option
+                )
+                
+                # Mostrar el resultado
+                presenter.speak(f"\n{outcome_narration}")
+                
+                # Procesar los efectos mecánicos
+                quest_completed = False
+                
+                if outcome_data.get("objective_completed", False):
+                    game_state['player']['active_quests'][quest_id]['step_completed_flag'] = True
+                    quest_completed = True
+                
+                if "item_gained" in outcome_data:
+                    item_id = outcome_data["item_gained"]
+                    # Aquí podrías añadir lógica para añadir el item al inventario
+                    presenter.speak(f"¡Has obtenido: {item_id}!")
+                
+                if "damage_taken" in outcome_data:
+                    damage = outcome_data["damage_taken"]
+                    game_state['player']['hp'] = max(0, game_state['player']['hp'] - damage)
+                    presenter.speak(f"¡Has recibido {damage} puntos de daño!")
+                
+                if "start_combat" in outcome_data:
+                    npc_id = outcome_data["start_combat"]
+                    presenter.speak(f"¡El combate comienza contra {npc_id}!")
+                    # Aquí podrías activar el sistema de combate
+                
+                if "update_scene_state" in outcome_data:
+                    scene_updates = outcome_data["update_scene_state"]
+                    current_scene_state = game_state['player']['active_quests'][quest_id].get('scene_state', {})
+                    current_scene_state.update(scene_updates)
+                    game_state['player']['active_quests'][quest_id]['scene_state'] = current_scene_state
+                
+                # Mensaje de resultado mejorado
+                if quest_completed:
+                    result_message = f"¡Paso completado en {quest_title}!"
+                else:
+                    result_message = f"Acción realizada en {quest_title}"
+                
+                return game_state, {
+                    'type': 'quest_scene',
+                    'message': result_message,
+                    'quest_id': quest_id,
+                    'quest_title': quest_title,  # Añadir quest_title para evitar el error
+                    'quest_completed': quest_completed
+                }
+                
+            else:
+                presenter.speak("Opción inválida. Intenta de nuevo.")
+                return game_state, None
+                
+        except ValueError:
+            presenter.speak("Por favor, introduce un número válido.")
+            return game_state, None
+            
+    except Exception as e:
+        print(f"[DEBUG] Error in handle_quest_scene: {e}")
+        presenter.speak("Ha ocurrido un error en la narrativa. Continuando...")
+        
+        # Fallback básico
+        game_state['player']['active_quests'][quest_id]['step_completed_flag'] = True
+        return game_state, {
+            'type': 'quest_scene',
+            'message': f"Progreso en {quest_title}",
+            'quest_title': quest_title,  # Añadir quest_title para evitar el error
+            'quest_id': quest_id
+        }

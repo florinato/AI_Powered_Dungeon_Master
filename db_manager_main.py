@@ -11,6 +11,9 @@ import os
 import sqlite3
 import sys
 
+from game.data.db_manager import (DB_FILE, create_schema, get_db_connection,
+                                  import_world_from_json)
+
 
 def main():
     """Main entry point for database operations."""
@@ -19,10 +22,6 @@ def main():
     print("=" * 45)
 
     try:
-        # Import necessary functions from db_manager
-        from game.data.db_manager import (DB_FILE, create_schema,
-                                          get_db_connection,
-                                          import_world_from_json)
 
         print("--- Running DB Manager Initializer and Importer ---")
 
@@ -49,11 +48,6 @@ def main():
 
         conn.close()
         print("\n--- DB Manager script finished ---")
-
-    except ImportError as e:
-        print(f"ERROR: Could not import database manager: {e}")
-        print("Make sure you're running from the project root directory.")
-        sys.exit(1)
     except KeyboardInterrupt:
         print("\n\nDatabase operation interrupted by user. Goodbye!")
         sys.exit(0)

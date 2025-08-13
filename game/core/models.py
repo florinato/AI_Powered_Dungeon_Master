@@ -100,6 +100,14 @@ class PlayerQuestState(BaseModel):
     current_step_id: str
     completed: bool = False
     status: str = "active"
+    
+    # --- NUEVO CAMPO ---
+    # Para guardar datos temporales de la escena actual (ej: "guards_alerted": true)
+    scene_state: Dict[str, Any] = Field(default_factory=dict)
+    
+    # --- NUEVO CAMPO (Opcional pero recomendado) ---
+    # Bandera para comunicar al game_engine que el paso se ha completado
+    step_completed_flag: bool = False
 
 class PlayerState(BaseModel):
     """Representa el estado completo de un jugador en una partida."""

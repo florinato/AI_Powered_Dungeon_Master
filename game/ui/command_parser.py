@@ -66,7 +66,7 @@ def parse_command(command_input: str) -> dict:
         return {"action": "fight_intent"}
         
     elif command == "talk":
-        return {"action": "talk_intent"}
+        return {"action": "talk"}
 
     elif command == "help":
         return {"action": "help"}
